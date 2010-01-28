@@ -7,4 +7,4 @@ Changelog
 
 0.1 -(Unreleased)
 -----------------
- * Initial release [ghicaale]
+ * Initial release [ghicaale #2773]

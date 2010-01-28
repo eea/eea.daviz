@@ -1,4 +1,4 @@
 0.1 svn
 --------
 
-* Initial release
+* Initial release [ghicaale]

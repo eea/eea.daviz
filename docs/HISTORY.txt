@@ -1,0 +1,10 @@
+Changelog
+=========
+[Alexandru Ghica - alec.ghica@eaudeweb.ro]
+[Alin Voinea - alin.voinea@eaudeweb.ro]
+[Antonio De Marinis - demarinis@eea.europa.eu]
+
+
+0.1 -(Unreleased)
+-----------------
+ * Initial release [ghicaale]

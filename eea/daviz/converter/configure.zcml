@@ -1,5 +1,4 @@
-<configure xmlns="http://namespaces.zope.org/browser"
-           xmlns:zope="http://namespaces.zope.org/zope"
+<configure xmlns:zope="http://namespaces.zope.org/zope"
            xmlns:five="http://namespaces.zope.org/five"
            xmlns:browser="http://namespaces.zope.org/browser"
            i18n_domain="eea.daviz">
@@ -19,5 +18,17 @@
       template="convert_to_json.pt"
       permission="cmf.ModifyPortalContent"
       />
+
+  <browser:page
+      for="eea.dataservice.interfaces.IDatafile"
+      name="jsonOutput"
+      permission="cmf.ModifyPortalContent"
+      class=".converter.JsonOutput"
+      />
+
+  <zope:adapter
+      for=".interfaces.IExhibitJson"
+      provides=".interfaces.IExhibitJsonConverter"
+      factory=".converter.ExhibitJsonConverter" />
 
 </configure>

@@ -17,7 +17,7 @@
 
   <!-- EEA -->
   <configure zcml:condition="installed eea.dataservice">
-    <class class="eea.dataservice.interfaces.IDatafile">
+    <class class="eea.dataservice.content.DataFile.DataFile">
       <implements interface="eea.daviz.interfaces.IPossibleExhibitJson" />
     </class>
   </configure>

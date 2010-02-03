@@ -1,0 +1,44 @@
+{
+	"items" : [
+		{
+			"Name" :      "Some Name",
+			"Programme" : "NSV1 - Biodiversity",
+			"label" :     "3",
+			"type" :      "Item",
+			"Country" :   "Romania",
+			"Job+title" : "Programmer"
+		},
+		{
+			"Name" :      "Alexandru Ghica",
+			"Programme" : "NSV3 - Land",
+			"label" :     "1",
+			"type" :      "Item",
+			"Country" :   "Romania",
+			"Job+title" : "Project manager"
+		},
+		{
+			"Name" :      "Other Name",
+			"Programme" : "NSV3 - Land",
+			"label" :     "4",
+			"type" :      "Item",
+			"Country" :   "Denmark",
+			"Job+title" : "Programmer"
+		},
+		{
+			"Name" :      "Alin Voinea",
+			"Programme" : "NSV1 - Biodiversity",
+			"label" :     "2",
+			"type" :      "Item",
+			"Country" :   "Italy",
+			"Job+title" : "Project manager"
+		},
+		{
+			"Name" :      "Just a Name",
+			"Programme" : "NSV1 - Biodiversity",
+			"label" :     "5",
+			"type" :      "Item",
+			"Country" :   "Italy",
+			"Job+title" : "Head of Group"
+		}
+	]
+}

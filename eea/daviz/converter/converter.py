@@ -41,46 +41,61 @@ class ExhibitJsonConverter(object):
 
     def getJsonData(self):
         """ Returns Json output after converting source data. """
-        #TODO: in the first sprint will convert only CSV files to Json,
-        #      in a future sprint a converter from any suported format to
+        #TODO: in the first sprint will convert only CSV (tab separated) files
+        #      to Json, in a future sprint a converter from more formats to
         #      Json will be implemented (e.g. Babel)
+
+        import csv
+        from itertools import izip
+
+        f = open( '/var/local/eea-buildout-new/extras/eea.daviz/eea/daviz/tests/data/file.csv', 'r' )
+        reader = csv.reader( f )
+        keys = ( "id","Name","Job title","Programme","Country" )
+        out = []
+        for property in reader:
+                property = iter( property )
+                data = {}
+                for key in keys:
+                        data[ key ] = property.next()
+                out += [ data ]
+        #print out
 
         #TODO: returns just some data for test, replace this with CSV to Json convertion
         output = """
 {
-	"items" :      [
-		{
-			"AxisUnits" :                 "Meters",
-			"Projection" :                "Lambert Azimutal",
-			"Name" :                      "Lambert Azimutal",
-			"LatituteProjectionCenter" :  [
-				"48&#176",
-				"00\'00\'\'"
-			],
-			"LongituteProjectionCenter" : [
-				"09&#176",
-				"00\'00\'\'"
-			],
-			"FalseEasting" :              0,
-			"type" :                      "Item",
-			"FalseNorthing" :             0,
-			"projectionGID" :             "2F971D88-35D9-440D-961B-B5B656C5436D",
-			"Ellipsoid" :                 "Sphere: radius 6378388",
-			"label" :                     "3",
-			"SemiMajorAxis" :             6378388
-		}
-	],
-	"properties" : {
-		"SemiMajorAxis" : {
-			"valueType" : "number"
-		},
-		"FalseNorthing" : {
-			"valueType" : "number"
-		},
-		"FalseEasting" :  {
-			"valueType" : "number"
-		}
-	}
+        "items" :      [
+                {
+                        "AxisUnits" :                 "Meters",
+                        "Projection" :                "Lambert Azimutal",
+                        "Name" :                      "Lambert Azimutal",
+                        "LatituteProjectionCenter" :  [
+                                "48&#176",
+                                "00\'00\'\'"
+                        ],
+                        "LongituteProjectionCenter" : [
+                                "09&#176",
+                                "00\'00\'\'"
+                        ],
+                        "FalseEasting" :              0,
+                        "type" :                      "Item",
+                        "FalseNorthing" :             0,
+                        "projectionGID" :             "2F971D88-35D9-440D-961B-B5B656C5436D",
+                        "Ellipsoid" :                 "Sphere: radius 6378388",
+                        "label" :                     "3",
+                        "SemiMajorAxis" :             6378388
+                }
+        ],
+        "properties" : {
+                "SemiMajorAxis" : {
+                        "valueType" : "number"
+                },
+                "FalseNorthing" : {
+                        "valueType" : "number"
+                },
+                "FalseEasting" :  {
+                        "valueType" : "number"
+                }
+        }
 }
         """
         return output

@@ -7,8 +7,8 @@ from zope.component import adapts
 from zope.interface import implements, alsoProvides
 from zope.app.annotation.interfaces import IAnnotations
 
-from interfaces import IExhibitJson, IExhibitJsonConverter
-
+from eea.daviz.interfaces import IExhibitJson
+from interfaces import IExhibitJsonConverter
 
 EXHIBITJSON = ['exhibit_json']
 

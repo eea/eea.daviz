@@ -1,11 +1,8 @@
-<configure xmlns="http://namespaces.zope.org/browser"
-           xmlns:zope="http://namespaces.zope.org/zope"
-           xmlns:five="http://namespaces.zope.org/five"
-           xmlns:browser="http://namespaces.zope.org/browser"
-           i18n_domain="eea.daviz">
+<configure
+  xmlns="http://namespaces.zope.org/browser"
+  i18n_domain="eea.daviz">
 
-    <include package=".converter" />
-
-
+  <include package=".subtypes" />
+  <include package=".converter" />
 
 </configure>

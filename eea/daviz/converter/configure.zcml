@@ -4,30 +4,30 @@
            i18n_domain="eea.daviz">
 
   <browser:menuItem
-      for="eea.dataservice.interfaces.IDatafile"
+      for="eea.daviz.interfaces.IPossibleExhibitJson"
       menu="object_buttons"
       title="Convert to Exhibit view"
-      action="@@convertToExhibitJson"
+      action="$object_url/@@convertToExhibitJson"
       description="Convert CSV file to Exhibit Json"
       permission="cmf.ModifyPortalContent"
       />
 
   <browser:page
-      for="eea.dataservice.interfaces.IDatafile"
+      for="eea.daviz.interfaces.IPossibleExhibitJson"
       name="convertToExhibitJson"
       template="convert_to_json.pt"
       permission="cmf.ModifyPortalContent"
       />
 
   <browser:page
-      for="eea.dataservice.interfaces.IDatafile"
+      for="eea.daviz.interfaces.IPossibleExhibitJson"
       name="jsonOutput"
       permission="cmf.ModifyPortalContent"
       class=".converter.JsonOutput"
       />
 
   <zope:adapter
-      for=".interfaces.IExhibitJson"
+      for="eea.daviz.interfaces.IExhibitJson"
       provides=".interfaces.IExhibitJsonConverter"
       factory=".converter.ExhibitJsonConverter" />
 

@@ -1,0 +1,25 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:zcml="http://namespaces.zope.org/zcml"
+  i18n_domain="eea.daviz">
+
+  <adapter
+    for="eea.daviz.interfaces.IPossibleExhibitJson"
+    provides=".interfaces.IAnnotations"
+    factory=".interfaces.AttributeAnnotations"
+    />
+
+  <!-- Plone -->
+  <class class="Products.ATContentTypes.content.file.ATFile">
+    <implements interface="eea.daviz.interfaces.IPossibleExhibitJson" />
+  </class>
+
+
+  <!-- EEA -->
+  <configure zcml:condition="installed eea.dataservice">
+    <class class="eea.dataservice.interfaces.IDatafile">
+      <implements interface="eea.daviz.interfaces.IPossibleExhibitJson" />
+    </class>
+  </configure>
+
+</configure>

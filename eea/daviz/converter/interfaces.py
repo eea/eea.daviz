@@ -1,9 +1,5 @@
 from zope.interface import Interface, Attribute
 
-class IExhibitJson(Interface):
-    """ Objects which have Exhibit Json exported data.
-    """
-
 class IExhibitJsonConverter(Interface):
     """ Converts context data to Json and save the output under annotations.
     """

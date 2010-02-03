@@ -1,0 +1,12 @@
+Overview
+========
+
+    >>> self.loginAsPortalOwner()
+    >>> _ = portal.invokeFactory('Folder', 'sandbox')
+    >>> sandbox = portal._getOb('sandbox')
+    >>> _ = sandbox.invokeFactory('File', 'daviz-file')
+    >>> davizFile = sandbox._getOb('daviz-file')
+
+    >>> from eea.daviz.interfaces import IPossibleExhibitJson
+    >>> IPossibleExhibitJson.providedBy(davizFile)
+    True

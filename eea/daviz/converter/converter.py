@@ -3,14 +3,16 @@
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 
+import csv
 import logging
+from itertools import izip
 
 from zope.component import adapts
 from zope.interface import implements, alsoProvides
 from zope.app.annotation.interfaces import IAnnotations
 
-from eea.daviz.interfaces import IExhibitJson
 from interfaces import IExhibitJsonConverter
+from eea.daviz.interfaces import IExhibitJson
 
 logger = logging.getLogger('eea.daviz.converter')
 info = logger.info
@@ -49,9 +51,6 @@ class ExhibitJsonConverter(object):
         #TODO: in the first sprint will convert only CSV (comma separated) files
         #      to JSON, in a future sprint a converter from more formats to
         #      JSON will be implemented (e.g. Babel)
-
-        import csv
-        from itertools import izip
 
         columns = []
         out = []

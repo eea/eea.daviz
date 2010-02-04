@@ -19,4 +19,12 @@
     permission="zope2.View"
     />
 
+  <browser:menuItem
+    for="eea.daviz.interfaces.IExhibitJson"
+    menu="object"
+    title="View exhibit"
+    action="$object_url/daviz-view.html"
+    permission="cmf.ModifyPortalContent"
+    />
+
 </configure>

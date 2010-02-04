@@ -1,0 +1,14 @@
+<tal:view define="columns python:template.columns">
+
+<div ex:role="view"
+  ex:viewClass="Tabular"
+  ex:cellSpacing="0"
+  ex:cellPadding="0"
+  ex:tableStyler="DavizTableStyler"
+  ex:rowStyler="DavizTableRowStyler"
+  tal:condition="columns"
+  tal:attributes="
+    ex:columns columns;"
+></div>
+
+</tal:view>

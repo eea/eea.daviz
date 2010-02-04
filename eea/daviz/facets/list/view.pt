@@ -1,0 +1,9 @@
+<tal:facet define="name python:template.get('name', '')">
+
+<div ex:role="facet" tal:attributes="
+  ex:expression string:.$name;
+  ex:facetLabel name;"
+  tal:condition="name"
+></div>
+
+</tal:facet>

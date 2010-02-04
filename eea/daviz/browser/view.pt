@@ -9,15 +9,33 @@
 
   <!-- include exhibit api -->
   <script type="text/javascript">
+  <!--
     var daviz_jQuery = window.jQuery;
     var daviz_$ = window.$;
+  //-->
   </script>
   <script src="++resource++eea.simile.exhibit/exhibit-api.js" type="text/javascript"></script>
   <script src="++resource++eea.simile.exhibit/extensions/time/time-extension.js"></script>
   <script src="++resource++eea.simile.exhibit/extensions/map/map-extension.js"></script>
   <script type="text/javascript">
+  <!--
     window.jQuery = daviz_jQuery;
     window.$ = daviz_$;
+  //-->
+  </script>
+  <script type="text/javascript">
+  <!--
+    function DavizTableStyler(table, database){
+      jQuery(table).addClass('listing');
+    };
+    function DavizTableRowStyler(item, database, tr) {
+      if (tr.rowIndex % 2) {
+        jQuery(tr).addClass('odd');
+      } else {
+        jQuery(tr).addClass('even');
+      }
+    };
+  //-->
   </script>
 </metal:jsslot>
 
@@ -39,26 +57,27 @@
   News summary
   </p>
 
-  <!--<div ex:role="facet" ex:expression=".Name" ex:facetLabel="Numele"></div>-->
-  <!--<div ex:role="facet" ex:expression=".Projection" ex:facetLabel=""></div>-->
-  <!--<div ex:role="facet" ex:expression=".AxisUnits" ex:facetLabel="Unitati"></div>-->
-  <div ex:role="facet" ex:facetClass="Cloud" ex:expression=".Name"></div>
-
-  <div ex:role="view"
-     ex:viewClass="Tabular"
-     ex:columns=".Name, .year, .Projection">
- </div>
-
-  <div ex:role="view"
-    ex:viewClass="Map"
-    ex:label="Map (sized by magnitude)"
-    ex:lat=".LatituteProjectionCenter"
-    ex:lng = ".LongituteProjectionCenter"
-    ex:bubbleWidth="100"
-    ex:bubbleHeight="100"
-    ex:mapHeight="400"
-    ex:zoom ="4">
+<div style="float: left; width: 98%">
+  <!-- Exhibit facets -->
+  <div style="float: left; width: 19%; margin-right: 1%">
+    <tal:facets define="facets python:view.facets;">
+      <tal:facet repeat="facet_name facets">
+        <div tal:define="facet_view python:view.get_facet(facet_name)"
+          tal:replace="structure facet_view" />
+      </tal:facet>
+    </tal:facets>
   </div>
+  <!-- Exhibit views -->
+  <div style="float: left; width: 80%">
+    <tal:views define="views python:view.views;">
+      <tal:view repeat="view_name views">
+        <div tal:define="view_page python:view.get_view(view_name)"
+          tal:replace="structure view_page" />
+      </tal:view>
+    </tal:views>
+  </div>
+</div>
+<div style="clear: both"></div>
 
 </div>
 </body>

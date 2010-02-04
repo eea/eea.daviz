@@ -1,4 +1,14 @@
 <configure
-  xmlns="http://namespaces.zope.org/zope">
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser">
+
+  <browser:page
+    for="eea.daviz.interfaces.IExhibitJson"
+    name="daviz.list.facet"
+    template="view.pt"
+    class=".view.View"
+    permission="zope2.View"
+    allowed_interface=".interfaces.IExhibitListFacet"
+    />
 
 </configure>

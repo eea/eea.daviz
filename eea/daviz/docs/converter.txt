@@ -12,7 +12,7 @@ Let's upload a file.
     >>> from eea.daviz.interfaces import IPossibleExhibitJson
     >>> IPossibleExhibitJson.providedBy(daviz_file)
     True
-    
+
     >>> csv_file = self.loadfile('data/file.csv', ctype='text/csv')
     >>> daviz_file.setFile(csv_file)
 
@@ -31,5 +31,31 @@ Let's adapt the file and check JSON output.
     >>> if not IExhibitJson.providedBy(daviz_file):
     ...     alsoProvides(daviz_file, IExhibitJson)
     >>> exhibitadaptor = IExhibitJsonConverter(daviz_file)
-    >>> exhibitadaptor.getExhibitJson()
-    5
+    >>> from pprint import pprint
+    >>> json = exhibitadaptor.getExhibitJson()
+    >>> pprint(json)
+    [{'Country': 'Romania',
+      'Job+title': 'Project manager',
+      'Name': 'Alexandru Ghica',
+      'Programme': 'NSV3 - Land',
+      'label': '1'},
+     {'Country': 'Italy',
+      'Job+title': 'Project manager',
+      'Name': 'Alin Voinea',
+      'Programme': 'NSV1 - Biodiversity',
+      'label': '2'},
+     {'Country': 'Romania',
+      'Job+title': 'Programmer',
+      'Name': 'Some Name',
+      'Programme': 'NSV1 - Biodiversity',
+      'label': '3'},
+     {'Country': 'Denmark',
+      'Job+title': 'Programmer',
+      'Name': 'Other Name',
+      'Programme': 'NSV3 - Land',
+      'label': '4'},
+     {'Country': 'Italy',
+      'Job+title': 'Head of Group',
+      'Name': 'Just a Name',
+      'Programme': 'NSV1 - Biodiversity',
+      'label': '5'}]

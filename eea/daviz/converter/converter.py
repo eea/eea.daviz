@@ -14,11 +14,10 @@ from zope.app.annotation.interfaces import IAnnotations
 
 from interfaces import IExhibitJsonConverter
 from eea.daviz.interfaces import IExhibitJson
+from eea.daviz.config import ANNO_JSON
 
 logger = logging.getLogger('eea.daviz.converter')
 info = logger.info
-
-EXHIBITJSON = ['exhibit_json']
 
 class ExhibitJsonConverter(object):
     """ Converts context data to JSON and save the output under annotations.
@@ -33,17 +32,17 @@ class ExhibitJsonConverter(object):
         annotations = IAnnotations(context)
 
         # Exhibit JSON
-        annotations[EXHIBITJSON] = self.getJsonData()
+        annotations[ANNO_JSON] = self.getJsonData()
 
     def getExhibitJson(self):
         """ Get Exhibit JSON. """
         annotations = IAnnotations(self.context)
-        return annotations.get(EXHIBITJSON)
+        return annotations.get(ANNO_JSON)
 
     def setExhibitJson(self, value):
         """ Set Exhibit JSON. """
         annotations = IAnnotations(self.context)
-        annotations[EXHIBITJSON] = value
+        annotations[ANNO_JSON] = value
 
     exhibitjson = property(getExhibitJson, setExhibitJson)
 
@@ -65,16 +64,22 @@ class ExhibitJsonConverter(object):
                     continue
 
                 # Get column headers
-                if columns == []: 
+                if columns == []:
                     columns = row
                     continue
 
                 # Create JSON
                 row = iter(row)
                 data = {}
-                for col in columns:
-                        data[col] = row.next()
-                out += [data]
+                for index, col in enumerate(columns):
+                    # Required by exhibit
+                    text = row.next()
+                    if index == 0:
+                        data['label'] = text
+                        continue
+                    data[col.replace(' ', '+')] = text
+                out.append(data)
+
         except Exception, err:
             # Convertion failed
             logger.exception('Failed to convert %s: %s', self.context.absolute_url(1), err)

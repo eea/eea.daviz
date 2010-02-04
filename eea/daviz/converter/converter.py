@@ -6,6 +6,7 @@ __docformat__ = 'plaintext'
 import csv
 import logging
 from itertools import izip
+from StringIO import StringIO
 
 from zope.component import adapts
 from zope.interface import implements, alsoProvides
@@ -56,7 +57,8 @@ class ExhibitJsonConverter(object):
         out = []
 
         try:
-            reader = csv.reader(self.context.getFile().data, delimiter=',')
+            data = StringIO(self.context.getFile().data)
+            reader = csv.reader(data, delimiter=',')
             for row in reader:
                 # Ignore empty rows
                 if row == []:

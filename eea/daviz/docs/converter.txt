@@ -31,5 +31,5 @@ Let's adapt the file and check JSON output.
     >>> if not IExhibitJson.providedBy(daviz_file):
     ...     alsoProvides(daviz_file, IExhibitJson)
     >>> exhibitadaptor = IExhibitJsonConverter(daviz_file)
-    >>> len(exhibitadaptor.getExhibitJson())
-    288
+    >>> exhibitadaptor.getExhibitJson()
+    5

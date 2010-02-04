@@ -1,12 +1,35 @@
-Overview
-========
+Converts original data to JSON
+==============================
+
+Let's upload a file.
 
     >>> self.loginAsPortalOwner()
     >>> _ = portal.invokeFactory('Folder', 'sandbox')
     >>> sandbox = portal._getOb('sandbox')
     >>> _ = sandbox.invokeFactory('File', 'daviz-file')
-    >>> davizFile = sandbox._getOb('daviz-file')
+    >>> daviz_file = sandbox._getOb('daviz-file')
 
     >>> from eea.daviz.interfaces import IPossibleExhibitJson
-    >>> IPossibleExhibitJson.providedBy(davizFile)
+    >>> IPossibleExhibitJson.providedBy(daviz_file)
     True
+    
+    >>> csv_file = self.loadfile('data/file.csv', ctype='text/csv')
+    >>> daviz_file.setFile(csv_file)
+
+Let's check if file uploaded.
+
+    >>> len(daviz_file.getFile().data)
+    295
+
+Let's adapt the file and check JSON output.
+
+    >>> from zope.component import getAdapter
+    >>> from zope.interface import implements, alsoProvides
+    >>> from eea.daviz.converter.interfaces import IExhibitJsonConverter
+    >>> from eea.daviz.interfaces import IExhibitJson
+
+    >>> if not IExhibitJson.providedBy(daviz_file):
+    ...     alsoProvides(daviz_file, IExhibitJson)
+    >>> exhibitadaptor = IExhibitJsonConverter(daviz_file)
+    >>> len(exhibitadaptor.getExhibitJson())
+    288

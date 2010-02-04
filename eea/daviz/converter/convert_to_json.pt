@@ -18,7 +18,7 @@
 
  <div style="border: 1px solid red; padding: 1em"
       tal:define="info context/@@jsonOutput"
-      tal:content="info" />
+      tal:content="structure info" />
 
 </div>
 

@@ -3,6 +3,8 @@
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 
+import logging
+
 from zope.component import adapts
 from zope.interface import implements, alsoProvides
 from zope.app.annotation.interfaces import IAnnotations
@@ -10,10 +12,13 @@ from zope.app.annotation.interfaces import IAnnotations
 from eea.daviz.interfaces import IExhibitJson
 from interfaces import IExhibitJsonConverter
 
+logger = logging.getLogger('eea.daviz.converter')
+info = logger.info
+
 EXHIBITJSON = ['exhibit_json']
 
 class ExhibitJsonConverter(object):
-    """ Converts context data to Json and save the output under annotations.
+    """ Converts context data to JSON and save the output under annotations.
     """
 
     implements(IExhibitJsonConverter)
@@ -24,84 +29,59 @@ class ExhibitJsonConverter(object):
         self.context = context
         annotations = IAnnotations(context)
 
-        # Exhibit Json
+        # Exhibit JSON
         annotations[EXHIBITJSON] = self.getJsonData()
 
     def getExhibitJson(self):
-        """ Get Exhibit Json. """
+        """ Get Exhibit JSON. """
         annotations = IAnnotations(self.context)
         return annotations.get(EXHIBITJSON)
 
     def setExhibitJson(self, value):
-        """ Set Exhibit Json. """
+        """ Set Exhibit JSON. """
         annotations = IAnnotations(self.context)
         annotations[EXHIBITJSON] = value
 
     exhibitjson = property(getExhibitJson, setExhibitJson)
 
     def getJsonData(self):
-        """ Returns Json output after converting source data. """
-        #TODO: in the first sprint will convert only CSV (tab separated) files
-        #      to Json, in a future sprint a converter from more formats to
-        #      Json will be implemented (e.g. Babel)
+        """ Returns JSON output after converting source data. """
+        #TODO: in the first sprint will convert only CSV (comma separated) files
+        #      to JSON, in a future sprint a converter from more formats to
+        #      JSON will be implemented (e.g. Babel)
 
         import csv
         from itertools import izip
 
-        f = open( '/var/local/eea-buildout-new/extras/eea.daviz/eea/daviz/tests/data/file.csv', 'r' )
-        reader = csv.reader( f )
-        keys = ( "id","Name","Job title","Programme","Country" )
+        columns = []
         out = []
-        for property in reader:
-                property = iter( property )
-                data = {}
-                for key in keys:
-                        data[ key ] = property.next()
-                out += [ data ]
-        #print out
 
-        #TODO: returns just some data for test, replace this with CSV to Json convertion
-        output = """
-{
-        "items" :      [
-                {
-                        "AxisUnits" :                 "Meters",
-                        "Projection" :                "Lambert Azimutal",
-                        "Name" :                      "Lambert Azimutal",
-                        "LatituteProjectionCenter" :  [
-                                "48&#176",
-                                "00\'00\'\'"
-                        ],
-                        "LongituteProjectionCenter" : [
-                                "09&#176",
-                                "00\'00\'\'"
-                        ],
-                        "FalseEasting" :              0,
-                        "type" :                      "Item",
-                        "FalseNorthing" :             0,
-                        "projectionGID" :             "2F971D88-35D9-440D-961B-B5B656C5436D",
-                        "Ellipsoid" :                 "Sphere: radius 6378388",
-                        "label" :                     "3",
-                        "SemiMajorAxis" :             6378388
-                }
-        ],
-        "properties" : {
-                "SemiMajorAxis" : {
-                        "valueType" : "number"
-                },
-                "FalseNorthing" : {
-                        "valueType" : "number"
-                },
-                "FalseEasting" :  {
-                        "valueType" : "number"
-                }
-        }
-}
-        """
-        return output
+        try:
+            reader = csv.reader(self.context.getFile().data, delimiter=',')
+            for row in reader:
+                # Ignore empty rows
+                if row == []:
+                    continue
+
+                # Get column headers
+                if columns == []: 
+                    columns = row
+                    continue
+
+                # Create JSON
+                row = iter(row)
+                data = {}
+                for col in columns:
+                        data[col] = row.next()
+                out += [data]
+        except Exception, err:
+            # Convertion failed
+            logger.exception('Failed to convert %s: %s', self.context.absolute_url(1), err)
+
+        return out
 
 class JsonOutput(object):
-    """ Generate and set Json export.
+    """ Generate and set JSON export.
     """
 
     def __init__(self, context, request):
@@ -113,8 +93,14 @@ class JsonOutput(object):
         if not IExhibitJson.providedBy(self.context):
             alsoProvides(self.context, IExhibitJson)
 
-        # Adapt to Exhibit Json
+        # Adapt to Exhibit JSON
         exhibitadaptor = IExhibitJsonConverter(self.context)
+        json_output = exhibitadaptor.getExhibitJson()
 
-        #TODO: implement fucntionality to make public or not the json output
-        return 'Json convertion uploaded.'
+        msg = """<h3>JSON convertion done.</h3>
+                  <strong>JSON output:</strong><br />
+                  %s
+              """ % json_output
+        if not json_output:
+            msg = """<h3>JSON convertion failed, empty output.</h3>"""
+        return msg

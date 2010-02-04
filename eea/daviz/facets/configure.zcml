@@ -1,0 +1,9 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <include package=".cloud" />
+  <include package=".list" />
+  <include package=".numeric" />
+  <include package=".slider" />
+  <include package=".text" />
+
+</configure>

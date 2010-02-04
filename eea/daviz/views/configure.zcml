@@ -1,0 +1,10 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <include package=".map" />
+  <include package=".tabular" />
+  <include package=".thumbnail" />
+  <include package=".tile" />
+  <include package=".timeline" />
+  <include package=".timeplot" />
+
+</configure>

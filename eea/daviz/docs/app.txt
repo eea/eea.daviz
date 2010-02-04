@@ -1,0 +1,78 @@
+Low level accessor/muttator to exhibit configuration
+====================================================
+Adaptors to access / modify exhibit configuration from annotation.
+Daviz configuration is keept in annotations like:
+
+    anno['eea.daviz.config'] = {
+        'views': PersistentList(),
+        'facets': PersistentList()
+    }
+
+    anno['eea.daviz.config']['views'] = [
+        {'name': 'map', ...},
+        {'name': 'timeline', ...}
+    ]
+
+    anno['eea.daviz.config']['facets'] = [
+        {'name': 'First Name', 'type': 'list'},
+        {'name': 'Job title', 'type': 'cloud'}
+    ]
+
+Let's test it in real world
+
+    >>> self.loginAsPortalOwner()
+    >>> _ = portal.invokeFactory('Folder', 'sandbox')
+    >>> sandbox = portal._getOb('sandbox')
+    >>> _ = sandbox.invokeFactory('File', 'daviz-file')
+    >>> daviz_file = sandbox._getOb('daviz-file')
+
+    >>> from eea.daviz.interfaces import IExhibitJson
+    >>> from zope.interface import implements, alsoProvides
+    >>> if not IExhibitJson.providedBy(daviz_file):
+    ...     alsoProvides(daviz_file, IExhibitJson)
+
+    >>> from zope.component import getAdapter
+    >>> from eea.daviz.interfaces import IDavizConfig
+
+    >>> handler = getAdapter(daviz_file, IDavizConfig)
+    >>> handler.views
+    []
+
+    >>> handler.facets
+    []
+
+Add view
+
+    >>> name = handler.add_view('table')
+    >>> handler.views
+    [<persistent.dict.PersistentDict object at ...>]
+
+Get view
+
+    >>> view = handler.view(name)
+    >>> view.get('name')
+    'table'
+
+Delete view
+
+    >>> handler.delete_view(name)
+    >>> handler.views
+    []
+
+Add facet
+
+    >>> name = handler.add_facet('First Name')
+    >>> handler.facets
+    [<persistent.dict.PersistentDict object at ...>]
+
+Get facet
+
+    >>> facet = handler.facet(name)
+    >>> facet.get('name')
+    'First Name'
+
+Delete facet
+
+    >>> handler.delete_facet(name)
+    >>> handler.facets
+    []

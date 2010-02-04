@@ -4,5 +4,9 @@
 
   <include package=".subtypes" />
   <include package=".converter" />
+  <include package=".browser" />
+  <include package=".app" />
+  <include package=".views" />
+  <include package=".facets" />
 
 </configure>

@@ -1,0 +1,10 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  i18n_domain="eea.daviz">
+
+  <adapter
+    for="eea.daviz.interfaces.IExhibitJson"
+    provides=".interfaces.IDavizConfig"
+    factory=".handler.Configure" />
+
+</configure>

@@ -18,4 +18,8 @@ def test_suite():
                   optionflags=OPTIONFLAGS,
                   package='eea.daviz',
                   test_class=DavizFunctionalTestCase) ,
+            Suite('docs/app.txt',
+                  optionflags=OPTIONFLAGS,
+                  package='eea.daviz',
+                  test_class=DavizFunctionalTestCase) ,
               ))

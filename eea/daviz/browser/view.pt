@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+  lang="en-US"
+  metal:use-macro="here/main_template/macros/master"
+  i18n:domain="eea.daviz">
+
+<metal:jsslot fill-slot="javascript_head_slot">
+  <link rel="exhibit/data" type="application/json"
+    tal:attributes="href string:${here/absolute_url}/@@daviz-view.json" />
+
+  <!-- include exhibit api -->
+  <script type="text/javascript">
+    var daviz_jQuery = window.jQuery;
+    var daviz_$ = window.$;
+  </script>
+  <script src="++resource++eea.simile.exhibit/exhibit-api.js" type="text/javascript"></script>
+  <script src="++resource++eea.simile.exhibit/extensions/time/time-extension.js"></script>
+  <script src="++resource++eea.simile.exhibit/extensions/map/map-extension.js"></script>
+  <script type="text/javascript">
+    window.jQuery = daviz_jQuery;
+    window.$ = daviz_$;
+  </script>
+</metal:jsslot>
+
+<body>
+
+<div metal:fill-slot="main">
+
+  <h1 tal:content="object_title" class="documentFirstHeading">
+    Title or id
+  </h1>
+
+  <div metal:use-macro="here/document_actions/macros/document_actions">
+    Document actions (print, sendto etc)
+  </div>
+
+  <p class="documentDescription"
+    tal:content="here/Description"
+    tal:condition="here/Description">
+  News summary
+  </p>
+
+  <!--<div ex:role="facet" ex:expression=".Name" ex:facetLabel="Numele"></div>-->
+  <!--<div ex:role="facet" ex:expression=".Projection" ex:facetLabel=""></div>-->
+  <!--<div ex:role="facet" ex:expression=".AxisUnits" ex:facetLabel="Unitati"></div>-->
+  <div ex:role="facet" ex:facetClass="Cloud" ex:expression=".Name"></div>
+
+  <div ex:role="view"
+     ex:viewClass="Tabular"
+     ex:columns=".Name, .year, .Projection">
+ </div>
+
+  <div ex:role="view"
+    ex:viewClass="Map"
+    ex:label="Map (sized by magnitude)"
+    ex:lat=".LatituteProjectionCenter"
+    ex:lng = ".LongituteProjectionCenter"
+    ex:bubbleWidth="100"
+    ex:bubbleHeight="100"
+    ex:mapHeight="400"
+    ex:zoom ="4">
+  </div>
+
+</div>
+</body>
+</html>

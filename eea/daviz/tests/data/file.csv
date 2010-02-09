@@ -1,6 +1,6 @@
-id,Name,Job title,Programme,Country
-1,Alexandru Ghica,Project manager,NSV3 - Land,Romania
-2,Alin Voinea,Project manager,NSV1 - Biodiversity,Italy
-3,Some Name,Programmer,NSV1 - Biodiversity,Romania
-4,Other Name,Programmer,NSV3 - Land,Denmark
-5,Just a Name,Head of Group,NSV1 - Biodiversity,Italy
+id,Name,Job title,Programme,Country,Quantity,Starting date
+1,Alexandru Ghica;Alec Ghica,Project manager,NSV3 - Land,Romania,10.5,01/01/2010
+2,Alin Voinea,Project manager,NSV1 - Biodiversity,Italy,5,01/01/2010
+3,Some Name,Programmer,NSV1 - Biodiversity,Romania,10.5,01/01/2010
+4,Other Name,Programmer,NSV3 - Land,Denmark,5,01/02/2010
+5,Just a Name,Head of Group,NSV1 - Biodiversity,Italy,10.5,01/02/2010

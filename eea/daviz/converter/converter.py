@@ -77,6 +77,9 @@ class ExhibitJsonConverter(object):
                     if index == 0:
                         data['label'] = text
                         continue
+                    # Multiple values
+                    if ';' in text:
+                        text = text.split(';')
                     data[col.replace(' ', '+')] = text
                 out.append(data)
 

@@ -1,44 +1,57 @@
 {
 	"items" : [
 		{
-			"Name" :      "Some Name",
-			"Programme" : "NSV1 - Biodiversity",
-			"label" :     "3",
-			"type" :      "Item",
-			"Country" :   "Romania",
-			"Job+title" : "Programmer"
+			"Name" :          "Some Name",
+			"Starting+date" : "01/01/2010",
+			"Programme" :     "NSV1 - Biodiversity",
+			"label" :         "3",
+			"type" :          "Item",
+			"Job+title" :     "Programmer",
+			"Country" :       "Romania",
+			"Quantity" :      "10.5"
 		},
 		{
-			"Name" :      "Alexandru Ghica",
-			"Programme" : "NSV3 - Land",
-			"label" :     "1",
-			"type" :      "Item",
-			"Country" :   "Romania",
-			"Job+title" : "Project manager"
+			"Name" :          [
+				"Alexandru Ghica",
+				"Alec Ghica"
+			],
+			"Starting+date" : "01/01/2010",
+			"Programme" :     "NSV3 - Land",
+			"label" :         "1",
+			"type" :          "Item",
+			"Job+title" :     "Project manager",
+			"Country" :       "Romania",
+			"Quantity" :      "10.5"
 		},
 		{
-			"Name" :      "Other Name",
-			"Programme" : "NSV3 - Land",
-			"label" :     "4",
-			"type" :      "Item",
-			"Country" :   "Denmark",
-			"Job+title" : "Programmer"
+			"Name" :          "Other Name",
+			"Starting+date" : "01/02/2010",
+			"Programme" :     "NSV3 - Land",
+			"label" :         "4",
+			"type" :          "Item",
+			"Job+title" :     "Programmer",
+			"Country" :       "Denmark",
+			"Quantity" :      "5"
 		},
 		{
-			"Name" :      "Alin Voinea",
-			"Programme" : "NSV1 - Biodiversity",
-			"label" :     "2",
-			"type" :      "Item",
-			"Country" :   "Italy",
-			"Job+title" : "Project manager"
+			"Name" :          "Alin Voinea",
+			"Starting+date" : "01/01/2010",
+			"Programme" :     "NSV1 - Biodiversity",
+			"label" :         "2",
+			"type" :          "Item",
+			"Job+title" :     "Project manager",
+			"Country" :       "Italy",
+			"Quantity" :      "5"
 		},
 		{
-			"Name" :      "Just a Name",
-			"Programme" : "NSV1 - Biodiversity",
-			"label" :     "5",
-			"type" :      "Item",
-			"Country" :   "Italy",
-			"Job+title" : "Head of Group"
+			"Name" :          "Just a Name",
+			"Starting+date" : "01/02/2010",
+			"Programme" :     "NSV1 - Biodiversity",
+			"label" :         "5",
+			"type" :          "Item",
+			"Job+title" :     "Head of Group",
+			"Country" :       "Italy",
+			"Quantity" :      "10.5"
 		}
 	]
 }

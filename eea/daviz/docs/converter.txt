@@ -1,6 +1,8 @@
 Converts original data to JSON
 ==============================
 
+Use for debug: import pdb; pdb.set_trace()
+
 Let's upload a file.
 
     >>> self.loginAsPortalOwner()
@@ -13,7 +15,7 @@ Let's upload a file.
     >>> IPossibleExhibitJson.providedBy(daviz_file)
     True
 
-    >>> csv_file = self.loadfile('data/file.csv', ctype='text/csv')
+    >>> csv_file = self.loadfile('data/pam.tsv', ctype='text/csv')
     >>> daviz_file.setFile(csv_file)
 
 Let's check if file uploaded.

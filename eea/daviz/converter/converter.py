@@ -2,6 +2,7 @@
 
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
+__credits__ = """contributions: Alec Ghica"""
 
 import csv
 import logging
@@ -10,7 +11,11 @@ from StringIO import StringIO
 
 from zope.component import adapts
 from zope.interface import implements, alsoProvides
-from zope.app.annotation.interfaces import IAnnotations
+try:
+    from zope.annotation.interfaces import IAnnotations
+except ImportError:
+    #BBB Plone 2.5
+    from zope.app.annotation.interfaces import IAnnotations
 
 from interfaces import IExhibitJsonConverter
 from eea.daviz.interfaces import IExhibitJson
@@ -18,6 +23,21 @@ from eea.daviz.config import ANNO_JSON
 
 logger = logging.getLogger('eea.daviz.converter')
 info = logger.info
+
+class EEADialectTab(csv.Dialect):
+    """ CSV dialect having tab as delimiter """
+    delimiter = '\t'
+    quotechar = '"'
+    # Should be set to quotechar = csv.QUOTE_NONE when we will use Python 2.5
+    # as setting quotechar to nothing does not work in Python 2.4. For more details see
+    # http://stackoverflow.com/questions/494054/how-can-i-disable-quoting-in-the-python-2-4-csv-reader/494126
+    escapechar = '\\'
+    doublequote = False
+    skipinitialspace = False
+    lineterminator = '\r\n'
+    quoting = csv.QUOTE_NONE
+
+csv.register_dialect("eea-tab", EEADialectTab)
 
 class ExhibitJsonConverter(object):
     """ Converts context data to JSON and save the output under annotations.
@@ -57,23 +77,24 @@ class ExhibitJsonConverter(object):
 
         try:
             data = StringIO(self.context.getFile().data)
-            reader = csv.reader(data, delimiter=',')
+            reader = csv.reader(data, dialect='eea-tab')
             for row in reader:
                 # Ignore empty rows
                 if row == []:
                     continue
-
+    
                 # Get column headers
                 if columns == []:
                     columns = row
                     continue
-
+    
                 # Create JSON
                 row = iter(row)
                 data = {}
                 for index, col in enumerate(columns):
-                    # Required by exhibit
                     text = row.next()
+                    # Required by exhibit
+                    #TODO: fix case 'label' column also found if index != 0
                     if index == 0:
                         data['label'] = text
                         continue

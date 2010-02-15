@@ -1,7 +1,7 @@
 EEA DaViz - Data Visualisation
 =======================================
 
-For the moment been only CSV with comma delimiter will
+For the moment been only CSV with tab delimiter will
 be converted. The list of accepted formats will be extended
 in a further development.
 
@@ -9,6 +9,7 @@ Below are the Excel/CSV rules to be used for the uploaded files:
     * Multiple values must be entered in same cells and with a separator ";"
     * Numbers must use "dot" to indicate decimals, like 50.5, or just without like 50
     * Dates are entered as DD/MM/YEAR like 01/01/2010
+    * If necessary use " for quoting
     * If value is unknown for a cell, do not enter anything, leave the cell empty
     * If you have links, just enter the full URL as value
 

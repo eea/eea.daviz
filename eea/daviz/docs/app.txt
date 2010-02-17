@@ -3,17 +3,19 @@ Low level accessor/muttator to exhibit configuration
 Adaptors to access / modify exhibit configuration from annotation.
 Daviz configuration is keept in annotations like:
 
-    anno['eea.daviz.config'] = {
-        'views': PersistentList(),
-        'facets': PersistentList()
-    }
+    anno['eea.daviz.config.views']
+    <persistent.list.PersistentList object at ...>
 
-    anno['eea.daviz.config']['views'] = [
+    anno['eea.daviz.config.views']
+    [
         {'name': 'map', ...},
         {'name': 'timeline', ...}
     ]
 
-    anno['eea.daviz.config']['facets'] = [
+    anno['eea.daviz.config.facets']
+    <persistent.list.PersistentList object at ...>
+
+    anno['eea.daviz.config.facets'] = [
         {'name': 'First Name', 'type': 'list'},
         {'name': 'Job title', 'type': 'cloud'}
     ]

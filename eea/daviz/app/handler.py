@@ -81,9 +81,10 @@ class Configure(object):
         """ Return facet by given key
         """
         for facet in self.facets:
-            if facet.get('name', None) == key:
-                return facet
-            return default
+            if facet.get('name') != key:
+                continue
+            return facet
+        return default
     #
     # Mutators
     #
@@ -107,12 +108,20 @@ class Configure(object):
                 return
         raise KeyError, key
 
+    def delete_views(self):
+        """ Reset views
+        """
+        anno = IAnnotations(self.context)
+        anno[ANNO_VIEWS] = PersistentList()
+
     def add_facet(self, name, **kwargs):
         """ Add facet
         """
         config = self._facets()
+        facet_type = kwargs.get('type', u'daviz.list.facet')
         facet = PersistentDict({
-            'name': name
+            'name': name,
+            'type': facet_type,
         })
         config.append(facet)
         return facet.get('name', '')
@@ -126,3 +135,9 @@ class Configure(object):
                 config.pop(index)
                 return
         raise KeyError, key
+
+    def delete_facets(self):
+        """ Remove all facets
+        """
+        anno = IAnnotations(self.context)
+        anno[ANNO_FACETS] = PersistentList()

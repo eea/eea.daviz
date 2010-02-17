@@ -3,6 +3,8 @@
   xmlns:browser="http://namespaces.zope.org/browser"
   i18n_domain="eea.daviz">
 
+  <adapter factory=".displays.DynamicViews" />
+
   <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
     name="daviz-view.html"
@@ -17,14 +19,6 @@
     class=".view.View"
     attribute="json"
     permission="zope2.View"
-    />
-
-  <browser:menuItem
-    for="eea.daviz.interfaces.IExhibitJson"
-    menu="object"
-    title="View exhibit"
-    action="$object_url/daviz-view.html"
-    permission="cmf.ModifyPortalContent"
     />
 
 </configure>

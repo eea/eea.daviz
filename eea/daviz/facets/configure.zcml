@@ -6,4 +6,10 @@
   <include package=".slider" />
   <include package=".text" />
 
+  <subscriber
+    for="..interfaces.IExhibitJson
+         ..interfaces.IDavizEnabledEvent"
+    handler=".events.create_default_facets"
+    />
+
 </configure>

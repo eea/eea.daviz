@@ -13,3 +13,6 @@ from converter.interfaces import IExhibitJsonConverter
 
 # Accessors, mutators
 from app.interfaces import IDavizConfig
+
+# Events
+from events.interfaces import IDavizEnabledEvent

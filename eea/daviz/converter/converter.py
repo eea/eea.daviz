@@ -6,6 +6,7 @@ __credits__ = """contributions: Alec Ghica"""
 
 import csv
 import logging
+from zope.event import notify
 from itertools import izip
 from StringIO import StringIO
 
@@ -20,6 +21,7 @@ except ImportError:
 from interfaces import IExhibitJsonConverter
 from eea.daviz.interfaces import IExhibitJson
 from eea.daviz.config import ANNO_JSON
+from eea.daviz.events import DavizEnabledEvent
 
 logger = logging.getLogger('eea.daviz.converter')
 info = logger.info
@@ -49,10 +51,7 @@ class ExhibitJsonConverter(object):
     def __init__(self, context):
         """ Initialize adapter. """
         self.context = context
-        annotations = IAnnotations(context)
-
-        # Exhibit JSON
-        annotations[ANNO_JSON] = self.getJsonData()
+        self.updateJsonData()
 
     def getExhibitJson(self):
         """ Get Exhibit JSON. """
@@ -66,49 +65,57 @@ class ExhibitJsonConverter(object):
 
     exhibitjson = property(getExhibitJson, setExhibitJson)
 
-    def getJsonData(self):
+    def updateJsonData(self):
         """ Returns JSON output after converting source data. """
         #TODO: in the first sprint will convert only CSV (comma separated) files
         #      to JSON, in a future sprint a converter from more formats to
         #      JSON will be implemented (e.g. Babel)
 
         columns = []
+        hasLabel = False
         out = []
 
         try:
             data = StringIO(self.context.getFile().data)
             reader = csv.reader(data, dialect='eea-tab')
-            for row in reader:
+            for index, row in enumerate(reader):
                 # Ignore empty rows
                 if row == []:
                     continue
-    
+
                 # Get column headers
                 if columns == []:
-                    columns = row
+                    columns = [name.replace(' ', '+') for name in row]
+
+                    # Required by Exhibit
+                    hasLabel = bool([x for x in columns if x == 'label'])
                     continue
-    
+
                 # Create JSON
                 row = iter(row)
                 data = {}
-                for index, col in enumerate(columns):
+
+                # Required by Exhibit
+                if not hasLabel:
+                    data['label'] = index
+
+                for col in columns:
                     text = row.next()
-                    # Required by exhibit
-                    #TODO: fix case 'label' column also found if index != 0
-                    if index == 0:
-                        data['label'] = text
-                        continue
                     # Multiple values
                     if ';' in text:
                         text = text.split(';')
-                    data[col.replace(' ', '+')] = text
+                    data[col] = text
                 out.append(data)
 
         except Exception, err:
             # Convertion failed
             logger.exception('Failed to convert %s: %s', self.context.absolute_url(1), err)
+            return
 
-        return out
+        # Update annotations
+        annotations = IAnnotations(self.context)
+        annotations[ANNO_JSON] = out
+        notify(DavizEnabledEvent(self.context, columns=columns))
 
 class JsonOutput(object):
     """ Generate and set JSON export.

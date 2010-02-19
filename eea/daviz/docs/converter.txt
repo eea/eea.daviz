@@ -15,7 +15,7 @@ Let's upload a file.
     >>> IPossibleExhibitJson.providedBy(daviz_file)
     True
 
-    >>> csv_file = self.loadfile('data/file.tsv', ctype='text/csv')
+    >>> csv_file = self.loadfile('data/pam-utf-fixed.tsv', ctype='text/csv')
     >>> daviz_file.setFile(csv_file)
 
 Let's check if file uploaded.

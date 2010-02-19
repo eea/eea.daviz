@@ -5,6 +5,7 @@ __docformat__ = 'plaintext'
 __credits__ = """contributions: Alec Ghica"""
 
 import csv
+import codecs
 import logging
 from zope.event import notify
 from itertools import izip
@@ -67,7 +68,7 @@ class ExhibitJsonConverter(object):
 
     def updateJsonData(self):
         """ Returns JSON output after converting source data. """
-        #TODO: in the first sprint will convert only CSV (comma separated) files
+        #TODO: in the first sprint will convert only CSV (tab separated) files
         #      to JSON, in a future sprint a converter from more formats to
         #      JSON will be implemented (e.g. Babel)
 

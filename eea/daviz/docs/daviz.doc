@@ -6,10 +6,14 @@ be converted. The list of accepted formats will be extended
 in a further development.
 
 Below are the Excel/CSV rules to be used for the uploaded files:
+    * The column named 'label' will be interpreted as a placeholder for row unique identifiers,
+       if no column named 'label' is detected one will be generated in automatic
+       containig row index numbers
     * Multiple values must be entered in same cells and with a separator ";"
+    * If necessary use " for quoting
+    * Character set used should be 'UTF-8'
     * Numbers must use "dot" to indicate decimals, like 50.5, or just without like 50
     * Dates are entered as DD/MM/YEAR like 01/01/2010
-    * If necessary use " for quoting
     * If value is unknown for a cell, do not enter anything, leave the cell empty
     * If you have links, just enter the full URL as value
 

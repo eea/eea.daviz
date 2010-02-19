@@ -15,7 +15,7 @@ Let's upload a file.
     >>> IPossibleExhibitJson.providedBy(daviz_file)
     True
 
-    >>> csv_file = self.loadfile('data/pam.tsv', ctype='text/csv')
+    >>> csv_file = self.loadfile('data/file.tsv', ctype='text/csv')
     >>> daviz_file.setFile(csv_file)
 
 Let's check if file uploaded.
@@ -38,17 +38,13 @@ Let's adapt the file and check JSON output.
     >>> pprint(json)
     [{...
     ...
-     {'absolute-reduction-2005': 'n/a',
-      'absolute-reduction-2010': '0\n0,00',
-      'absolute-reduction-2020': '0\n0,00',
-      'costs': '',
-      'description': 'Development of IPPC Directive: reference document to BATs in the textile sector',
-      'ghg': 'N2O\nCH4\nCO2',
-      'label': '522',
-      'member-state': 'Spain',
-      'projection-scenario': 'WEM + WAM',
-      'sector': 'Industrial Processes',
-      'status': 'implemented',
-      'type': 'Information'},
+     {'Country': 'Italy',
+      'Description': '\xd0\x97\xd0\xb5\xd0\xbc\xd1\x8f',
+      'Job+title': 'Head of Group',
+      'Name': 'Antonio De Marinis',
+      'Programme': 'NSV1 - Biodiversity',
+      'Quantity': '10.5',
+      'Starting+date': '01/01/2010',
+      'label': '3'},
     ...
     ...}]

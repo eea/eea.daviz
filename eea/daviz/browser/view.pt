@@ -68,7 +68,7 @@
     </tal:facets>
   </div>
   <!-- Exhibit views -->
-  <div style="float: left; width: 80%">
+  <div style="float: left; width: 80%" ex:role="viewPanel">
     <tal:views define="views python:view.views;">
       <tal:view repeat="view_name views">
         <div tal:define="view_page python:view.get_view(view_name)"

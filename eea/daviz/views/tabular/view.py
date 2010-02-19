@@ -13,6 +13,7 @@ from interfaces import IExhibitTabularView
 class View(BrowserView):
     """ Tabular view
     """
+    label = 'Tabular View'
     implements(IExhibitTabularView)
 
     @property

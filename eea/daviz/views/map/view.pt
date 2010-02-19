@@ -1,0 +1,4 @@
+<div ex:role="view"
+  ex:viewClass="Map"
+  ex:latlng=".latlng">
+</div>

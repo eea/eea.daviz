@@ -1,5 +1,16 @@
 <configure xmlns="http://namespaces.zope.org/zope">
 
+  <utility
+    component=".vocabularies.ViewsVocabularyFactory"
+    name="eea.daviz.vocabularies.ViewsVocabulary"
+    />
+
+  <subscriber
+    for="..interfaces.IExhibitJson
+         ..interfaces.IDavizEnabledEvent"
+    handler=".events.create_default_views"
+    />
+
   <include package=".map" />
   <include package=".tabular" />
   <include package=".thumbnail" />

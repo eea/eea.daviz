@@ -23,20 +23,46 @@ Let's check if file uploaded.
     >>> len(daviz_file.getFile().data) > 0
     True
 
-Let's adapt the file and check JSON output.
+Let's convert file data and check JSON output.
 
-    >>> from zope.component import getAdapter
+    >>> from StringIO import StringIO
+    >>> from zope.component import getUtility
     >>> from zope.interface import implements, alsoProvides
     >>> from eea.daviz.converter.interfaces import IExhibitJsonConverter
     >>> from eea.daviz.interfaces import IExhibitJson
 
     >>> if not IExhibitJson.providedBy(daviz_file):
     ...     alsoProvides(daviz_file, IExhibitJson)
-    >>> exhibitadaptor = IExhibitJsonConverter(daviz_file)
+    >>> datafile = StringIO(daviz_file.getFile().data)
+    >>> converter = getUtility(IExhibitJsonConverter)
+    >>> columns, json = converter(datafile)
     >>> from pprint import pprint
-    >>> json = exhibitadaptor.getExhibitJson()
     >>> pprint(json)
-    [{...
+    {'items': [...
+               {'Country': 'Italy',
+                'Description': '\xd0\x97\xd0\xb5\xd0\xbc\xd1\x8f',
+                'Job+title': 'Head of Group',
+                'Name': 'Antonio De Marinis',
+                'Programme': 'NSV1 - Biodiversity',
+                'Quantity': '10.5',
+                'Starting+date': '01/01/2010',
+                'label': '3'},
+    ...}]}
+
+Now let's use the browser interface
+
+    >>> from zope.component import queryMultiAdapter
+    >>> converter = queryMultiAdapter((daviz_file, daviz_file.REQUEST), name=u'daviz.enable')
+    >>> _ = converter()
+
+    >>> from zope.component import queryAdapter
+    >>> from eea.daviz.interfaces import IDavizConfig
+    >>> accessor = queryAdapter(daviz_file, IDavizConfig)
+    >>> accessor.json
+    <persistent.dict.PersistentDict object at ...>
+
+    >>> pprint(dict(accessor.json))
+    {'items': ...
     ...
      {'Country': 'Italy',
       'Description': '\xd0\x97\xd0\xb5\xd0\xbc\xd1\x8f',
@@ -47,4 +73,4 @@ Let's adapt the file and check JSON output.
       'Starting+date': '01/01/2010',
       'label': '3'},
     ...
-    ...}]
+    ...}]}

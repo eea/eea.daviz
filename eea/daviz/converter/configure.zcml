@@ -1,34 +1,33 @@
-<configure xmlns:zope="http://namespaces.zope.org/zope"
-           xmlns:five="http://namespaces.zope.org/five"
-           xmlns:browser="http://namespaces.zope.org/browser"
-           i18n_domain="eea.daviz">
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  i18n_domain="eea.daviz">
+
+  <utility factory=".converter.ExhibitJsonConverter" />
 
   <browser:menuItem
-      for="eea.daviz.interfaces.IPossibleExhibitJson"
-      menu="object_buttons"
-      title="Convert to Exhibit view"
-      action="$object_url/@@convertToExhibitJson"
-      description="Convert CSV file to Exhibit Json"
-      permission="cmf.ModifyPortalContent"
-      />
+    for="eea.daviz.interfaces.IPossibleExhibitJson"
+    menu="object_buttons"
+    title="Convert to Exhibit view"
+    action="$object_url/@@daviz.enable"
+    description="Convert CSV file to Exhibit Json"
+    permission="cmf.ModifyPortalContent"
+    />
 
   <browser:page
-      for="eea.daviz.interfaces.IPossibleExhibitJson"
-      name="convertToExhibitJson"
-      template="convert_to_json.pt"
-      permission="cmf.ModifyPortalContent"
-      />
+    for="eea.daviz.interfaces.IPossibleExhibitJson"
+    name="daviz.enable"
+    class=".browser.DavizSupport"
+    attribute="enable"
+    permission="cmf.ModifyPortalContent"
+    />
 
   <browser:page
-      for="eea.daviz.interfaces.IPossibleExhibitJson"
-      name="jsonOutput"
-      permission="cmf.ModifyPortalContent"
-      class=".converter.JsonOutput"
-      />
-
-  <zope:adapter
-      for="eea.daviz.interfaces.IExhibitJson"
-      provides=".interfaces.IExhibitJsonConverter"
-      factory=".converter.ExhibitJsonConverter" />
+    for="eea.daviz.interfaces.IPossibleExhibitJson"
+    name="daviz.disable"
+    class=".browser.DavizSupport"
+    attribute="disable"
+    permission="cmf.ModifyPortalContent"
+    />
 
 </configure>

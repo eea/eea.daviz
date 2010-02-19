@@ -61,13 +61,19 @@ class Configure(object):
         anno = IAnnotations(self.context)
         return anno.get(ANNO_FACETS, [])
 
-    @property
-    def json(self):
+    def set_json(self, value):
+        """ Set json dict
+        """
+        anno = IAnnotations(self.context)
+        anno[ANNO_JSON] = PersistentDict(value)
+
+    def get_json(self):
         """ Return json from annotations
         """
         anno = IAnnotations(self.context)
         json = anno.get(ANNO_JSON, {})
         return json
+    json = property(get_json, set_json)
 
     def view(self, key, default=None):
         """ Return view by given key

@@ -17,8 +17,8 @@ class View(BrowserView):
         self.accessor = queryAdapter(self.context, IDavizConfig)
 
     def json(self):
-        res = {'items': self.accessor.json}
-        return simplejson.dumps(res)
+        res = self.accessor.json
+        return simplejson.dumps(dict(res))
 
     @property
     def facets(self):
@@ -28,7 +28,9 @@ class View(BrowserView):
 
     @property
     def views(self):
-        return ['daviz.tabular.view']
+        views = self.accessor.views
+        for view in views:
+            yield view.get('name')
 
     def get_facet(self, name):
         facet = self.accessor.facet(key=name)

@@ -5,7 +5,6 @@ __docformat__ = 'plaintext'
 __credits__ = """contributions: Alec Ghica"""
 
 import csv
-import codecs
 import logging
 from zope.event import notify
 from itertools import izip

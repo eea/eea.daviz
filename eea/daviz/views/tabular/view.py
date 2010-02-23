@@ -18,7 +18,23 @@ class View(BrowserView):
 
     @property
     def columns(self):
-        adapter = queryAdapter(self.context, IDavizConfig)
-        res = [facet.get('name') for facet in adapter.facets]
-        res = ['.%s' % item for item in res]
+        accessor = queryAdapter(self.context, IDavizConfig)
+        name = self.__name__
+        view = accessor.view(name, {})
+        columns = view.get('columns', [])
+        res = ['.%s' % item for item in columns]
         return ', '.join(res)
+
+    @property
+    def labels(self):
+        accessor = queryAdapter(self.context, IDavizConfig)
+        name = self.__name__
+        view = accessor.view(name, {})
+        columns = view.get('columns', [])
+
+        labels = []
+        for column in columns:
+            facet = accessor.facet(column, {})
+            label = facet.get('label', column)
+            labels.append(label)
+        return ', '.join(labels)

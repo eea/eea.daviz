@@ -3,11 +3,18 @@
   xmlns:browser="http://namespaces.zope.org/browser">
 
   <browser:page
+    name="daviz.map"
     for="eea.daviz.interfaces.IExhibitJson"
-    name="daviz.map.view"
     template="view.pt"
     class=".view.View"
     permission="zope2.View"
+    />
+
+  <browser:page
+    name="daviz.map.edit"
+    for="eea.daviz.interfaces.IExhibitJson"
+    class=".edit.Edit"
+    permission="cmf.ModifyPortalContent"
     />
 
 </configure>

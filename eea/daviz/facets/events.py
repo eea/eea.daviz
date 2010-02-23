@@ -30,6 +30,6 @@ def create_default_facets(obj, evt):
     for facet in columns:
         if facet in ['id', 'label']:
             continue
-        mutator.add_facet(name=facet)
+        mutator.add_facet(name=facet, label=facet, show=True)
 
     #TODO Handle facets types and properties

@@ -1,0 +1,124 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+  lang="en-US"
+  metal:use-macro="here/main_template/macros/master"
+  i18n:domain="eea.daviz">
+
+<metal:jsslot fill-slot="javascript_head_slot">
+  <link rel="stylesheet" type="text/css" tal:attributes="href string:$portal_url/@@daviz-edit.css" />
+  <script type="text/javascript" tal:attributes="src string:$portal_url/@@daviz-edit.js"></script>
+</metal:jsslot>
+
+<body>
+<div metal:fill-slot="main">
+
+<div metal:use-macro="here/document_actions/macros/document_actions">
+    Document actions (print, sendto etc)
+</div>
+
+<h1 i18n:translate="" id="faceted-page-title" class="documentFirstHeading">
+  Configure exhibit
+</h1>
+
+<!-- Facets -->
+<div class="daviz-facets-settings">
+<form tal:attributes="action string:${here/absolute_url}/@@daviz-edit.save">
+  <fieldset>
+    <legend i18n:translate="">Exhibit Facets</legend>
+    <table class="listing">
+      <tr>
+        <th style="width: 5%" i18n:translate="">Show</th>
+        <th i18n:translate="">Column</th>
+        <th i18n:translate="">Label</th>
+      </tr>
+      <tal:facets repeat="facet python:template.facets_vocabulary">
+        <tr tal:define="odd repeat/facet/odd;"
+          tal:attributes="class python:odd and 'odd' or 'even'">
+          <td style="text-align: center">
+            <input type="checkbox" tal:attributes="
+              checked python:facet.get('show') and 'checked';
+              value python:facet.get('name', '')"
+              name="daviz.facets.columns:list" />
+          </td>
+          <td>
+            <span tal:content="python:facet.get('name', '')" />
+          </td>
+          <td>
+            <input type="text" name="daviz.facets.labels:list" tal:attributes="
+              value python:facet.get('label', '')"
+              value="" />
+          </td>
+        </tr>
+      </tal:facets>
+    </table>
+    <div class="field">
+      <input type="submit" name="daviz.facets.save" value="Save changes"
+      i18n:attributes="value" />
+    </div>
+  </fieldset>
+</form>
+</div>
+
+<!-- Views -->
+<div class="daviz-views-settings">
+<form tal:attributes="action string:${here/absolute_url}/@@daviz-edit.save">
+  <fieldset>
+    <legend i18n:translate="">Exhibit Views</legend>
+    <div class="field">
+      <div class="formHelp" i18n:translate="">
+        Enable Exhibit views.
+      </div>
+      <div tal:repeat="item python:template.views_vocabulary">
+        <input type="checkbox" name="daviz.views:list" tal:attributes="
+          id python:item.value;
+          value python:item.value;
+          checked python:item.value in view.enabled_views;
+          "/>
+        <label tal:attributes="for python:item.value"
+          tal:content="python:item.title" />
+      </div>
+    </div>
+  <div class="field">
+    <input type="submit" name="daviz.views.save" value="Save changes"
+    i18n:attributes="value" />
+  </div>
+  </fieldset>
+</form>
+</div>
+
+<div class="daviz-views-edit">
+<ul style="display: none">
+  <tal:editheader repeat="enabled python:view.enabled_views">
+    <li tal:define="
+      viewform python:view.get_view(enabled);
+      label python:viewform.label;
+      id python:enabled.replace('.', '-');
+      editform python:view.get_edit(enabled)"
+      tal:condition="editform"
+      tal:attributes="id string:$id-header">
+      <a tal:attributes="href string:#$id-tab">
+        <span tal:content="label">Edit View</span>
+      </a>
+    </li>
+  </tal:editheader>
+</ul>
+
+<tal:edittab repeat="enabled python:view.enabled_views">
+  <div tal:define="
+    viewform python:view.get_view(enabled);
+    label python:viewform.label;
+    id python:enabled.replace('.', '-');
+    editform python:view.get_edit(enabled)"
+    tal:attributes="id string:$id-tab"
+    tal:condition="editform">
+    <form method="post"
+      tal:define="name python:editform.__name__"
+      tal:attributes="action string:${here/absolute_url}/@@$name">
+      <tal:editform replace="structure editform" />
+    </form>
+  </div>
+</tal:edittab>
+</div>
+
+</div>
+</body>
+</html>

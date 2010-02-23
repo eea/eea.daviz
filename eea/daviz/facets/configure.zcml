@@ -1,5 +1,10 @@
 <configure xmlns="http://namespaces.zope.org/zope">
 
+  <utility
+    component=".vocabularies.FacetsVocabularyFactory"
+    name="eea.daviz.vocabularies.FacetsVocabulary"
+    />
+
   <include package=".cloud" />
   <include package=".list" />
   <include package=".numeric" />

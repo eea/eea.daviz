@@ -6,7 +6,7 @@
   <include package=".converter" />
   <include package=".browser" />
   <include package=".app" />
-  <include package=".views" />
   <include package=".facets" />
+  <include package=".views" />
 
 </configure>

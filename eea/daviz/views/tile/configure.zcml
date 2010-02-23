@@ -4,7 +4,7 @@
 
   <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
-    name="daviz.tile.view"
+    name="daviz.tile"
     template="view.pt"
     class=".view.View"
     permission="zope2.View"

@@ -4,7 +4,7 @@
 
   <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
-    name="daviz.timeline.view"
+    name="daviz.timeline"
     template="view.pt"
     class=".view.View"
     permission="zope2.View"

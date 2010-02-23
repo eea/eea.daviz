@@ -1,4 +1,6 @@
-<tal:view define="columns python:template.columns">
+<tal:view define="
+  columns python:template.columns;
+  labels python:template.labels">
 
 <div ex:role="view"
   ex:viewClass="Tabular"
@@ -8,7 +10,9 @@
   ex:rowStyler="DavizTableRowStyler"
   tal:condition="columns"
   tal:attributes="
-    ex:columns columns;"
+    ex:columns columns;
+    ex:columnLabels labels;
+    "
 ></div>
 
 </tal:view>

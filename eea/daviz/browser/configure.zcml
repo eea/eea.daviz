@@ -3,20 +3,21 @@
   xmlns:browser="http://namespaces.zope.org/browser"
   i18n_domain="eea.daviz">
 
-  <adapter factory=".displays.DynamicViews" />
+  <include package=".res" />
+  <adapter factory=".app.displays.DynamicViews" />
 
   <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
     name="daviz-view.html"
-    template="view.pt"
-    class=".view.View"
+    template="zpt/view.pt"
+    class=".app.view.View"
     permission="zope2.View"
     />
 
   <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
     name="daviz-view.json"
-    class=".view.View"
+    class=".app.view.View"
     attribute="json"
     permission="zope2.View"
     />
@@ -24,15 +25,15 @@
   <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
     name="daviz-edit.html"
-    template="edit.pt"
-    class=".edit.Edit"
+    template="zpt/edit.pt"
+    class=".app.edit.Edit"
     permission="cmf.ModifyPortalContent"
     />
 
   <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
     name="daviz-edit.save"
-    class=".edit.Configure"
+    class=".app.edit.Configure"
     permission="cmf.ModifyPortalContent"
     />
 
@@ -43,5 +44,25 @@
     action="daviz-edit.html"
     permission="cmf.ModifyPortalContent"
     />
+
+  <browser:resource
+    name="eea.daviz.view.css"
+    file="./css/view.css"
+   />
+
+  <browser:resource
+      name="eea.daviz.edit.css"
+      file="./css/edit.css"
+     />
+
+  <browser:resource
+    name="eea.daviz.view.js"
+    file="./js/view.js"
+   />
+
+  <browser:resource
+    name="eea.daviz.edit.js"
+    file="./js/edit.js"
+   />
 
 </configure>

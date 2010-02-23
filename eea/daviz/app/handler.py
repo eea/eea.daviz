@@ -79,9 +79,10 @@ class Configure(object):
         """ Return view by given key
         """
         for view in self.views:
-            if view.get('name', None) == key:
-                return view
-            return default
+            if view.get('name', None) != key:
+                continue
+            return view
+        return default
 
     def facet(self, key, default=None):
         """ Return facet by given key
@@ -98,9 +99,8 @@ class Configure(object):
         """ Add view
         """
         config = self._views()
-        view = PersistentDict({
-            'name': name
-        })
+        kwargs.update({'name': name})
+        view = PersistentDict(kwargs)
         config.append(view)
         return view.get('name', '')
 
@@ -124,11 +124,9 @@ class Configure(object):
         """ Add facet
         """
         config = self._facets()
-        facet_type = kwargs.get('type', u'daviz.list.facet')
-        facet = PersistentDict({
-            'name': name,
-            'type': facet_type,
-        })
+        kwargs.update({'name': name})
+        kwargs.setdefault('type', u'daviz.list.facet')
+        facet = PersistentDict(kwargs)
         config.append(facet)
         return facet.get('name', '')
 

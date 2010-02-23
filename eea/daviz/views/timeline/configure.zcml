@@ -10,4 +10,11 @@
     permission="zope2.View"
     />
 
+  <browser:page
+    for="eea.daviz.interfaces.IExhibitJson"
+    name="daviz.timeline.edit"
+    class=".edit.Edit"
+    permission="cmf.ModifyPortalContent"
+    />
+
 </configure>

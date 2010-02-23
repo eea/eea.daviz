@@ -1,2 +1,13 @@
-<!--<div ex:role="view" ex:viewClass="Timeline"></div-->
-<div>TIMELINE: NOT IMPLEMENTED YET</div>
+<tal:view define="
+  start python:template.start;
+  end python:template.end">
+
+<div
+  ex:role="view"
+  ex:viewClass="Timeline"
+  tal:attributes="
+    ex:start start;
+    ex:end end">
+</div>
+
+</tal:view>

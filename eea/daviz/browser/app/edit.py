@@ -70,19 +70,17 @@ class Configure(BrowserView):
         labels = kwargs.get('daviz.facets.labels', [])
 
         mutator = queryAdapter(self.context, IDavizConfig)
-        facets = mutator.facets[:]
-        mutator.delete_facets()
-
-        for index, facet in enumerate(facets):
+        for index, facet in enumerate(mutator.facets):
             name = facet.get('name')
             properties = {
-                'name': name,
                 'label': len(labels) > index and labels[index] or name,
                 'show': name in columns
             }
-            mutator.add_facet(**properties)
-        return self._redirect('Exhibit facets settings saved')
+            mutator.edit_facet(name, **properties)
 
+        if kwargs.get('daviz.facets.save') == 'ajax':
+            return self._redirect('Exhibit facets settings saved', to=None)
+        return self._redirect('Exhibit facets settings saved')
 
     def handle_views(self, **kwargs):
         views = kwargs.get('daviz.views', [])
@@ -98,6 +96,8 @@ class Configure(BrowserView):
             if view not in existing:
                 mutator.add_view(view)
 
+        if kwargs.get('daviz.views.save') == 'ajax':
+            return self._redirect('Exhibit views settings saved', to=None)
         return self._redirect('Exhibit views settings saved')
 
     def __call__(self, **kwargs):

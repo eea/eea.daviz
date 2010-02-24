@@ -93,7 +93,7 @@ class Configure(object):
             return facet
         return default
     #
-    # Mutators
+    # View mutators
     #
     def add_view(self, name, **kwargs):
         """ Add view
@@ -114,12 +114,22 @@ class Configure(object):
                 return
         raise KeyError, key
 
+    def edit_view(self, key, **kwargs):
+        """ Edit view properties
+        """
+        view = self.view(key)
+        if not view:
+            raise KeyError, key
+        view.update(kwargs)
+
     def delete_views(self):
         """ Reset views
         """
         anno = IAnnotations(self.context)
         anno[ANNO_VIEWS] = PersistentList()
-
+    #
+    # Facet mutators
+    #
     def add_facet(self, name, **kwargs):
         """ Add facet
         """
@@ -139,6 +149,14 @@ class Configure(object):
                 config.pop(index)
                 return
         raise KeyError, key
+
+    def edit_facet(self, key, **kwargs):
+        """ Edit facet properties
+        """
+        facet = self.facet(key)
+        if not facet:
+            raise KeyError, key
+        facet.update(kwargs)
 
     def delete_facets(self):
         """ Remove all facets

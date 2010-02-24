@@ -32,6 +32,14 @@
 
   <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
+    name="daviz-edit.views.html"
+    template="zpt/edit-views.pt"
+    class=".app.edit.Edit"
+    permission="cmf.ModifyPortalContent"
+    />
+
+  <browser:page
+    for="eea.daviz.interfaces.IExhibitJson"
     name="daviz-edit.save"
     class=".app.edit.Configure"
     permission="cmf.ModifyPortalContent"
@@ -64,5 +72,9 @@
     name="eea.daviz.edit.js"
     file="./js/edit.js"
    />
+
+  <browser:resourceDirectory
+    name="eea.daviz.images"
+    directory="./img" />
 
 </configure>

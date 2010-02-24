@@ -80,6 +80,39 @@
   border-bottom: none;
 }
 
+/* Copied from plone 3
+*/
+dl.portalMessage {
+  background-color:#FFFFFF;
+  background-image: none;
+  padding: 0px;
+  border: none;
+  font-size: 12px;
+  clear: both;
+}
+dl.portalMessage a {
+  color: black;
+  border: none !important;
+  text-decoration: underline;
+}
+dl.portalMessage dt {
+  background-color: #996;
+  border: 1px solid #996;
+  font-weight: normal !important;
+  float: left;
+  margin: 0 0.5em 0 0;
+  padding: 0.5em 0.75em;
+  color: White;
+  line-height: 1em;
+}
+dl.portalMessage dd {
+  background-color: #ffffe3;
+  border: 1px solid #996;
+  padding: 0.5em 0.5em;
+  margin: 0;
+  line-height: 1em;
+}
+
 /* Daviz
 */
 .daviz-edit-fieldset {
@@ -112,10 +145,21 @@
   padding: 0.5em;
 }
 
+.daviz-facets-settings table {
+  width: 100%;
+}
+
 .daviz-views-edit {
   clear: left;
 }
 
 .daviz-views-edit ul {
   margin:0.5em 0 0 1.5em;
+}
+
+.daviz-ajax-loader {
+  background-image: url(../../++resource++eea.daviz.images/loading.gif);
+  background-position:left center;
+  background-repeat:no-repeat;
+  padding-left: 18px ! important;
 }

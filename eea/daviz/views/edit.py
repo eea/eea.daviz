@@ -48,8 +48,12 @@ class EditForm(SubPageForm):
         """ Handle save action
         """
         mutator = queryAdapter(self.context, IDavizConfig)
-        mutator.delete_view(self.prefix)
-        mutator.add_view(self.prefix, **data)
+        mutator.edit_view(self.prefix, **data)
+
+        name = action.__name__.encode('utf-8')
+        value = self.request.form.get(name, '')
+        if value == 'ajax':
+            return 'Changes saved'
         return self.nextUrl
 
     @property

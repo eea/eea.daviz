@@ -15,7 +15,7 @@
     Document actions (print, sendto etc)
 </div>
 
-<h1 i18n:translate="" id="faceted-page-title" class="documentFirstHeading">
+<h1 i18n:translate="" id="daviz-page-title" class="documentFirstHeading">
   Configure exhibit
 </h1>
 
@@ -85,38 +85,8 @@
 </form>
 </div>
 
-<div class="daviz-views-edit">
-<ul style="display: none">
-  <tal:editheader repeat="enabled python:view.enabled_views">
-    <li tal:define="
-      viewform python:view.get_view(enabled);
-      label python:viewform.label;
-      id python:enabled.replace('.', '-');
-      editform python:view.get_edit(enabled)"
-      tal:condition="editform"
-      tal:attributes="id string:$id-header">
-      <a tal:attributes="href string:#$id-tab">
-        <span tal:content="label">Edit View</span>
-      </a>
-    </li>
-  </tal:editheader>
-</ul>
-
-<tal:edittab repeat="enabled python:view.enabled_views">
-  <div tal:define="
-    viewform python:view.get_view(enabled);
-    label python:viewform.label;
-    id python:enabled.replace('.', '-');
-    editform python:view.get_edit(enabled)"
-    tal:attributes="id string:$id-tab"
-    tal:condition="editform">
-    <form method="post"
-      tal:define="name python:editform.__name__"
-      tal:attributes="action string:${here/absolute_url}/@@$name">
-      <tal:editform replace="structure editform" />
-    </form>
-  </div>
-</tal:edittab>
+<div id="daviz-views-edit" class="daviz-views-edit">
+  <tal:views replace="structure here/@@daviz-edit.views.html" />
 </div>
 
 </div>

@@ -1,1 +1,16 @@
-<div ex:role="view" ex:viewClass="Thumbnail"></div>
+<tal:view define="
+  thumbnail python:template.thumbnail;
+  columns python:template.columns"
+  tal:condition="thumbnail">
+
+<div ex:role="view"
+  ex:viewClass="Thumbnail">
+  <div ex:role="lens" class="daviz-thumbnail-lens">
+    <img tal:attributes="ex:src-content thumbnail" />
+    <tal:column repeat="column columns">
+      <div tal:attributes="ex:content column"></div>
+    </tal:column>
+  </div>
+</div>
+
+</tal:view>

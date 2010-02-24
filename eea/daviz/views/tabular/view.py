@@ -6,11 +6,11 @@ __credits__ = """contributions: Alin Voinea"""
 
 from zope.interface import implements
 from zope.component import queryAdapter
-from Products.Five.browser import BrowserView
 from eea.daviz.interfaces import IDavizConfig
+from eea.daviz.views.view import ViewForm
 from interfaces import IExhibitTabularView
 
-class View(BrowserView):
+class View(ViewForm):
     """ Tabular view
     """
     label = 'Tabular View'
@@ -18,19 +18,14 @@ class View(BrowserView):
 
     @property
     def columns(self):
-        accessor = queryAdapter(self.context, IDavizConfig)
-        name = self.__name__
-        view = accessor.view(name, {})
-        columns = view.get('columns', [])
+        columns = self.data.get('columns', [])
         res = ['.%s' % item for item in columns]
         return ', '.join(res)
 
     @property
     def labels(self):
         accessor = queryAdapter(self.context, IDavizConfig)
-        name = self.__name__
-        view = accessor.view(name, {})
-        columns = view.get('columns', [])
+        columns = self.data.get('columns', [])
 
         labels = []
         for column in columns:

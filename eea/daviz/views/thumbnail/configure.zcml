@@ -10,4 +10,11 @@
     permission="zope2.View"
     />
 
+  <browser:page
+    name="daviz.thumbnail.edit"
+    for="eea.daviz.interfaces.IExhibitJson"
+    class=".edit.Edit"
+    permission="cmf.ModifyPortalContent"
+    />
+
 </configure>

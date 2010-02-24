@@ -5,10 +5,10 @@ __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
 
 from zope.interface import implements
-from Products.Five.browser import BrowserView
+from eea.daviz.views.view import ViewForm
 from interfaces import IExhibitTimeplotView
 
-class View(BrowserView):
+class View(ViewForm):
     """ Timeplot view
     """
     label = 'Timeplot View'

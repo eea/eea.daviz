@@ -53,7 +53,6 @@ DavizEdit.Facets = {
     var query = 'daviz.facets.save=ajax&';
     query += this.form.serialize();
 
-    var context = this;
     DavizEdit.Status.start('Saving ...');
     jQuery.post(this.action, query, function(data){
       DavizEdit.Status.stop(data);
@@ -137,6 +136,7 @@ DavizEdit.ViewSettings = {
     DavizEdit.Status.start('Saving ...');
     jQuery.post(action, query, function(data){
       DavizEdit.Status.stop(data);
+      button.removeClass('submitting');
     });
   }
 };

@@ -2,6 +2,8 @@
   xmlns="http://namespaces.zope.org/browser"
   i18n_domain="eea.daviz">
 
+  <include file="profiles.zcml" />
+
   <include package=".subtypes" />
   <include package=".converter" />
   <include package=".browser" />

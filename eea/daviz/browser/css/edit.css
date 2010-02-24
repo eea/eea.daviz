@@ -161,5 +161,30 @@ dl.portalMessage dd {
   background-image: url(../../++resource++eea.daviz.images/loading.gif);
   background-position:left center;
   background-repeat:no-repeat;
-  padding-left: 18px ! important;
+  margin: 0 4em;
+  padding: 4em;
+  text-align: center;
+  font-weight: bold;
+}
+
+.ui-widget-overlay {
+  background: none ! important;
+}
+
+.daviz-loading-overlay {
+  background: none ! important;
+  border: none ! important;
+  width: 400px ! important;
+}
+
+.daviz-loading-overlay .ui-dialog-titlebar {
+  display: none ! important;
+}
+
+.daviz-loading-overlay .ui-resizable-handle {
+  display: none ! important;
+}
+
+.daviz-status-lock {
+  background: transparent url(../../++resource++eea.daviz.images/background.png) no-repeat center ! important;
 }

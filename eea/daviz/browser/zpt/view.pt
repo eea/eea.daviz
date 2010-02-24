@@ -23,8 +23,6 @@
     window.$ = daviz_$;
   //-->
   </script>
-  <link rel="stylesheet" type="text/css" tal:attributes="href string:$portal_url/@@daviz-view.css" />
-  <script type="text/javascript" tal:attributes="src string:$portal_url/@@daviz-view.js"></script>
 </metal:jsslot>
 
 <body>

@@ -3,13 +3,8 @@
   metal:use-macro="here/main_template/macros/master"
   i18n:domain="eea.daviz">
 
-<metal:jsslot fill-slot="javascript_head_slot">
-  <link rel="stylesheet" type="text/css" tal:attributes="href string:$portal_url/@@daviz-edit.css" />
-  <script type="text/javascript" tal:attributes="src string:$portal_url/@@daviz-edit.js"></script>
-</metal:jsslot>
-
 <body>
-<div metal:fill-slot="main">
+<div metal:fill-slot="main" class="daviz-settings">
 
 <div metal:use-macro="here/document_actions/macros/document_actions">
     Document actions (print, sendto etc)

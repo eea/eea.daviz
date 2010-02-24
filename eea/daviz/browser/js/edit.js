@@ -2,18 +2,32 @@ var DavizEdit = {'version': '1.0.0'};
 
 DavizEdit.Status = {
   initialize: function(){
-    this.status = jQuery('<dl>').addClass('portalMessage');
-    this.type = jQuery('<dt>').text('Info');
-    this.message = jQuery('<dd>');
-    this.status.append(this.type).append(this.message);
-    this.status.hide();
-    jQuery('#daviz-page-title').after(this.status);
+    this.area = jQuery('.daviz-settings');
+    this.lock = jQuery('<div>').addClass('daviz-status-lock');
+    this.message = jQuery('<div>').addClass('daviz-ajax-loader');
+    this.lock.prepend(this.message);
+    this.area.prepend(this.lock);
+
+    this.lock.dialog({
+      show: 'slow',
+      hide: 'slow',
+      modal: true,
+      closeOnEscape: false,
+      autoOpen: false,
+      draggable: false,
+      resize: false,
+      dialogClass: 'daviz-loading-overlay'
+    });
   },
 
-  update: function(msg, type){
-    this.status.hide();
-    this.message.text(msg);
-    this.status.show();
+  start: function(msg){
+    this.message.html(msg);
+    this.lock.dialog('open');
+  },
+
+  stop: function(msg){
+    this.message.html(msg);
+    this.lock.dialog('close');
   }
 };
 
@@ -22,11 +36,15 @@ DavizEdit.Facets = {
     this.form = jQuery('.daviz-facets-settings form');
     this.action = this.form.attr('action');
     this.button = jQuery('input[type=submit]', this.form);
+    this.button.hide();
 
     var context = this;
     this.form.submit(function(){
+      return false;
+    });
+
+    jQuery(':input', this.form).change(function(){
       context.submit();
-      context.button.removeClass('submitting');
       return false;
     });
   },
@@ -36,11 +54,9 @@ DavizEdit.Facets = {
     query += this.form.serialize();
 
     var context = this;
-    this.button.addClass('daviz-ajax-loader');
-    DavizEdit.Status.update('Saving ...');
+    DavizEdit.Status.start('Saving ...');
     jQuery.post(this.action, query, function(data){
-      DavizEdit.Status.update(data);
-      context.button.removeClass('daviz-ajax-loader');
+      DavizEdit.Status.stop(data);
     });
   }
 };
@@ -50,13 +66,17 @@ DavizEdit.Views = {
     this.form = jQuery('.daviz-views-settings form');
     this.action = this.form.attr('action');
     this.button = jQuery('input[type=submit]', this.form);
+    this.button.hide();
     this.area = jQuery('#daviz-views-edit');
     this.update_tabs();
 
     var context = this;
     this.form.submit(function(){
+      return false;
+    });
+
+    jQuery(':input', this.form).change(function(){
       context.submit();
-      context.button.removeClass('submitting');
       return false;
     });
   },
@@ -66,12 +86,10 @@ DavizEdit.Views = {
     query += this.form.serialize();
 
     var context = this;
-    this.button.addClass('daviz-ajax-loader');
-    DavizEdit.Status.update('Saving ...');
+    DavizEdit.Status.start('Saving ...');
     jQuery.post(this.action, query, function(data){
-      DavizEdit.Status.update(data);
       context.update();
-      context.button.removeClass('daviz-ajax-loader');
+      DavizEdit.Status.stop(data);
     });
   },
 
@@ -100,23 +118,25 @@ DavizEdit.ViewSettings = {
     this.forms = jQuery('#daviz-views-edit form');
     var context = this;
     this.forms.submit(function(){
-      context.submit(this);
+      return false;
+    });
+
+    this.forms.submit(function(){
+      var form = jQuery(this);
+      context.submit(form);
       return false;
     });
   },
 
   submit: function(form){
-    form = jQuery(form);
     var action = form.attr('action');
     var button = jQuery('input[type=submit]', form);
     var query = button.attr('name') + '=' + 'ajax' + '&';
     query += form.serialize();
 
-    button.addClass('daviz-ajax-loader');
-    DavizEdit.Status.update('Saving ...');
+    DavizEdit.Status.start('Saving ...');
     jQuery.post(action, query, function(data){
-      DavizEdit.Status.update(data);
-      button.removeClass('daviz-ajax-loader');
+      DavizEdit.Status.stop(data);
     });
   }
 };

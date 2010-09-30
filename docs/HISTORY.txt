@@ -5,6 +5,6 @@ Changelog
 [Antonio De Marinis - demarinis@eea.europa.eu]
 
 
-0.1 -(Unreleased)
------------------
+0.1-dev - (Unreleased)
+----------------------
  * Initial release [ghicaale #2773]

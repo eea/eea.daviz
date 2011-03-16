@@ -1,9 +1,5 @@
-# -*- coding: utf-8 -*-
-
-__author__ = """European Environment Agency (EEA)"""
-__docformat__ = 'plaintext'
-__credits__ = """contributions: Alin Voinea"""
-
+""" CSS
+"""
 from App.Common import rfc1123_date
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
@@ -68,9 +64,9 @@ class ViewCSS(CSS):
     def css_libs(self):
         """ CSS libs
         """
-        res = []
-        res.extend(('++resource++eea.daviz.view.css',))
-        return res
+        return (
+            '++resource++eea.daviz.view.css',
+        )
 
     @property
     def resources(self):
@@ -86,7 +82,8 @@ class ViewCSS(CSS):
         self.request.RESPONSE.setHeader('content-type', 'text/css')
         expires = rfc1123_date((DateTime() + 365).timeTime())
         self.request.RESPONSE.setHeader('Expires', expires)
-        self.request.RESPONSE.setHeader('Cache-Control', 'max-age=%d' % self.duration)
+        self.request.RESPONSE.setHeader('Cache-Control',
+                                        'max-age=%d' % self.duration)
         return self.get_content()
 
 class EditCSS(CSS):
@@ -94,22 +91,11 @@ class EditCSS(CSS):
     """
     @property
     def css_libs(self):
-        res = []
-        jquery_ui = False
-        for css in self.csstool.getResources():
-            if not css.getEnabled():
-                continue
-            css_id = css.getId()
-            if 'jquery-ui-1.7.custom.css' in css_id:
-                jquery_ui = True
-            if jquery_ui:
-                break
-
-        if not jquery_ui:
-            res.append('++resource++jquery.ui.theme/jquery-ui-1.7.custom.css')
-
-        res.append('++resource++eea.daviz.edit.css')
-        return res
+        """ CSS Libs
+        """
+        return (
+            '++resource++eea.daviz.edit.css',
+        )
 
     @property
     def resources(self):
@@ -125,5 +111,6 @@ class EditCSS(CSS):
         self.request.RESPONSE.setHeader('content-type', 'text/css')
         expires = rfc1123_date((DateTime() + 365).timeTime())
         self.request.RESPONSE.setHeader('Expires', expires)
-        self.request.RESPONSE.setHeader('Cache-Control', 'max-age=%d' % self.duration)
+        self.request.RESPONSE.setHeader('Cache-Control',
+                                        'max-age=%d' % self.duration)
         return self.get_content()

@@ -1,9 +1,5 @@
-# -*- coding: utf-8 -*-
-
-__author__ = """European Environment Agency (EEA)"""
-__docformat__ = 'plaintext'
-__credits__ = """contributions: Alin Voinea"""
-
+""" EEA Daviz javascripts
+"""
 from App.Common import rfc1123_date
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
@@ -66,9 +62,11 @@ class ViewJavascript(Javascript):
     """
     @property
     def js_libs(self):
-        res = []
-        res.extend(('++resource++eea.daviz.view.js',))
-        return res
+        """ JS libs
+        """
+        return (
+            '++resource++eea.daviz.view.js',
+        )
 
     @property
     def resources(self):
@@ -84,7 +82,8 @@ class ViewJavascript(Javascript):
         self.request.RESPONSE.setHeader('content-type', 'text/javascript')
         expires = rfc1123_date((DateTime() + 365).timeTime())
         self.request.RESPONSE.setHeader('Expires', expires)
-        self.request.RESPONSE.setHeader('Cache-Control', 'max-age=%d' % self.duration)
+        self.request.RESPONSE.setHeader('Cache-Control',
+                                        'max-age=%d' % self.duration)
         return self.get_content()
 
 class EditJavascript(Javascript):
@@ -92,26 +91,11 @@ class EditJavascript(Javascript):
     """
     @property
     def js_libs(self):
-        res = []
-        jquery_installed = ui_installed = False
-        for js in self.jstool.getResources():
-            if not js.getEnabled():
-                continue
-            js_id = js.getId()
-            if 'jquery.ui-1.7.js' in js_id.lower():
-                ui_installed = True
-            elif 'jquery-1.3.2.js' in js_id.lower():
-                jquery_installed = True
-            if jquery_installed and ui_installed:
-                break
-
-        if not jquery_installed:
-            res.append('++resource++jquery-1.3.2.js')
-        if not ui_installed:
-            res.append('++resource++jquery.ui-1.7.js')
-
-        res.append('++resource++eea.daviz.edit.js')
-        return res
+        """ JS libs
+        """
+        return (
+            '++resource++eea.daviz.edit.js',
+        )
 
     @property
     def resources(self):
@@ -127,5 +111,6 @@ class EditJavascript(Javascript):
         self.request.RESPONSE.setHeader('content-type', 'text/javascript')
         expires = rfc1123_date((DateTime() + 365).timeTime())
         self.request.RESPONSE.setHeader('Expires', expires)
-        self.request.RESPONSE.setHeader('Cache-Control', 'max-age=%d' % self.duration)
+        self.request.RESPONSE.setHeader('Cache-Control',
+                                        'max-age=%d' % self.duration)
         return self.get_content()

@@ -1,1 +1,3 @@
 EEA DaViz TODOs:
+ - Add eea.jquery dependencies and install jquery and jquery UI profiles
+   if not installed.

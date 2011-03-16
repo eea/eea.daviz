@@ -6,8 +6,11 @@ Changelog
 
 1.1-dev - (unreleased)
 ----------------------
+ *  Bug fix: Removed jQuery and jQuery UI from daviz-edit.css, daviz-edit.js
+    as they generate errors if already installed. You'll have to manually
+    install jQuery and jQuery UI in portal_css and portal_javascripts
+    [voineali #4196]
 
 1.0 - (2011-03-16)
 ------------------
  * Initial release [voineali #2773]
-

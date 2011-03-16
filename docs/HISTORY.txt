@@ -4,7 +4,7 @@ Changelog
 [Alin Voinea - alin.voinea@eaudeweb.ro]
 [Antonio De Marinis - demarinis@eea.europa.eu]
 
-
-1.0-dev - (Unreleased)
-----------------------
+1.0 - (2011-03-16)
+------------------
  * Initial release [voineali #2773]
+

@@ -1,3 +1,5 @@
+""" Installer
+"""
 import os
 from os.path import join
 from setuptools import setup, find_packages
@@ -11,16 +13,17 @@ setup(name=name,
       description="EEA DaViz",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
+      # Get more strings from
+      # http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Framework :: Plone",
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
-      keywords='eea, daviz, data, visualization',
+      keywords='eea daviz data visualization',
       author='European Environment Agency',
-      author_email='alec.ghica@eaudeweb.ro',
-      url='http://www.eea.europa.eu/data-and-maps',
+      author_email="webadmin@eea europa eu",
+      url='http://svn.eionet.europa.eu/projects/Zope/wiki/DaViz',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['eea'],

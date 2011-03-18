@@ -45,15 +45,7 @@
   </p>
 
 <div style="float: left; width: 98%">
-  <!-- Exhibit facets -->
-  <div style="float: left; width: 19%; margin-right: 1%">
-    <tal:facets define="facets python:view.facets;">
-      <tal:facet repeat="facet_name facets">
-        <div tal:define="facet_view python:view.get_facet(facet_name)"
-          tal:replace="structure facet_view" />
-      </tal:facet>
-    </tal:facets>
-  </div>
+
   <!-- Exhibit views -->
   <div style="float: left; width: 80%" ex:role="viewPanel">
     <tal:views define="views python:view.views;">
@@ -62,6 +54,15 @@
           tal:replace="structure view_page" />
       </tal:view>
     </tal:views>
+  </div>
+    <!-- Exhibit facets -->
+  <div style="float: left; width: 19%; margin-left: 1%">
+    <tal:facets define="facets python:view.facets;">
+      <tal:facet repeat="facet_name facets">
+        <div tal:define="facet_view python:view.get_facet(facet_name)"
+          tal:replace="structure facet_view" />
+      </tal:facet>
+    </tal:facets>
   </div>
 </div>
 <div style="clear: both"></div>

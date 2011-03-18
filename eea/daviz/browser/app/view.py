@@ -6,6 +6,7 @@ __credits__ = """contributions: Alin Voinea"""
 
 import simplejson
 from zope.component import queryAdapter, queryMultiAdapter
+from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from eea.daviz.interfaces import IDavizConfig
 
@@ -33,6 +34,15 @@ class View(BrowserView):
         views = self.accessor.views
         for view in views:
             yield view.get('name')
+
+    @property
+    def gmapkey(self):
+        """ Get Google Maps key from
+            portal_properties.geographical_properties.google_key
+        """
+        ptool = getToolByName(self.context, 'portal_properties')
+        props = getattr(ptool, 'geographical_properties', '')
+        return getattr(props, 'google_key', '')
 
     def get_facet(self, name):
         facet = self.accessor.facet(key=name)

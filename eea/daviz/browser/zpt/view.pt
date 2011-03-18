@@ -14,15 +14,16 @@
     var daviz_$ = window.$;
   //-->
   </script>
-  <script src="++resource++eea.simile.exhibit/exhibit-api.js" type="text/javascript"></script>
-  <script src="++resource++eea.simile.exhibit/extensions/time/time-extension.js"></script>
-  <script src="++resource++eea.simile.exhibit/extensions/map/map-extension.js"></script>
+  <script tal:attributes="src string:++resource++eea.simile.exhibit/exhibit-api.js" type="text/javascript"></script>
+  <script tal:attributes="src string:++resource++eea.simile.exhibit/extensions/time/time-extension.js"></script>
+  <script tal:attributes="src string:++resource++eea.simile.exhibit/extensions/map/map-extension.js?gmapkey=${view/gmapkey}"></script>
   <script type="text/javascript">
   <!--
     window.jQuery = daviz_jQuery;
     window.$ = daviz_$;
   //-->
   </script>
+
 </metal:jsslot>
 
 <body>

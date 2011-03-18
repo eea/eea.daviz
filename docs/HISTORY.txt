@@ -6,6 +6,8 @@ Changelog
 
 1.2-dev - (unreleased)
 ----------------------
+ * Bug fix: Fixed Google Map Key alert [#4196]
+ * Change: Disabled Thumbnails View as it's bugous on IE [#4196]
 
 1.1 - (2011-03-16)
 ------------------

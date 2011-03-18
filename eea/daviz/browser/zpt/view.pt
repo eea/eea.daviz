@@ -44,8 +44,9 @@
   News summary
   </p>
 
-<div style="float: left; width: 98%">
+<div ex:role="facet" ex:facetClass="TextSearch" ex:facetLabel="Live search"></div>
 
+<div style="float: left; width: 98%">
   <!-- Exhibit views -->
   <div style="float: left; width: 80%" ex:role="viewPanel">
     <tal:views define="views python:view.views;">

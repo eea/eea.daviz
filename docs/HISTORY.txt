@@ -6,6 +6,8 @@ Changelog
 
 1.2-dev - (unreleased)
 ----------------------
+ * Feature: Added live search field as default on top fixes #3023 [demarant]
+ * Change: moved facets to the right [demarant]
  * Bug fix: Fixed Google Map Key alert [#4196]
  * Change: Disabled Thumbnails View as it's bugous on IE [#4196]
 

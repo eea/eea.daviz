@@ -6,6 +6,8 @@ Changelog
 
 1.2-dev - (unreleased)
 ----------------------
+ * Cleanup: of pyflakes warnings [ichimdav #4141]
+ * Cleanup: of sensible pylint violations [ichimdav #4140]
  * Feature: Added live search field as default on top fixes #3023 [demarant]
  * Change: moved facets to the right [demarant]
  * Bug fix: Fixed Google Map Key alert [#4196]

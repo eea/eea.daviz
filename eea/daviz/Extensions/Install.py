@@ -4,6 +4,7 @@ from zExceptions import NotFound
 
 try:
     import zope.annotation
+    zope.annotation
 except ImportError:
     #BBB Plone 2.5
     def install(portal):

@@ -5,7 +5,7 @@ __docformat__ = 'plaintext'
 __credits__ = """contributions: Alec Ghica, Alin Voinea"""
 
 import os
-import urllib
+#import urllib
 from StringIO import StringIO
 from Globals import package_home
 from cgi import FieldStorage

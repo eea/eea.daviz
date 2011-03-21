@@ -32,6 +32,6 @@ class ViewsVocabulary(object):
         views.sort(key=operator.itemgetter(1))
 
         return SimpleVocabulary([
-            SimpleTerm(name, name, label) for name, label in views])
+            SimpleTerm(name2, name2, label2) for name2, label2 in views])
 
 ViewsVocabularyFactory = ViewsVocabulary()

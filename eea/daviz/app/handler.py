@@ -8,6 +8,7 @@ from zope.interface import implements
 from interfaces import IDavizConfig
 try:
     from zope.annotation.interfaces import IAnnotations
+    IAnnotations
 except ImportError:
     #BBB Plone 2.5
     from zope.app.annotation.interfaces import IAnnotations

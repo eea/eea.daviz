@@ -6,6 +6,7 @@ __credits__ = """contributions: Alec Ghica, Alin Voinea"""
 
 try:
     from zope.component.interfaces import IObjectEvent
+    IObjectEvent #pyflakes
 except ImportError:
     #BBB Plone 2.5
     from zope.app.event.interfaces import IObjectEvent

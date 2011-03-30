@@ -14,6 +14,12 @@
     <implements interface="eea.daviz.interfaces.IPossibleExhibitJson" />
   </class>
 
+  <configure zcml:condition="installed plone.app.blob">
+    <class class="plone.app.blob.content.ATBlob">
+      <implements interface="eea.daviz.interfaces.IPossibleExhibitJson" />
+    </class>
+  </configure>
+
   <!-- EEA -->
   <configure zcml:condition="installed eea.dataservice">
     <class class="eea.dataservice.content.DataFile.DataFile">

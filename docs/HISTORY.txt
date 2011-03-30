@@ -6,6 +6,7 @@ Changelog
 
 1.2-dev - (unreleased)
 ----------------------
+ * Bug fix: Made exibit available for ATBlob files [voineali #4135]
  * Cleanup: of pyflakes warnings [ichimdav #4141]
  * Cleanup: of sensible pylint violations [ichimdav #4140]
  * Feature: Added live search field as default on top fixes #3023 [demarant]

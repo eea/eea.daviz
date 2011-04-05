@@ -62,9 +62,23 @@ class ExhibitJsonConverter(object):
 
             for col in columns:
                 text = row.next()
+                
+                detected_semicolon = ';' in text
+                detected_comma = ',' in text
+                detected_delimiter = None
+                
                 # Multiple values
-                if ';' in text:
-                    text = text.split(';')
+                if ':list' in col:
+            	    if detected_comma:
+            		detected_delimiter = ','
+        	    elif detected_semicolon:
+        		detected_delimiter = ';'
+                elif detected_semicolon:
+            	    detected_delimiter = ';'
+                
+                if detected_delimiter:
+            	    text = text.split(detected_delimiter)
+                    
                 data[col] = text
             out.append(data)
 

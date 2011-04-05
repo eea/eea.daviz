@@ -6,6 +6,13 @@
   <include package=".res" />
   <adapter factory=".app.displays.DynamicViews" />
 
+  <adapter
+    for=".app.properties.EditForm"
+    factory="plone.app.form.default_subpage_template"
+    name="default"
+    provides="zope.formlib.namedtemplate.INamedTemplate"
+    />
+    
   <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
     name="daviz-view.html"
@@ -35,6 +42,21 @@
     name="daviz-edit.views.html"
     template="zpt/edit-views.pt"
     class=".app.edit.Edit"
+    permission="cmf.ModifyPortalContent"
+    />
+
+  <browser:page
+    for="eea.daviz.interfaces.IExhibitJson"
+    name="daviz-edit.properties.html"
+    template="zpt/edit-properties.pt"
+    class=".app.edit.Edit"
+    permission="cmf.ModifyPortalContent"
+    />
+
+  <browser:page
+    name="daviz.properties.edit"
+    for="eea.daviz.interfaces.IExhibitJson"
+    class=".app.properties.EditForm"
     permission="cmf.ModifyPortalContent"
     />
 

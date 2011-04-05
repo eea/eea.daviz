@@ -84,6 +84,10 @@
   <tal:views replace="structure here/@@daviz-edit.views.html" />
 </div>
 
+<div id="daviz-properties-edit" class="daviz-properties-edit">
+  <tal:views replace="structure here/@@daviz-edit.properties.html" />
+</div>
+
 </div>
 </body>
 </html>

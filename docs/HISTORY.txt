@@ -6,6 +6,7 @@ Changelog
 
 1.2-dev - (unreleased)
 ----------------------
+ * Feature: Added edit form for generated JSON [voineali #4199]
  * Feature: If column name contains ":list" exported data in
      JSON will pe an array [ghicaale #4199]
  * Bug fix: Made exibit available for ATBlob files [voineali #4135]

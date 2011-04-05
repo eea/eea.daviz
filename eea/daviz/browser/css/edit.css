@@ -157,6 +157,10 @@ dl.portalMessage dd {
   margin:0.5em 0 0 1.5em;
 }
 
+.daviz-properties-edit ul {
+  margin:0.5em 0 0 1.5em;
+}
+
 .daviz-ajax-loader {
   background-image: url(../../++resource++eea.daviz.images/loading.gif);
   background-position:left center;

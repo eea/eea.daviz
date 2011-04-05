@@ -141,8 +141,44 @@ DavizEdit.ViewSettings = {
   }
 };
 
+DavizEdit.Properties = {
+  initialize: function(){
+    this.form = jQuery('.daviz-properties-edit form');
+    this.action = this.form.attr('action');
+    this.button = jQuery('input[type=submit]', this.form);
+    this.area = jQuery('#daviz-properties-edit');
+    this.update_tabs();
+
+    var context = this;
+    this.form.submit(function(){
+      context.submit();
+      return false;
+    });
+  },
+
+  submit: function(){
+    var query = this.button.attr('name') + '=' + 'ajax' + '&';
+    query += this.form.serialize();
+
+    var context = this;
+    DavizEdit.Status.start('Saving ...');
+    jQuery.post(this.action, query, function(data){
+      DavizEdit.Status.stop(data);
+      context.button.removeClass('submitting');
+    });
+  },
+
+  update_tabs: function(){
+    jQuery('ul', this.area).show();
+    jQuery('fieldset', this.area).addClass('daviz-edit-fieldset');
+    jQuery('form h1', this.area).hide();
+    this.area.tabs();
+  }
+};
+
 jQuery(document).ready(function(){
   DavizEdit.Status.initialize();
   DavizEdit.Facets.initialize();
   DavizEdit.Views.initialize();
+  DavizEdit.Properties.initialize();
 });

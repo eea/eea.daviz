@@ -47,7 +47,7 @@ class EditForm(SubPageForm):
         accessor = queryAdapter(self.context, IDavizConfig)
         return {
             'name': self.prefix,
-            'json': simplejson.dumps(dict(accessor.json)),
+            'json': simplejson.dumps(dict(accessor.json), indent=2),
         }
 
     def setUpWidgets(self, ignore_request=False):

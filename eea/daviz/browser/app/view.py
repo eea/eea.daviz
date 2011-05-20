@@ -4,7 +4,11 @@ __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
 
-import simplejson
+try:
+    import json as simplejson
+    simplejson
+except ImportError:
+    import simplejson
 from zope.component import queryAdapter, queryMultiAdapter
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView

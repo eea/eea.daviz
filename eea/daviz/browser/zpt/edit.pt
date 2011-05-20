@@ -6,9 +6,6 @@
 <body>
 <div metal:fill-slot="main" class="daviz-settings">
 
-<div metal:use-macro="here/document_actions/macros/document_actions">
-    Document actions (print, sendto etc)
-</div>
 
 <h1 i18n:translate="" id="daviz-page-title" class="documentFirstHeading">
   Configure exhibit
@@ -25,7 +22,7 @@
         <th i18n:translate="">Column</th>
         <th i18n:translate="">Label</th>
       </tr>
-      <tal:facets repeat="facet python:template.facets_vocabulary">
+      <tal:facets repeat="facet python:view.facets_vocabulary">
         <tr tal:define="odd repeat/facet/odd;"
           tal:attributes="class python:odd and 'odd' or 'even'">
           <td style="text-align: center">
@@ -62,7 +59,7 @@
       <div class="formHelp" i18n:translate="">
         Enable Exhibit views.
       </div>
-      <div tal:repeat="item python:template.views_vocabulary">
+      <div tal:repeat="item python:view.views_vocabulary">
         <input type="checkbox" name="daviz.views:list" tal:attributes="
           id python:item.value;
           value python:item.value;

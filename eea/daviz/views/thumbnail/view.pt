@@ -1,6 +1,6 @@
 <tal:view define="
-  thumbnail python:template.thumbnail;
-  columns python:template.columns"
+  thumbnail python:view.thumbnail;
+  columns python:view.columns"
   tal:condition="thumbnail">
 
 <div ex:role="view"

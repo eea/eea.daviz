@@ -1,6 +1,6 @@
 <tal:view define="
-  columns python:template.columns;
-  labels python:template.labels">
+  columns python:view.columns;
+  labels python:view.labels">
 
 <div ex:role="view"
   ex:viewClass="Tabular"

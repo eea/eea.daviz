@@ -1,7 +1,11 @@
 """ Exhibit properties
 """
 import logging
-import simplejson
+try:
+    import json as simplejson
+    simplejson
+except ImportError:
+    import simplejson
 from zope import schema
 from zope.interface import Interface
 from zope.formlib.form import Fields

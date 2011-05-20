@@ -24,5 +24,5 @@ class View(BrowserView):
 
     data = property(get_data, set_data)
 
-    def get(self, key, default=None):
+    def gett(self, key, default=None):
         return self.data.get(key, default)

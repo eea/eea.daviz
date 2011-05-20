@@ -3,8 +3,15 @@
   xmlns:browser="http://namespaces.zope.org/browser"
   i18n_domain="eea.daviz">
 
-  <utility factory=".converter.ExhibitJsonConverter" />
+ <utility factory=".converter.ExhibitJsonConverter" />
 
+  <!--ichimdav #plone4 temporary adition of browser:menu directive 
+      until menuItem is transformed to actions -->
+  <browser:menu
+      id="object_buttons"
+      title="Plone Content Drop-Down Menu"
+      />
+  
   <browser:menuItem
     for="eea.daviz.interfaces.IPossibleExhibitJson"
     menu="object_buttons"

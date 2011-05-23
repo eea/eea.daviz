@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+""" Converter module responsible for converting from cvs to json
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alec Ghica"""
@@ -9,7 +10,8 @@ from zope.interface import implements
 from eea.daviz.converter.interfaces import IExhibitJsonConverter
 
 class EEADialectTab(csv.Dialect):
-    """ CSV dialect having tab as delimiter """
+    """ CSV dialect having tab as delimiter 
+    """
     delimiter = '\t'
     quotechar = '"'
     # Should be set to quotechar = csv.QUOTE_NONE when we will use Python 2.5

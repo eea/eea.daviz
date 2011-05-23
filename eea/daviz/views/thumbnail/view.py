@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+""" Edit tile views
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
@@ -16,7 +17,7 @@ class View(ViewForm):
 
     @property
     def thumbnail(self):
-        """ Return thumbnail column
+        """ Returns thumbnail column
         """
         thumbnail = self.data.get('thumbnail', None)
         if thumbnail:
@@ -25,7 +26,7 @@ class View(ViewForm):
 
     @property
     def columns(self):
-        """ Return columns
+        """ Returns columns
         """
         for column in self.data.get('columns', []):
             yield '.%s' % column

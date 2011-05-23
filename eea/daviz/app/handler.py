@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+""" Handler module containing configure logic
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
@@ -26,6 +27,8 @@ class Configure(object):
         self.context = context
 
     def _views(self):
+        """ Returns views from ANNO_VIEWS config 
+        """
         anno = IAnnotations(self.context)
         views = anno.get(ANNO_VIEWS, None)
         if views is None:
@@ -33,6 +36,8 @@ class Configure(object):
         return views
 
     def _facets(self):
+        """ Returns facets from ANNO_FACETS config 
+        """
         anno = IAnnotations(self.context)
         facets = anno.get(ANNO_FACETS, None)
         if facets is None:
@@ -40,6 +45,8 @@ class Configure(object):
         return facets
 
     def _json(self):
+        """ Returns json from ANNO_JSON config 
+        """
         anno = IAnnotations(self.context)
         json = anno.get(ANNO_JSON, None)
         if json is None:

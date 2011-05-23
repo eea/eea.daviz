@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+""" Displays module responsible for retrieval of views
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
@@ -21,16 +22,16 @@ class DynamicViews(object):
         self.context = context
 
     def getAvailableViewMethods(self):
-        """Get a list of registered view method names
+        """ Get a list of registered view method names
         """
         return [view for view, _name in self.getAvailableLayouts()]
 
     def getDefaultViewMethod(self):
-        """Get the default view method name
+        """ Get the default view method name
         """
         return 'daviz-view.html'
 
     def getAvailableLayouts(self):
-        """Get the layouts registered for this object.
+        """ Get the layouts registered for this object.
         """
         return (("daviz-view.html", "Daviz View"),)

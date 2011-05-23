@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-
+""" Base tests module
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alec Ghica, Alin Voinea"""
 
 import os
-#import urllib
 from StringIO import StringIO
 from Globals import package_home
 from cgi import FieldStorage
@@ -40,14 +40,14 @@ setup_eea_daviz()
 ptc.setupPloneSite()
 
 class DavizTestCase(ptc.PloneTestCase):
-    """Base class for integration tests for the 'DaViz' product.
+    """ Base class for integration tests for the 'DaViz' product.
     """
 
 class DavizFunctionalTestCase(ptc.FunctionalTestCase, DavizTestCase):
-    """Base class for functional integration tests for the 'DaViz' product.
+    """ Base class for functional integration tests for the 'DaViz' product.
     """
     def loadfile(self, rel_filename, ctype='text/xml', zope=False):
-        """ loads a file
+        """ Loads a file
         """
         home = package_home(product_globals)
         filename = os.path.sep.join([home, rel_filename])

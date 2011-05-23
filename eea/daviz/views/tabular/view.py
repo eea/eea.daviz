@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+""" View tabular views
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
@@ -18,12 +19,16 @@ class View(ViewForm):
 
     @property
     def columns(self):
+        """ Returns columns property for tabular view
+        """
         columns = self.data.get('columns', [])
         res = ['.%s' % item for item in columns]
         return ', '.join(res)
 
     @property
     def labels(self):
+        """ Returns labels property for tabular view
+        """
         accessor = queryAdapter(self.context, IDavizConfig)
         columns = self.data.get('columns', [])
 

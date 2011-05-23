@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+""" Module for Edit logic of browser/app package
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
@@ -38,11 +39,15 @@ class Edit(BrowserView):
         return [view.get('name') for view in accessor.views]
 
     def get_view(self, name):
+        """ Return given view
+        """
         if not isinstance(name, unicode):
             name = name.decode('utf-8')
         return queryMultiAdapter((self.context, self.request), name=name)
 
     def get_edit(self, name):
+        """ Return edit page
+        """
         if not isinstance(name, unicode):
             name = name.decode('utf-8')
         name += u'.edit'
@@ -66,6 +71,8 @@ class Configure(BrowserView):
         return msg
 
     def handle_facets(self, **kwargs):
+        """ Handle facets
+        """
         columns = kwargs.get('daviz.facets.columns', [])
         labels = kwargs.get('daviz.facets.labels', [])
 
@@ -83,6 +90,8 @@ class Configure(BrowserView):
         return self._redirect('Exhibit facets settings saved')
 
     def handle_views(self, **kwargs):
+        """ Handle views
+        """
         views = kwargs.get('daviz.views', [])
 
         mutator = queryAdapter(self.context, IDavizConfig)

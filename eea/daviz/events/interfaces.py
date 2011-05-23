@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+""" Daviz Events interfaces
+"""
 
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'

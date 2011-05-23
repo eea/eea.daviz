@@ -8,7 +8,7 @@ from zope.interface import implements
 from zope.component import queryAdapter
 from eea.daviz.interfaces import IDavizConfig
 from eea.daviz.views.view import ViewForm
-from interfaces import IExhibitTabularView
+from eea.daviz.views.tabular.interfaces import IExhibitTabularView
 
 class View(ViewForm):
     """ Tabular view

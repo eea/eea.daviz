@@ -5,15 +5,15 @@ __docformat__ = 'plaintext'
 __credits__ = """contributions: Alec Ghica, Alin Voinea"""
 
 # Subtypes
-from subtypes.interfaces import IPossibleExhibitJson
-from subtypes.interfaces import IExhibitJson
+from eea.daviz.subtypes.interfaces import IPossibleExhibitJson
+from eea.daviz.subtypes.interfaces import IExhibitJson
 IPossibleExhibitJson, IExhibitJson
 # Converter
-from converter.interfaces import IExhibitJsonConverter
+from eea.daviz.converter.interfaces import IExhibitJsonConverter
 IExhibitJsonConverter
 # Accessors, mutators
-from app.interfaces import IDavizConfig
+from eea.daviz.app.interfaces import IDavizConfig
 IDavizConfig
 # Events
-from events.interfaces import IDavizEnabledEvent
+from eea.daviz.events.interfaces import IDavizEnabledEvent
 IDavizEnabledEvent

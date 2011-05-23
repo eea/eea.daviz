@@ -17,7 +17,8 @@ class IExhibitThumbnailEdit(Interface):
     """
     thumbnail =  schema.Choice(
         title=u'Thumbnail',
-        description=u"Specify which column should be used to get thumbnail url.",
+        description=u"Specify which column should be used to get " \
+                                                    "thumbnail url.",
         required=True,
         vocabulary="eea.daviz.vocabularies.FacetsVocabulary"
     )

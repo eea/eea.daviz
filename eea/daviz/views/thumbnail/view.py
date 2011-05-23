@@ -6,7 +6,7 @@ __credits__ = """contributions: Alin Voinea"""
 
 from zope.interface import implements
 from eea.daviz.views.view import ViewForm
-from interfaces import IExhibitThumbnailView
+from eea.daviz.views.thumbnail.interfaces import IExhibitThumbnailView
 
 class View(ViewForm):
     """ Thumbnail view

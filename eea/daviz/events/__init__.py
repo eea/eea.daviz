@@ -5,7 +5,7 @@ __docformat__ = 'plaintext'
 __credits__ = """contributions: Alec Ghica, Alin Voinea"""
 
 from zope.interface import implements
-from interfaces import IDavizEnabledEvent
+from eea.daviz.events.interfaces import IDavizEnabledEvent
 
 class DavizEnabledEvent(object):
     """ Sent if a document was converted to exhibit json

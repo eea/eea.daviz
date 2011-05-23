@@ -5,7 +5,7 @@ __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
 
 from zope.formlib.form import Fields
-from interfaces import IExhibitTabularEdit
+from eea.daviz.views.tabular.interfaces import IExhibitTabularEdit
 from eea.daviz.views.edit import EditForm
 
 class Edit(EditForm):

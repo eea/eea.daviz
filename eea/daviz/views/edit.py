@@ -58,6 +58,7 @@ class EditForm(SubPageForm):
 
     @property
     def nextUrl(self):
-        IStatusMessage(self.request).addStatusMessage('Changes saved', type='info')
-        next = self.context.absolute_url() + '/daviz-edit.html'
-        self.request.response.redirect(next)
+        IStatusMessage(self.request).addStatusMessage('Changes saved',
+                                                        type='info')
+        next_url = self.context.absolute_url() + '/daviz-edit.html'
+        self.request.response.redirect(next_url)

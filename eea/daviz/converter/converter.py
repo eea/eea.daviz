@@ -6,15 +6,17 @@ __credits__ = """contributions: Alec Ghica"""
 
 import csv
 from zope.interface import implements
-from interfaces import IExhibitJsonConverter
+from eea.daviz.converter.interfaces import IExhibitJsonConverter
 
 class EEADialectTab(csv.Dialect):
     """ CSV dialect having tab as delimiter """
     delimiter = '\t'
     quotechar = '"'
     # Should be set to quotechar = csv.QUOTE_NONE when we will use Python 2.5
-    # as setting quotechar to nothing does not work in Python 2.4. For more details see
-    # http://stackoverflow.com/questions/494054/how-can-i-disable-quoting-in-the-python-2-4-csv-reader/494126
+    # as setting quotechar to nothing does not work in Python 2.4. 
+    # For more details see
+    # http://stackoverflow.com/questions/494054/
+    # how-can-i-disable-quoting-in-the-python-2-4-csv-reader/494126
     escapechar = '\\'
     doublequote = False
     skipinitialspace = False

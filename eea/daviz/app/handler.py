@@ -5,7 +5,7 @@ __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
 
 from zope.interface import implements
-from interfaces import IDavizConfig
+from eea.daviz.app.interfaces import IDavizConfig
 try:
     from zope.annotation.interfaces import IAnnotations
     IAnnotations

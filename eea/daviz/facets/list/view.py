@@ -5,7 +5,7 @@ __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
 
 from zope.interface import implements
-from interfaces import IExhibitListFacet
+from eea.daviz.facets.list.interfaces import IExhibitListFacet
 from Products.Five.browser import BrowserView
 
 class View(BrowserView):

@@ -89,5 +89,5 @@ class EditForm(SubPageForm):
         """ Next
         """
         IStatusMessage(self.request).addStatusMessage(self.message, type='info')
-        next = self.context.absolute_url() + '/daviz-edit.html'
-        self.request.response.redirect(next)
+        next_url = self.context.absolute_url() + '/daviz-edit.html'
+        self.request.response.redirect(next_url)

@@ -13,7 +13,7 @@ from zope.component import queryUtility
 from Products.Five.browser import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
 
-from interfaces import IExhibitJsonConverter
+from eea.daviz.converter.interfaces import IExhibitJsonConverter
 from eea.daviz.interfaces import IExhibitJson
 from eea.daviz.interfaces import IDavizConfig
 from eea.daviz.events import DavizEnabledEvent

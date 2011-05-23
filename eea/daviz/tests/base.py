@@ -63,7 +63,8 @@ class DavizFunctionalTestCase(ptc.FunctionalTestCase, DavizTestCase):
         env = {'REQUEST_METHOD':'PUT'}
         headers = {'content-type' : ctype,
                    'content-length': len(data),
-                   'content-disposition':'attachment; filename=%s' % header_filename}
+                   'content-disposition':'attachment; filename=%s'
+                                                % header_filename}
 
         fs = FieldStorage(fp=fp, environ=env, headers=headers)
         return FileUpload(fs)

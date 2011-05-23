@@ -5,7 +5,7 @@ __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
 
 from zope.interface import implements
-from interfaces import IExhibitMapView
+from eea.daviz.views.map.interfaces import IExhibitMapView
 from eea.daviz.views.view import ViewForm
 
 class View(ViewForm):

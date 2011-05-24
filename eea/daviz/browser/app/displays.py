@@ -8,7 +8,7 @@ __credits__ = """contributions: Alin Voinea"""
 from zope.interface import implements
 from zope.component import adapts
 import p4a.z2utils #Patch CMFDynamicViewFTI
-p4a.z2utils # pyflakes
+#p4a.z2utils # pyflakes
 from Products.CMFDynamicViewFTI import interfaces as cmfdynifaces
 from eea.daviz.interfaces import IExhibitJson
 
@@ -35,3 +35,7 @@ class DynamicViews(object):
         """ Get the layouts registered for this object.
         """
         return (("daviz-view.html", "Daviz View"),)
+
+__all__ = [
+        p4a.z2utils
+        ]

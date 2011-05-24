@@ -51,13 +51,13 @@ class EditForm(SubPageForm):
             ignore_request=ignore_request)
 
     @action(_('Save'), condition=haveInputWidgets)
-    def save(self, action, data):
+    def save(self, saction, data):
         """ Handle save action
         """
         mutator = queryAdapter(self.context, IDavizConfig)
         mutator.edit_view(self.prefix, **data)
 
-        name = action.__name__.encode('utf-8')
+        name = saction.__name__.encode('utf-8')
         value = self.request.form.get(name, '')
         if value == 'ajax':
             return 'Changes saved'

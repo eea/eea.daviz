@@ -7,12 +7,7 @@ __credits__ = """contributions: Alin Voinea"""
 
 from zope.interface import implements
 from eea.daviz.app.interfaces import IDavizConfig
-try:
-    from zope.annotation.interfaces import IAnnotations
-    IAnnotations
-except ImportError:
-    #BBB Plone 2.5
-    from zope.app.annotation.interfaces import IAnnotations
+from zope.annotation.interfaces import IAnnotations
 
 from persistent.dict import PersistentDict
 from persistent.list import PersistentList
@@ -171,3 +166,7 @@ class Configure(object):
         """
         anno = IAnnotations(self.context)
         anno[ANNO_FACETS] = PersistentList()
+
+__all__ = [
+    IAnnotations
+]

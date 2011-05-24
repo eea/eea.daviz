@@ -3,7 +3,7 @@
 import logging
 try:
     import json as simplejson
-    simplejson
+    simplejson = simplejson # pylint
 except ImportError:
     import simplejson
 from zope import schema
@@ -91,3 +91,4 @@ class EditForm(SubPageForm):
         IStatusMessage(self.request).addStatusMessage(self.message, type='info')
         next_url = self.context.absolute_url() + '/daviz-edit.html'
         self.request.response.redirect(next_url)
+

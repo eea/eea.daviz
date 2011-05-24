@@ -24,6 +24,7 @@ logger = logging.getLogger('eea.daviz.converter')
 class DavizSupport(BrowserView):
     """ Enable/Disable Exhibit
     """
+
     def _redirect(self, msg='', to='daviz-edit.html'):
         """ Return or redirect
         """

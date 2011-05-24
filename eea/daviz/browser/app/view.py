@@ -7,7 +7,7 @@ __credits__ = """contributions: Alin Voinea"""
 
 try:
     import json as simplejson
-    simplejson
+    simplejson = simplejson
 except ImportError:
     import simplejson
 from zope.component import queryAdapter, queryMultiAdapter

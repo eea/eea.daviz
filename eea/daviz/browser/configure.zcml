@@ -67,19 +67,6 @@
     permission="cmf.ModifyPortalContent"
     />
 
-  <browser:menu
-      id="object"
-      title="Plone Actions Drop-Down Menu"
-      />
-
-  <browser:menuItem
-    for="eea.daviz.interfaces.IExhibitJson"
-    menu="object"
-    title="Edit Exhibit"
-    action="daviz-edit.html"
-    permission="cmf.ModifyPortalContent"
-    />
-
   <browser:resource
     name="eea.daviz.view.css"
     file="./css/view.css"

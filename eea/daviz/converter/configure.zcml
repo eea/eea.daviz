@@ -5,36 +5,20 @@
 
  <utility factory=".converter.ExhibitJsonConverter" />
 
-  <!--ichimdav #plone4 temporary adition of browser:menu directive 
-      until menuItem is transformed to actions -->
-  <browser:menu
-      id="object_buttons"
-      title="Plone Content Drop-Down Menu"
-      />
-  
-  <browser:menuItem
-    for="eea.daviz.interfaces.IPossibleExhibitJson"
-    menu="object_buttons"
-    title="Convert to Exhibit view"
-    action="$object_url/@@daviz.enable"
-    description="Convert CSV file to Exhibit Json"
-    permission="cmf.ModifyPortalContent"
+  <browser:page
+    name="daviz_support"
+    for="zope.interface.Interface"
+    class=".browser.DavizPublicSupport"
+    permission="zope.Public"
+    allowed_interface="eea.daviz.subtypes.interfaces.IDavizSubtyper"
     />
 
   <browser:page
+    name="daviz_support"
     for="eea.daviz.interfaces.IPossibleExhibitJson"
-    name="daviz.enable"
     class=".browser.DavizSupport"
-    attribute="enable"
-    permission="cmf.ModifyPortalContent"
-    />
-
-  <browser:page
-    for="eea.daviz.interfaces.IPossibleExhibitJson"
-    name="daviz.disable"
-    class=".browser.DavizSupport"
-    attribute="disable"
-    permission="cmf.ModifyPortalContent"
+    permission="zope.Public"
+    allowed_interface="eea.daviz.subtypes.interfaces.IDavizSubtyper"
     />
 
 </configure>

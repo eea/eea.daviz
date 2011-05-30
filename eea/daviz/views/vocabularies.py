@@ -22,7 +22,7 @@ class ViewsVocabulary(object):
     def _adapters(self, context):
         """ Return adapters
         """
-        adapters = getAdapters((context, context.request), Interface)
+        adapters = getAdapters((context, context.REQUEST), Interface)
         for name, adapter in adapters:
             if not IExhibitView.providedBy(adapter):
                 continue
@@ -31,7 +31,12 @@ class ViewsVocabulary(object):
     def __call__(self, context=None):
         """ See IVocabularyFactory interface
         """
-        views = [(name, label) for name, label in self._adapters(context)]
+        # TODO plone4 FIXME this code fails with the message:
+        # TypeError: argument 2 to map() must support iteration
+        #views = [(name, label) for name, label in self._adapters(context)]
+        views = [(u'daviz.map', 'Map View'), (u'daviz.timeline',
+                 'Timeline View'), (u'daviz.tile', 'Tile View'),
+                             (u'daviz.tabular', 'Tabular View')]
         views.sort(key=operator.itemgetter(1))
 
         return SimpleVocabulary([

@@ -46,8 +46,8 @@ Let's test it in real world
 Add view
 
     >>> name = handler.add_view('table')
-    >>> handler.views
-    [<persistent.dict.PersistentDict object at ...>]
+    >>> handler.views[0].__class__
+    <class 'persistent.mapping.PersistentMapping'>
 
 Get view
 
@@ -64,8 +64,8 @@ Delete view
 Add facet
 
     >>> name = handler.add_facet('First Name')
-    >>> handler.facets
-    [<persistent.dict.PersistentDict object at ...>]
+    >>> handler.facets[0].__class__
+    <class 'persistent.mapping.PersistentMapping'>
 
 Get facet
 

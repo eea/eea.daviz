@@ -2,10 +2,15 @@ Changelog
 =========
 [Alexandru Ghica - alec.ghica@eaudeweb.ro]
 [Alin Voinea - alin.voinea@eaudeweb.ro]
+[David Ichim - david.ichim@eaudeweb.ro]
 [Antonio De Marinis - demarinis@eea.europa.eu]
 
-1.3-dev - (unreleased)
+4.0-dev - (unreleased)
 ----------------------
+ * Change: plone 4.0.4 compatibility [ichimdav #4234]
+ * TODO:
+       -- Migrate edit exhibit view to use jquery.tabs instead of ui
+       -- Fix vocabularies call for views 
 
 1.2 - (2011-04-07)
 ------------------

@@ -59,15 +59,15 @@
       <div class="formHelp" i18n:translate="">
         Enable Exhibit views.
       </div>
-      <!--<div tal:repeat="item python:view.views_vocabulary">-->
-      <!--  <input type="checkbox" name="daviz.views:list" tal:attributes="-->
-      <!--    id python:item.value;-->
-      <!--    value python:item.value;-->
-      <!--    checked python:item.value in view.enabled_views;-->
-      <!--    "/>-->
-      <!--  <label tal:attributes="for python:item.value"-->
-      <!--    tal:content="python:item.title" />-->
-      <!--</div>-->
+      <div tal:repeat="item python:view.views_vocabulary">
+        <input type="checkbox" name="daviz.views:list" tal:attributes="
+          id python:item.value;
+          value python:item.value;
+          checked python:item.value in view.enabled_views;
+          "/>
+        <label tal:attributes="for python:item.value"
+          tal:content="python:item.title" />
+      </div>
     </div>
   <div class="field">
     <input type="submit" name="daviz.views.save" value="Save changes"

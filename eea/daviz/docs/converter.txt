@@ -52,14 +52,14 @@ Let's convert file data and check JSON output.
 Now let's use the browser interface
 
     >>> from zope.component import queryMultiAdapter
-    >>> converter = queryMultiAdapter((daviz_file, daviz_file.REQUEST), name=u'daviz.enable')
-    >>> _ = converter()
+    >>> converter = queryMultiAdapter((daviz_file, daviz_file.REQUEST), name=u'daviz_support')
+    >>> _ = converter.enable()
 
     >>> from zope.component import queryAdapter
     >>> from eea.daviz.interfaces import IDavizConfig
     >>> accessor = queryAdapter(daviz_file, IDavizConfig)
-    >>> accessor.json
-    <persistent.dict.PersistentDict object at ...>
+    >>> accessor.json.__class__
+    <class 'persistent.mapping.PersistentMapping'>
 
     >>> pprint(dict(accessor.json))
     {'items': ...

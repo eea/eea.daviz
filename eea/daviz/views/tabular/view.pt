@@ -10,9 +10,8 @@
   ex:rowStyler="DavizTableRowStyler"
   tal:condition="columns"
   tal:attributes="
-    ex:columns columns;
-    ex:columnLabels labels;
-    "
-></div>
+  ex:columns columns;
+  ex:columnLabels labels;">
+</div>
 
 </tal:view>

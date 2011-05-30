@@ -7,7 +7,7 @@ __credits__ = """contributions: Alec Ghica, Alin Voinea"""
 
 import os
 from StringIO import StringIO
-from Globals import package_home
+from App.Common import package_home
 from cgi import FieldStorage
 from ZPublisher.HTTPRequest import FileUpload
 from Products.Five import zcml

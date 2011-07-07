@@ -77,11 +77,11 @@
 </form>
 </div>
 
-<div id="daviz-views-edit" class="daviz-views-edit">
+<div id="daviz-views-edit" class="daviz-views-edit daviz-edit-tabs">
   <tal:views replace="structure here/@@daviz-edit.views.html" />
 </div>
 
-<div id="daviz-properties-edit" class="daviz-properties-edit">
+<div id="daviz-properties-edit" class="daviz-properties-edit daviz-edit-tabs">
   <tal:views replace="structure here/@@daviz-edit.properties.html" />
 </div>
 

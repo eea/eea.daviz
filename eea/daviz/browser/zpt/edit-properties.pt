@@ -1,5 +1,5 @@
-<ul style="display: none">
-  <li tal:define="
+<ul class="formTabs">
+  <li class="formTab" tal:define="
     name string:daviz.properties;
     editform python:view.get_edit(name);
     label python:editform.label;
@@ -12,16 +12,18 @@
   </li>
 </ul>
 
-<div tal:define="
-  name string:daviz.properties;
-  editform python:view.get_edit(name);
-  label python:editform.label;
-  id python:name.replace('.', '-');"
-  tal:attributes="id string:$id-tab"
-  tal:condition="editform">
-  <form method="post"
-    tal:define="name python:editform.__name__"
-    tal:attributes="action string:${here/absolute_url}/@@$name">
-    <tal:editform replace="structure editform" />
-  </form>
+<div class="panes">
+  <div tal:define="
+    name string:daviz.properties;
+    editform python:view.get_edit(name);
+    label python:editform.label;
+    id python:name.replace('.', '-');"
+    tal:attributes="id string:$id-tab"
+    tal:condition="editform">
+    <form method="post"
+      tal:define="name python:editform.__name__"
+      tal:attributes="action string:${here/absolute_url}/@@$name">
+      <tal:editform replace="structure editform" />
+    </form>
+  </div>
 </div>

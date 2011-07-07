@@ -32,8 +32,8 @@ setup(name=name,
       install_requires=[
           'setuptools',
           'eea.exhibit',
-          'eea.facetednavigation',
-          'p4a.z2utils'
+          'p4a.z2utils',
+          'collective.js.jqueryui',
       ],
       entry_points="""
       # -*- Entry points: -*-

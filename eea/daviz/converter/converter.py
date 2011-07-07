@@ -10,12 +10,12 @@ from zope.interface import implements
 from eea.daviz.converter.interfaces import IExhibitJsonConverter
 
 class EEADialectTab(csv.Dialect):
-    """ CSV dialect having tab as delimiter 
+    """ CSV dialect having tab as delimiter
     """
     delimiter = '\t'
     quotechar = '"'
     # Should be set to quotechar = csv.QUOTE_NONE when we will use Python 2.5
-    # as setting quotechar to nothing does not work in Python 2.4. 
+    # as setting quotechar to nothing does not work in Python 2.4.
     # For more details see
     # http://stackoverflow.com/questions/494054/
     # how-can-i-disable-quoting-in-the-python-2-4-csv-reader/494126
@@ -34,9 +34,6 @@ class ExhibitJsonConverter(object):
 
     def __call__(self, datafile):
         """ Returns JSON output after converting source data. """
-        #TODO: in the first sprint will convert only CSV (tab separated) files
-        #      to JSON, in a future sprint a converter from more formats to
-        #      JSON will be implemented (e.g. Babel)
 
         columns = []
         hasLabel = False

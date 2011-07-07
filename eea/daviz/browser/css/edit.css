@@ -192,3 +192,64 @@ dl.portalMessage dd {
 .daviz-status-lock {
   background: transparent url(../../++resource++eea.daviz.images/background.png) no-repeat center ! important;
 }
+
+/* Tabs */
+.daviz-edit-tabs ul.formTabs {
+  background-color: #ddd;
+  border: 0.3em solid #ddd;
+}
+
+.daviz-edit-tabs ul.formTabs {
+  display: block;
+  border-style: solid solid none solid;
+  margin-left: 0;
+  border-top-right-radius: 0.5em;
+  border-top-left-radius: 0.5em;
+  -webkit-border-top-right-radius: 0.5em;
+  -webkit-border-top-left-radius: 0.5em;
+  -moz-border-radius-topleft: 0.5em;
+  -moz-border-radius-topright: 0.5em;
+}
+
+.daviz-edit-tabs li.formTab {
+    display: inline;
+    margin-right:0.25em;
+}
+
+.daviz-edit-tabs li.formTab a {
+    /* this isn't supported by all browsers, so we keep it in a separate rule */
+    display: inline-block;
+}
+
+.daviz-edit-tabs li.formTab a {
+    line-height: 2em;
+    padding: 0 0.75em;
+    text-decoration: none;
+    border: none;
+    margin: 0 ;
+}
+
+.daviz-edit-tabs li.formTab a.current {
+    font-weight: bold;
+}
+
+.daviz-edit-tabs li.formTab a.current,
+.daviz-edit-tabs li.formTab a:hover {
+    background: White;
+    color: Black;
+}
+
+.daviz-edit-tabs .panes {
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #DDDDDD;
+  padding: 0.5em;
+}
+
+#daviz-views-edit fieldset {
+  border: none;
+}
+
+#daviz-properties-edit fieldset {
+ border: none;
+}

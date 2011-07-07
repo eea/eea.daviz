@@ -1,38 +1,59 @@
 Changelog
 =========
-[Alexandru Ghica - alec.ghica@eaudeweb.ro]
-[Alin Voinea - alin.voinea@eaudeweb.ro]
-[David Ichim - david.ichim@eaudeweb.ro]
-[Antonio De Marinis - demarinis@eea.europa.eu]
+
 
 4.0-dev - (unreleased)
 ----------------------
- * Change: plone 4.0.4 compatibility [ichimdav #4234]
- * TODO:
-       -- Migrate edit exhibit view to use jquery.tabs instead of ui
-       -- Fix vocabularies call for views 
+
+* Feature: Added upgrade steps
+  [voineali #4392]
+
+* Feature: Plone 4.0.4 compatible
+  [ichimdav, voineali #4234]
+
 
 1.2 - (2011-04-07)
 ------------------
- * Feature: Added edit form for generated JSON [voineali #4199]
- * Feature: If column name contains ":list" exported data in
-     JSON will pe an array [ghicaale #4199]
- * Bug fix: Made exibit available for ATBlob files [voineali #4135]
- * Cleanup: of pyflakes warnings [ichimdav #4141]
- * Cleanup: of sensible pylint violations [ichimdav #4140]
- * Feature: Added live search field as default on top fixes #3023 [demarant]
- * Change: Moved facets to the right [demarant]
- * Bug fix: Fixed Google Map Key alert [voineali #4196]
- * Change: Disabled Thumbnails View as it's bugous on IE [voineali #4196]
+
+* Feature: Added edit form for generated JSON
+  [voineali #4199]
+
+* Feature: If column name contains ":list" exported data in JSON will pe an array
+  [ghicaale #4199]
+
+* Bug fix: Made exibit available for ATBlob files
+  [voineali #4135]
+
+* Cleanup: of pyflakes warnings
+  [ichimdav #4141]
+
+* Cleanup: of sensible pylint violations
+  [ichimdav #4140]
+
+* Feature: Added live search field as default on top
+  [demarant, #3023]
+
+* Change: Moved facets to the right
+  [demarant]
+
+* Bug fix: Fixed Google Map Key alert
+  [voineali #4196]
+
+* Change: Disabled Thumbnails View as it's bugous on IE
+  [voineali #4196]
+
 
 1.1 - (2011-03-16)
 ------------------
- *  Bug fix: Removed jQuery and jQuery UI from daviz-edit.css, daviz-edit.js
-    as they generate errors if already installed. You'll have to manually
-    install jQuery and jQuery UI in portal_css and portal_javascripts
-    [voineali #4196]
+
+*  Bug fix: Removed jQuery and jQuery UI from daviz-edit.css, daviz-edit.js
+   as they generate errors if already installed. You'll have to manually
+   install jQuery and jQuery UI in portal_css and portal_javascripts
+   [voineali #4196]
+
 
 1.0 - (2011-03-16)
 ------------------
- * Initial release [voineali #2773]
 
+* Initial release
+  [voineali #2773]

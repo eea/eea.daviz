@@ -9,21 +9,20 @@
             visible="True">
             <permission>Modify portal content</permission>
         </action>
-       
+
         <action title="Disable exhibit view" action_id="daviz.disable" category="object_buttons"
            condition_expr="object/@@daviz_support/can_disable"
            url_expr="string:${object/absolute_url}/@@daviz_support/disable"
             visible="True">
             <permission>Modify portal content</permission>
         </action>
-        
+
         <action title="Enable exhibit view" action_id="daviz.enable" category="object_buttons"
            condition_expr="object/@@daviz_support/can_enable"
             url_expr="string:${object/absolute_url}/@@daviz_support/enable"
             visible="True">
             <permission>Modify portal content</permission>
         </action>
-    
+
     </action-provider>
 </object>
-

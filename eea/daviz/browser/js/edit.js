@@ -1,4 +1,4 @@
-var DavizEdit = {'version': '1.0.0'};
+var DavizEdit = {'version': '4.0'};
 
 DavizEdit.Status = {
   initialize: function(){
@@ -103,11 +103,9 @@ DavizEdit.Views = {
   },
 
   update_tabs: function(){
-    this.area.tabs('destroy');
-    jQuery('ul', this.area).show();
     jQuery('fieldset', this.area).addClass('daviz-edit-fieldset');
     jQuery('form h1', this.area).hide();
-    this.area.tabs();
+    jQuery('ul', this.area).tabs('div.panes > div');
     DavizEdit.ViewSettings.initialize();
   }
 };
@@ -169,10 +167,9 @@ DavizEdit.Properties = {
   },
 
   update_tabs: function(){
-    jQuery('ul', this.area).show();
     jQuery('fieldset', this.area).addClass('daviz-edit-fieldset');
     jQuery('form h1', this.area).hide();
-    this.area.tabs();
+    jQuery('ul', this.area).tabs('div.panes > div');
   }
 };
 

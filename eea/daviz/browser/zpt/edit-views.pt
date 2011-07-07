@@ -1,6 +1,6 @@
-<ul style="display: none">
+<ul class="formTabs">
   <tal:editheader repeat="enabled python:view.enabled_views">
-    <li tal:define="
+    <li class="formTab" tal:define="
       viewform python:view.get_view(enabled);
       label python:viewform.label;
       id python:enabled.replace('.', '-');
@@ -14,7 +14,8 @@
   </tal:editheader>
 </ul>
 
-<tal:edittab repeat="enabled python:view.enabled_views">
+<div class="panes">
+<tal:view repeat="enabled python:view.enabled_views">
   <div tal:define="
     viewform python:view.get_view(enabled);
     label python:viewform.label;
@@ -28,5 +29,5 @@
       <tal:editform replace="structure editform" />
     </form>
   </div>
-</tal:edittab>
-<h1>edn</h1>
+</tal:view>
+</div>

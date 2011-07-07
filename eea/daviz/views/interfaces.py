@@ -12,3 +12,18 @@ class IExhibitView(Interface):
     """ Access / update exhibit view configuration
     """
     label = TextLine(title=u'Label for exhibit view')
+
+class IViewDirective(Interface):
+    """
+    Register a daviz view
+    """
+    name = TextLine(
+        title=u"The name of the view.",
+        description=u"The name shows up in URLs/paths. For example 'daviz.map'",
+        required=True,
+        default=u'',
+        )
+
+class IDavizViews(Interface):
+    """ Utility to get available daviz views
+    """

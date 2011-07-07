@@ -1,6 +1,9 @@
 <configure
   xmlns="http://namespaces.zope.org/zope"
+  xmlns:daviz="http://namespaces.zope.org/daviz"
   xmlns:browser="http://namespaces.zope.org/browser">
+
+  <daviz:view name="daviz.tabular" />
 
   <browser:page
     name="daviz.tabular"

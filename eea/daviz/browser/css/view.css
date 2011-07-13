@@ -5,3 +5,8 @@
   padding: 1em ! important;
   margin: 1em ! important;
 }
+
+.daviz-tabular-details {
+  display: block;
+  text-align: center;
+}

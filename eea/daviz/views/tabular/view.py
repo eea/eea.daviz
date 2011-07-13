@@ -19,8 +19,10 @@ class View(ViewForm):
     @property
     def columns(self):
         columns = self.data.get('columns', [])
-        res = ['.%s' % item for item in columns]
-        return ', '.join(res)
+        columns = ['.%s' % item for item in columns]
+        if self.details:
+            columns.append('!label')
+        return columns
 
     @property
     def labels(self):
@@ -32,4 +34,13 @@ class View(ViewForm):
             facet = accessor.facet(column, {})
             label = facet.get('label', column)
             labels.append(label)
-        return ', '.join(labels)
+
+        if self.details:
+            labels.append('Details')
+        return labels
+
+    @property
+    def details(self):
+        """ Show details column?
+        """
+        return self.data.get('details', False)

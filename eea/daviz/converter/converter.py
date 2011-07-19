@@ -4,9 +4,12 @@ __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alec Ghica"""
 
+import logging
 import csv
 from zope.interface import implements
 from interfaces import IExhibitJsonConverter
+
+logger = logging.getLogger("eea.daviz.converter")
 
 class EEADialectTab(csv.Dialect):
     """ CSV dialect having tab as delimiter """
@@ -28,6 +31,71 @@ class ExhibitJsonConverter(object):
     """
     implements(IExhibitJsonConverter)
 
+    def text2list(self, key, value):
+        """ Detect lists
+        """
+        if ":list" not in key:
+            return value
+
+        if "," in value:
+            value = value.split(",")
+        elif ";" in value:
+            value = value.split(";")
+        else:
+            value = [value,]
+        return value
+
+    def text2number(self, key, value):
+        """ Detect numbers
+        """
+        if ":number" not in key:
+            return value
+
+        try:
+            value = int(value)
+        except Exception:
+            try:
+                value = float(value)
+            except Exception, err:
+                logger.debug(err)
+        return value
+
+    def text2boolean(self, key, value):
+        """ Detect boolean
+        """
+        if ":boolean" not in key:
+            return value
+
+        try:
+            value = bool(value)
+        except Exception, err:
+            logger.debug(err)
+        return value
+
+    def column_type(self, column):
+        """ Get column and type from column
+
+            >>> ExhibitJsonConverter().column_type("start:date")
+            ("start", "date")
+
+            >>> ExhibitJsonConverter().column_type("Website:url")
+            ("Website", "url")
+
+            >>> ExhibitJsonConverter().column_type("Items: one, two:list")
+            ("Items: one, two", "list")
+
+            >>> ExhibitJsonConverter().column_type("Title")
+            ("Title", "text")
+
+        """
+
+        if ":" not in column:
+            return column, "text"
+
+        typo = column.split(":")[-1]
+        column = ":".join(column.split(":")[:-1])
+        return column, typo
+
     def __call__(self, datafile):
         """ Returns JSON output after converting source data. """
         #TODO: in the first sprint will convert only CSV (tab separated) files
@@ -46,10 +114,12 @@ class ExhibitJsonConverter(object):
 
             # Get column headers
             if columns == []:
-                columns = [name.replace(' ', '+') for name in row]
-
-                # Required by Exhibit
-                hasLabel = bool([x for x in columns if x == 'label'])
+                for name in row:
+                    name = name.replace(' ', '+')
+                    if name.lower().endswith('label'):
+                        name = "label"
+                        hasLabel = True
+                    columns.append(name)
                 continue
 
             # Create JSON
@@ -63,23 +133,14 @@ class ExhibitJsonConverter(object):
             for col in columns:
                 text = row.next()
 
-                detected_semicolon = ';' in text
-                detected_comma = ',' in text
-                detected_delimiter = None
+                text = self.text2list(col, text)
+                text = self.text2number(col, text)
+                text = self.text2boolean(col, text)
 
-                # Multiple values
-                if ':list' in col:
-                    if detected_comma:
-                        detected_delimiter = ','
-                    elif detected_semicolon:
-                        detected_delimiter = ';'
-                elif detected_semicolon:
-                    detected_delimiter = ';'
-
-                if detected_delimiter:
-                    text = text.split(detected_delimiter)
-
+                col, _type = self.column_type(col)
                 data[col] = text
+
             out.append(data)
 
+        columns = (self.column_type(col) for col in columns)
         return columns, {'items': out}

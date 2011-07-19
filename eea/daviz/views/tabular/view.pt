@@ -1,31 +1,15 @@
-<tal:view define="
-  columns python:template.columns;
-  labels python:template.labels">
-
 <div ex:role="view"
   ex:viewClass="Tabular"
   ex:cellSpacing="0"
   ex:cellPadding="0"
   ex:tableStyler="DavizTableStyler"
   ex:rowStyler="DavizTableRowStyler"
-  tal:condition="columns"
+  tal:define="
+    columns python:[col for col in template.columns];
+    labels python:template.labels;
+    formats python:template.formats;"
   tal:attributes="
     ex:columns python:', '.join(columns);
-    ex:columnLabels python:', '.join(labels);">
-
-  <table>
-    <tr>
-      <td tal:repeat="column columns">
-        <span tal:condition="python:column != '!label'" tal:attributes="
-          ex:content column"></span>
-        <span tal:condition="python:column == '!label'" tal:attributes="
-          ex:content column;
-          ex:formats string:item {title: expression('more')};
-          class string:daviz-tabular-details"></span>
-      </td>
-    </tr>
-  </table>
-
-</div>
-
-</tal:view>
+    ex:columnLabels python:', '.join(labels);
+    ex:columnFormats python:', '.join(formats)"
+  tal:condition="columns"></div>

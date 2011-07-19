@@ -42,11 +42,10 @@ Let's convert file data and check JSON output.
                {'Country': 'Italy',
                 'Description': '\xd0\x97\xd0\xb5\xd0\xbc\xd1\x8f',
                 'Job+title': 'Head of Group',
-                'Name': 'Antonio De Marinis',
                 'Programme': 'NSV1 - Biodiversity',
-                'Quantity': '10.5',
+                'Quantity': 10.5,
                 'Starting+date': '01/01/2010',
-                'label': '3'},
+                'label': 'Antonio De Marinis'},
     ...}]}
 
 Now let's use the browser interface
@@ -67,10 +66,9 @@ Now let's use the browser interface
      {'Country': 'Italy',
       'Description': '\xd0\x97\xd0\xb5\xd0\xbc\xd1\x8f',
       'Job+title': 'Head of Group',
-      'Name': 'Antonio De Marinis',
       'Programme': 'NSV1 - Biodiversity',
-      'Quantity': '10.5',
+      'Quantity': 10.5,
       'Starting+date': '01/01/2010',
-      'label': '3'},
+      'label': 'Antonio De Marinis'},
     ...
     ...}]}

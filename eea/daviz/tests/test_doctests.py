@@ -21,9 +21,13 @@ def test_suite():
             Suite('docs/converter.txt',
                   optionflags=OPTIONFLAGS,
                   package='eea.daviz',
-                  test_class=DavizFunctionalTestCase) ,
+                  test_class=DavizFunctionalTestCase),
             Suite('docs/app.txt',
                   optionflags=OPTIONFLAGS,
                   package='eea.daviz',
-                  test_class=DavizFunctionalTestCase) ,
-              ))
+                  test_class=DavizFunctionalTestCase),
+            Suite('converter/converter.py',
+                  optionflags=OPTIONFLAGS,
+                  package='eea.daviz',
+                  test_class=DavizFunctionalTestCase),
+    ))

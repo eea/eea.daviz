@@ -20,6 +20,13 @@ logger = logging.getLogger('eea.daviz')
 class IExhibitPropertiesEdit(Interface):
     """ Edit Exhibit global properties
     """
+    views = schema.List(
+        title=u'Views',
+        description=u'Enable exhibit views',
+        unique=True,
+        value_type=schema.Choice(
+            vocabulary="eea.daviz.vocabularies.ViewsVocabulary")
+    )
     json = schema.Text(
         title=u"JSON",
         description=u"Edit generated JSON",
@@ -48,6 +55,7 @@ class EditForm(SubPageForm):
         return {
             'name': self.prefix,
             'json': simplejson.dumps(dict(accessor.json), indent=2),
+            'views': [view.get('name') for view in accessor.views],
         }
 
     def setUpWidgets(self, ignore_request=False):
@@ -64,8 +72,9 @@ class EditForm(SubPageForm):
         """ Handle save action
         """
         mutator = queryAdapter(self.context, IDavizConfig)
-        json = data.get('json', '{}')
 
+        # Handle JSON
+        json = data.get('json', '{}')
         try:
             json = dict(simplejson.loads(json))
         except Exception, err:
@@ -74,6 +83,18 @@ class EditForm(SubPageForm):
         else:
             mutator.json = json
 
+        # Handle views
+        old = mutator.views
+        old = dict((view.get('name', ''), dict(view))
+                   for view in old)
+        mutator.delete_views()
+
+        for key in data.get('views', []):
+            properties = old.get(key, {})
+            properties.pop('name', None)
+            mutator.add_view(name=key, **properties)
+
+        # Return
         name = action.__name__.encode('utf-8')
         value = self.request.form.get(name, '')
         if value == 'ajax':

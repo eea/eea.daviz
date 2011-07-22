@@ -4,12 +4,14 @@ __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
 
+import logging
 from zope.component import queryUtility
 from zope.component import queryAdapter, queryMultiAdapter
 from Products.statusmessages.interfaces import IStatusMessage
 from zope.app.schema.vocabulary import IVocabularyFactory
 from Products.Five.browser import BrowserView
 from eea.daviz.interfaces import IDavizConfig
+logger = logging.getLogger('eea.daviz')
 
 class Edit(BrowserView):
     """ Edit page
@@ -48,6 +50,19 @@ class Edit(BrowserView):
         name += u'.edit'
         return queryMultiAdapter((self.context, self.request), name=name)
 
+    def get_facet_form(self, facet):
+        ftype = facet.get('type', '')
+        if not isinstance(ftype, unicode):
+            ftype = ftype.decode('utf-8')
+        ftype += u'.edit'
+
+        form = queryMultiAdapter((self.context, self.request), name=ftype)
+        if form:
+            name = facet.get('name', '')
+            form.prefix = name
+
+        return form
+
 class Configure(BrowserView):
     """ Edit controller
     """
@@ -66,46 +81,43 @@ class Configure(BrowserView):
         return msg
 
     def handle_facets(self, **kwargs):
-        columns = kwargs.get('daviz.facets.columns', [])
-        labels = kwargs.get('daviz.facets.labels', [])
-
+        """ Update facets position
+        """
         mutator = queryAdapter(self.context, IDavizConfig)
-        for index, facet in enumerate(mutator.facets):
-            name = facet.get('name')
-            properties = {
-                'label': len(labels) > index and labels[index] or name,
-                'show': name in columns
-            }
-            mutator.edit_facet(name, **properties)
+        order = kwargs.get('order', [])
+        if not order:
+            return self._redirect(
+                'Exhibit facets settings not saved: Nothing to do', to=None)
+
+        if not isinstance(order, list):
+            return self._redirect(
+                'Exhibit facets settings not saved: Nothing to do', to=None)
+
+        if len(order) == 1:
+            return self._redirect(
+                'Exhibit facets settings not saved: Nothing to do', to=None)
+
+        facets = mutator.facets
+        facets = dict((facet.get('name'), dict(facet)) for facet in facets)
+        mutator.delete_facets()
+
+        for name in order:
+            properties = facets.get(name, {})
+            if not properties:
+                logger.exception('Unknown facet id: %s', name)
+                continue
+            mutator.add_facet(**properties)
 
         if kwargs.get('daviz.facets.save') == 'ajax':
             return self._redirect('Exhibit facets settings saved', to=None)
         return self._redirect('Exhibit facets settings saved')
 
-    def handle_views(self, **kwargs):
-        views = kwargs.get('daviz.views', [])
-
-        mutator = queryAdapter(self.context, IDavizConfig)
-        existing = [view.get('name') for view in mutator.views]
-
-        for view in existing:
-            if view not in views:
-                mutator.delete_view(view)
-
-        for view in views:
-            if view not in existing:
-                mutator.add_view(view)
-
-        if kwargs.get('daviz.views.save') == 'ajax':
-            return self._redirect('Exhibit views settings saved', to=None)
-        return self._redirect('Exhibit views settings saved')
 
     def __call__(self, **kwargs):
         if self.request:
             kwargs.update(self.request.form)
 
-        if kwargs.get('daviz.views.save', None):
-            return self.handle_views(**kwargs)
-        elif kwargs.get('daviz.facets.save', None):
+        if kwargs.get('daviz.facets.save', None):
             return self.handle_facets(**kwargs)
+
         return self._redirect('Invalid action provided')

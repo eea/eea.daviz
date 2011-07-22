@@ -10,3 +10,13 @@
   display: block;
   text-align: center;
 }
+
+div div.exhibit-facet-body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+div div.exhibit-facet-header-filterControl {
+  width: 4em;
+  text-align: right;
+}

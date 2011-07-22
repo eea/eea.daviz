@@ -39,13 +39,13 @@ Let's convert file data and check JSON output.
     >>> from pprint import pprint
     >>> pprint(json)
     {'items': [...
-               {'Country': 'Italy',
-                'Description': '\xd0\x97\xd0\xb5\xd0\xbc\xd1\x8f',
-                'Job+title': 'Head of Group',
-                'Programme': 'NSV1 - Biodiversity',
-                'Quantity': 10.5,
-                'Starting+date': '01/01/2010',
-                'label': 'Antonio De Marinis'},
+               {'country': 'Italy',
+                'description': '\xd0\x97\xd0\xb5\xd0\xbc\xd1\x8f',
+                'job_title': 'Head of Group',
+                'label': 'Antonio De Marinis',
+                'programme': 'NSV1 - Biodiversity',
+                'quantity': 10.5,
+                'starting_date': '01/01/2010'},
     ...}]}
 
 Now let's use the browser interface
@@ -61,14 +61,14 @@ Now let's use the browser interface
     <persistent.dict.PersistentDict object at ...>
 
     >>> pprint(dict(accessor.json))
-    {'items': ...
+    {'items': [...
     ...
-     {'Country': 'Italy',
-      'Description': '\xd0\x97\xd0\xb5\xd0\xbc\xd1\x8f',
-      'Job+title': 'Head of Group',
-      'Programme': 'NSV1 - Biodiversity',
-      'Quantity': 10.5,
-      'Starting+date': '01/01/2010',
-      'label': 'Antonio De Marinis'},
+               {'country': 'Italy',
+                'description': '\xd0\x97\xd0\xb5\xd0\xbc\xd1\x8f',
+                'job_title': 'Head of Group',
+                'label': 'Antonio De Marinis',
+                'programme': 'NSV1 - Biodiversity',
+                'quantity': 10.5,
+                'starting_date': '01/01/2010'},
     ...
     ...}]}

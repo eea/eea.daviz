@@ -18,7 +18,7 @@ class IExhibitTabularEdit(Interface):
     columns = schema.List(
         title=u'Columns',
         description=u'Select columns to be shown in table view',
-        required=True,
+        required=True, unique=True,
         value_type=schema.Choice(
             vocabulary="eea.daviz.vocabularies.FacetsVocabulary")
     )

@@ -11,6 +11,8 @@ from Products.Five.browser import BrowserView
 class View(BrowserView):
     implements(IExhibitListFacet)
 
+    label = 'List'
+
     def __init__(self, context, request):
         self.context = context
         self.request = request

@@ -60,6 +60,18 @@
   background-image: url(../../++resource++jquery.ui.theme/images/ui-bg_flat_0_aaaaaa_40x100.png);
 }
 
+.daviz-facet-edit .ui-icon-show {
+  float: right;
+  background-image: url(../../++resource++eea.daviz.images/show.png);
+  cursor: pointer;
+}
+
+.daviz-facet-edit .ui-icon-hide {
+  float: right;
+  background-image: url(../../++resource++eea.daviz.images/hide.png);
+  cursor: pointer;
+}
+
 /* Customize jquery.ui
 */
 .ui-widget-header {
@@ -121,44 +133,60 @@ dl.portalMessage dd {
   padding: 0px;
 }
 
-.daviz-views-settings {
+.daviz-facets-edit {
 }
 
-.daviz-views-settings fieldset {
-  padding-left: 1em;
+.daviz-facets-edit-ajax {
+  float: right;
+  width: 29%;
 }
 
-.daviz-views-settings legend {
-  font-weight: bold;
-  padding: 0.5em;
+.daviz-facet-edit {
+  margin-top: 1em;
 }
 
-.daviz-facets-settings {
+.daviz-facet-edit h1 {
+  font-size: 1.2em;
+  background-color: #CDE2A7;
+  color: black;
+  margin: 0 2px;
+  border: 2px groove threedface;
+  padding: 0.2em 0.5em;
+  cursor: move;
 }
 
-.daviz-facets-settings fieldset {
-  padding-left: 1em;
+.daviz-facet-edit h1.hidden {
+  background-color: #E6E6E6;
 }
 
-.daviz-facets-settings legend {
-  font-weight: bold;
-  padding: 0.5em;
+.daviz-facet-edit h1 .facet-title {
+  overflow: hidden;
+  width: 85%;
+  height: 20px;
 }
 
-.daviz-facets-settings table {
+.daviz-facet-edit fieldset {
+  border: 1px solid #cccccc;
+}
+
+.daviz-facet-edit input[type=text] {
   width: 100%;
 }
 
 .daviz-views-edit {
-  clear: left;
+}
+
+.daviz-views-edit-ajax {
+  width: 70%;
+  float: left;
 }
 
 .daviz-views-edit ul {
   margin:0.5em 0 0 1.5em;
 }
 
-.daviz-properties-edit ul {
-  margin:0.5em 0 0 1.5em;
+.daviz-view-edit textarea {
+  width: 100%;
 }
 
 .daviz-ajax-loader {
@@ -191,4 +219,8 @@ dl.portalMessage dd {
 
 .daviz-status-lock {
   background: transparent url(../../++resource++eea.daviz.images/background.png) no-repeat center ! important;
+}
+
+.daviz-cleanup {
+  clear: both;
 }

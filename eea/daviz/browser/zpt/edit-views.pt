@@ -1,4 +1,17 @@
 <ul style="display: none">
+  <!-- Global settings header -->
+  <li tal:define="
+    name string:daviz.properties;
+    editform python:view.get_edit(name);
+    label python:editform.label;
+    id python:name.replace('.', '-');"
+    tal:condition="editform"
+    tal:attributes="id string:$id-header">
+    <a tal:attributes="href string:#$id-tab">
+      <span tal:content="label">Edit View</span>
+    </a>
+  </li>
+  <!-- Views -->
   <tal:editheader repeat="enabled python:view.enabled_views">
     <li tal:define="
       viewform python:view.get_view(enabled);
@@ -14,6 +27,22 @@
   </tal:editheader>
 </ul>
 
+<!-- Global settings body -->
+<div tal:define="
+  name string:daviz.properties;
+  editform python:view.get_edit(name);
+  label python:editform.label;
+  id python:name.replace('.', '-');"
+  tal:attributes="id string:$id-tab"
+  tal:condition="editform"
+  class="daviz-view-edit">
+  <form method="post"
+    tal:define="name python:editform.__name__"
+    tal:attributes="action string:${here/absolute_url}/@@$name">
+    <tal:editform replace="structure editform" />
+  </form>
+</div>
+<!-- Views body -->
 <tal:edittab repeat="enabled python:view.enabled_views">
   <div tal:define="
     viewform python:view.get_view(enabled);
@@ -21,7 +50,8 @@
     id python:enabled.replace('.', '-');
     editform python:view.get_edit(enabled)"
     tal:attributes="id string:$id-tab"
-    tal:condition="editform">
+    tal:condition="editform"
+    class="daviz-view-edit">
     <form method="post"
       tal:define="name python:editform.__name__"
       tal:attributes="action string:${here/absolute_url}/@@$name">

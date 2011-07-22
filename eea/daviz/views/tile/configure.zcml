@@ -10,4 +10,11 @@
     permission="zope2.View"
     />
 
+  <browser:page
+    for="eea.daviz.interfaces.IExhibitJson"
+    name="daviz.tile.edit"
+    class=".edit.Edit"
+    permission="zope2.View"
+    />
+
 </configure>

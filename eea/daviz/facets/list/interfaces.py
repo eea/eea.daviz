@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
-
+""" List facet
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
 
 from zope.interface import Interface
-from zope.schema import TextLine, Bool, List, Choice
+from zope.schema import TextLine, Bool
 from eea.daviz.facets.interfaces import IExhibitFacet
 
 class IExhibitListFacet(IExhibitFacet):

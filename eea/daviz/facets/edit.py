@@ -29,23 +29,33 @@ class EditForm(SubPageForm):
                 break
 
     def getPrefix(self):
+        """ Form prefix getter
+        """
         return self._prefix
 
     def setPrefix(self, value):
+        """ Form prefix setter
+        """
         self._prefix = value
 
     prefix = property(getPrefix, setPrefix)
 
     @property
     def label(self):
+        """ Label
+        """
         return self.prefix
 
     @property
     def _data(self):
+        """ Form data
+        """
         accessor = queryAdapter(self.context, IDavizConfig)
         return accessor.facet(self.prefix, {})
 
     def setUpWidgets(self, ignore_request=False):
+        """ Setup form widgets
+        """
         self.adapters = {}
         self.widgets = setUpWidgets(
             self.form_fields, self.prefix, self.context, self.request,
@@ -67,6 +77,9 @@ class EditForm(SubPageForm):
 
     @property
     def nextUrl(self):
-        IStatusMessage(self.request).addStatusMessage('Changes saved', type='info')
+        """ Next URL
+        """
+        IStatusMessage(self.request).addStatusMessage(
+            'Changes saved', type='info')
         next = self.context.absolute_url() + '/daviz-edit.html'
         self.request.response.redirect(next)

@@ -69,7 +69,7 @@ DavizEdit.Facets = {
     var index = action.indexOf('@@');
     action = action.slice(0, index) + '@@daviz-edit.save';
 
-    query = {'daviz.facets.save': 'ajax', order: order}
+    query = {'daviz.facets.save': 'ajax', order: order};
     DavizEdit.Status.start('Saving ...');
     jQuery.post(action, query, function(data){
       DavizEdit.Status.stop(data);
@@ -179,7 +179,7 @@ DavizEdit.Views = {
     if(!form.init){
       var action = form.action;
       var i = action.indexOf('@@');
-      var action = action.slice(0, i) + '@@daviz-edit.views.html';
+      action = action.slice(0, i) + '@@daviz-edit.views.html';
       DavizEdit.Status.start('Refreshing ...');
       jQuery.get(action, {}, function(data){
         self.area.html(data);
@@ -235,7 +235,7 @@ DavizEdit.View.prototype = {
   },
 
   replaceURL: function(inputText) {
-    var replacePattern = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+    var replacePattern = /(\b(https?|ftp):\/\/[\-A-Z0-9+&@#\/%?=~_|!:,.;]*[\-A-Z0-9+&@#\/%=~_|])/gim;
     return inputText.replace(replacePattern, '<a href="$1" target="_blank">$1</a>');
   },
 

@@ -1,7 +1,7 @@
 """ Edit facet
 """
 from zope.formlib.form import Fields
-from interfaces import IExhibitListFacetEdit
+from eea.daviz.facets.list.interfaces import IExhibitListFacetEdit
 from eea.daviz.facets.edit import EditForm
 
 class Edit(EditForm):

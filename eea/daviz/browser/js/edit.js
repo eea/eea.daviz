@@ -214,6 +214,11 @@ DavizEdit.View.prototype = {
     var self = this;
     self.view = view;
     self.form = jQuery('form', self.view);
+    self.table = jQuery('div.field:has(label[for=daviz.properties.sources]) table', self.form);
+    if(self.table.length){
+      self.table.addClass('daviz-sources-table');
+      var table = new DavizEdit.SourceTable(self.table);
+    }
 
     self.form.submit(function(){
       self.submit();
@@ -236,7 +241,7 @@ DavizEdit.View.prototype = {
 
   replaceURL: function(inputText) {
     var replacePattern = /(\b(https?|ftp):\/\/[\-A-Z0-9+&@#\/%?=~_|!:,.;]*[\-A-Z0-9+&@#\/%=~_|])/gim;
-    return inputText.replace(replacePattern, '<a href="$1" target="_blank">$1</a>');
+    return inputText.replace(replacePattern, '<a href="$1" target="_blank">here</a>');
   },
 
   submit: function(){
@@ -253,7 +258,7 @@ DavizEdit.View.prototype = {
       }
     });
 
-    var button = jQuery('input[type=submit]', self.form);
+    var button = jQuery('.actionButtons input[type=submit]', self.form);
     var name = button.attr('name');
     query[name] = 'ajax';
 
@@ -270,6 +275,67 @@ DavizEdit.View.prototype = {
     });
   }
 };
+
+DavizEdit.SourceTable = function(table){
+  this.initialize(table);
+};
+
+DavizEdit.SourceTable.prototype = {
+  initialize: function(table){
+    var self = this;
+    self.table = table;
+    self.count = jQuery('input[name=daviz.properties.sources.count]', table.parent());
+
+    self.button_add = jQuery('input[name=daviz.properties.sources.add]', table);
+    self.button_add.click(function(){
+      self.add(jQuery(this));
+      return false;
+    });
+
+    self.button_remove = jQuery('input[name=daviz.properties.sources.remove]', table);
+    self.button_remove.click(function(){
+      self.remove(jQuery(this));
+      return false;
+    });
+
+  },
+
+  add: function(button){
+    var self = this;
+    button.removeClass('submitting');
+    var count = parseInt(self.count.val(), 10);
+
+    var check = jQuery('<input />').attr('type', 'checkbox')
+      .addClass('editcheck')
+      .attr('name', 'daviz.properties.sources.remove_' + count);
+    var text = jQuery('<input />').attr('type', 'text').attr("value", "")
+      .addClass('textType')
+      .attr('name', 'daviz.properties.sources.' + count + '.');
+
+    var td = jQuery('<td>').append(check).append(text);
+    var row = jQuery('<tr>').append(td);
+
+    self.table.prepend(row);
+
+    count += 1;
+    self.count.val(count);
+  },
+
+  remove: function(button){
+    var self = this;
+    button.removeClass('submitting');
+
+    var checked = jQuery('input[type=checkbox]:checked', self.table);
+    checked.each(function(){
+      jQuery(this).parent().parent('tr').remove();
+    });
+
+    var count = parseInt(self.count.val(), 10);
+    count -= checked.length;
+    self.count.val(count);
+  }
+};
+
 
 jQuery(document).ready(function(){
   DavizEdit.Status.initialize();

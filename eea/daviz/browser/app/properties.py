@@ -32,6 +32,18 @@ class IExhibitPropertiesEdit(Interface):
         description=u"Edit generated JSON",
         required=False
     )
+    sources = schema.List(
+        title=u'Additional sources',
+        required=False,
+        description=(
+            u"Add additional external exhibit sources to be merged. "
+            "Supported formats: "
+            "'Exhibit JSON', 'Google Spreadsheet' and 'RDF/XML'. "
+            "See more details "
+            "http://www.simile-widgets.org/wiki/Exhibit/Creating"
+            "%2C_Importing%2C_and_Managing_Data#Conversion_at_Load_Time"),
+        value_type=schema.TextLine(title=u'URL')
+    )
 
 class EditForm(SubPageForm):
     """ Layer to edit daviz properties.
@@ -56,6 +68,7 @@ class EditForm(SubPageForm):
             'name': self.prefix,
             'json': simplejson.dumps(dict(accessor.json), indent=2),
             'views': [view.get('name') for view in accessor.views],
+            'sources': [source.get('name') for source in accessor.sources] or [""],
         }
 
     def setUpWidgets(self, ignore_request=False):
@@ -67,13 +80,10 @@ class EditForm(SubPageForm):
             form=self, data=self._data, adapters=self.adapters,
             ignore_request=ignore_request)
 
-    @formaction(_('Save'), condition=haveInputWidgets)
-    def save(self, action, data):
-        """ Handle save action
+    def handle_json(self, data):
+        """ Handle json property
         """
         mutator = queryAdapter(self.context, IDavizConfig)
-
-        # Handle JSON
         json = data.get('json', '{}')
         try:
             json = dict(simplejson.loads(json))
@@ -83,7 +93,10 @@ class EditForm(SubPageForm):
         else:
             mutator.json = json
 
-        # Handle views
+    def handle_views(self, data):
+        """ Handle views property
+        """
+        mutator = queryAdapter(self.context, IDavizConfig)
         old = mutator.views
         old = dict((view.get('name', ''), dict(view))
                    for view in old)
@@ -93,6 +106,42 @@ class EditForm(SubPageForm):
             properties = old.get(key, {})
             properties.pop('name', None)
             mutator.add_view(name=key, **properties)
+
+    def handle_sources(self, data):
+        """ Handle sources property
+        """
+        mutator = queryAdapter(self.context, IDavizConfig)
+        sources = data.get('sources', [])
+        sources = set(sources)
+        mutator.delete_sources()
+        for source in sources:
+            source = source.strip()
+            if not source:
+                continue
+
+            properties = {
+                "name": source,
+                "converter": "",
+                "type": "json"
+            }
+
+            if 'google' in source.lower():
+                properties['type'] = 'jsonp'
+                properties['converter'] = 'googleSpreadsheets'
+            elif 'rdfa' in source.lower():
+                properties['type'] = 'RDFa'
+            elif ('rdf' in source.lower()) or ('xml' in source.lower()):
+                properties['type'] = 'rdf+xml'
+
+            mutator.add_source(**properties)
+
+    @formaction(_('Save'), condition=haveInputWidgets)
+    def save(self, action, data):
+        """ Handle save action
+        """
+        self.handle_json(data)
+        self.handle_views(data)
+        self.handle_sources(data)
 
         # Return
         name = action.__name__.encode('utf-8')

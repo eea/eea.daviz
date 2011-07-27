@@ -189,6 +189,14 @@ dl.portalMessage dd {
   width: 100%;
 }
 
+.daviz-sources-table {
+  width: 100%;
+}
+
+.daviz-sources-table input[type=text] {
+  width: 90%;
+}
+
 .daviz-ajax-loader {
   background-image: url(../../++resource++eea.daviz.images/loading.gif);
   background-position:left center;

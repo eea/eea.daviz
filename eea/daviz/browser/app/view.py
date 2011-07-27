@@ -36,6 +36,12 @@ class View(BrowserView):
             yield view.get('name')
 
     @property
+    def sources(self):
+        sources = self.accessor.sources
+        for source in sources:
+            yield source
+
+    @property
     def gmapkey(self):
         """ Get Google Maps key from
             portal_properties.geographical_properties.google_key

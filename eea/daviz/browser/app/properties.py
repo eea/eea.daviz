@@ -68,7 +68,8 @@ class EditForm(SubPageForm):
             'name': self.prefix,
             'json': simplejson.dumps(dict(accessor.json), indent=2),
             'views': [view.get('name') for view in accessor.views],
-            'sources': [source.get('name') for source in accessor.sources] or [""],
+            'sources':
+                [source.get('name') for source in accessor.sources],
         }
 
     def setUpWidgets(self, ignore_request=False):

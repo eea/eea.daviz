@@ -6,8 +6,8 @@
 <metal:jsslot fill-slot="javascript_head_slot">
 
   <!-- Custom babel-translators -->
-  <!--<link rel="exhibit/babel-translator"
-    tal:attributes="href string:${here/absolute_url}/@@daviz-translator" />-->
+  <link rel="exhibit/babel-translator"
+    tal:attributes="href string:${here/absolute_url}/@@babel-translator" />
 
   <link rel="exhibit/data" type="application/json"
     tal:attributes="href string:${here/absolute_url}/@@daviz-view.json" />

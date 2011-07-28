@@ -293,6 +293,13 @@ DavizEdit.SourceTable.prototype = {
     });
 
     self.button_remove = jQuery('input[name=daviz.properties.sources.remove]', table);
+    if (!self.button_remove.length){
+      self.button_remove = jQuery('<input>').attr('type', 'submit')
+        .attr('name', 'daviz.properties.sources.remove')
+        .val("Remove selected items");
+      self.button_add.parent('td').prepend(self.button_remove);
+    }
+
     self.button_remove.click(function(){
       self.remove(jQuery(this));
       return false;

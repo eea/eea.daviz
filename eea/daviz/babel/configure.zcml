@@ -1,0 +1,23 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  i18n_domain="eea">
+
+  <utility
+    factory=".rdfxml.RDFXMLReader"
+    name="rdf-xml"
+    />
+
+  <utility
+    factory=".writer.JSONP"
+    name="exhibit-jsonp"
+    />
+
+  <browser:page
+    for="eea.daviz.interfaces.IExhibitJson"
+    name="babel-translator"
+    class=".translator.Translator"
+    permission="zope2.View"
+    />
+
+</configure>

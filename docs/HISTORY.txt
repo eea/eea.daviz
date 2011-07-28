@@ -8,11 +8,11 @@ Changelog
 1.3-dev - (unreleased)
 ----------------------
 
-* TODO: In order to speed up rdf+xml conversion to JSON add a custom
-  converter instead of using the babel one.
-
 * TODO: Add/Remove facets as right now they are generated from uploaded file,
   and you can only sort and hide them.
+
+* Feature: Added babel translator API and a custom translator: rdf-xml to exhibit-json
+  [voineali #4416]
 
 * Feature: Possibility to add external exhibit data sources like
   "Google Spreadsheet", "RDF/XML" and "External JSON".

@@ -4,6 +4,7 @@
 
   <include file="profiles.zcml" />
 
+  <include package=".babel" />
   <include package=".subtypes" />
   <include package=".converter" />
   <include package=".browser" />

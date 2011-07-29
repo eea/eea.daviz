@@ -4,6 +4,9 @@ Changelog
 - [Alin Voinea - alin.voinea at eaudeweb.ro]
 - [Antonio De Marinis - demarinis at eea.europa.eu]
 
+1.4-dev - (unreleased)
+----------------------
+
 1.3 - (2011-07-29)
 ------------------
 * Feature: Added babel translator API and a custom translator: rdf-xml to exhibit-json

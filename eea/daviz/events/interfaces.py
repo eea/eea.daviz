@@ -18,3 +18,7 @@ class IDavizEvent(IObjectEvent):
 class IDavizEnabledEvent(IDavizEvent):
     """ Daviz was enabled
     """
+
+class IDavizFacetDeletedEvent(IDavizEvent):
+    """ Daviz facet deleted
+    """

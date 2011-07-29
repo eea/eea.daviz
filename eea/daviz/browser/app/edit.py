@@ -5,12 +5,14 @@ __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
 
 import logging
+from zope import event
 from zope.component import queryUtility
 from zope.component import queryAdapter, queryMultiAdapter
 from Products.statusmessages.interfaces import IStatusMessage
 from zope.app.schema.vocabulary import IVocabularyFactory
 from Products.Five.browser import BrowserView
 from eea.daviz.interfaces import IDavizConfig
+from eea.daviz.events import DavizFacetDeletedEvent
 logger = logging.getLogger('eea.daviz')
 
 class Edit(BrowserView):
@@ -63,13 +65,19 @@ class Edit(BrowserView):
 
         return form
 
+    def get_facet_add(self, facetname):
+        form = queryMultiAdapter((self.context, self.request), name=facetname)
+        if form:
+            form.prefix = facetname.replace('.', '-')
+        return form
+
 class Configure(BrowserView):
     """ Edit controller
     """
-    def _redirect(self, msg='', to='daviz-edit.html'):
+    def _redirect(self, msg='', ajax=False, to='daviz-edit.html'):
         """ Return or redirect
         """
-        if not to:
+        if ajax:
             return msg
 
         if not self.request:
@@ -85,17 +93,19 @@ class Configure(BrowserView):
         """
         mutator = queryAdapter(self.context, IDavizConfig)
         order = kwargs.get('order', [])
+        ajax = (kwargs.get('daviz.facets.save') == 'ajax')
+
         if not order:
             return self._redirect(
-                'Exhibit facets settings not saved: Nothing to do', to=None)
+                'Exhibit facets settings not saved: Nothing to do', ajax)
 
         if not isinstance(order, list):
             return self._redirect(
-                'Exhibit facets settings not saved: Nothing to do', to=None)
+                'Exhibit facets settings not saved: Nothing to do', ajax)
 
         if len(order) == 1:
             return self._redirect(
-                'Exhibit facets settings not saved: Nothing to do', to=None)
+                'Exhibit facets settings not saved: Nothing to do', ajax)
 
         facets = mutator.facets
         facets = dict((facet.get('name'), dict(facet)) for facet in facets)
@@ -108,10 +118,23 @@ class Configure(BrowserView):
                 continue
             mutator.add_facet(**properties)
 
-        if kwargs.get('daviz.facets.save') == 'ajax':
-            return self._redirect('Exhibit facets settings saved', to=None)
-        return self._redirect('Exhibit facets settings saved')
+        return self._redirect('Exhibit facets settings saved', ajax)
 
+    def handle_facetDelete(self, **kwargs):
+        """ Delete facet
+        """
+        mutator = queryAdapter(self.context, IDavizConfig)
+        name = kwargs.get('name', '')
+        ajax = (kwargs.get('daviz.facet.delete') == 'ajax')
+        try:
+            mutator.delete_facet(name)
+        except KeyError, err:
+            logger.exception(err)
+            return self._redirect(err, ajax)
+        else:
+            event.notify(DavizFacetDeletedEvent(self.context, facet=name))
+
+        return self._redirect('Exhibit facet deleted', ajax)
 
     def __call__(self, **kwargs):
         if self.request:
@@ -119,5 +142,7 @@ class Configure(BrowserView):
 
         if kwargs.get('daviz.facets.save', None):
             return self.handle_facets(**kwargs)
+        elif kwargs.get('daviz.facet.delete', None):
+            return self.handle_facetDelete(**kwargs)
 
         return self._redirect('Invalid action provided')

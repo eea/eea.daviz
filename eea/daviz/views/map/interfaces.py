@@ -18,6 +18,6 @@ class IExhibitMapEdit(Interface):
     latlng = schema.Choice(
         title=u'Latitude and Longitude column',
         description=u"Specify which column should be used to get latitude and longitude.",
-        required=True,
+        required=False,
         vocabulary="eea.daviz.vocabularies.FacetsVocabulary"
     )

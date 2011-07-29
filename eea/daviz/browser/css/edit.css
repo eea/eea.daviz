@@ -60,16 +60,27 @@
   background-image: url(../../++resource++jquery.ui.theme/images/ui-bg_flat_0_aaaaaa_40x100.png);
 }
 
-.daviz-facet-edit .ui-icon-show {
+.daviz-facet-edit .ui-icon {
   float: right;
-  background-image: url(../../++resource++eea.daviz.images/show.png);
   cursor: pointer;
 }
 
+.daviz-facet-edit .ui-icon-show {
+  background-image: url(../../++resource++eea.daviz.images/show.png);
+}
+
 .daviz-facet-edit .ui-icon-hide {
-  float: right;
   background-image: url(../../++resource++eea.daviz.images/hide.png);
-  cursor: pointer;
+}
+
+.daviz-facet-add input[type=text] {
+  width: 100%;
+}
+
+.daviz-facet-add .ui-icon-plus {
+  border: 2px solid #CCC;
+  float: right;
+  margin-bottom: 1em;
 }
 
 /* Customize jquery.ui
@@ -143,6 +154,7 @@ dl.portalMessage dd {
 
 .daviz-facet-edit {
   margin-top: 1em;
+  clear: right;
 }
 
 .daviz-facet-edit h1 {
@@ -161,7 +173,7 @@ dl.portalMessage dd {
 
 .daviz-facet-edit h1 .facet-title {
   overflow: hidden;
-  width: 85%;
+  width: 80%;
   height: 20px;
 }
 
@@ -231,4 +243,14 @@ dl.portalMessage dd {
 
 .daviz-cleanup {
   clear: both;
+}
+
+.daviz-confirm-overlay .ui-dialog-titlebar,
+.daviz-facet-add-overlay .ui-dialog-titlebar {
+  background-color:#CDE2A7;
+  border:2px groove threedface;
+  color:black;
+  font-size:1.2em;
+  margin:0 2px;
+  padding:0.2em 0.5em;
 }

@@ -8,9 +8,6 @@ Changelog
 1.3-dev - (unreleased)
 ----------------------
 
-* TODO: Add/Remove facets as right now they are generated from uploaded file,
-  and you can only sort and hide them.
-
 * Feature: Added babel translator API and a custom translator: rdf-xml to exhibit-json
   [voineali #4416]
 
@@ -27,6 +24,9 @@ Changelog
 
 * Feature: Added a way to reorder or hide Exhibit Facets
   [voineali #4417]
+
+* Feature: Possibility to add/remove facets
+  [voineali #4416]
 
 * Feature: Made Exibit edit page more user friendly (WYSIWYG)
   [voineali #4417]

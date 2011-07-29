@@ -17,4 +17,10 @@
     permission="zope2.View"
     />
 
+  <subscriber
+    for="eea.daviz.interfaces.IExhibitJson
+         eea.daviz.interfaces.IDavizFacetDeletedEvent"
+    handler=".events.tile_facet_deleted"
+    />
+
 </configure>

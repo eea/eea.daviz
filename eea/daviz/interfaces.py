@@ -14,6 +14,9 @@ IExhibitJsonConverter
 # Accessors, mutators
 from app.interfaces import IDavizConfig
 IDavizConfig
+
 # Events
 from events.interfaces import IDavizEnabledEvent
 IDavizEnabledEvent
+
+from events.interfaces import IDavizFacetDeletedEvent

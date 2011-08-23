@@ -25,6 +25,10 @@
     <class class="eea.dataservice.content.DataFile.DataFile">
       <implements interface="eea.daviz.interfaces.IPossibleExhibitJson" />
     </class>
+
+    <class class="eea.dataservice.content.EEAFigureFile.EEAFigureFile">
+      <implements interface="eea.daviz.interfaces.IPossibleExhibitJson" />
+    </class>
   </configure>
 
 </configure>

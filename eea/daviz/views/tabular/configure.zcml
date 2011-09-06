@@ -20,4 +20,10 @@
     permission="cmf.ModifyPortalContent"
     />
 
+  <subscriber
+    for="eea.daviz.interfaces.IExhibitJson
+         eea.daviz.interfaces.IDavizFacetDeletedEvent"
+    handler=".events.tabular_facet_deleted"
+    />
+
 </configure>

@@ -6,83 +6,18 @@
 <body>
 <div metal:fill-slot="main" class="daviz-settings">
 
-
 <h1 i18n:translate="" id="daviz-page-title" class="documentFirstHeading">
   Configure exhibit
 </h1>
 
 <!-- Facets -->
-<div class="daviz-facets-settings">
-<form tal:attributes="action string:${here/absolute_url}/@@daviz-edit.save">
-  <fieldset>
-    <legend i18n:translate="">Exhibit Facets</legend>
-    <table class="listing">
-      <tr>
-        <th style="width: 5%" i18n:translate="">Show</th>
-        <th i18n:translate="">Column</th>
-        <th i18n:translate="">Label</th>
-      </tr>
-      <tal:facets repeat="facet python:view.facets_vocabulary">
-        <tr tal:define="odd repeat/facet/odd;"
-          tal:attributes="class python:odd and 'odd' or 'even'">
-          <td style="text-align: center">
-            <input type="checkbox" tal:attributes="
-              checked python:facet.get('show') and 'checked';
-              value python:facet.get('name', '')"
-              name="daviz.facets.columns:list" />
-          </td>
-          <td>
-            <span tal:content="python:facet.get('name', '')" />
-          </td>
-          <td>
-            <input type="text" name="daviz.facets.labels:list" tal:attributes="
-              value python:facet.get('label', '')"
-              value="" />
-          </td>
-        </tr>
-      </tal:facets>
-    </table>
-    <div class="field">
-      <input type="submit" name="daviz.facets.save" value="Save changes"
-      i18n:attributes="value" />
-    </div>
-  </fieldset>
-</form>
+<div class="daviz-facets-edit">
+  <tal:views replace="structure here/@@daviz-edit.facets.html" />
 </div>
 
 <!-- Views -->
-<div class="daviz-views-settings">
-<form tal:attributes="action string:${here/absolute_url}/@@daviz-edit.save">
-  <fieldset>
-    <legend i18n:translate="">Exhibit Views</legend>
-    <div class="field">
-      <div class="formHelp" i18n:translate="">
-        Enable Exhibit views.
-      </div>
-      <div tal:repeat="item python:view.views_vocabulary">
-        <input type="checkbox" name="daviz.views:list" tal:attributes="
-          id python:item.value;
-          value python:item.value;
-          checked python:item.value in view.enabled_views;
-          "/>
-        <label tal:attributes="for python:item.value"
-          tal:content="python:item.title" />
-      </div>
-    </div>
-  <div class="field">
-    <input type="submit" name="daviz.views.save" value="Save changes"
-    i18n:attributes="value" />
-  </div>
-  </fieldset>
-</form>
-</div>
-
 <div id="daviz-views-edit" class="daviz-views-edit daviz-edit-tabs">
   <tal:views replace="structure here/@@daviz-edit.views.html" />
-</div>
-
-<div id="daviz-properties-edit" class="daviz-properties-edit daviz-edit-tabs">
-  <tal:views replace="structure here/@@daviz-edit.properties.html" />
 </div>
 
 </div>

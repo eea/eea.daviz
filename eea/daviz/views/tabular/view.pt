@@ -1,17 +1,15 @@
-<tal:view define="
-  columns python:view.columns;
-  labels python:view.labels">
-
 <div ex:role="view"
   ex:viewClass="Tabular"
   ex:cellSpacing="0"
   ex:cellPadding="0"
   ex:tableStyler="DavizTableStyler"
   ex:rowStyler="DavizTableRowStyler"
-  tal:condition="columns"
+  tal:define="
+    columns python:[col for col in view.columns];
+    labels python:view.labels;
+    formats python:view.formats;"
   tal:attributes="
-  ex:columns columns;
-  ex:columnLabels labels;">
-</div>
-
-</tal:view>
+    ex:columns python:', '.join(columns);
+    ex:columnLabels python:', '.join(labels);
+    ex:columnFormats python:', '.join(formats)"
+  tal:condition="columns"></div>

@@ -34,6 +34,7 @@ setup(name=name,
           'eea.exhibit',
           'p4a.z2utils',
           'collective.js.jqueryui',
+          'rdflib',
       ],
       entry_points="""
       # -*- Entry points: -*-

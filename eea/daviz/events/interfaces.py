@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """ Daviz Events interfaces
 """
 
@@ -16,6 +15,12 @@ class IDavizEnabledEvent(IDavizEvent):
     """ Daviz was enabled
     """
 
+class IDavizFacetDeletedEvent(IDavizEvent):
+    """ Daviz facet deleted
+    """
+
 __all__ = [
-    IObjectEvent
+    IDavizEvent,
+    IDavizEnabledEvent,
+    IDavizFacetDeletedEvent,
 ]

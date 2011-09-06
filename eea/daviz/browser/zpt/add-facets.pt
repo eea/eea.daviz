@@ -1,0 +1,12 @@
+<div class="daviz-facet-add" tal:define="
+  editform python:view.get_facet_add('daviz.facet.add');
+  label python:editform.prefix;
+  id python:label.replace('.', '-');"
+  tal:attributes="id string:$id"
+  tal:condition="editform">
+  <form method="post" title="Add new facet" i18n:attributes="title"
+    tal:define="name python:editform.__name__"
+    tal:attributes="action string:${here/absolute_url}/@@$name">
+    <tal:editform replace="structure editform" />
+  </form>
+</div>

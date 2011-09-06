@@ -11,4 +11,11 @@
     allowed_interface=".interfaces.IExhibitListFacet"
     />
 
+  <browser:page
+    for="eea.daviz.interfaces.IExhibitJson"
+    name="daviz.list.facet.edit"
+    class=".edit.Edit"
+    permission="cmf.ModifyPortalContent"
+    />
+
 </configure>

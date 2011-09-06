@@ -19,7 +19,7 @@ class IExhibitTimelineEdit(Interface):
     start = schema.Choice(
         title=u'Start date',
         description=u"Specify date or starting date",
-        required=True,
+        required=False,
         vocabulary="eea.daviz.vocabularies.FacetsVocabulary"
     )
 

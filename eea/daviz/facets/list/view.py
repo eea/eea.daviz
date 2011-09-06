@@ -14,6 +14,8 @@ class View(BrowserView):
     """
     implements(IExhibitListFacet)
 
+    label = 'List'
+
     def __init__(self, context, request):
         """ List facets BrowserView init
         """

@@ -12,13 +12,16 @@ from eea.daviz.subtypes.interfaces import IExhibitJson
 from eea.daviz.converter.interfaces import IExhibitJsonConverter
 # Accessors, mutators
 from eea.daviz.app.interfaces import IDavizConfig
+
 # Events
 from eea.daviz.events.interfaces import IDavizEnabledEvent
+from eea.daviz.events.interfaces import IDavizFacetDeletedEvent
 
 __all__ = [
     IPossibleExhibitJson,
     IExhibitJson,
     IExhibitJsonConverter,
     IDavizConfig,
-    IDavizEnabledEvent
+    IDavizEnabledEvent,
+    IDavizFacetDeletedEvent,
 ]

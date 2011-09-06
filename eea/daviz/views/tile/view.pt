@@ -1,1 +1,3 @@
+<div tal:define="lens python:view.lens"
+  tal:condition="lens" tal:replace="structure lens" />
 <div ex:role="view"></div>

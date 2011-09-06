@@ -13,11 +13,6 @@ logger = logging.getLogger('eea.daviz.facets.events')
 def create_default_facets(obj, evt):
     """ Create default facets
     """
-    columns = evt.columns
-    if not len(columns):
-        logger.warn('Empty json for %s', obj.absolute_url(1))
-        return
-
     mutator = queryAdapter(obj, IDavizConfig)
     if not mutator:
         logger.warn("Couldn't find any IDavizConfig adapter for %s",
@@ -28,7 +23,6 @@ def create_default_facets(obj, evt):
     mutator.delete_facets()
 
     # Add new facets
-    for facet in columns:
-        if facet in ['id', 'label']:
-            continue
-        mutator.add_facet(name=facet, label=facet, show=True)
+    for facet, typo in evt.columns:
+        show = ('label' not in facet) or ('id' not in facet)
+        mutator.add_facet(name=facet, label=facet, show=show, item_type=typo)

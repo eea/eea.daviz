@@ -1,0 +1,15 @@
+<tal:views replace="structure here/@@daviz-add.facets.html" />
+<tal:edittab repeat="facet python:view.facets_vocabulary">
+  <div class="daviz-facet-edit" tal:define="
+    editform python:view.get_facet_form(facet);
+    label python:editform.prefix;
+    id python:label.replace('.', '-');"
+    tal:attributes="id string:$id"
+    tal:condition="editform">
+    <form method="post"
+      tal:define="name python:editform.__name__"
+      tal:attributes="action string:${here/absolute_url}/@@$name">
+      <tal:editform replace="structure editform" />
+    </form>
+  </div>
+</tal:edittab>

@@ -11,7 +11,7 @@ from zope.annotation.interfaces import IAnnotations
 
 from persistent.dict import PersistentDict
 from persistent.list import PersistentList
-from eea.daviz.config import ANNO_VIEWS, ANNO_FACETS, ANNO_JSON
+from eea.daviz.config import ANNO_VIEWS, ANNO_FACETS, ANNO_JSON, ANNO_SOURCES
 
 class Configure(object):
     """ Get daviz configuration
@@ -22,7 +22,7 @@ class Configure(object):
         self.context = context
 
     def _views(self):
-        """ Returns views from ANNO_VIEWS config 
+        """ Returns views from ANNO_VIEWS config
         """
         anno = IAnnotations(self.context)
         views = anno.get(ANNO_VIEWS, None)
@@ -31,7 +31,7 @@ class Configure(object):
         return views
 
     def _facets(self):
-        """ Returns facets from ANNO_FACETS config 
+        """ Returns facets from ANNO_FACETS config
         """
         anno = IAnnotations(self.context)
         facets = anno.get(ANNO_FACETS, None)
@@ -39,8 +39,15 @@ class Configure(object):
             facets = anno[ANNO_FACETS] = PersistentList()
         return facets
 
+    def _sources(self):
+        anno = IAnnotations(self.context)
+        sources = anno.get(ANNO_SOURCES, None)
+        if sources is None:
+            sources = anno[ANNO_SOURCES] = PersistentList()
+        return sources
+
     def _json(self):
-        """ Returns json from ANNO_JSON config 
+        """ Returns json from ANNO_JSON config
         """
         anno = IAnnotations(self.context)
         json = anno.get(ANNO_JSON, None)
@@ -63,6 +70,13 @@ class Configure(object):
         """
         anno = IAnnotations(self.context)
         return anno.get(ANNO_FACETS, [])
+
+    @property
+    def sources(self):
+        """ Return daviz external sources
+        """
+        anno = IAnnotations(self.context)
+        return anno.get(ANNO_SOURCES, [])
 
     def set_json(self, value):
         """ Set json dict
@@ -94,6 +108,15 @@ class Configure(object):
             if facet.get('name') != key:
                 continue
             return facet
+        return default
+
+    def source(self, key, default=None):
+        """ Return source by given key
+        """
+        for source in self.sources:
+            if source.get('name') != key:
+                continue
+            return source
         return default
     #
     # View mutators
@@ -166,7 +189,39 @@ class Configure(object):
         """
         anno = IAnnotations(self.context)
         anno[ANNO_FACETS] = PersistentList()
+    #
+    # Source mutators
+    #
+    def add_source(self, name, **kwargs):
+        """ Add source
+        """
+        config = self._sources()
+        kwargs.update({'name': name})
+        kwargs.setdefault('type', u'json')
+        source = PersistentDict(kwargs)
+        config.append(source)
+        return source.get('name', '')
 
-__all__ = [
-    IAnnotations
-]
+    def delete_source(self, key):
+        """ Delete source by given key
+        """
+        config = self._sources()
+        for index, source in enumerate(config):
+            if source.get('name', '') == key:
+                config.pop(index)
+                return
+        raise KeyError, key
+
+    def edit_source(self, key, **kwargs):
+        """ Edit source properties
+        """
+        source = self.source(key)
+        if not source:
+            raise KeyError, key
+        source.update(kwargs)
+
+    def delete_sources(self):
+        """ Remove all sources
+        """
+        anno = IAnnotations(self.context)
+        anno[ANNO_SOURCES] = PersistentList()

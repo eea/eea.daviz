@@ -1,7 +1,7 @@
 
-label	Name	Job title	Programme	Country	Quantity	Starting date	Description
-1	Alexandru Ghica;Alec Ghica	Project manager	NSV3 - Land	Romania	10.5	01/01/2010	žemė
-2	Alin Voinea	Project manager	NSV1 - Biodiversity	Romania	5	01/01/2010	έδαφος
-3	Antonio De Marinis	Head of Group	NSV1 - Biodiversity	Italy	10.5	01/01/2010	Земя
-4	Other Name	Programmer	NSV3 - Land	Denmark	5	01/02/2010	žemė
-5	Just a Name	Programmer	NSV1 - Biodiversity	Italy	10.5	01/02/2010	Земя
+Name:label	Job title	Programme	Country	Quantity:number	Starting date:date	Description
+Alexandru Ghica;Alec Ghica	Project manager	NSV3 - Land	Romania	10.5	01/01/2010	žemė
+Alin Voinea	Project manager	NSV1 - Biodiversity	Romania	5	01/01/2010	έδαφος
+Antonio De Marinis	Head of Group	NSV1 - Biodiversity	Italy	10.5	01/01/2010	Земя
+Other Name	Programmer	NSV3 - Land	Denmark	5	01/02/2010	žemė
+Just a Name	Programmer	NSV1 - Biodiversity	Italy	10.5	01/02/2010	Земя

@@ -18,12 +18,35 @@ class View(ViewForm):
     implements(IExhibitTabularView)
 
     @property
+    def details(self):
+        """ Show details column?
+        """
+        return self.data.get('details', False)
+
+    @property
     def columns(self):
         """ Returns columns property for tabular view
         """
         columns = self.data.get('columns', [])
-        res = ['.%s' % item for item in columns]
-        return ', '.join(res)
+        for column in columns:
+            yield '.%s' % column
+
+        if self.details:
+            yield '!label'
+
+    @property
+    def formats(self):
+        """ Column formats
+        """
+        accessor = queryAdapter(self.context, IDavizConfig)
+        columns = self.data.get('columns', [])
+        for column in columns:
+            facet = accessor.facet(column, {})
+            itype = facet.get('item_type', 'text')
+            yield itype
+
+        if self.details:
+            yield "item {title: expression('more')}"
 
     @property
     def labels(self):
@@ -36,5 +59,7 @@ class View(ViewForm):
         for column in columns:
             facet = accessor.facet(column, {})
             label = facet.get('label', column)
-            labels.append(label)
-        return ', '.join(labels)
+            yield label
+
+        if self.details:
+            yield 'Details'

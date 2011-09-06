@@ -12,7 +12,7 @@
     name="default"
     provides="zope.formlib.namedtemplate.INamedTemplate"
     />
-    
+
   <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
     name="daviz-view.html"
@@ -39,16 +39,24 @@
 
   <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
-    name="daviz-edit.views.html"
-    template="zpt/edit-views.pt"
+    name="daviz-add.facets.html"
+    template="zpt/add-facets.pt"
     class=".app.edit.Edit"
     permission="cmf.ModifyPortalContent"
     />
 
   <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
-    name="daviz-edit.properties.html"
-    template="zpt/edit-properties.pt"
+    name="daviz-edit.facets.html"
+    template="zpt/edit-facets.pt"
+    class=".app.edit.Edit"
+    permission="cmf.ModifyPortalContent"
+    />
+
+  <browser:page
+    for="eea.daviz.interfaces.IExhibitJson"
+    name="daviz-edit.views.html"
+    template="zpt/edit-views.pt"
     class=".app.edit.Edit"
     permission="cmf.ModifyPortalContent"
     />

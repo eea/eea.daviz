@@ -1,8 +1,24 @@
-<configure xmlns="http://namespaces.zope.org/zope">
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser">
 
   <utility
     component=".vocabularies.FacetsVocabularyFactory"
     name="eea.daviz.vocabularies.FacetsVocabulary"
+    />
+
+  <adapter
+    for=".edit.EditForm"
+    factory="plone.app.form.default_subpage_template"
+    name="default"
+    provides="zope.formlib.namedtemplate.INamedTemplate"
+    />
+
+  <adapter
+    for=".add.AddForm"
+    factory="plone.app.form.default_subpage_template"
+    name="default"
+    provides="zope.formlib.namedtemplate.INamedTemplate"
     />
 
   <include package=".cloud" />
@@ -15,6 +31,13 @@
     for="..interfaces.IExhibitJson
          ..interfaces.IDavizEnabledEvent"
     handler=".events.create_default_facets"
+    />
+
+  <browser:page
+    for="eea.daviz.interfaces.IExhibitJson"
+    name="daviz.facet.add"
+    class=".add.AddForm"
+    permission="cmf.ModifyPortalContent"
     />
 
 </configure>

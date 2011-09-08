@@ -6,7 +6,7 @@ __credits__ = """contributions: Alec Ghica, Alin Voinea"""
 
 from zope.interface import implements
 from eea.daviz.events.interfaces import IDavizEnabledEvent
-from interfaces import IDavizEnabledEvent, IDavizFacetDeletedEvent
+from eea.daviz.events.interfaces import IDavizFacetDeletedEvent
 
 class DavizEnabledEvent(object):
     """ Sent if a document was converted to exhibit json

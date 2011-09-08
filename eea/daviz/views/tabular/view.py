@@ -55,7 +55,6 @@ class View(ViewForm):
         accessor = queryAdapter(self.context, IDavizConfig)
         columns = self.data.get('columns', [])
 
-        labels = []
         for column in columns:
             facet = accessor.facet(column, {})
             label = facet.get('label', column)

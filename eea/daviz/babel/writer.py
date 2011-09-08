@@ -1,11 +1,6 @@
 """ Babel Writter
 """
-try:
-    import json
-except ImportError:
-    #BBB Python 2.4
-    import simplejson as json
-
+import json
 from zope.interface import implements
 from eea.daviz.babel.interfaces import IBabelWriter
 

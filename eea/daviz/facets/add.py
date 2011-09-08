@@ -3,7 +3,8 @@
 from zope.component import queryAdapter
 from zope.formlib.form import SubPageForm
 from Products.statusmessages.interfaces import IStatusMessage
-from zope.formlib.form import action, setUpInputWidgets, haveInputWidgets
+from zope.formlib.form import action as formAction
+from zope.formlib.form import setUpInputWidgets, haveInputWidgets
 from eea.daviz.interfaces import IDavizConfig
 from zope.formlib.form import Fields
 
@@ -52,7 +53,7 @@ class AddForm(SubPageForm):
             ignore_request=ignore_request,
             )
 
-    @action(_("Add"), condition=haveInputWidgets)
+    @formAction(_("Add"), condition=haveInputWidgets)
     def handle_add(self, action, data):
         """ Handle add
         """

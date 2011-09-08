@@ -75,7 +75,7 @@ class ExhibitJsonConverter(object):
         elif ";" in value:
             value = value.split(";")
         else:
-            value = [value,]
+            value = [value, ]
 
         value = [item.strip() for item in value]
         return value

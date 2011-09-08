@@ -23,14 +23,14 @@ class View(BrowserView):
         self.accessor = queryAdapter(self.context, IDavizConfig)
 
     def json(self):
-        """ Returns json dump of result 
+        """ Returns json dump of result
         """
         res = self.accessor.json
         return simplejson.dumps(dict(res))
 
     @property
     def facets(self):
-        """ Returns facets 
+        """ Returns facets
         """
         facets = self.accessor.facets
         for facet in facets:
@@ -40,7 +40,7 @@ class View(BrowserView):
 
     @property
     def views(self):
-        """ Returns views 
+        """ Returns views
         """
         views = self.accessor.views
         for view in views:
@@ -48,6 +48,8 @@ class View(BrowserView):
 
     @property
     def sources(self):
+        """ External sources
+        """
         sources = self.accessor.sources
         for source in sources:
             yield source
@@ -62,7 +64,7 @@ class View(BrowserView):
         return getattr(props, 'google_key', '')
 
     def get_facet(self, name):
-        """ Get faceted by name 
+        """ Get faceted by name
         """
         facet = self.accessor.facet(key=name)
         facet_type = facet.get('type')
@@ -73,7 +75,7 @@ class View(BrowserView):
         return view
 
     def get_view(self, name):
-        """ Get view by name 
+        """ Get view by name
         """
         if not isinstance(name, unicode):
             name = name.decode('utf-8')

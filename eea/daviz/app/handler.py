@@ -40,6 +40,8 @@ class Configure(object):
         return facets
 
     def _sources(self):
+        """ External sources
+        """
         anno = IAnnotations(self.context)
         sources = anno.get(ANNO_SOURCES, None)
         if sources is None:

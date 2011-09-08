@@ -58,6 +58,8 @@ class Edit(BrowserView):
         return queryMultiAdapter((self.context, self.request), name=name)
 
     def get_facet_form(self, facet):
+        """ Edit form for facet
+        """
         ftype = facet.get('type', '')
         if not isinstance(ftype, unicode):
             ftype = ftype.decode('utf-8')
@@ -71,6 +73,8 @@ class Edit(BrowserView):
         return form
 
     def get_facet_add(self, facetname):
+        """ Add form for facet
+        """
         form = queryMultiAdapter((self.context, self.request), name=facetname)
         if form:
             form.prefix = facetname.replace('.', '-')

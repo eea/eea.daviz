@@ -175,6 +175,7 @@ class ExhibitJsonConverter(object):
         columns = []
         hasLabel = False
         out = []
+        properties = {}
 
         reader = csv.reader(datafile, dialect='eea-tab')
         for index, row in enumerate(reader):
@@ -209,8 +210,9 @@ class ExhibitJsonConverter(object):
 
                 col, _type = self.column_type(col)
                 data[col] = text
+                properties[col] = {"valueType": _type}
 
             out.append(data)
 
         columns = (self.column_type(col) for col in columns)
-        return columns, {'items': out}
+        return columns, {'items': out, 'properties': properties}

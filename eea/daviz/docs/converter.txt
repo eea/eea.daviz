@@ -46,7 +46,9 @@ Let's convert file data and check JSON output.
                 'programme': 'NSV1 - Biodiversity',
                 'quantity': 10.5,
                 'starting_date': '01/01/2010'},
-    ...}]}
+     ...],
+     'properties': {'country': {'valueType': 'text'},
+     ...}}
 
 Now let's use the browser interface
 
@@ -70,5 +72,6 @@ Now let's use the browser interface
                 'programme': 'NSV1 - Biodiversity',
                 'quantity': 10.5,
                 'starting_date': '01/01/2010'},
-    ...
-    ...}]}
+    ...],
+     'properties': {'country': {'valueType': 'text'},
+    ...}}

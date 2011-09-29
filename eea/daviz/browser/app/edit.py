@@ -1,16 +1,11 @@
-# -*- coding: utf-8 -*-
 """ Module for Edit logic of browser/app package
 """
-__author__ = """European Environment Agency (EEA)"""
-__docformat__ = 'plaintext'
-__credits__ = """contributions: Alin Voinea"""
-
 import logging
 from zope import event
 from zope.component import queryUtility
 from zope.component import queryAdapter, queryMultiAdapter
 from Products.statusmessages.interfaces import IStatusMessage
-from zope.app.schema.vocabulary import IVocabularyFactory
+from zope.schema.interfaces import IVocabularyFactory
 from Products.Five.browser import BrowserView
 from eea.daviz.interfaces import IDavizConfig
 from eea.daviz.events import DavizFacetDeletedEvent

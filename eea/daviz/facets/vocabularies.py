@@ -1,13 +1,8 @@
-# -*- coding: utf-8 -*-
 """ Vocabulary logic for returning available registered exhibit views
 """
-__author__ = """European Environment Agency (EEA)"""
-__docformat__ = 'plaintext'
-__credits__ = """contributions: Alin Voinea"""
-
 from zope.component import queryAdapter
 from zope.interface import implements
-from zope.app.schema.vocabulary import IVocabularyFactory
+from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
 from eea.daviz.interfaces import IDavizConfig

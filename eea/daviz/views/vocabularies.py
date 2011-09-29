@@ -1,14 +1,9 @@
-# -*- coding: utf-8 -*-
 """ Vocabularies for views
 """
-__author__ = """European Environment Agency (EEA)"""
-__docformat__ = 'plaintext'
-__credits__ = """contributions: Alin Voinea"""
-
 import operator
 from zope.component import getUtility, queryMultiAdapter
 from zope.interface import implements
-from zope.app.schema.vocabulary import IVocabularyFactory
+from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
 from eea.daviz.views.interfaces import IDavizViews

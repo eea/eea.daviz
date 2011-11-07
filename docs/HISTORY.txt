@@ -12,7 +12,7 @@ Changelog
   [ichimdav, voineali #4234]
  
 * Feature: Added exhibit 'properties' dict in generated JSON 
-  [voineali 4528] (v1.5 backport)
+  [voineali 4528]
 
 1.4-dev - (unreleased)
 ----------------------

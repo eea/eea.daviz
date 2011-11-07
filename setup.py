@@ -8,9 +8,13 @@ NAME = 'eea.daviz'
 PATH = NAME.split('.') + ['version.txt']
 VERSION = open(join(*PATH)).read().strip()
 
-setup(name=NAME,
+setup(name="EEA Daviz",
       version=VERSION,
-      description="EEA DaViz",
+      description=("EEA DaViz is a plone product which uses Exhibit to lets "
+                   "you easily create web pages with advanced text search and "
+                   "filtering functionalities (facets), with interactive maps,"
+                   "timelines, and other visualizations like these examples "
+                   "can be seen at  http://www.simile-widgets.org/exhibit."),
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       classifiers=[
@@ -18,9 +22,9 @@ setup(name=NAME,
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
-      keywords='eea daviz data visualization',
+      keywords='eea daviz data visualization exhibit zope plone',
       author='European Environment Agency',
-      author_email="webadmin@eea europa eu",
+      author_email="webadmin@eea.europa.eu",
       url='http://svn.eionet.europa.eu/projects/Zope/wiki/DaViz',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),

@@ -8,7 +8,7 @@ NAME = 'eea.daviz'
 PATH = NAME.split('.') + ['version.txt']
 VERSION = open(join(*PATH)).read().strip()
 
-setup(name="EEA Daviz",
+setup(name=NAME,
       version=VERSION,
       description=("EEA DaViz is a plone product which uses Exhibit to lets "
                    "you easily create web pages with advanced text search and "

@@ -2,17 +2,18 @@ Changelog
 =========
 
 
-4.0-dev - (unreleased)
+4.0-dev - (2011-11-07)
 ----------------------
 
 * Feature: Added upgrade steps
   [voineali #4392]
 
-* Feature: Plone 4.0.4 compatible
+* Feature: Plone 4.x compatible
   [ichimdav, voineali #4234]
- 
-* Feature: Added exhibit 'properties' dict in generated JSON 
+
+* Feature: Added exhibit 'properties' dict in generated JSON
   [voineali 4528]
+
 
 1.4-dev - (unreleased)
 ----------------------

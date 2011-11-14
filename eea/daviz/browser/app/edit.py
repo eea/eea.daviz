@@ -1,15 +1,11 @@
-# -*- coding: utf-8 -*-
-
-__author__ = """European Environment Agency (EEA)"""
-__docformat__ = 'plaintext'
-__credits__ = """contributions: Alin Voinea"""
-
+""" Module for Edit logic of browser/app package
+"""
 import logging
 from zope import event
 from zope.component import queryUtility
 from zope.component import queryAdapter, queryMultiAdapter
 from Products.statusmessages.interfaces import IStatusMessage
-from zope.app.schema.vocabulary import IVocabularyFactory
+from zope.schema.interfaces import IVocabularyFactory
 from Products.Five.browser import BrowserView
 from eea.daviz.interfaces import IDavizConfig
 from eea.daviz.events import DavizFacetDeletedEvent
@@ -42,17 +38,23 @@ class Edit(BrowserView):
         return [view.get('name') for view in accessor.views]
 
     def get_view(self, name):
+        """ Return given view
+        """
         if not isinstance(name, unicode):
             name = name.decode('utf-8')
         return queryMultiAdapter((self.context, self.request), name=name)
 
     def get_edit(self, name):
+        """ Return edit page
+        """
         if not isinstance(name, unicode):
             name = name.decode('utf-8')
         name += u'.edit'
         return queryMultiAdapter((self.context, self.request), name=name)
 
     def get_facet_form(self, facet):
+        """ Edit form for facet
+        """
         ftype = facet.get('type', '')
         if not isinstance(ftype, unicode):
             ftype = ftype.decode('utf-8')
@@ -66,6 +68,8 @@ class Edit(BrowserView):
         return form
 
     def get_facet_add(self, facetname):
+        """ Add form for facet
+        """
         form = queryMultiAdapter((self.context, self.request), name=facetname)
         if form:
             form.prefix = facetname.replace('.', '-')

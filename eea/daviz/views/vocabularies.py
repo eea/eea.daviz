@@ -1,17 +1,12 @@
-# -*- coding: utf-8 -*-
-
-__author__ = """European Environment Agency (EEA)"""
-__docformat__ = 'plaintext'
-__credits__ = """contributions: Alin Voinea"""
-
+""" Vocabularies for views
+"""
 import operator
-from zope.component import getAdapters
+from zope.component import getUtility, queryMultiAdapter
 from zope.interface import implements
-from zope.interface import Interface
-from zope.app.schema.vocabulary import IVocabularyFactory
+from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
-from eea.daviz.views.interfaces import IExhibitView
+from eea.daviz.views.interfaces import IDavizViews
 
 class ViewsVocabulary(object):
     """ Available registered exhibit views
@@ -19,19 +14,26 @@ class ViewsVocabulary(object):
     implements(IVocabularyFactory)
 
     def _adapters(self, context):
-        adapters = getAdapters((context, context.request), Interface)
-        for name, adapter in adapters:
-            if not IExhibitView.providedBy(adapter):
-                continue
-            yield name, getattr(adapter, 'label', name)
+        """ Return adapters
+        """
+        views = getUtility(IDavizViews)
+        for view in views():
+            browser = queryMultiAdapter((context, context.REQUEST), name=view)
+            yield view, getattr(browser, 'label', view)
 
     def __call__(self, context=None):
         """ See IVocabularyFactory interface
+
+        views = [
+          (u'daviz.map', 'Map View'),
+          (u'daviz.timeline', 'Timeline View'),
+          (u'daviz.tile', 'Tile View'),
+          (u'daviz.tabular', 'Tabular View')
+        ]
         """
         views = [(name, label) for name, label in self._adapters(context)]
         views.sort(key=operator.itemgetter(1))
-
-        return SimpleVocabulary([
-            SimpleTerm(name2, name2, label2) for name2, label2 in views])
+        views = [SimpleTerm(key, key, val) for key, val in views]
+        return SimpleVocabulary(views)
 
 ViewsVocabularyFactory = ViewsVocabulary()

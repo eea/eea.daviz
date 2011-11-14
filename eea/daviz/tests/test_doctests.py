@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-
+""" Test doctests module
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alec Ghica, Alin Voinea"""
 
 import doctest
 import unittest
-from base import DavizFunctionalTestCase
+from eea.daviz.tests.base import DavizFunctionalTestCase
 from Testing.ZopeTestCase import FunctionalDocFileSuite as Suite
 
 OPTIONFLAGS = (doctest.REPORT_ONLY_FIRST_FAILURE |

@@ -1,22 +1,27 @@
 # -*- coding: utf-8 -*-
-
+""" Daviz interfaces module
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alec Ghica, Alin Voinea"""
 
 # Subtypes
-from subtypes.interfaces import IPossibleExhibitJson
-from subtypes.interfaces import IExhibitJson
-IPossibleExhibitJson, IExhibitJson
+from eea.daviz.subtypes.interfaces import IPossibleExhibitJson
+from eea.daviz.subtypes.interfaces import IExhibitJson
 # Converter
-from converter.interfaces import IExhibitJsonConverter
-IExhibitJsonConverter
+from eea.daviz.converter.interfaces import IExhibitJsonConverter
 # Accessors, mutators
-from app.interfaces import IDavizConfig
-IDavizConfig
+from eea.daviz.app.interfaces import IDavizConfig
 
 # Events
-from events.interfaces import IDavizEnabledEvent
-IDavizEnabledEvent
+from eea.daviz.events.interfaces import IDavizEnabledEvent
+from eea.daviz.events.interfaces import IDavizFacetDeletedEvent
 
-from events.interfaces import IDavizFacetDeletedEvent
+__all__ = [
+    IPossibleExhibitJson,
+    IExhibitJson,
+    IExhibitJsonConverter,
+    IDavizConfig,
+    IDavizEnabledEvent,
+    IDavizFacetDeletedEvent,
+]

@@ -1,3 +1,5 @@
+<tal:left define="hidden python:request.set('disable_plone.leftcolumn', 1)" />
+<tal:right define="hidden python:request.set('disable_plone.rightcolumn', 1)" />
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
   lang="en-US"
   metal:use-macro="here/main_template/macros/master"
@@ -43,13 +45,6 @@
 
 <div metal:fill-slot="main">
 
-  <h1 tal:content="object_title" class="documentFirstHeading">
-    Title or id
-  </h1>
-
-  <div metal:use-macro="here/document_actions/macros/document_actions">
-    Document actions (print, sendto etc)
-  </div>
 
   <p class="documentDescription"
     tal:content="here/Description"
@@ -61,7 +56,7 @@
 
 <div style="float: left; width: 98%">
   <!-- Exhibit views -->
-  <div style="float: left; width: 80%" ex:role="viewPanel">
+  <div class="daviz-views" ex:role="viewPanel">
     <tal:views define="views python:view.views;">
       <tal:view repeat="view_name views">
         <div tal:define="view_page python:view.get_view(view_name)"

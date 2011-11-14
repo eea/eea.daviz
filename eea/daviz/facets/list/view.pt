@@ -1,6 +1,6 @@
 <tal:facet define="
-  name python:template.get('name', '');
-  label python:template.get('label', '');">
+  name python:view.gett('name', '');
+  label python:view.gett('label', '');">
 
 <div ex:role="facet" tal:attributes="
   ex:expression string:.$name;

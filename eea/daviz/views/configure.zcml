@@ -1,9 +1,12 @@
 <configure xmlns="http://namespaces.zope.org/zope">
 
   <utility
+    provides=".interfaces.IDavizViews"
+    factory=".meta.DavizViews" />
+
+  <utility
     component=".vocabularies.ViewsVocabularyFactory"
-    name="eea.daviz.vocabularies.ViewsVocabulary"
-    />
+    name="eea.daviz.vocabularies.ViewsVocabulary" />
 
   <subscriber
     for="..interfaces.IExhibitJson
@@ -18,6 +21,7 @@
     provides="zope.formlib.namedtemplate.INamedTemplate"
     />
 
+  <include file="meta.zcml" />
   <include package=".map" />
   <include package=".tabular" />
   <include package=".thumbnail" />

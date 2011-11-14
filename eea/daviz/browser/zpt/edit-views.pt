@@ -1,6 +1,6 @@
-<ul style="display: none">
+<ul class="formTabs">
   <!-- Global settings header -->
-  <li tal:define="
+  <li class="formTab" tal:define="
     name string:daviz.properties;
     editform python:view.get_edit(name);
     label python:editform.label;
@@ -13,7 +13,7 @@
   </li>
   <!-- Views -->
   <tal:editheader repeat="enabled python:view.enabled_views">
-    <li tal:define="
+    <li class="formTab" tal:define="
       viewform python:view.get_view(enabled);
       label python:viewform.label;
       id python:enabled.replace('.', '-');
@@ -26,6 +26,8 @@
     </li>
   </tal:editheader>
 </ul>
+
+<div class="panes">
 
 <!-- Global settings body -->
 <div tal:define="
@@ -59,3 +61,5 @@
     </form>
   </div>
 </tal:edittab>
+
+</div>

@@ -1,4 +1,4 @@
-var DavizEdit = {'version': '2.0'};
+var DavizEdit = {'version': '4.0'};
 
 /** Events
 */
@@ -164,8 +164,14 @@ DavizEdit.Facets = {
 
     query = {'daviz.facets.save': 'ajax', order: order};
     DavizEdit.Status.start('Saving ...');
-    jQuery.post(action, query, function(data){
-      DavizEdit.Status.stop(data);
+    jQuery.ajax({
+      traditional: true,
+      type: 'post',
+      url: action,
+      data: query,
+      success: function(data){
+       DavizEdit.Status.stop(data);
+      }
     });
   },
 
@@ -181,16 +187,22 @@ DavizEdit.Facets = {
 
     facet.slideUp(function(){
       DavizEdit.Status.start('Saving ...');
-      jQuery.post(action, query, function(data){
-        DavizEdit.Status.stop(data);
+      jQuery.ajax({
+        traditional: true,
+        type: 'post',
+        url: action,
+        data: query,
+        success:  function(data){
+          DavizEdit.Status.stop(data);
 
-        jQuery(document).trigger(DavizEdit.Events.views.refreshed, {
-          init: false,
-          action: jQuery('form', facet).attr('action')
-        });
+          jQuery(document).trigger(DavizEdit.Events.views.refreshed, {
+            init: false,
+            action: jQuery('form', facet).attr('action')
+          });
 
-        facet.remove();
-        delete self.facets[name];
+          facet.remove();
+          delete self.facets[name];
+        }
       });
     });
   }
@@ -249,10 +261,16 @@ DavizEdit.FacetAdd.prototype = {
     query += self.form.serialize();
 
     DavizEdit.Status.start('Adding ...');
-    jQuery.post(self.action, query, function(data){
-      jQuery(document).trigger(DavizEdit.Events.facet.refreshed, {
-        init: false, action: self.action});
-      DavizEdit.Status.stop(data);
+    jQuery.ajax({
+      traditional: true,
+      type: 'post',
+      url: self.action,
+      data: query,
+      success: function(data){
+        jQuery(document).trigger(DavizEdit.Events.facet.refreshed, {
+          init: false, action: self.action});
+        DavizEdit.Status.stop(data);
+      }
     });
   }
 };
@@ -352,13 +370,20 @@ DavizEdit.Facet.prototype = {
   },
 
   submit: function(){
+    var self = this;
     var name = this.button.attr('name');
     var query = name + '=ajax&';
     query += this.form.serialize();
 
     DavizEdit.Status.start('Saving ...');
-    jQuery.post(this.action, query, function(data){
-      DavizEdit.Status.stop(data);
+    jQuery.ajax({
+      traditional: true,
+      type: 'post',
+      url: self.action,
+      data: query,
+      success: function(data){
+        DavizEdit.Status.stop(data);
+      }
     });
   }
 };
@@ -401,11 +426,9 @@ DavizEdit.Views = {
       var view = jQuery(this);
       self.views[view.attr('id')] = new DavizEdit.View(view);
     });
-    this.area.tabs('destroy');
-    var ul = jQuery('ul', this.area).show();
     jQuery('fieldset', this.area).addClass('daviz-edit-fieldset');
     jQuery('form h1', this.area).hide();
-    this.area.tabs();
+    jQuery('ul', this.area).tabs('div.panes > div');
   }
 };
 
@@ -469,14 +492,20 @@ DavizEdit.View.prototype = {
     query[name] = 'ajax';
 
     DavizEdit.Status.start('Saving ...');
-    jQuery.post(action, query, function(data){
-      button.removeClass('submitting');
-      DavizEdit.Status.stop(data);
-      if(name === 'daviz.properties.actions.save'){
-        jQuery(document).trigger(DavizEdit.Events.views.refreshed, {
-          init: false,
-          action: action
-        });
+    jQuery.ajax({
+      traditional: true,
+      type: 'post',
+      url: action,
+      data: query,
+      success: function(data){
+        button.removeClass('submitting');
+        DavizEdit.Status.stop(data);
+        if(name === 'daviz.properties.actions.save'){
+          jQuery(document).trigger(DavizEdit.Events.views.refreshed, {
+            init: false,
+            action: action
+          });
+        }
       }
     });
   }

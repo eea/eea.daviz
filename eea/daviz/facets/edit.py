@@ -3,7 +3,8 @@
 from zope.component import queryAdapter
 from zope.formlib.form import SubPageForm
 from Products.statusmessages.interfaces import IStatusMessage
-from zope.formlib.form import action, setUpWidgets, haveInputWidgets
+from zope.formlib.form import action as formAction
+from zope.formlib.form import setUpWidgets, haveInputWidgets
 from eea.daviz.interfaces import IDavizConfig
 
 from zope.i18nmessageid import MessageFactory
@@ -62,7 +63,7 @@ class EditForm(SubPageForm):
             form=self, data=self._data, adapters=self.adapters,
             ignore_request=ignore_request)
 
-    @action(_('Save'), condition=haveInputWidgets)
+    @formAction(_('Save'), condition=haveInputWidgets)
     def save(self, action, data):
         """ Handle save action
         """
@@ -81,5 +82,5 @@ class EditForm(SubPageForm):
         """
         IStatusMessage(self.request).addStatusMessage(
             'Changes saved', type='info')
-        next = self.context.absolute_url() + '/daviz-edit.html'
-        self.request.response.redirect(next)
+        to = self.context.absolute_url() + '/daviz-edit.html'
+        self.request.response.redirect(to)

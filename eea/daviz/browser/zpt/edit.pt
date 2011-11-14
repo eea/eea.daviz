@@ -1,3 +1,5 @@
+<tal:left define="hidden python:request.set('disable_plone.leftcolumn', 1)" />
+<tal:right define="hidden python:request.set('disable_plone.rightcolumn', 1)" />
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
   lang="en-US"
   metal:use-macro="here/main_template/macros/master"
@@ -5,10 +7,6 @@
 
 <body>
 <div metal:fill-slot="main" class="daviz-settings">
-
-<div metal:use-macro="here/document_actions/macros/document_actions">
-    Document actions (print, sendto etc)
-</div>
 
 <h1 i18n:translate="" id="daviz-page-title" class="documentFirstHeading">
   Configure exhibit
@@ -20,7 +18,7 @@
 </div>
 
 <!-- Views -->
-<div id="daviz-views-edit" class="daviz-views-edit">
+<div id="daviz-views-edit" class="daviz-views-edit daviz-edit-tabs">
   <tal:views replace="structure here/@@daviz-edit.views.html" />
 </div>
 

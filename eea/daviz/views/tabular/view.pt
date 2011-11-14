@@ -5,9 +5,9 @@
   ex:tableStyler="DavizTableStyler"
   ex:rowStyler="DavizTableRowStyler"
   tal:define="
-    columns python:[col for col in template.columns];
-    labels python:template.labels;
-    formats python:template.formats;"
+    columns python:[col for col in view.columns];
+    labels python:view.labels;
+    formats python:view.formats;"
   tal:attributes="
     ex:columns python:', '.join(columns);
     ex:columnLabels python:', '.join(labels);

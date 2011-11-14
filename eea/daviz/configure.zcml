@@ -2,6 +2,10 @@
   xmlns="http://namespaces.zope.org/browser"
   i18n_domain="eea.daviz">
 
+  <include package="eea.exhibit" />
+  <include package="p4a.z2utils" />
+  <include package="collective.js.jqueryui" />
+
   <include file="profiles.zcml" />
 
   <include package=".babel" />
@@ -11,5 +15,7 @@
   <include package=".app" />
   <include package=".facets" />
   <include package=".views" />
+
+  <include package=".upgrades" />
 
 </configure>

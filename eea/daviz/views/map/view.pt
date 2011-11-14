@@ -1,5 +1,4 @@
-<tal:view define="latlng python:template.latlng">
-
+<tal:view define="latlng python:view.latlng">
 <div ex:role="view"
   ex:viewClass="Map"
   tal:attributes="

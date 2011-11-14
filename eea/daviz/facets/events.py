@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+""" Facets events module
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alec Ghica, Alin Voinea"""
@@ -25,5 +26,3 @@ def create_default_facets(obj, evt):
     for facet, typo in evt.columns:
         show = ('label' not in facet) or ('id' not in facet)
         mutator.add_facet(name=facet, label=facet, show=show, item_type=typo)
-
-    #TODO Handle facets types and properties

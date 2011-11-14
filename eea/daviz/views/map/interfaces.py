@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+""" Exhibit map view interfaces
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
@@ -17,7 +18,8 @@ class IExhibitMapEdit(Interface):
     """
     latlng = schema.Choice(
         title=u'Latitude and Longitude column',
-        description=u"Specify which column should be used to get latitude and longitude.",
+        description=u"Specify which column should be used to get latitude " \
+                                                            "and longitude.",
         required=False,
         vocabulary="eea.daviz.vocabularies.FacetsVocabulary"
     )

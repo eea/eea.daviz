@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<metadata>
+  <description>EEA Daviz profile</description>
+  <version>4.0</version>
+  <dependencies>
+    <dependency>profile-collective.js.jqueryui:default</dependency>
+    <dependency>profile-eea.exhibit:default</dependency>
+  </dependencies>
+</metadata>

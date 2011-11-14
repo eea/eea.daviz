@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+""" Views exhibit thumbnail interfaces
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
@@ -17,7 +18,8 @@ class IExhibitThumbnailEdit(Interface):
     """
     thumbnail =  schema.Choice(
         title=u'Thumbnail',
-        description=u"Specify which column should be used to get thumbnail url.",
+        description=u"Specify which column should be used to get " \
+                                                    "thumbnail url.",
         required=True,
         vocabulary="eea.daviz.vocabularies.FacetsVocabulary"
     )

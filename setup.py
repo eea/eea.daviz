@@ -4,25 +4,27 @@ import os
 from os.path import join
 from setuptools import setup, find_packages
 
-name = 'eea.daviz'
-path = name.split('.') + ['version.txt']
-version = open(join(*path)).read().strip()
+NAME = 'eea.daviz'
+PATH = NAME.split('.') + ['version.txt']
+VERSION = open(join(*PATH)).read().strip()
 
-setup(name=name,
-      version=version,
-      description="EEA DaViz",
+setup(name=NAME,
+      version=VERSION,
+      description=("EEA DaViz is a plone product which uses Exhibit to lets "
+                   "you easily create web pages with advanced text search and "
+                   "filtering functionalities (facets), with interactive maps,"
+                   "timelines, and other visualizations like these examples "
+                   "can be seen at  http://www.simile-widgets.org/exhibit."),
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from
-      # http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Framework :: Plone",
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
-      keywords='eea daviz data visualization',
+      keywords='eea daviz data visualization exhibit zope plone',
       author='European Environment Agency',
-      author_email="webadmin@eea europa eu",
+      author_email="webadmin@eea.europa.eu",
       url='http://svn.eionet.europa.eu/projects/Zope/wiki/DaViz',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
@@ -31,6 +33,9 @@ setup(name=name,
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'eea.exhibit',
+          'p4a.z2utils',
+          'collective.js.jqueryui',
           'rdflib',
       ],
       entry_points="""

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+""" Converter module responsible for converting from cvs to json
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alec Ghica"""
@@ -8,19 +9,22 @@ import re
 import logging
 import csv
 from zope.interface import implements
-from interfaces import IExhibitJsonConverter
+from eea.daviz.converter.interfaces import IExhibitJsonConverter
 from Products.CMFPlone.utils import normalizeString
 
 logger = logging.getLogger("eea.daviz.converter")
 REGEX = re.compile(r"[\W]+")
 
 class EEADialectTab(csv.Dialect):
-    """ CSV dialect having tab as delimiter """
+    """ CSV dialect having tab as delimiter
+    """
     delimiter = '\t'
     quotechar = '"'
     # Should be set to quotechar = csv.QUOTE_NONE when we will use Python 2.5
-    # as setting quotechar to nothing does not work in Python 2.4. For more details see
-    # http://stackoverflow.com/questions/494054/how-can-i-disable-quoting-in-the-python-2-4-csv-reader/494126
+    # as setting quotechar to nothing does not work in Python 2.4.
+    # For more details see
+    # http://stackoverflow.com/questions/494054/
+    # how-can-i-disable-quoting-in-the-python-2-4-csv-reader/494126
     escapechar = '\\'
     doublequote = False
     skipinitialspace = False
@@ -71,7 +75,7 @@ class ExhibitJsonConverter(object):
         elif ";" in value:
             value = value.split(";")
         else:
-            value = [value,]
+            value = [value, ]
 
         value = [item.strip() for item in value]
         return value
@@ -168,9 +172,6 @@ class ExhibitJsonConverter(object):
     def __call__(self, datafile):
         """ Returns JSON output after converting source data.
         """
-        #TODO: in the first sprint will convert only CSV (tab separated) files
-        #      to JSON, in a future sprint a converter from more formats to
-        #      JSON will be implemented (e.g. Babel)
 
         columns = []
         hasLabel = False
@@ -210,9 +211,9 @@ class ExhibitJsonConverter(object):
 
                 col, _type = self.column_type(col)
                 data[col] = text
-                properties[col] = {"valueType": _type}
+                properties[col] = {"valueType": _type} 
 
             out.append(data)
 
         columns = (self.column_type(col) for col in columns)
-        return columns, {'items': out, 'properties': properties}
+        return columns, {'items': out, 'properties': properties} 

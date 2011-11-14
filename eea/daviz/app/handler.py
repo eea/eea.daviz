@@ -1,17 +1,13 @@
 # -*- coding: utf-8 -*-
-
+""" Handler module containing configure logic
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
 
 from zope.interface import implements
-from interfaces import IDavizConfig
-try:
-    from zope.annotation.interfaces import IAnnotations
-    IAnnotations
-except ImportError:
-    #BBB Plone 2.5
-    from zope.app.annotation.interfaces import IAnnotations
+from eea.daviz.app.interfaces import IDavizConfig
+from zope.annotation.interfaces import IAnnotations
 
 from persistent.dict import PersistentDict
 from persistent.list import PersistentList
@@ -26,6 +22,8 @@ class Configure(object):
         self.context = context
 
     def _views(self):
+        """ Returns views from ANNO_VIEWS config
+        """
         anno = IAnnotations(self.context)
         views = anno.get(ANNO_VIEWS, None)
         if views is None:
@@ -33,6 +31,8 @@ class Configure(object):
         return views
 
     def _facets(self):
+        """ Returns facets from ANNO_FACETS config
+        """
         anno = IAnnotations(self.context)
         facets = anno.get(ANNO_FACETS, None)
         if facets is None:
@@ -40,6 +40,8 @@ class Configure(object):
         return facets
 
     def _sources(self):
+        """ External sources
+        """
         anno = IAnnotations(self.context)
         sources = anno.get(ANNO_SOURCES, None)
         if sources is None:
@@ -47,6 +49,8 @@ class Configure(object):
         return sources
 
     def _json(self):
+        """ Returns json from ANNO_JSON config
+        """
         anno = IAnnotations(self.context)
         json = anno.get(ANNO_JSON, None)
         if json is None:

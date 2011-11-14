@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
-
+""" Module that contains default view
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
 
-import simplejson
+try:
+    import json as simplejson
+    simplejson = simplejson
+except ImportError:
+    import simplejson
 from zope.component import queryAdapter, queryMultiAdapter
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
@@ -18,11 +23,15 @@ class View(BrowserView):
         self.accessor = queryAdapter(self.context, IDavizConfig)
 
     def json(self):
+        """ Returns json dump of result
+        """
         res = self.accessor.json
         return simplejson.dumps(dict(res))
 
     @property
     def facets(self):
+        """ Returns facets
+        """
         facets = self.accessor.facets
         for facet in facets:
             if not facet.get('show', False):
@@ -31,12 +40,16 @@ class View(BrowserView):
 
     @property
     def views(self):
+        """ Returns views
+        """
         views = self.accessor.views
         for view in views:
             yield view.get('name')
 
     @property
     def sources(self):
+        """ External sources
+        """
         sources = self.accessor.sources
         for source in sources:
             yield source
@@ -51,6 +64,8 @@ class View(BrowserView):
         return getattr(props, 'google_key', '')
 
     def get_facet(self, name):
+        """ Get faceted by name
+        """
         facet = self.accessor.facet(key=name)
         facet_type = facet.get('type')
         if not isinstance(facet_type, unicode):
@@ -60,6 +75,8 @@ class View(BrowserView):
         return view
 
     def get_view(self, name):
+        """ Get view by name
+        """
         if not isinstance(name, unicode):
             name = name.decode('utf-8')
         view = queryMultiAdapter((self.context, self.request), name=name)

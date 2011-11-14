@@ -1,7 +1,11 @@
 """ Exhibit properties
 """
 import logging
-import simplejson
+try:
+    import json as simplejson
+    simplejson = simplejson # pylint
+except ImportError:
+    import simplejson
 from zope import schema
 from zope.interface import Interface
 from zope.formlib.form import Fields
@@ -156,5 +160,6 @@ class EditForm(SubPageForm):
         """ Next
         """
         IStatusMessage(self.request).addStatusMessage(self.message, type='info')
-        next = self.context.absolute_url() + '/daviz-edit.html'
-        self.request.response.redirect(next)
+        next_url = self.context.absolute_url() + '/daviz-edit.html'
+        self.request.response.redirect(next_url)
+

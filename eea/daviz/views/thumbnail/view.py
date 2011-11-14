@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-
+""" Edit tile views
+"""
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'
 __credits__ = """contributions: Alin Voinea"""
 
 from zope.interface import implements
 from eea.daviz.views.view import ViewForm
-from interfaces import IExhibitThumbnailView
+from eea.daviz.views.thumbnail.interfaces import IExhibitThumbnailView
 
 class View(ViewForm):
     """ Thumbnail view
@@ -16,7 +17,7 @@ class View(ViewForm):
 
     @property
     def thumbnail(self):
-        """ Return thumbnail column
+        """ Returns thumbnail column
         """
         thumbnail = self.data.get('thumbnail', None)
         if thumbnail:
@@ -25,7 +26,7 @@ class View(ViewForm):
 
     @property
     def columns(self):
-        """ Return columns
+        """ Returns columns
         """
         for column in self.data.get('columns', []):
             yield '.%s' % column

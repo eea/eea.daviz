@@ -1,6 +1,6 @@
 <tal:view define="
-  start python:template.start;
-  end python:template.end">
+  start python:view.start;
+  end python:view.end">
 
 <div
   ex:role="view"

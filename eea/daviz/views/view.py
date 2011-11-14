@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+""" Basic layer for daviz views
+"""
 
 __author__ = """European Environment Agency (EEA)"""
 __docformat__ = 'plaintext'

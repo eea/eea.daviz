@@ -1,5 +1,12 @@
 /* Thumbnail
 */
+
+.daviz-views {
+  float: left;
+  width: 80%;
+  overflow: auto;
+}
+
 .daviz-thumbnail-lens {
   text-align: center;
   padding: 1em ! important;

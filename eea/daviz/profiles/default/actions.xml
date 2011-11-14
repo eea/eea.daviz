@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<object name="portal_actions" meta_type="Plone Actions Tool"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+
+    <action-provider name="portal_actions">
+        <action title="Edit Exhibit View" action_id="daviz.edit" category="object"
+           condition_expr="object/@@daviz_support/is_exhibit"
+            url_expr="string:${object/absolute_url}/daviz-edit.html"
+            visible="True">
+            <permission>Modify portal content</permission>
+        </action>
+
+        <action title="Disable exhibit view" action_id="daviz.disable" category="object_buttons"
+           condition_expr="object/@@daviz_support/can_disable"
+           url_expr="string:${object/absolute_url}/@@daviz_support/disable"
+            visible="True">
+            <permission>Modify portal content</permission>
+        </action>
+
+        <action title="Enable exhibit view" action_id="daviz.enable" category="object_buttons"
+           condition_expr="object/@@daviz_support/can_enable"
+            url_expr="string:${object/absolute_url}/@@daviz_support/enable"
+            visible="True">
+            <permission>Modify portal content</permission>
+        </action>
+
+    </action-provider>
+</object>

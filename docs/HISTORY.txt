@@ -1,105 +1,79 @@
 Changelog
 =========
 
+4.0 - (unreleased)
+------------------
 
 4.0-dev - (2011-11-07)
 ----------------------
-
 * Feature: Added upgrade steps
   [voineali #4392]
-
 * Feature: Plone 4.x compatible
   [ichimdav, voineali #4234]
-
 * Feature: Added exhibit 'properties' dict in generated JSON
   [voineali 4528]
 
-
 1.4-dev - (unreleased)
 ----------------------
-
 * Feature: Enabled daviz for eea.dataservice EEAFigureFile
   [voineali #4492]
 
-
 1.3 - (2011-07-29)
 ------------------
-
 * Feature: Added babel translator API and a custom translator:
   rdf-xml to exhibit-json
   [voineali #4416]
-
 * Feature: Possibility to add external exhibit data sources like
   "Google Spreadsheet", "RDF/XML" and "External JSON".
   [voineali #4416]
-
 * Feature: Added editable 'Lens' property to Tiles view in order
   to easily create custom Exhibit Lens Templates
   [voineali #4414]
-
 * Feature: Added a way to reorder Exhibit Views
   [voineali #4177]
-
 * Feature: Added a way to reorder or hide Exhibit Facets
   [voineali #4417]
-
 * Feature: Possibility to add/remove facets
   [voineali #4416]
-
 * Feature: Made Exibit edit page more user friendly (WYSIWYG)
   [voineali #4417]
-
 * Feature: JSON Converter handles column types if specified in CSV columns
   header (ex: Title:lable, Year:date, etc)
   [voineali #4414]
-
 * Feature: Added 'Details' column for 'Tabular View'. This can be
   enabled/disabled in 'Tabular View' settings.
   [voineali #4419]
 
-
 1.2 - (2011-04-07)
 ------------------
-
 * Feature: Added edit form for generated JSON
   [voineali #4199]
-
 * Feature: If column name contains ":list" exported data in JSON will pe an array
   [ghicaale #4199]
-
 * Bug fix: Made exibit available for ATBlob files
   [voineali #4135]
-
 * Cleanup: of pyflakes warnings
   [ichimdav #4141]
-
 * Cleanup: of sensible pylint violations
   [ichimdav #4140]
-
 * Feature: Added live search field as default on top
   [demarant, #3023]
-
 * Change: Moved facets to the right
   [demarant]
-
 * Bug fix: Fixed Google Map Key alert
   [voineali #4196]
-
 * Change: Disabled Thumbnails View as it's bugous on IE
   [voineali #4196]
 
-
 1.1 - (2011-03-16)
 ------------------
-
 *  Bug fix: Removed jQuery and jQuery UI from daviz-edit.css, daviz-edit.js
    as they generate errors if already installed. You'll have to manually
    install jQuery and jQuery UI in portal_css and portal_javascripts
    [voineali #4196]
 
-
 1.0 - (2011-03-16)
 ------------------
-
 * Initial release
   [voineali #2773]
+

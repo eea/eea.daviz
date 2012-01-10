@@ -15,4 +15,16 @@
 
   </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeSteps
+    source="4.0"
+    destination="4.1"
+    profile="eea.daviz:default">
+
+    <genericsetup:upgradeDepends
+      title="Import types, factorytool, rolemap steps from eea.daviz profile"
+      import_steps="typeinfo factorytool rolemap"
+      />
+
+  </genericsetup:upgradeSteps>
+
 </configure>

@@ -1,5 +1,6 @@
 <configure
   xmlns="http://namespaces.zope.org/zope"
+  xmlns:zcml="http://namespaces.zope.org/zcml"
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
   i18n_domain="eea">
 
@@ -23,6 +24,12 @@
     <genericsetup:upgradeDepends
       title="Import types, factorytool, rolemap steps from eea.daviz profile"
       import_steps="typeinfo factorytool rolemap"
+      />
+
+    <genericsetup:upgradeDepends
+      zcml:condition="installed eea.relations"
+      title="Import possible_relations step from eea.daviz profile"
+      import_steps="possible_relations"
       />
 
   </genericsetup:upgradeSteps>

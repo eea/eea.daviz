@@ -37,6 +37,12 @@ setup(name=NAME,
           'p4a.z2utils',
           'collective.js.jqueryui',
           'rdflib',
+
+          ## Optional
+          #eea.relations,
+          #eea.googlechartsconfig,
+          #eea.sparql,
+
       ],
       entry_points="""
       # -*- Entry points: -*-

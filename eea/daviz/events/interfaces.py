@@ -19,8 +19,13 @@ class IDavizFacetDeletedEvent(IDavizEvent):
     """ Daviz facet deleted
     """
 
+class IDavizRelationsChangedEvent(IDavizEvent):
+    """ Daviz relations changed
+    """
+
 __all__ = [
     IDavizEvent,
     IDavizEnabledEvent,
     IDavizFacetDeletedEvent,
+    IDavizRelationsChangedEvent,
 ]

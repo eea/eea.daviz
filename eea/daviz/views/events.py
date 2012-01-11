@@ -13,18 +13,19 @@ logger = logging.getLogger('eea.daviz.views.events')
 def create_default_views(obj, evt):
     """ Create default views
     """
-
     mutator = queryAdapter(obj, IDavizConfig)
     if not mutator:
         logger.warn("Couldn't find any IDavizConfig adapter for %s",
                     obj.absolute_url(1))
         return
 
-    # Remove all views
-    mutator.delete_views()
+    if evt.cleanup:
+        # Remove all views
+        mutator.delete_views()
 
-    # Add default view: Tabular view
-    mutator.add_view(name=u'daviz.tabular')
+        # Add default view: Tabular view
+        mutator.add_view(name=u'daviz.tabular')
+
 
 def facet_deleted(obj, evt, daviz_view):
     """ Cleanup removed facet from view properties

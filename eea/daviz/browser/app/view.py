@@ -15,8 +15,19 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from eea.daviz.interfaces import IDavizConfig
 
-class View(BrowserView):
-    """ Default view
+
+class JSONView(BrowserView):
+    """ Abstract view to provide "daviz-view.json" multiadapter
+    """
+    def json(self):
+        """ Implement this method in order to provide a valid exhibit JSON
+        """
+        res = {'items': [], 'properties': {}}
+        return simplejson.dumps(res)
+
+
+class View(JSONView):
+    """ daviz-view.json for IExhibitJson objects
     """
     def __init__(self, context, request):
         super(View, self).__init__(context, request)

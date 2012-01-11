@@ -16,6 +16,7 @@ from eea.daviz.app.interfaces import IDavizConfig
 # Events
 from eea.daviz.events.interfaces import IDavizEnabledEvent
 from eea.daviz.events.interfaces import IDavizFacetDeletedEvent
+from eea.daviz.events.interfaces import IDavizRelationsChangedEvent
 
 __all__ = [
     IPossibleExhibitJson,
@@ -24,4 +25,5 @@ __all__ = [
     IDavizConfig,
     IDavizEnabledEvent,
     IDavizFacetDeletedEvent,
+    IDavizRelationsChangedEvent,
 ]

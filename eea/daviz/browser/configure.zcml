@@ -22,6 +22,14 @@
     />
 
   <browser:page
+    for="Products.Archetypes.interfaces.base.IBaseObject"
+    name="daviz-view.json"
+    class=".app.view.JSONView"
+    attribute="json"
+    permission="zope2.View"
+    />
+
+  <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
     name="daviz-view.json"
     class=".app.view.View"

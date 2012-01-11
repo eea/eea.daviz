@@ -19,10 +19,15 @@ def create_default_facets(obj, evt):
                     obj.absolute_url(1))
         return
 
-    # Remove all facets
-    mutator.delete_facets()
+    if evt.cleanup:
+        # Remove all facets
+        mutator.delete_facets()
 
-    # Add new facets
+    # Add new facets or edit existing
     for facet, typo in evt.columns:
-        show = ('label' not in facet) or ('id' not in facet)
-        mutator.add_facet(name=facet, label=facet, show=show, item_type=typo)
+        if not mutator.facet(facet):
+            show = ('label' not in facet) or ('id' not in facet)
+            mutator.add_facet(
+                name=facet, label=facet, show=show, item_type=typo)
+        else:
+            mutator.edit_facet(facet, item_type=typo)

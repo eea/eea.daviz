@@ -32,7 +32,6 @@ def onRelationsChanged(obj, evt):
             logger.exception(err)
             continue
 
-        new_json['items'].extend(daviz_json.get('items', []))
         new_json['properties'].update(daviz_json.get('properties', {}))
 
     mutator.json = new_json

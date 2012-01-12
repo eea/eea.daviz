@@ -39,6 +39,14 @@
 
   <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
+    name="daviz-relateditems.json"
+    class=".app.view.RelatedItemsJSON"
+    attribute="json"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    for="eea.daviz.interfaces.IExhibitJson"
     name="daviz-edit.html"
     template="zpt/edit.pt"
     class=".app.edit.Edit"

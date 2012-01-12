@@ -11,9 +11,11 @@
   <link rel="exhibit/babel-translator"
     tal:attributes="href string:${here/absolute_url}/@@babel-translator" />
 
+  <!-- Related items merged JSON -->
   <link rel="exhibit/data" type="application/json"
-    tal:attributes="href string:${here/absolute_url}/@@daviz-view.json" />
+    tal:attributes="href string:${here/absolute_url}/@@daviz-relateditems.json" />
 
+  <!-- External sources JSONs -->
   <tal:additional repeat="source python:view.sources">
   <link rel="exhibit/data"
     tal:attributes="
@@ -21,6 +23,10 @@
     href string:${source/name};
     ex:converter python:source.get('converter', None) or None;" />
   </tal:additional>
+
+  <!-- Own JSON -->
+  <link rel="exhibit/data" type="application/json"
+    tal:attributes="href string:${here/absolute_url}/@@daviz-view.json" />
 
   <!-- include exhibit api -->
   <script type="text/javascript">

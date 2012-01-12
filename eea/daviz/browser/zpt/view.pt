@@ -55,8 +55,12 @@
   <div id="daviz-view">
     <!-- Tabs -->
     <ul class="chart-tabs" tal:condition="python:len(view.sections) > 1">
-      <li tal:repeat="section python:view.sections">
-        <a tal:attributes="href string:#tab-${section}" tal:content="section">
+      <li tal:repeat="section_title python:view.sections.items()">
+        <a tal:define="
+          section python:section_title[0];
+          title python:section_title[1];"
+          tal:attributes="href string:#tab-${section}"
+          tal:content="title">
         </a>
       </li>
     </ul>

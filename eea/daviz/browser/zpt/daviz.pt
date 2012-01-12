@@ -2,7 +2,7 @@
   <div ex:role="facet" ex:facetClass="TextSearch" ex:facetLabel="Live search"></div>
   <div style="float: left; width: 98%">
     <div class="daviz-views" ex:role="viewPanel">
-      <tal:views define="views python:view.section_views('daviz');">
+      <tal:views define="views python:view.section_views(view.__name__);">
         <tal:view repeat="view_name views">
           <div tal:define="view_page python:view.get_view(view_name)"
             tal:replace="structure view_page" />

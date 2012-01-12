@@ -93,10 +93,14 @@ class View(JSONView):
         """
         views = self.accessor.views
 
-        sections = set()
+        sections = {}
         for view in views:
-            section = view.get('name').split('.')[0]
-            sections.add(section)
+            name = view.get('name')
+            browser = queryMultiAdapter(
+                (self.context, self.request), name=name)
+            section = getattr(browser, 'section', 'Default')
+            section_id = section.lower().replace(' ', '-')
+            sections[section_id] = section
         return sections
 
     def section_views(self, section):
@@ -106,7 +110,10 @@ class View(JSONView):
         myviews = []
         for view in views:
             name = view.get('name')
-            if name.split('.')[0] != section:
+            browser = queryMultiAdapter(
+                            (self.context, self.request), name=name)
+            section_name = getattr(browser, 'section', 'Default')
+            if section_name.lower().replace(' ', '-') != section:
                 continue
             myviews.append(name)
         return myviews

@@ -36,7 +36,6 @@ div div.exhibit-facet-header-filterControl {
 
 #daviz-view ul.chart-tabs li {
   float: left;
-  text-transform: uppercase;
   padding: 5px;
   font-weight: normal;
 }

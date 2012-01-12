@@ -4,6 +4,7 @@ from zope.event import notify
 import logging
 import json
 from eea.daviz.events import DavizEnabledEvent
+from eea.daviz.cache import InvalidateCacheEvent
 from zope.component import queryMultiAdapter, queryAdapter
 from eea.daviz.interfaces import IDavizConfig
 logger = logging.getLogger('eea.daviz.events')
@@ -43,4 +44,6 @@ def onRelationsChanged(obj, evt):
         else:
             typo = 'text'
         columns.append((key, typo))
+
     notify(DavizEnabledEvent(obj, columns=columns, cleanup=False))
+    notify(InvalidateCacheEvent(raw=True, dependencies=['eea.daviz']))

@@ -1,0 +1,10 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           i18n_domain="eea">
+
+  <browser:page name="eea.daviz.cache.invalidate"
+                for="eea.daviz.interfaces.IExhibitJson"
+                class=".browser.InvalidateCache"
+                permission="cmf.ModifyPortalContent" />
+
+</configure>

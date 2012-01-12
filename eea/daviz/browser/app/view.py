@@ -6,6 +6,7 @@ from zope.component import queryAdapter, queryMultiAdapter
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from eea.daviz.interfaces import IDavizConfig
+from eea.daviz.cache import ramcache, cacheJsonKey
 
 logger = logging.getLogger('eea.daviz.browser')
 
@@ -89,6 +90,7 @@ class View(JSONView):
 class RelatedItemsJSON(JSONView):
     """ Merged JSON from related items
     """
+    @ramcache(cacheJsonKey, dependencies=['eea.daviz'])
     def json(self):
         """ JSON
         """

@@ -42,6 +42,7 @@ setup(name=NAME,
           #eea.relations,
           #eea.googlechartsconfig,
           #eea.sparql,
+          #eea.cache,
 
       ],
       entry_points="""

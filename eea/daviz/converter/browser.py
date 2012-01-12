@@ -126,7 +126,7 @@ class DavizSupport(DavizPublicSupport):
             logger.exception(err)
             return self._redirect(('An error occured while trying to convert '
                                    'attached file. Please ensure you provided '
-                                   'a valid CSV file'), 'view')
+                                   'a valid CSV file'), '/view')
 
         if not IExhibitJson.providedBy(self.context):
             alsoProvides(self.context, IExhibitJson)

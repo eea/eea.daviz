@@ -49,38 +49,30 @@
 
 <body>
 
-<div metal:fill-slot="main">
+<div metal:fill-slot="content-core">
 
+<div tal:define="views python:view.views">
+  <div id="daviz-view">
+    <!-- Tabs -->
+    <ul class="chart-tabs" tal:condition="python:len(view.sections) > 1">
+      <li tal:repeat="section python:view.sections">
+        <a tal:attributes="href string:#tab-${section}" tal:content="section">
+        </a>
+      </li>
+    </ul>
+    <div style="clear: both"></div>
 
-  <p class="documentDescription"
-    tal:content="here/Description"
-    tal:condition="here/Description">
-  News summary
-  </p>
+    <!-- Sections -->
+    <div class="chart-panes">
+      <div tal:repeat="section python:view.sections"
+        tal:attributes="id string:tab-${section}">
+        <tal:view replace="structure python:view.section(section)" />
+      </div>
+    </div>
+    <div style="clear: both"></div>
 
-<div ex:role="facet" ex:facetClass="TextSearch" ex:facetLabel="Live search"></div>
-
-<div style="float: left; width: 98%">
-  <!-- Exhibit views -->
-  <div class="daviz-views" ex:role="viewPanel">
-    <tal:views define="views python:view.views;">
-      <tal:view repeat="view_name views">
-        <div tal:define="view_page python:view.get_view(view_name)"
-          tal:replace="structure view_page" />
-      </tal:view>
-    </tal:views>
-  </div>
-    <!-- Exhibit facets -->
-  <div style="float: left; width: 19%; margin-left: 1%">
-    <tal:facets define="facets python:view.facets;">
-      <tal:facet repeat="facet_name facets">
-        <div tal:define="facet_view python:view.get_facet(facet_name)"
-          tal:replace="structure facet_view" />
-      </tal:facet>
-    </tal:facets>
   </div>
 </div>
-<div style="clear: both"></div>
 
 </div>
 </body>

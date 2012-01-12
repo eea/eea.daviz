@@ -9,3 +9,10 @@ var DavizTableRowStyler = function(item, database, tr) {
     jQuery(tr).addClass('even');
   }
 };
+
+jQuery(document).ready(function(){
+  var sections = jQuery("ul.chart-tabs");
+  if(sections.length){
+    sections.tabs("div.chart-panes > div");
+  }
+});

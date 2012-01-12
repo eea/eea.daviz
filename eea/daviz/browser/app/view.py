@@ -87,6 +87,41 @@ class View(JSONView):
         view = queryMultiAdapter((self.context, self.request), name=name)
         return view
 
+    @property
+    def sections(self):
+        """ Returns view sections
+        """
+        views = self.accessor.views
+
+        sections = set()
+        for view in views:
+            section = view.get('name').split('.')[0]
+            sections.add(section)
+        return sections
+
+    def section_views(self, section):
+        """ Returns views for a section
+        """
+        views = self.accessor.views
+        myviews = []
+        for view in views:
+            name = view.get('name')
+            if name.split('.')[0] != section:
+                continue
+            myviews.append(name)
+        return myviews
+
+    def section(self, name):
+        """ Get section by name
+        """
+        view = queryMultiAdapter((self.context, self.request), name=name)
+        if not view:
+            logger.warn('There is no %s view registered for %s',
+                        name, self.context.absolute_url(1))
+            return ''
+        return view()
+
+
 class RelatedItemsJSON(JSONView):
     """ Merged JSON from related items
     """

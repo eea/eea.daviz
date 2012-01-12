@@ -15,6 +15,14 @@
 
   <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
+    name="daviz"
+    template="zpt/daviz.pt"
+    class=".app.view.View"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    for="eea.daviz.interfaces.IExhibitJson"
     name="daviz-view.html"
     template="zpt/view.pt"
     class=".app.view.View"

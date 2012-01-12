@@ -27,3 +27,29 @@ div div.exhibit-facet-header-filterControl {
   width: 4em;
   text-align: right;
 }
+
+/* Sections
+*/
+#daviz-view ul.chart-tabs {
+  list-style: none;
+}
+
+#daviz-view ul.chart-tabs li {
+  float: left;
+  text-transform: uppercase;
+  padding: 5px;
+  font-weight: normal;
+}
+
+#daviz-view ul.chart-tabs li a,
+#daviz-view ul.chart-tabs li a:link,
+#daviz-view ul.chart-tabs li a:hover,
+#daviz-view ul.chart-tabs li a:active,
+#daviz-view ul.chart-tabs li a:visited {
+  text-decoration: none;
+  color:#000000;
+}
+
+#daviz-view ul.chart-tabs li a.current {
+  font-weight: bold;
+}

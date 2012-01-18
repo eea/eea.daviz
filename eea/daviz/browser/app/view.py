@@ -2,11 +2,14 @@
 """
 import logging
 import json as simplejson
+from zope.security import checkPermission
 from zope.component import queryAdapter, queryMultiAdapter
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from eea.daviz.interfaces import IDavizConfig
 from eea.daviz.cache import ramcache, cacheJsonKey
+from eea.daviz.config import EEAMessageFactory as _
+from Products.statusmessages.interfaces import IStatusMessage
 
 logger = logging.getLogger('eea.daviz.browser')
 
@@ -127,6 +130,20 @@ class View(JSONView):
                         name, self.context.absolute_url(1))
             return ''
         return view()
+
+    def __call__(self, **kwargs):
+        """ If daviz is not configured redirects to edit page.
+        """
+        if self.sections:
+            return self.index()
+
+        if not checkPermission('cmf.ModifyPortalContent', self.context):
+            return self.index()
+
+        IStatusMessage(self.request).addStatusMessage(
+            _(u"Please add at least one View for this context"), type="error")
+        return self.request.response.redirect(
+            self.context.absolute_url() + '/daviz-edit.html')
 
 
 class RelatedItemsJSON(JSONView):

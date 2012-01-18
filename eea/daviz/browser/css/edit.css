@@ -147,28 +147,47 @@ dl.portalMessage dd {
 .daviz-facets-edit {
 }
 
+#content .daviz-facets-edit fieldset,
+.daviz-facets-edit fieldset {
+  border: none;
+  padding: 0.5em 1em;
+}
+
 .daviz-facets-edit-ajax {
   float: right;
-  width: 29%;
+  width: 27%;
+  margin-right: 2%;
 }
 
 .daviz-facet-edit {
   margin-top: 1em;
   clear: right;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px #888;
 }
 
 .daviz-facet-edit h1 {
   font-size: 1.2em;
-  background-color: #CDE2A7;
   color: black;
   margin: 0 2px;
-  border: 2px groove threedface;
   padding: 0.2em 0.5em;
   cursor: move;
+  background-color: #CDE2A7;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#CDE2A7));
+  background-image: -webkit-linear-gradient(center top , #FFFFFF, #CDE2A7);
+  background-image: -moz-linear-gradient(center top , #FFFFFF, #CDE2A7);
+  background-image: -ms-linear-gradient(center top , #FFFFFF, #CDE2A7);
+  background-image: -o-linear-gradient(center top , #FFFFFF, #CDE2A7);
 }
 
 .daviz-facet-edit h1.hidden {
   background-color: #E6E6E6;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#E6E6E6));
+  background-image: -webkit-linear-gradient(center top , #FFFFFF, #E6E6E6);
+  background-image: -moz-linear-gradient(center top , #FFFFFF, #E6E6E6);
+  background-image: -ms-linear-gradient(center top , #FFFFFF, #E6E6E6);
+  background-image: -o-linear-gradient(center top , #FFFFFF, #E6E6E6);
 }
 
 .daviz-facet-edit h1 .facet-title {
@@ -306,12 +325,25 @@ dl.portalMessage dd {
   clear: both;
 }
 
+.daviz-confirm-overlay, .daviz-facet-add-overlay {
+  border-radius: 10px;
+  box-shadow: 0px 2px 2px #888;
+}
+
 .daviz-confirm-overlay .ui-dialog-titlebar,
 .daviz-facet-add-overlay .ui-dialog-titlebar {
-  background-color:#CDE2A7;
-  border:2px groove threedface;
   color:black;
   font-size:1.2em;
   margin:0 2px;
   padding:0.2em 0.5em;
+  background-color:#CDE2A7;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#CDE2A7));
+  background-image: -webkit-linear-gradient(center top , #FFFFFF, #CDE2A7);
+  background-image: -moz-linear-gradient(center top , #FFFFFF, #CDE2A7);
+  background-image: -ms-linear-gradient(center top , #FFFFFF, #CDE2A7);
+  background-image: -o-linear-gradient(center top , #FFFFFF, #CDE2A7);
+}
+
+.daviz-facet-add-overlay fieldset {
+  border: none;
 }

@@ -55,7 +55,7 @@ DavizEdit.Confirm = {
     self.event = null;
     self.kwargs = {};
 
-    self.area = jQuery('<div>').addClass('daviz-confirm');
+    self.area = jQuery('<div>').addClass('daviz-confirm').attr('title', 'Confirm');
     jQuery('daviz-views-edit').after(self.area);
     self.area.dialog({
       bgiframe: true,

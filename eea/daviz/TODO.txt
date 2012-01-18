@@ -1,3 +1,2 @@
 EEA DaViz TODOs:
- - Add eea.jquery dependencies and install jquery and jquery UI profiles
-   if not installed.
+ - Add excel to json converter (tablib - http://pypi.python.org/pypi/tablib/0.9.11)

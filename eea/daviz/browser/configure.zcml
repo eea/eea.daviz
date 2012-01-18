@@ -93,6 +93,13 @@
     />
 
   <browser:page
+    name="daviz.properties.edit"
+    for="eea.daviz.content.interfaces.IDavizPresentation"
+    class=".app.properties.DavizPresentationEditForm"
+    permission="cmf.ModifyPortalContent"
+    />
+
+  <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
     name="daviz-edit.save"
     class=".app.edit.Configure"

@@ -7,6 +7,8 @@ Changelog
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for eea.daviz
   [voineali #4866]
+* Feature: Added a CSS class on section tabs
+  [voineali #4880]
 * Feature: Redirects to daviz-edit if there is no DaViz view/chart configured
   [voineali #4882]
 * Feature: Added a way to register additional charts as tabs in view mode.

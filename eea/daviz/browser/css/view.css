@@ -32,6 +32,14 @@ div div.exhibit-facet-header-filterControl {
 */
 #daviz-view ul.chart-tabs {
   list-style: none;
+  float: right;
+}
+
+.tab-exhibit span {
+  background-image: url("++resource++eea.daviz.images/exhibit-icon.png");
+  background-repeat: no-repeat;
+  display: block;
+  padding: 50px 5px 0;
 }
 
 #daviz-view ul.chart-tabs li {

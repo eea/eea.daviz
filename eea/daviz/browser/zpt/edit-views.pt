@@ -38,12 +38,20 @@
   tal:attributes="id string:$id-tab"
   tal:condition="editform"
   class="daviz-view-edit">
-  <form method="post"
+
+  <!-- Facets -->
+  <div class="daviz-facets-edit">
+    <tal:views replace="structure here/@@daviz-edit.facets.html" />
+  </div>
+
+  <form method="post" class="daviz-view-form daviz-global-settings"
     tal:define="name python:editform.__name__"
     tal:attributes="action string:${here/absolute_url}/@@$name">
     <tal:editform replace="structure editform" />
   </form>
+
 </div>
+
 <!-- Views body -->
 <tal:edittab repeat="enabled python:view.enabled_views">
   <div tal:define="
@@ -54,7 +62,7 @@
     tal:attributes="id string:$id-tab"
     tal:condition="editform"
     class="daviz-view-edit">
-    <form method="post"
+    <form method="post" class="daviz-view-form"
       tal:define="name python:editform.__name__"
       tal:attributes="action string:${here/absolute_url}/@@$name">
       <tal:editform replace="structure editform" />

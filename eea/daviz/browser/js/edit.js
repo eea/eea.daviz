@@ -427,7 +427,7 @@ DavizEdit.Views = {
       self.views[view.attr('id')] = new DavizEdit.View(view);
     });
     jQuery('fieldset', this.area).addClass('daviz-edit-fieldset');
-    jQuery('form h1', this.area).hide();
+    jQuery('form.daviz-view-form h1', this.area).hide();
     jQuery('ul', this.area).tabs('div.panes > div');
   }
 };
@@ -442,7 +442,7 @@ DavizEdit.View.prototype = {
   initialize: function(view){
     var self = this;
     self.view = view;
-    self.form = jQuery('form', self.view);
+    self.form = jQuery('form.daviz-view-form', self.view);
     self.table = jQuery('div.field:has(label[for=daviz.properties.sources]) table', self.form);
     if(self.table.length){
       self.table.addClass('daviz-sources-table');

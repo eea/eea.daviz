@@ -93,8 +93,7 @@ dl.portalMessage dd {
 
 .daviz-facets-edit-ajax {
   float: right;
-  width: 27%;
-  margin-right: 2%;
+  width: 29%;
 }
 
 .daviz-facet-edit {
@@ -146,8 +145,10 @@ dl.portalMessage dd {
 }
 
 .daviz-views-edit-ajax {
+}
+
+.daviz-global-settings {
   width: 70%;
-  float: left;
 }
 
 .daviz-views-edit ul {

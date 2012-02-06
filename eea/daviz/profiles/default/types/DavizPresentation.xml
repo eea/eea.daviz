@@ -4,7 +4,7 @@
    i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title" i18n:translate="">Daviz Presentation</property>
  <property name="description"
-     i18n:translate="">An announcement that will show up in news listings.</property>
+     i18n:translate="">Dynamic and flexible data visualization tool.</property>
  <property name="icon_expr">string:${portal_url}/++resource++eea.daviz.images/presentation_icon.png</property>
  <property name="content_meta_type">DavizPresentation</property>
  <property name="product">eea.daviz</property>

@@ -3,6 +3,7 @@ Changelog
 
 4.3-dev - (unreleased)
 ----------------------
+ * Change: corrected daviz presentation description [demarant]
 
 4.2 - (2012-02-06)
 ------------------

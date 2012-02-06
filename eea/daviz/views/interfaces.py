@@ -12,6 +12,7 @@ class IExhibitView(Interface):
     """ Access / update exhibit view configuration
     """
     label = TextLine(title=u'Label for exhibit view')
+    section = TextLine(title=u"Section of this view, e.g. Exhibit, Google, etc")
 
 class IViewDirective(Interface):
     """

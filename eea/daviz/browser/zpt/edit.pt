@@ -12,11 +12,6 @@
   Configure exhibit
 </h1>
 
-<!-- Facets -->
-<div class="daviz-facets-edit">
-  <tal:views replace="structure here/@@daviz-edit.facets.html" />
-</div>
-
 <!-- Views -->
 <div id="daviz-views-edit" class="daviz-views-edit daviz-edit-tabs">
   <tal:views replace="structure here/@@daviz-edit.views.html" />

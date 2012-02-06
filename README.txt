@@ -105,10 +105,10 @@ Source code
 ===========
 
 Latest source code (Plone 4 compatible):
-   https://svn.eionet.europa.eu/repositories/Zope/trunk/eea.daviz/branches/plone4/
+   https://svn.eionet.europa.eu/repositories/Zope/trunk/eea.daviz/trunk
 
 Plone 2 and 3 compatible:
-   https://svn.eionet.europa.eu/repositories/Zope/trunk/eea.daviz/trunk/
+   https://svn.eionet.europa.eu/repositories/Zope/trunk/eea.daviz/branches/plone25
 
 
 Copyright and license

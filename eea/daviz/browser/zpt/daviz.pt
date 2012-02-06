@@ -1,0 +1,22 @@
+<metal:daviz define-macro="views">
+  <div ex:role="facet" ex:facetClass="TextSearch" ex:facetLabel="Live search"></div>
+  <div style="float: left; width: 98%">
+    <div class="daviz-views" ex:role="viewPanel">
+      <tal:views define="views python:view.section_views(view.__name__);">
+        <tal:view repeat="view_name views">
+          <div tal:define="view_page python:view.get_view(view_name)"
+            tal:replace="structure view_page" />
+        </tal:view>
+      </tal:views>
+    </div>
+    <div style="float: left; width: 19%; margin-left: 1%">
+      <tal:facets define="facets python:view.facets;">
+        <tal:facet repeat="facet_name facets">
+          <div tal:define="facet_view python:view.get_facet(facet_name)"
+            tal:replace="structure facet_view" />
+        </tal:facet>
+      </tal:facets>
+    </div>
+  </div>
+  <div style="clear: both"></div>
+</metal:daviz>

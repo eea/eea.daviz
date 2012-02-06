@@ -15,6 +15,7 @@ class ViewForm(BrowserView):
     see implementation in eea.daviz.views.map.view.View.
     """
     label = ''
+    section = 'Exhibit'
     _data = {}
 
     @property

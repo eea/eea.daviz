@@ -8,6 +8,8 @@
 
   <include file="profiles.zcml" />
 
+  <include package=".cache" />
+  <include package=".content" />
   <include package=".babel" />
   <include package=".subtypes" />
   <include package=".converter" />

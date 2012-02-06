@@ -21,4 +21,12 @@
     allowed_interface="eea.daviz.subtypes.interfaces.IDavizSubtyper"
     />
 
+  <browser:page
+    for="plone.app.blob.interfaces.IATBlobFile"
+    name="daviz-view.json"
+    class=".browser.TSVFileJSONView"
+    attribute="json"
+    permission="zope2.View"
+    />
+
 </configure>

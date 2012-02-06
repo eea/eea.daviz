@@ -1,65 +1,3 @@
-/* Update ui images path
-*/
-.ui-icon, .ui-widget-content .ui-icon, .ui-widget-header .ui-icon {
-  background-image: url(../../++resource++jquery.ui.theme/images/ui-icons_222222_256x240.png);
-  cursor: pointer;
-}
-
-.ui-state-default .ui-icon {
-  background-image: url(../../++resource++jquery.ui.theme/images/ui-icons_888888_256x240.png);
-  cursor: pointer;
-}
-
-.ui-state-hover .ui-icon, .ui-state-focus .ui-icon, .ui-state-active .ui-icon {
-  background-image: url(../../++resource++jquery.ui.theme/images/ui-icons_454545_256x240.png);
-  cursor: pointer;
-}
-.ui-state-highlight .ui-icon {
-  background-image: url(../../++resource++jquery.ui.theme/images/ui-icons_2e83ff_256x240.png);
-  cursor: pointer;
-}
-
-.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {
-  background-image: url(../../++resource++jquery.ui.theme/images/ui-icons_cd0a0a_256x240.png);
-  cursor: pointer;
-}
-
-.ui-widget-content {
-  background-image: url(../../++resource++jquery.ui.theme/images/ui-bg_flat_75_ffffff_40x100.png);
-}
-
-.ui-widget-header {
-  background-image: url(../../++resource++jquery.ui.theme/images/ui-bg_highlight-soft_75_cccccc_1x100.png);
-}
-
-.ui-state-default, .ui-widget-content .ui-state-default {
-  background-image: url(../../++resource++jquery.ui.theme/images/ui-bg_glass_75_e6e6e6_1x400.png);
-}
-
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus {
-  background-image: url(../../++resource++jquery.ui.theme/images/ui-bg_glass_75_dadada_1x400.png);
-}
-
-.ui-state-active, .ui-widget-content .ui-state-active {
-  background-image: url(../../++resource++jquery.ui.theme/images/ui-bg_glass_65_ffffff_1x400.png);
-}
-
-.ui-state-highlight, .ui-widget-content .ui-state-highlight {
-  background-image: url(../../++resource++jquery.ui.theme/images/ui-bg_glass_55_fbf9ee_1x400.png);
-}
-
-.ui-state-error, .ui-widget-content .ui-state-error {
-  background-image: url(../../++resource++jquery.ui.theme/images/ui-bg_glass_95_fef1ec_1x400.png);
-}
-
-.ui-widget-overlay {
-  background-image: url(../../++resource++jquery.ui.theme/images/ui-bg_flat_0_aaaaaa_40x100.png);
-}
-
-.ui-widget-shadow {
-  background-image: url(../../++resource++jquery.ui.theme/images/ui-bg_flat_0_aaaaaa_40x100.png);
-}
-
 .daviz-facet-edit .ui-icon {
   float: right;
   cursor: pointer;
@@ -147,6 +85,12 @@ dl.portalMessage dd {
 .daviz-facets-edit {
 }
 
+#content .daviz-facets-edit fieldset,
+.daviz-facets-edit fieldset {
+  border: none;
+  padding: 0.5em 1em;
+}
+
 .daviz-facets-edit-ajax {
   float: right;
   width: 29%;
@@ -155,20 +99,32 @@ dl.portalMessage dd {
 .daviz-facet-edit {
   margin-top: 1em;
   clear: right;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px #888;
 }
 
 .daviz-facet-edit h1 {
   font-size: 1.2em;
-  background-color: #CDE2A7;
   color: black;
   margin: 0 2px;
-  border: 2px groove threedface;
   padding: 0.2em 0.5em;
   cursor: move;
+  background-color: #CDE2A7;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#CDE2A7));
+  background-image: -webkit-linear-gradient(center top , #FFFFFF, #CDE2A7);
+  background-image: -moz-linear-gradient(center top , #FFFFFF, #CDE2A7);
+  background-image: -ms-linear-gradient(center top , #FFFFFF, #CDE2A7);
+  background-image: -o-linear-gradient(center top , #FFFFFF, #CDE2A7);
 }
 
 .daviz-facet-edit h1.hidden {
   background-color: #E6E6E6;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#E6E6E6));
+  background-image: -webkit-linear-gradient(center top , #FFFFFF, #E6E6E6);
+  background-image: -moz-linear-gradient(center top , #FFFFFF, #E6E6E6);
+  background-image: -ms-linear-gradient(center top , #FFFFFF, #E6E6E6);
+  background-image: -o-linear-gradient(center top , #FFFFFF, #E6E6E6);
 }
 
 .daviz-facet-edit h1 .facet-title {
@@ -189,8 +145,10 @@ dl.portalMessage dd {
 }
 
 .daviz-views-edit-ajax {
+}
+
+.daviz-global-settings {
   width: 70%;
-  float: left;
 }
 
 .daviz-views-edit ul {
@@ -306,12 +264,25 @@ dl.portalMessage dd {
   clear: both;
 }
 
+.daviz-confirm-overlay, .daviz-facet-add-overlay {
+  border-radius: 10px;
+  box-shadow: 0px 2px 2px #888;
+}
+
 .daviz-confirm-overlay .ui-dialog-titlebar,
 .daviz-facet-add-overlay .ui-dialog-titlebar {
-  background-color:#CDE2A7;
-  border:2px groove threedface;
   color:black;
   font-size:1.2em;
   margin:0 2px;
   padding:0.2em 0.5em;
+  background-color:#CDE2A7;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#CDE2A7));
+  background-image: -webkit-linear-gradient(center top , #FFFFFF, #CDE2A7);
+  background-image: -moz-linear-gradient(center top , #FFFFFF, #CDE2A7);
+  background-image: -ms-linear-gradient(center top , #FFFFFF, #CDE2A7);
+  background-image: -o-linear-gradient(center top , #FFFFFF, #CDE2A7);
+}
+
+.daviz-facet-add-overlay fieldset {
+  border: none;
 }

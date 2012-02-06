@@ -1,29 +1,24 @@
-# -*- coding: utf-8 -*-
 """ Module to enable or disable Exhibit support
 """
-__author__ = """European Environment Agency (EEA)"""
-__docformat__ = 'plaintext'
-__credits__ = """contributions: Alin Voinea"""
-
-
+import logging
+import json as simplejson
 from Products.Five.browser import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
 from StringIO import StringIO
-
-from eea.daviz.converter.interfaces import IExhibitJsonConverter
-from eea.daviz.events import DavizEnabledEvent
-from eea.daviz.interfaces import IDavizConfig, IExhibitJson
-from eea.daviz.subtypes.interfaces import IDavizSubtyper
 
 from zope.component import queryAdapter, queryUtility
 from zope.event import notify
 from zope.interface import alsoProvides, noLongerProvides, implements
 from zope.publisher.interfaces import NotFound
 
-import logging
+from eea.daviz.converter.interfaces import IExhibitJsonConverter
+from eea.daviz.events import DavizEnabledEvent
+from eea.daviz.interfaces import IDavizConfig, IExhibitJson
+from eea.daviz.subtypes.interfaces import IDavizSubtyper
+from eea.daviz.browser.app.view import JSONView
+from eea.daviz.cache import ramcache, cacheJsonKey
 
 logger = logging.getLogger('eea.daviz.converter')
-
 
 class DavizPublicSupport(BrowserView):
     """ Public support for subtyping objects
@@ -126,7 +121,7 @@ class DavizSupport(DavizPublicSupport):
             logger.exception(err)
             return self._redirect(('An error occured while trying to convert '
                                    'attached file. Please ensure you provided '
-                                   'a valid CSV file'), 'view')
+                                   'a valid CSV file'), '/view')
 
         if not IExhibitJson.providedBy(self.context):
             alsoProvides(self.context, IExhibitJson)
@@ -142,3 +137,20 @@ class DavizSupport(DavizPublicSupport):
         """
         noLongerProvides(self.context, IExhibitJson)
         return self._redirect('Removed Exhibit view', to='')
+
+
+class TSVFileJSONView(JSONView):
+    """ daviz-view.json for Tab separated files which is not daviz enabled
+    """
+    @ramcache(cacheJsonKey, dependencies=['eea.daviz'])
+    def json(self):
+        """ Convert file to JSON
+        """
+        datafile = StringIO(self.context.getFile().data)
+        converter = queryUtility(IExhibitJsonConverter)
+        try:
+            _cols, json = converter(datafile)
+        except Exception, err:
+            logger.debug(err)
+            return super(TSVFileJSONView, self).json()
+        return simplejson.dumps(json)

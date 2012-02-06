@@ -15,6 +15,14 @@
 
   <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
+    name="exhibit"
+    template="zpt/daviz.pt"
+    class=".app.view.View"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    for="eea.daviz.interfaces.IExhibitJson"
     name="daviz-view.html"
     template="zpt/view.pt"
     class=".app.view.View"
@@ -22,9 +30,25 @@
     />
 
   <browser:page
+    for="Products.Archetypes.interfaces.base.IBaseObject"
+    name="daviz-view.json"
+    class=".app.view.JSONView"
+    attribute="json"
+    permission="zope2.View"
+    />
+
+  <browser:page
     for="eea.daviz.interfaces.IExhibitJson"
     name="daviz-view.json"
     class=".app.view.View"
+    attribute="json"
+    permission="zope2.View"
+    />
+
+  <browser:page
+    for="eea.daviz.interfaces.IExhibitJson"
+    name="daviz-relateditems.json"
+    class=".app.view.RelatedItemsJSON"
     attribute="json"
     permission="zope2.View"
     />
@@ -65,6 +89,13 @@
     name="daviz.properties.edit"
     for="eea.daviz.interfaces.IExhibitJson"
     class=".app.properties.EditForm"
+    permission="cmf.ModifyPortalContent"
+    />
+
+  <browser:page
+    name="daviz.properties.edit"
+    for="eea.daviz.content.interfaces.IDavizPresentation"
+    class=".app.properties.DavizPresentationEditForm"
     permission="cmf.ModifyPortalContent"
     />
 

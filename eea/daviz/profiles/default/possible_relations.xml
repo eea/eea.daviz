@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="portal_relations">
+ <object name="daviz-presentation" meta_type="EEARelationsContentType">
+  <property name="title">Daviz Presentation</property>
+  <property name="ct_type">DavizPresentation</property>
+  <property name="ct_interface"></property>
+  <property name="ct_default_location">python:None</property>
+ </object>
+ <object name="daviz-sources" meta_type="EEARelationsContentType">
+  <property name="title">Daviz Sources</property>
+  <property name="ct_type"></property>
+  <property name="ct_interface"></property>
+  <property name="ct_default_location">python:None</property>
+  <criteria>
+   <criterion name="c0">
+    <property name="widget">text</property>
+    <property name="title">Search on title</property>
+    <property name="position">top</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c1">
+    <property name="widget">alphabetic</property>
+    <property name="title">Title starts with</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">Title</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default"></property>
+   </criterion>
+   <criterion name="c2">
+    <property name="widget">criteria</property>
+    <property name="title">Current search</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+   </criterion>
+   <criterion name="c3">
+    <property name="widget">resultsperpage</property>
+    <property name="title">Results per page</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="start">1</property>
+    <property name="end">10</property>
+    <property name="step">1</property>
+    <property name="default">5</property>
+   </criterion>
+   <criterion name="c4">
+    <property name="widget">sorting</property>
+    <property name="title">Sort on</property>
+    <property name="position">left</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="vocabulary"></property>
+    <property name="default">effective(reverse)</property>
+   </criterion>
+   <criterion name="c5">
+    <property name="widget">checkbox</property>
+    <property name="title">Item type</property>
+    <property name="position">right</property>
+    <property name="section">default</property>
+    <property name="hidden">1</property>
+    <property name="index">portal_type</property>
+    <property name="operator">or</property>
+    <property
+       name="vocabulary">eea.faceted.vocabularies.FacetedPortalTypes</property>
+    <property name="catalog"></property>
+    <property name="maxitems">10</property>
+    <property name="sortreversed">0</property>
+    <property name="count">0</property>
+    <property name="hidezerocount">0</property>
+    <property name="default">
+     <element value="DataFile"/>
+     <element value="EEAFigureFile"/>
+     <element value="File"/>
+     <element value="Sparql"/>
+    </property>
+   </criterion>
+   <criterion name="c6">
+    <property name="widget">checkbox</property>
+    <property name="title">Item type</property>
+    <property name="position">right</property>
+    <property name="section">default</property>
+    <property name="hidden">0</property>
+    <property name="index">portal_type</property>
+    <property name="operator">or</property>
+    <property
+       name="vocabulary">eea.faceted.vocabularies.FacetedPortalTypes</property>
+    <property name="catalog">portal_catalog</property>
+    <property name="maxitems">10</property>
+    <property name="sortreversed">0</property>
+    <property name="count">1</property>
+    <property name="hidezerocount">1</property>
+    <property name="default"/>
+   </criterion>
+  </criteria>
+ </object>
+ <object name="daviz-presentation-daviz-sources"
+    meta_type="EEAPossibleRelation">
+  <property name="from">daviz-presentation</property>
+  <property name="to">daviz-sources</property>
+  <property name="title">Daviz Presentation -&gt; Daviz Sources</property>
+  <property name="forward_label"></property>
+  <property name="backward_label"></property>
+  <property name="description"></property>
+  <property name="required">False</property>
+  <property name="required_for"/>
+ </object>
+</object>

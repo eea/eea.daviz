@@ -31,11 +31,15 @@ class IExhibitPropertiesEdit(Interface):
         value_type=schema.Choice(
             vocabulary="eea.daviz.vocabularies.ViewsVocabulary")
     )
+    views.order = 10
+
     json = schema.Text(
         title=u"JSON",
         description=u"Edit generated JSON",
         required=False
     )
+    json.order = 20
+
     sources = schema.List(
         title=u'Additional sources',
         required=False,
@@ -48,6 +52,17 @@ class IExhibitPropertiesEdit(Interface):
             "%2C_Importing%2C_and_Managing_Data#Conversion_at_Load_Time"),
         value_type=schema.TextLine(title=u'URL')
     )
+    sources.order = 30
+
+class IDavizPresentationPropertiesEdit(IExhibitPropertiesEdit):
+    """ Custom schema for Daviz Presentation
+    """
+    json = schema.Text(
+        title=u"JSON",
+        description=u"Edit JSON column types",
+        required=False
+    )
+    json.order = 20
 
 class EditForm(SubPageForm):
     """ Layer to edit daviz properties.
@@ -163,3 +178,7 @@ class EditForm(SubPageForm):
         next_url = self.context.absolute_url() + '/daviz-edit.html'
         self.request.response.redirect(next_url)
 
+class DavizPresentationEditForm(EditForm):
+    """ Custom edit form for DavizPresentation
+    """
+    form_fields = Fields(IDavizPresentationPropertiesEdit)

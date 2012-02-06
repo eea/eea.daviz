@@ -1,9 +1,8 @@
 Changelog
 =========
 
-
-4.1 - (unreleased)
-----------------------
+4.1 - (2012-02-06)
+------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for eea.daviz
   [voineali #4866]

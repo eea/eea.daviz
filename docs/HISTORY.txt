@@ -3,11 +3,11 @@ Changelog
 
 4.3-dev - (unreleased)
 ----------------------
- * Change: corrected daviz presentation description [demarant]
+* Change: corrected daviz presentation description [demarant]
 
 4.2 - (2012-02-06)
 ------------------
- * no changes
+* no changes
 
 4.1 - (2012-02-06)
 ------------------
@@ -27,8 +27,8 @@ Changelog
   internal and external exhibit sources
   [voineali #4866]
 
-4.0-dev - (2011-11-07)
-----------------------
+4.0 - (2011-11-07)
+------------------
 * Feature: Added upgrade steps
   [voineali #4392]
 * Feature: Plone 4.x compatible
@@ -36,8 +36,13 @@ Changelog
 * Feature: Added exhibit 'properties' dict in generated JSON
   [voineali 4528]
 
-1.4-dev - (unreleased)
-----------------------
+1.5 - (2011-09-21)
+------------------
+* Feature: Added exhibit 'properties' dict in generated JSON
+  [voineali 4528]
+
+1.4 - (2011-09-07)
+------------------
 * Feature: Enabled daviz for eea.dataservice EEAFigureFile
   [voineali #4492]
 

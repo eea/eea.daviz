@@ -3,11 +3,12 @@ Changelog
 
 4.3-dev - (unreleased)
 ----------------------
-* Change: corrected daviz presentation description [demarant]
+ * Bug fix: properly link images in css files [tiberich #4956]
+ * Change: corrected daviz presentation description [demarant]
 
 4.2 - (2012-02-06)
 ------------------
-* no changes
+ * no changes
 
 4.1 - (2012-02-06)
 ------------------

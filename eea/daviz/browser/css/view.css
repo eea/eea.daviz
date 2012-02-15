@@ -36,7 +36,7 @@ div div.exhibit-facet-header-filterControl {
 }
 
 .tab-exhibit span {
-  background-image: url("++resource++eea.daviz.images/exhibit-icon.png");
+  background-image: url("../../++resource++eea.daviz.images/exhibit-icon.png");
   background-repeat: no-repeat;
   display: block;
   padding: 50px 5px 0;

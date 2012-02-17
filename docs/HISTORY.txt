@@ -3,6 +3,9 @@ Changelog
 
 4.3-dev - (unreleased)
 ----------------------
+ * Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for eea.daviz
+ * Change: changed texts for visualizations, changed Data Sources to be mandatory [szabozo0 #4948]
  * Bug fix: properly link images in css files [tiberich #4956]
  * Change: corrected daviz presentation description [demarant]
 

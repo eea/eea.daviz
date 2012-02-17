@@ -37,9 +37,10 @@ SCHEMA = Schema((
         schemata="default",
         relationship='relatesTo',
         multiValued=True,
+        required=True,
         widget=ReferenceBrowserWidget(
             label=_("daviz_label_related_items",
-                    default="Sources (exhibit sources)"),
+                    default="Data Sources (exhibit sources)"),
             description=_("daviz_help_related_items", default=(
                 "Specify items to be visualized within this DaViz Presentation"
                 " (e.g. TAB separated files, SPARQL methods, etc)")),

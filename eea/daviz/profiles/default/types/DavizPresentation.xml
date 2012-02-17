@@ -2,7 +2,7 @@
 <object name="DavizPresentation"
    meta_type="Factory-based Type Information with dynamic views"
    i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <property name="title" i18n:translate="">Daviz Presentation</property>
+ <property name="title" i18n:translate="">Daviz Visualization</property>
  <property name="description"
      i18n:translate="">Dynamic and flexible data visualization tool.</property>
  <property name="icon_expr">string:${portal_url}/++resource++eea.daviz.images/presentation_icon.png</property>
@@ -40,7 +40,7 @@
     visible="False" i18n:attributes="title">
   <permission value="ATContentTypes: View history"/>
  </action>
- <action title="Edit Exhibit View" action_id="daviz.edit" category="object"
+ <action title="Edit Visualizations" action_id="daviz.edit" category="object"
     condition_expr=""
     url_expr="string:${object/absolute_url}/daviz-edit.html"
     visible="True"

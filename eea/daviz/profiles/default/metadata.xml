@@ -5,5 +5,6 @@
   <dependencies>
     <dependency>profile-collective.js.jqueryui:default</dependency>
     <dependency>profile-eea.exhibit:default</dependency>
+    <dependency>profile-eea.forms:default</dependency>
   </dependencies>
 </metadata>

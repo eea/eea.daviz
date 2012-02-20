@@ -7,6 +7,8 @@ from Products.Archetypes.atapi import Schema
 from eea.daviz.content.interfaces import IDavizPresentation
 from eea.daviz.config import EEAMessageFactory as _
 from eea.daviz.events import DavizRelationsChanged
+from Products.Archetypes.public import StringField
+from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
 
 try:
     from eea.relations.field.referencefield import EEAReferenceField
@@ -40,13 +42,26 @@ SCHEMA = Schema((
         required=True,
         widget=ReferenceBrowserWidget(
             label=_("daviz_label_related_items",
-                    default="Data Sources (exhibit sources)"),
+                    default="Existing data sources"),
             description=_("daviz_help_related_items", default=(
-                "Specify items to be visualized within this DaViz Presentation"
+                "Specify items to be visualized within this Daviz Visualization"
                 " (e.g. TAB separated files, SPARQL methods, etc)")),
             i18n_domain="eea",
             visible={'edit' : 'visible', 'view' : 'invisible' }
         )),
+    StringField(
+        'quickUpload',
+        schemata='default',
+        widget=QuickUploadWidget(
+            label=_('daviz_label_quick_upload',
+                    default='Upload new data sources'),
+            description=_('daviz_help_quick_upload', default=(
+                "Drag&Drop 'TAB separated files' in the area bellow"
+            )),
+            i18n_domain="eea",
+            visible={'edit' : 'visible', 'view' : 'invisible' }
+        )
+    ),
 ))
 
 class DavizPresentation(ATFolder):

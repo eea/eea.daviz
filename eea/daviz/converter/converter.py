@@ -54,12 +54,12 @@ class ExhibitJsonConverter(object):
             ['Pig', 'Goat', 'Cow']
 
             Also with ";"
-            >>> converter.text2list("animals:list", "Pig; Goat; Cow")
+            >>> converter.text2list("animals:List", "Pig; Goat; Cow")
             ['Pig', 'Goat', 'Cow']
 
             If it can't find any comma or semicolon it will return a list of one
             item
-            >>> converter.text2list("animals:list", "Pig")
+            >>> converter.text2list("animals:LIST", "Pig")
             ['Pig']
 
             It will not work if you don't specify :list type in the key
@@ -67,7 +67,7 @@ class ExhibitJsonConverter(object):
             'Pig, Goat, Cow'
 
         """
-        if ":list" not in key:
+        if ":list" not in key.lower():
             return value
 
         if "," in value:
@@ -83,10 +83,13 @@ class ExhibitJsonConverter(object):
     def text2number(self, key, value):
         """ Detect numbers in value
 
-            >>> converter.text2number("year:number", "2011")
+            >>> converter.text2number("year:number", "2010")
+            2010
+
+            >>> converter.text2number("year:NUMBER", "2011")
             2011
 
-            >>> converter.text2number("price:number", "9.99")
+            >>> converter.text2number("price:Number", "9.99")
             9.9...
 
             It fails silently if the provided value is not a number
@@ -98,7 +101,7 @@ class ExhibitJsonConverter(object):
             '9.99'
 
         """
-        if ":number" not in key:
+        if ":number" not in key.lower():
             return value
 
         try:
@@ -116,8 +119,11 @@ class ExhibitJsonConverter(object):
             >>> converter.text2boolean("year:boolean", "2011")
             True
 
+            >>> converter.text2boolean("year:BOOLEAN", "2011")
+            True
+
             Be carefull, "False" is a True in python as it's not an emtry string
-            >>> converter.text2boolean("year:boolean", "False")
+            >>> converter.text2boolean("year:Boolean", "False")
             True
 
             So use :bool only when you test if value is empty or not
@@ -129,7 +135,7 @@ class ExhibitJsonConverter(object):
             '2345'
 
         """
-        if ":boolean" not in key:
+        if ":boolean" not in key.lower():
             return value
 
         try:
@@ -141,13 +147,13 @@ class ExhibitJsonConverter(object):
     def column_type(self, column):
         """ Get column and type from column
 
-            >>> converter.column_type("start:date")
+            >>> converter.column_type("start:Date")
             ('start', 'date')
 
-            >>> converter.column_type("Website:url")
+            >>> converter.column_type("Website:URL")
             ('website', 'url')
 
-            >>> converter.column_type("Items: one, two:list")
+            >>> converter.column_type("Items: one, two:List")
             ('items_one_two', 'list')
 
             >>> converter.column_type("Title")
@@ -163,7 +169,7 @@ class ExhibitJsonConverter(object):
             column = REGEX.sub('_', column)
             return column, "text"
 
-        typo = column.split(":")[-1]
+        typo = column.split(":")[-1].lower()
         column = ":".join(column.split(":")[:-1])
         column = normalizeString(column, encoding='utf-8')
         column = REGEX.sub('_', column)
@@ -211,9 +217,9 @@ class ExhibitJsonConverter(object):
 
                 col, _type = self.column_type(col)
                 data[col] = text
-                properties[col] = {"valueType": _type} 
+                properties[col] = {"valueType": _type}
 
             out.append(data)
 
         columns = (self.column_type(col) for col in columns)
-        return columns, {'items': out, 'properties': properties} 
+        return columns, {'items': out, 'properties': properties}

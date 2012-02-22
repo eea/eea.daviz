@@ -9,4 +9,7 @@
                    eea.daviz.events.interfaces.IDavizRelationsChangedEvent"
               handler=".events.onRelationsChanged" />
 
+  <subscriber for=".interfaces.IDavizPresentation
+                   eea.daviz.events.interfaces.IDavizSpreadSheetChanged"
+              handler=".events.onSpreadSheetChanged" />
 </configure>

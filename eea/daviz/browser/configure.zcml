@@ -17,7 +17,7 @@
     for="eea.daviz.interfaces.IExhibitJson"
     name="exhibit"
     template="zpt/daviz.pt"
-    class=".app.view.View"
+    class=".app.view.HTMLView"
     permission="zope2.View"
     />
 
@@ -25,7 +25,7 @@
     for="eea.daviz.interfaces.IExhibitJson"
     name="daviz-view.html"
     template="zpt/view.pt"
-    class=".app.view.View"
+    class=".app.view.HTMLView"
     permission="zope2.View"
     />
 
@@ -112,9 +112,14 @@
    />
 
   <browser:resource
-      name="eea.daviz.edit.css"
-      file="./css/edit.css"
-     />
+    name="eea.daviz.edit.css"
+    file="./css/edit.css"
+    />
+
+  <browser:resource
+    name="eea.daviz.spreadsheet.css"
+    file="./css/spreadsheet.css"
+    />
 
   <browser:resource
     name="eea.daviz.view.js"
@@ -124,6 +129,11 @@
   <browser:resource
     name="eea.daviz.edit.js"
     file="./js/edit.js"
+   />
+
+  <browser:resource
+    name="eea.daviz.spreadsheet.js"
+    file="./js/spreadsheet.js"
    />
 
   <browser:resourceDirectory

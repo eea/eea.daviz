@@ -5,6 +5,9 @@ Changelog
 ----------------------
  * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for eea.daviz
+ * Feature: Added SpreadSheet field to DavizPresentation Schema in order
+   to easily copy & paste TAB separated text as data source
+   [voineali #4967]
  * Feature: Added QuickUpload field to DavizPresentation Schema in order
    to easily upload new TAB separated files as data sources
    [voineali #4965]

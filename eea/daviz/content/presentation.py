@@ -6,8 +6,8 @@ from plone.app.folder.folder import ATFolder
 from Products.Archetypes.atapi import Schema
 from eea.daviz.content.interfaces import IDavizPresentation
 from eea.daviz.config import EEAMessageFactory as _
-from eea.daviz.events import DavizRelationsChanged
-from Products.Archetypes.public import StringField
+from eea.daviz.events import DavizRelationsChanged, DavizSpreadSheetChanged
+from Products.Archetypes.public import StringField, TextAreaWidget
 from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
 
 try:
@@ -32,6 +32,14 @@ class DavizReferenceField(ReferenceField):
             relatedItems = self.get(instance, aslist=True)
             notify(DavizRelationsChanged(instance, relatedItems=relatedItems))
 
+class DavizStringField(StringField):
+    """ Notify on set
+    """
+    def set(self, instance, value, **kwargs):
+        """ Custom set
+        """
+        super(DavizStringField, self).set(instance, value, **kwargs)
+        notify(DavizSpreadSheetChanged(instance, spreadsheet=value))
 
 SCHEMA = Schema((
     DavizReferenceField(
@@ -39,12 +47,11 @@ SCHEMA = Schema((
         schemata="default",
         relationship='relatesTo',
         multiValued=True,
-        required=True,
         widget=ReferenceBrowserWidget(
             label=_("daviz_label_related_items",
-                    default="Existing data sources"),
+                    default="Choose from existing data sources"),
             description=_("daviz_help_related_items", default=(
-                "Specify items to be visualized within this Daviz Visualization"
+                "specify items to be visualized within this Daviz Visualization"
                 " (e.g. TAB separated files, SPARQL methods, etc)")),
             i18n_domain="eea",
             visible={'edit' : 'visible', 'view' : 'invisible' }
@@ -54,12 +61,27 @@ SCHEMA = Schema((
         schemata='default',
         widget=QuickUploadWidget(
             label=_('daviz_label_quick_upload',
-                    default='Upload new data sources'),
+                    default='or upload new data sources from your computer'),
             description=_('daviz_help_quick_upload', default=(
-                "Drag&Drop 'TAB separated files' in the area bellow"
+                "drag and drop 'TAB separated files' in the area bellow"
             )),
             i18n_domain="eea",
             visible={'edit' : 'visible', 'view' : 'invisible' }
+        )
+    ),
+    DavizStringField(
+        'spreadsheet',
+        schemata='default',
+        widget=TextAreaWidget(
+            label=_('daviz_label_spreadsheet',
+                    default='or copy and paste text from a file'),
+            description=_('daviz_help_spreadsheet', default=(
+                "copy and paste 'TAB separated text' in the area bellow"
+            )),
+        i18n_domain="eea",
+        helper_js=('++resource++eea.daviz.spreadsheet.js',),
+        helper_css=('++resource++eea.daviz.spreadsheet.css',),
+        visible={'edit' : 'visible', 'view' : 'invisible' }
         )
     ),
 ))

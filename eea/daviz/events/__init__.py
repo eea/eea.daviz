@@ -4,6 +4,7 @@ from zope.interface import implements
 from eea.daviz.events.interfaces import IDavizEnabledEvent
 from eea.daviz.events.interfaces import IDavizFacetDeletedEvent
 from eea.daviz.events.interfaces import IDavizRelationsChangedEvent
+from eea.daviz.events.interfaces import IDavizSpreadSheetChanged
 
 class DavizEnabledEvent(object):
     """ Sent if a document was converted to exhibit json
@@ -32,3 +33,12 @@ class DavizRelationsChanged(object):
     def __init__(self, context, **kwargs):
         self.object = context
         self.relatedItems = kwargs.get('relatedItems', [])
+
+class DavizSpreadSheetChanged(object):
+    """ Sent if spreadsheet for a Daviz Presentation was changed
+    """
+    implements(IDavizSpreadSheetChanged)
+
+    def __init__(self, context, **kwargs):
+        self.object = context
+        self.spreadsheet = kwargs.get('spreadsheet', '')

@@ -131,6 +131,9 @@ class View(JSONView):
             return ''
         return view()
 
+class HTMLView(View):
+    """ daviz-view.html
+    """
     def __call__(self, **kwargs):
         """ If daviz is not configured redirects to edit page.
         """
@@ -166,10 +169,22 @@ class RelatedItemsJSON(JSONView):
             try:
                 daviz_json = simplejson.loads(daviz_json())
             except Exception, err:
-                logger.debug(err)
+                logger.exception(err)
                 continue
 
             new_json['items'].extend(daviz_json.get('items', []))
             new_json['properties'].update(daviz_json.get('properties', {}))
+
+        # Also add my own daviz-view.json to this json
+        my_json = queryMultiAdapter(
+            (self.context, self.request), name=u'daviz-view.json')
+        if my_json:
+            try:
+                my_json = simplejson.loads(my_json())
+            except Exception, err:
+                logger.exception(err)
+            else:
+                new_json['items'].extend(my_json.get('items', []))
+                new_json['properties'].update(my_json.get('properties', {}))
 
         return simplejson.dumps(new_json)

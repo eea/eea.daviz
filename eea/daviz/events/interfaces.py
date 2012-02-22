@@ -23,9 +23,14 @@ class IDavizRelationsChangedEvent(IDavizEvent):
     """ Daviz relations changed
     """
 
+class IDavizSpreadSheetChanged(IDavizEvent):
+    """ Daviz spreadsheet changed
+    """
+
 __all__ = [
     IDavizEvent,
     IDavizEnabledEvent,
     IDavizFacetDeletedEvent,
     IDavizRelationsChangedEvent,
+    IDavizSpreadSheetChanged,
 ]

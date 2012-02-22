@@ -6,9 +6,7 @@ DavizPresentationEdit.SpreadSheet = function(context, options){
   var self = this;
   self.context = context;
   self.settings = {
-    group: [],
-    label: '',
-    help: ''
+    group: []
   };
 
   if(options){
@@ -43,8 +41,6 @@ DavizPresentationEdit.SpreadSheet.prototype = {
     jQuery('.daviz-presentation-spreadsheet', parent).wrapAll(
       '<div class="daviz-spreadsheet-accordion" />');
     var container = jQuery('.daviz-spreadsheet-accordion', parent);
-    container.before(jQuery('<label>').text(self.settings.label));
-    container.before(jQuery('<div>').addClass('formHelp').text(self.settings.help));
     container.accordion();
   }
 };
@@ -69,9 +65,7 @@ jQuery(document).ready(function(){
   ];
 
   var options = {
-    group: [],
-    label: 'Data sources',
-    help: 'TAB separated files, SPARQL methods, etc'
+    group: []
   };
 
   jQuery.each(fields, function(index, name){

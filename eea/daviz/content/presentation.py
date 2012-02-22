@@ -7,8 +7,9 @@ from Products.Archetypes.atapi import Schema
 from eea.daviz.content.interfaces import IDavizPresentation
 from eea.daviz.config import EEAMessageFactory as _
 from eea.daviz.events import DavizRelationsChanged, DavizSpreadSheetChanged
-from Products.Archetypes.public import StringField, TextAreaWidget
+from Products.Archetypes.public import StringField, TextAreaWidget, LabelWidget
 from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
+
 
 try:
     from eea.relations.field.referencefield import EEAReferenceField
@@ -42,6 +43,18 @@ class DavizStringField(StringField):
         notify(DavizSpreadSheetChanged(instance, spreadsheet=value))
 
 SCHEMA = Schema((
+    StringField(
+        'dataSources',
+        schemata="default",
+        widget=LabelWidget(
+            label=_('daviz_label_data_sources',
+                    default='Data sources'),
+            description=_('daviz_help_data_sources',
+                    default="TAB separated files, SPARQL methods, etc"),
+            i18n_domain="eea",
+            visible={'edit' : 'visible', 'view' : 'invisible' }
+        )
+    ),
     DavizReferenceField(
         'relatedItems',
         schemata="default",
@@ -86,6 +99,11 @@ SCHEMA = Schema((
     ),
 ))
 
+DAVIZ_SCHEMA = ATFolder.schema.copy() + SCHEMA.copy()
+DAVIZ_SCHEMA.moveField('relatedItems', after="dataSources")
+DAVIZ_SCHEMA.moveField('quickUpload', after="relatedItems")
+DAVIZ_SCHEMA.moveField('spreadsheet', after="quickUpload")
+
 class DavizPresentation(ATFolder):
     """ Daviz Presentation
     """
@@ -95,4 +113,4 @@ class DavizPresentation(ATFolder):
     portal_type = 'DavizPresentation'
     archetype_name = 'DavizPresentation'
 
-    schema = ATFolder.schema.copy() + SCHEMA.copy()
+    schema = DAVIZ_SCHEMA

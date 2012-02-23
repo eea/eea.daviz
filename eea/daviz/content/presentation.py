@@ -50,7 +50,7 @@ SCHEMA = Schema((
             label=_('daviz_label_data_sources',
                     default='Data sources'),
             description=_('daviz_help_data_sources',
-                    default="TAB separated files, SPARQL methods, etc"),
+                    default=".tsv, .csv files, SPARQL methods, etc"),
             i18n_domain="eea",
             visible={'edit' : 'visible', 'view' : 'invisible' }
         )
@@ -65,7 +65,7 @@ SCHEMA = Schema((
                     default="Choose from existing data sources"),
             description=_("daviz_help_related_items", default=(
                 "specify items to be visualized within this Daviz Visualization"
-                " (e.g. TAB separated files, SPARQL methods, etc)")),
+                " (e.g. .tsv, .csv files, SPARQL methods, etc)")),
             i18n_domain="eea",
             visible={'edit' : 'visible', 'view' : 'invisible' }
         )),
@@ -76,7 +76,7 @@ SCHEMA = Schema((
             label=_('daviz_label_quick_upload',
                     default='or upload new data sources from your computer'),
             description=_('daviz_help_quick_upload', default=(
-                "drag and drop 'TAB separated files' in the area bellow"
+                "drag and drop '.tsv, .csv files' in the area bellow"
             )),
             i18n_domain="eea",
             visible={'edit' : 'visible', 'view' : 'invisible' }
@@ -89,7 +89,8 @@ SCHEMA = Schema((
             label=_('daviz_label_spreadsheet',
                     default='or copy and paste text from a file'),
             description=_('daviz_help_spreadsheet', default=(
-                "copy and paste 'TAB separated text' in the area bellow"
+                "copy and paste 'TAB separated or Comma separated text' "
+                "in the area bellow"
             )),
         i18n_domain="eea",
         helper_js=('++resource++eea.daviz.spreadsheet.js',),

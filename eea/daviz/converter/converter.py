@@ -176,7 +176,56 @@ class ExhibitJsonConverter(object):
         return column, typo
 
     def __call__(self, datafile):
-        """ Returns JSON output after converting source data.
+        """
+        Returns: columns_headers_with_type, exhibit_dict:
+
+          ( <generator
+              (('label', 'text'), ('year', 'text'), ('country', 'text'))>,
+
+            {'items': [
+                {'country': 'Romania', 'year': '2010', 'label': 'romania'},
+              ],
+             'properties': {
+               'country': {'valueType': 'text'},
+               'year': {'valueType': 'text'},
+               'label': {'valueType': 'text'}
+              }
+            }
+          )
+
+        Let's see how it works:
+
+          CSV
+
+            >>> csvfile = '\n'.join((
+            ...   'label, year, country',
+            ...   'romania, 2010, Romania',
+            ... ))
+
+            >>> from StringIO import StringIO
+            >>> csvfile = StringIO(csvfile)
+            >>> columns, jsondict = converter(csvfile)
+
+            >>> [x for x in columns]
+            [('label', 'text'), ('year', 'text'), ('country', 'text')]
+
+            >>> jsondict['properties']['year']
+            {'valueType': 'text'}
+
+          TSV
+
+            >>> tabfile = '\n'.join((
+            ...   'label \t year:number \t country',
+            ...   'romania \t 2010 \t Romania',
+            ... ))
+            >>> tabfile = StringIO(tabfile)
+            >>> columns, jsondict = converter(tabfile)
+            >>> [x for x in columns]
+            [('label', 'text'), ('year', 'number'), ('country', 'text')]
+
+            >>> jsondict['properties']['year']
+            {'valueType': 'number'}
+
         """
 
         columns = []
@@ -184,7 +233,15 @@ class ExhibitJsonConverter(object):
         out = []
         properties = {}
 
-        reader = csv.reader(datafile, dialect='eea-tab')
+        sniffer = csv.Sniffer()
+        try:
+            dialect = sniffer.sniff(datafile.read(1024))
+        except Exception, err:
+            logger.debug(err)
+            dialect = 'eea-tab'
+
+        datafile.seek(0)
+        reader = csv.reader(datafile, dialect=dialect)
         for index, row in enumerate(reader):
             # Ignore empty rows
             if row == []:
@@ -193,6 +250,7 @@ class ExhibitJsonConverter(object):
             # Get column headers
             if columns == []:
                 for name in row:
+                    name = name.strip()
                     name = name.replace(' ', '+')
                     if name.lower().endswith('label'):
                         name = "label"

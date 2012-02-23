@@ -1,8 +1,8 @@
 EEA DaViz - Data Visualisation
 =======================================
 
-For the moment been only CSV with tab delimiter will
-be converted. The list of accepted formats will be extended
+For the moment only CSV files (.tsv, .csv, etc) will be converted.
+The list of accepted formats will be extended
 in a further development.
 
 Below are the Excel/CSV rules to be used for the uploaded files:

@@ -5,8 +5,10 @@ Changelog
 ----------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
  upgrade button available for eea.daviz
-* Fixed: Support case insensitive column types in TSV files
+* Fixed: Support case insensitive column types in CSV files
   [voineali #4975]
+* Feature: Also support CSV or any other *SV file by auto-detecting dialect
+  [voineali #4977]
 * Feature: Added SpreadSheet field to DavizPresentation Schema in order
   to easily copy & paste TAB separated text as data source
   [voineali #4967]

@@ -8,6 +8,7 @@ __credits__ = """contributions: Alec Ghica"""
 import re
 import logging
 import csv
+from StringIO import StringIO
 from zope.interface import implements
 from eea.daviz.converter.interfaces import IExhibitJsonConverter
 from Products.CMFPlone.utils import normalizeString
@@ -202,8 +203,6 @@ class ExhibitJsonConverter(object):
             ...   'romania, 2010, Romania',
             ... ))
 
-            >>> from StringIO import StringIO
-            >>> csvfile = StringIO(csvfile)
             >>> columns, jsondict = converter(csvfile)
 
             >>> [x for x in columns]
@@ -218,7 +217,7 @@ class ExhibitJsonConverter(object):
             ...   'label \t year:number \t country',
             ...   'romania \t 2010 \t Romania',
             ... ))
-            >>> tabfile = StringIO(tabfile)
+
             >>> columns, jsondict = converter(tabfile)
             >>> [x for x in columns]
             [('label', 'text'), ('year', 'number'), ('country', 'text')]
@@ -227,7 +226,8 @@ class ExhibitJsonConverter(object):
             {'valueType': 'number'}
 
         """
-
+        if isinstance(datafile, (unicode, str)):
+            datafile = StringIO(datafile)
         columns = []
         hasLabel = False
         out = []

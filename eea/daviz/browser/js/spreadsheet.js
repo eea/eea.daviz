@@ -22,6 +22,10 @@ jQuery(document).ready(function(){
   jQuery.each(fields, function(index, name){
     var field = jQuery(name, context.parent());
     if(field.length){
+      var error = jQuery('.fieldErrorBox', field);
+      if(error.length && error.text()){
+        jQuery.data(field[0], 'errors', error.text());
+      }
       options.group.push(field);
     }
   });

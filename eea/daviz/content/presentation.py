@@ -85,6 +85,7 @@ SCHEMA = Schema((
     DavizStringField(
         'spreadsheet',
         schemata='default',
+        validators=('csvfile',),
         widget=TextAreaWidget(
             label=_('daviz_label_spreadsheet',
                     default='or copy and paste text from a file'),

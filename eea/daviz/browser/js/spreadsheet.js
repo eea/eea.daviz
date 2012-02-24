@@ -1,60 +1,11 @@
-if(window.DavizPresentationEdit === undefined){
-  var DavizPresentationEdit = {'version': '1.0'};
-}
-
-DavizPresentationEdit.SpreadSheet = function(context, options){
-  var self = this;
-  self.context = context;
-  self.settings = {
-    group: []
-  };
-
-  if(options){
-    jQuery.extend(self.settings, options);
-  }
-
-  self.initialize();
-};
-
-DavizPresentationEdit.SpreadSheet.prototype = {
-  initialize: function(){
-    var self = this;
-    self.groupFields();
-  },
-
-  groupFields: function(){
-    var self = this;
-    jQuery.each(self.settings.group, function(index, field){
-      field.addClass('daviz-presentation-spreadsheet');
-      var label = jQuery('label.formQuestion', field);
-      var title = label.text();
-      label.remove();
-      field.before(
-        jQuery('<h3>').addClass('daviz-presentation-spreadsheet').append(
-          jQuery('<a>').addClass('daviz-ajax')
-            .attr('href', '#' + field.attr('id')).html(title)
-        )
-      );
-    });
-
-    var parent = self.context.parent();
-    jQuery('.daviz-presentation-spreadsheet', parent).wrapAll(
-      '<div class="daviz-spreadsheet-accordion" />');
-    var container = jQuery('.daviz-spreadsheet-accordion', parent);
-    container.accordion();
-  }
-};
-
-jQuery.fn.EEADavizPresentationSpreadSheet = function(options){
-  return this.each(function(){
-    var context = jQuery(this).addClass('ajax');
-    var spreadsheet = new DavizPresentationEdit.SpreadSheet(context, options);
-  });
-};
-
 jQuery(document).ready(function(){
   var context = jQuery('#archetypes-fieldname-spreadsheet');
   if(!context.length){
+    return;
+  }
+
+  // EEAFormsGroup not initialized, see eea.forms
+  if(context.EEAFormsGroup === undefined){
     return;
   }
 
@@ -75,6 +26,5 @@ jQuery(document).ready(function(){
     }
   });
 
-  jQuery(context).EEADavizPresentationSpreadSheet(options);
-
+  context.EEAFormsGroup(options);
 });

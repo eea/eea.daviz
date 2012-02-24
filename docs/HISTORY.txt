@@ -4,7 +4,8 @@ Changelog
 4.3-dev - (unreleased)
 ----------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
- upgrade button available for eea.daviz
+  upgrade button available for eea.daviz
+  [voineali]
 * Fixed: Support case insensitive column types in CSV files
   [voineali #4975]
 * Feature: Also support CSV or any other *SV file by auto-detecting dialect
@@ -15,9 +16,12 @@ Changelog
 * Feature: Added QuickUpload field to DavizPresentation Schema in order
   to easily upload new TAB separated files as data sources
   [voineali #4965]
-* Change: changed texts for visualizations, changed Data Sources to be mandatory [szabozo0 #4948]
-* Bug fix: properly link images in css files [tiberich #4956]
-* Change: corrected daviz presentation description [demarant]
+* Change: changed texts for visualizations, changed Data Sources to be mandatory
+  [szabozo0 #4948]
+* Bug fix: properly link images in css files
+  [tiberich #4956]
+* Change: corrected daviz presentation description
+  [demarant]
 
 4.2 - (2012-02-06)
 ------------------

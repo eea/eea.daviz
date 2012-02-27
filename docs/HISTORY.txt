@@ -3,6 +3,9 @@ Changelog
 
 4.3-dev - (unreleased)
 ----------------------
+* Change: Reordered the data input fields. Most common scenarion on top.
+  rephrasing.
+  [demarant #4980]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for eea.daviz
   [voineali]

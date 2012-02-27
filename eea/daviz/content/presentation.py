@@ -62,10 +62,10 @@ SCHEMA = Schema((
         multiValued=True,
         widget=ReferenceBrowserWidget(
             label=_("daviz_label_related_items",
-                    default="Choose from existing data sources"),
+                    default="Find and reuse existing data"),
             description=_("daviz_help_related_items", default=(
-                "specify items to be visualized within this Daviz Visualization"
-                " (e.g. .tsv, .csv files, SPARQL methods, etc)")),
+                "Find among compatible data in the EEA data service and SDS"
+                " (e.g. visualization data, .tsv, .csv, SPARQL, etc)")),
             i18n_domain="eea",
             visible={'edit' : 'visible', 'view' : 'invisible' }
         )),
@@ -74,7 +74,7 @@ SCHEMA = Schema((
         schemata='default',
         widget=QuickUploadWidget(
             label=_('daviz_label_quick_upload',
-                    default='or upload new data sources from your computer'),
+                    default='Upload CSV/TSV data files from your computer'),
             description=_('daviz_help_quick_upload', default=(
                 "drag and drop '.tsv, .csv files' in the area bellow"
             )),
@@ -88,7 +88,7 @@ SCHEMA = Schema((
         validators=('csvfile',),
         widget=TextAreaWidget(
             label=_('daviz_label_spreadsheet',
-                    default='or copy and paste text from a file'),
+                    default='Copy and paste a data table from a file/webpage'),
             description=_('daviz_help_spreadsheet', default=(
                 "copy and paste 'TAB separated or Comma separated text' "
                 "in the area bellow"
@@ -102,9 +102,9 @@ SCHEMA = Schema((
 ))
 
 DAVIZ_SCHEMA = ATFolder.schema.copy() + SCHEMA.copy()
-DAVIZ_SCHEMA.moveField('relatedItems', after="dataSources")
-DAVIZ_SCHEMA.moveField('quickUpload', after="relatedItems")
-DAVIZ_SCHEMA.moveField('spreadsheet', after="quickUpload")
+DAVIZ_SCHEMA.moveField('spreadsheet', after="dataSources")
+DAVIZ_SCHEMA.moveField('quickUpload', after="spreadsheet")
+DAVIZ_SCHEMA.moveField('relatedItems', after="quickUpload")
 
 class DavizPresentation(ATFolder):
     """ Daviz Presentation

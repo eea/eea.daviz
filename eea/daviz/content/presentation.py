@@ -64,7 +64,7 @@ SCHEMA = Schema((
             label=_("daviz_label_related_items",
                     default="Find and reuse existing data"),
             description=_("daviz_help_related_items", default=(
-                "Find among compatible data in the EEA data service and SDS"
+                "Look for compatible datasets in catalogue"
                 " (e.g. visualization data, .tsv, .csv, SPARQL, etc)")),
             i18n_domain="eea",
             visible={'edit' : 'visible', 'view' : 'invisible' }

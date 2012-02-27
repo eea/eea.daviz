@@ -30,5 +30,10 @@ jQuery(document).ready(function(){
     }
   });
 
+  // Group fields
   context.EEAFormsGroup(options);
+
+  // Make formTabs a wizard
+  jQuery('.formTabs').EEAFormsWizard();
+
 });

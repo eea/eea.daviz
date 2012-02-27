@@ -3,6 +3,8 @@ Changelog
 
 4.3-dev - (unreleased)
 ----------------------
+* Change: Re-group DavizPresentation AT Schema
+  [voineali #4980]
 * Change: Reordered the data input fields. Most common scenarion on top.
   rephrasing.
   [demarant #4980]

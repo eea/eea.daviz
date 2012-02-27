@@ -45,7 +45,7 @@ class DavizStringField(StringField):
 SCHEMA = Schema((
     StringField(
         'dataSources',
-        schemata="default",
+        schemata="data input",
         widget=LabelWidget(
             label=_('daviz_label_data_sources',
                     default='Data sources'),
@@ -57,7 +57,7 @@ SCHEMA = Schema((
     ),
     DavizReferenceField(
         'relatedItems',
-        schemata="default",
+        schemata="data input",
         relationship='relatesTo',
         multiValued=True,
         widget=ReferenceBrowserWidget(
@@ -71,7 +71,7 @@ SCHEMA = Schema((
         )),
     StringField(
         'quickUpload',
-        schemata='default',
+        schemata='data input',
         widget=QuickUploadWidget(
             label=_('daviz_label_quick_upload',
                     default='Upload CSV/TSV data files from your computer'),
@@ -84,7 +84,7 @@ SCHEMA = Schema((
     ),
     DavizStringField(
         'spreadsheet',
-        schemata='default',
+        schemata='data input',
         validators=('csvfile',),
         widget=TextAreaWidget(
             label=_('daviz_label_spreadsheet',
@@ -102,9 +102,37 @@ SCHEMA = Schema((
 ))
 
 DAVIZ_SCHEMA = ATFolder.schema.copy() + SCHEMA.copy()
-DAVIZ_SCHEMA.moveField('spreadsheet', after="dataSources")
-DAVIZ_SCHEMA.moveField('quickUpload', after="spreadsheet")
-DAVIZ_SCHEMA.moveField('relatedItems', after="quickUpload")
+
+def finalizeSchema(schema=DAVIZ_SCHEMA):
+    """ Reorder and update schemata
+    """
+    # Move all fields to Metadata schemata
+    for field in schema.fields():
+        # Leave this fields in their original schemata
+        if field.getName() in ('dataSources', 'spreadsheet',
+                               'quickUpload', 'relatedItems'):
+            continue
+
+        # We use schema extender for this fields, so leave them in
+        # categorization tab
+        if field.getName() in ('subject', 'location', 'themes'):
+            field.schemata = 'categorization'
+            continue
+
+        # Group all the other fields in a new schemata. Don't try to use
+        # 'metadata' as it seems to be a reserved keyword in Plone (or EEA)
+        field.schemata = 'other metadata'
+
+    # Add a default value for title
+    schema['title'].default = u'Data Visualization'
+
+    # Reorder data input fields
+    schema.moveField('dataSources', pos=0)
+    schema.moveField('spreadsheet', after="dataSources")
+    schema.moveField('quickUpload', after="spreadsheet")
+    schema.moveField('relatedItems', after="quickUpload")
+
+finalizeSchema(DAVIZ_SCHEMA)
 
 class DavizPresentation(ATFolder):
     """ Daviz Presentation

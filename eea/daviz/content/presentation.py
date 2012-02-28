@@ -7,7 +7,7 @@ from Products.Archetypes.atapi import Schema
 from eea.daviz.content.interfaces import IDavizVisualization
 from eea.daviz.config import EEAMessageFactory as _
 from eea.daviz.events import DavizRelationsChanged, DavizSpreadSheetChanged
-from Products.Archetypes.public import StringField, TextAreaWidget, LabelWidget
+from Products.Archetypes.public import StringField, TextAreaWidget
 from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
 
 

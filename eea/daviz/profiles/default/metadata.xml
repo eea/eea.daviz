@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <metadata>
   <description>EEA Daviz profile</description>
-  <version>4.1</version>
+  <version>4.3</version>
   <dependencies>
     <dependency>profile-collective.js.jqueryui:default</dependency>
     <dependency>profile-eea.exhibit:default</dependency>

@@ -131,3 +131,6 @@ class DavizVisualization(ATFolder):
     archetype_name = 'DavizVisualization'
 
     schema = DAVIZ_SCHEMA
+
+#BBB
+DavizPresentation = DavizVisualization

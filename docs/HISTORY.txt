@@ -3,6 +3,7 @@ Changelog
 
 4.3-dev - (unreleased)
 ----------------------
+* Change: Renamed DavizPresentation to DavizVisualization. [demarant]
 * Change: removed label widget for data input, no need for it, 
   we have already many headings. [demarant]
 * Change: Re-group DavizPresentation AT Schema

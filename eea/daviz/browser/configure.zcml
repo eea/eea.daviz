@@ -94,8 +94,8 @@
 
   <browser:page
     name="daviz.properties.edit"
-    for="eea.daviz.content.interfaces.IDavizPresentation"
-    class=".app.properties.DavizPresentationEditForm"
+    for="eea.daviz.content.interfaces.IDavizVisualization"
+    class=".app.properties.DavizVisualizationEditForm"
     permission="cmf.ModifyPortalContent"
     />
 

@@ -2,6 +2,6 @@
 """
 from zope.interface import Interface
 
-class IDavizPresentation(Interface):
-    """ Daviz presentation
+class IDavizVisualization(Interface):
+    """ Daviz Visualization
     """

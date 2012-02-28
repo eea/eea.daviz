@@ -5,10 +5,10 @@ from eea.daviz.content.validators import CSVFileValidator
 validation.register(CSVFileValidator('csvfile'))
 
 from Products.ATContentTypes.content.base import registerATCT
-from eea.daviz.content.presentation import DavizPresentation
+from eea.daviz.content.presentation import DavizVisualization
 from eea.daviz.config import PACKAGE
 
 def register():
     """ Register custom content-types
     """
-    registerATCT(DavizPresentation, PACKAGE)
+    registerATCT(DavizVisualization, PACKAGE)

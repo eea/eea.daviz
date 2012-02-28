@@ -1,10 +1,10 @@
-""" Daviz Presentation
+""" Daviz Visualization
 """
 from zope.event import notify
 from zope.interface import implements
 from plone.app.folder.folder import ATFolder
 from Products.Archetypes.atapi import Schema
-from eea.daviz.content.interfaces import IDavizPresentation
+from eea.daviz.content.interfaces import IDavizVisualization
 from eea.daviz.config import EEAMessageFactory as _
 from eea.daviz.events import DavizRelationsChanged, DavizSpreadSheetChanged
 from Products.Archetypes.public import StringField, TextAreaWidget, LabelWidget
@@ -121,13 +121,13 @@ def finalizeSchema(schema=DAVIZ_SCHEMA):
 
 finalizeSchema(DAVIZ_SCHEMA)
 
-class DavizPresentation(ATFolder):
+class DavizVisualization(ATFolder):
     """ Daviz Visualization
     """
-    implements(IDavizPresentation)
+    implements(IDavizVisualization)
 
-    meta_type = 'DavizPresentation'
-    portal_type = 'DavizPresentation'
-    archetype_name = 'DavizPresentation'
+    meta_type = 'DavizVisualization'
+    portal_type = 'DavizVisualization'
+    archetype_name = 'DavizVisualization'
 
     schema = DAVIZ_SCHEMA

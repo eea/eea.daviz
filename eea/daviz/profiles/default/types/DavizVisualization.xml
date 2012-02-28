@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
-<object name="DavizPresentation"
+<object name="DavizVisualization"
    meta_type="Factory-based Type Information with dynamic views"
    i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title" i18n:translate="">Daviz Visualization</property>
  <property name="description"
      i18n:translate="">Dynamic and flexible data visualization tool.</property>
  <property name="icon_expr">string:${portal_url}/++resource++eea.daviz.images/presentation_icon.png</property>
- <property name="content_meta_type">DavizPresentation</property>
+ <property name="content_meta_type">DavizVisualization</property>
  <property name="product">eea.daviz</property>
- <property name="factory">addDavizPresentation</property>
+ <property name="factory">addDavizVisualization</property>
  <property name="immediate_view">daviz-edit.html</property>
  <property name="global_allow">True</property>
  <property name="filter_content_types">True</property>

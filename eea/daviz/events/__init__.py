@@ -26,7 +26,7 @@ class DavizFacetDeletedEvent(object):
         self.facet = kwargs.get('facet', '')
 
 class DavizRelationsChanged(object):
-    """ Sent if relations for a Daviz Presentation were changed
+    """ Sent if relations for a Daviz Visualization were changed
     """
     implements(IDavizRelationsChangedEvent)
 
@@ -35,7 +35,7 @@ class DavizRelationsChanged(object):
         self.relatedItems = kwargs.get('relatedItems', [])
 
 class DavizSpreadSheetChanged(object):
-    """ Sent if spreadsheet for a Daviz Presentation was changed
+    """ Sent if spreadsheet for a Daviz Visualization was changed
     """
     implements(IDavizSpreadSheetChanged)
 

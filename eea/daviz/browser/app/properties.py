@@ -54,8 +54,8 @@ class IExhibitPropertiesEdit(Interface):
     )
     sources.order = 30
 
-class IDavizPresentationPropertiesEdit(IExhibitPropertiesEdit):
-    """ Custom schema for Daviz Presentation
+class IDavizVisualizationPropertiesEdit(IExhibitPropertiesEdit):
+    """ Custom schema for Daviz Visualization
     """
     json = schema.Text(
         title=u"JSON",
@@ -178,7 +178,7 @@ class EditForm(SubPageForm):
         next_url = self.context.absolute_url() + '/daviz-edit.html'
         self.request.response.redirect(next_url)
 
-class DavizPresentationEditForm(EditForm):
-    """ Custom edit form for DavizPresentation
+class DavizVisualizationEditForm(EditForm):
+    """ Custom edit form for DavizVisualization
     """
-    form_fields = Fields(IDavizPresentationPropertiesEdit)
+    form_fields = Fields(IDavizVisualizationPropertiesEdit)

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <object name="portal_relations">
  <object name="daviz-presentation" meta_type="EEARelationsContentType">
-  <property name="title">Daviz Presentation</property>
-  <property name="ct_type">DavizPresentation</property>
+  <property name="title">Daviz Visualization</property>
+  <property name="ct_type">DavizVisualization</property>
   <property name="ct_interface"></property>
   <property name="ct_default_location">python:None</property>
  </object>
@@ -104,7 +104,7 @@
     meta_type="EEAPossibleRelation">
   <property name="from">daviz-presentation</property>
   <property name="to">daviz-sources</property>
-  <property name="title">Daviz Presentation -&gt; Daviz Sources</property>
+  <property name="title">Daviz Visualization -&gt; Daviz Sources</property>
   <property name="forward_label"></property>
   <property name="backward_label"></property>
   <property name="description"></property>

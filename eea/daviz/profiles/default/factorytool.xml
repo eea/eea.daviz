@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <object name="portal_factory">
   <factorytypes>
-    <type portal_type="DavizPresentation"/>
+    <type portal_type="DavizVisualization"/>
   </factorytypes>
 </object>

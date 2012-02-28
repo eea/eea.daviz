@@ -43,18 +43,6 @@ class DavizStringField(StringField):
         notify(DavizSpreadSheetChanged(instance, spreadsheet=value))
 
 SCHEMA = Schema((
-    StringField(
-        'dataSources',
-        schemata="data input",
-        widget=LabelWidget(
-            label=_('daviz_label_data_sources',
-                    default='Data sources'),
-            description=_('daviz_help_data_sources',
-                    default=".tsv, .csv files, SPARQL methods, etc"),
-            i18n_domain="eea",
-            visible={'edit' : 'visible', 'view' : 'invisible' }
-        )
-    ),
     DavizReferenceField(
         'relatedItems',
         schemata="data input",
@@ -109,8 +97,7 @@ def finalizeSchema(schema=DAVIZ_SCHEMA):
     # Move all fields to Metadata schemata
     for field in schema.fields():
         # Leave this fields in their original schemata
-        if field.getName() in ('dataSources', 'spreadsheet',
-                               'quickUpload', 'relatedItems'):
+        if field.getName() in ('spreadsheet', 'quickUpload', 'relatedItems'):
             continue
 
         # We use schema extender for this fields, so leave them in
@@ -127,15 +114,15 @@ def finalizeSchema(schema=DAVIZ_SCHEMA):
     schema['title'].default = u'Data Visualization'
 
     # Reorder data input fields
-    schema.moveField('dataSources', pos=0)
-    schema.moveField('spreadsheet', after="dataSources")
+    # schema.moveField('dataSources', pos=0)
+    schema.moveField('spreadsheet', pos=0)
     schema.moveField('quickUpload', after="spreadsheet")
     schema.moveField('relatedItems', after="quickUpload")
 
 finalizeSchema(DAVIZ_SCHEMA)
 
 class DavizPresentation(ATFolder):
-    """ Daviz Presentation
+    """ Daviz Visualization
     """
     implements(IDavizPresentation)
 

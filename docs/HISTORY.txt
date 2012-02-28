@@ -3,6 +3,8 @@ Changelog
 
 4.3-dev - (unreleased)
 ----------------------
+* Change: removed label widget for data input, no need for it, 
+  we have already many headings. [demarant]
 * Change: Re-group DavizPresentation AT Schema
   [voineali #4980]
 * Change: Reordered the data input fields. Most common scenarion on top.

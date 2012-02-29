@@ -22,11 +22,14 @@ def presentation2visualization(context):
                  'DavizPresentation to DavizVisualization'), total)
 
     for index, brain in enumerate(brains[:]):
-        doc = brain.getObject()
-        migrator = InplaceDavizVisualizationMigrator(doc)
-        migrator.migrate()
-        migrator.new.reindexObject()
         logger.info('\t Migration status: %s/%s', index+1, total)
+        try:
+            doc = brain.getObject()
+            migrator = InplaceDavizVisualizationMigrator(doc)
+            migrator.migrate()
+            migrator.new.reindexObject()
+        except Exception, err:
+            logger.exception(err)
 
     logger.info(('Finish migration of %s instances of '
                  'DavizPresentation to DavizVisualization'), total)

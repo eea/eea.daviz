@@ -1,15 +1,17 @@
-var DavizEdit = {'version': '4.0'};
+if(window.DavizEdit === undefined){
+  var DavizEdit = {'version': '4.0'};
+  DavizEdit.Events = {};
+}
 
 /** Events
 */
-DavizEdit.Events = {
-  facet: {
-    deleted: 'daviz-facet-deleted',
-    refreshed: 'daviz-facets-refreshed'
-  },
-  views: {
-    refreshed: 'daviz-views-refreshed'
-  }
+DavizEdit.Events.facet = {
+  deleted: 'daviz-facet-deleted',
+  refreshed: 'daviz-facets-refreshed'
+};
+
+DavizEdit.Events.views = {
+  refreshed: 'daviz-views-refreshed'
 };
 
 /** Status

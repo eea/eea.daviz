@@ -3,6 +3,9 @@ Changelog
 
 4.3-dev - (unreleased)
 ----------------------
+* Change: The new UI expects eea.googlecharts and eea.sparql, therefore they are 
+  now an integral part of this product and declared as dependencies.
+  [demarant]
 * Change: Renamed DavizPresentation to DavizVisualization. [demarant]
 * Change: removed label widget for data input, no need for it, 
   we have already many headings. [demarant]

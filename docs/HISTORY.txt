@@ -3,6 +3,10 @@ Changelog
 
 4.3-dev - (unreleased)
 ----------------------
+* Bug fix: restricted data sources relations to exhibit json or sparql queries.
+  Upgrade step: 
+  ZMI > portal_setup > profile "EEA Daviz" > import Possible relations settings
+  [demarant #4919]
 * Change: The new UI expects eea.googlecharts and eea.sparql, therefore they are 
   now an integral part of this product and declared as dependencies.
   [demarant]

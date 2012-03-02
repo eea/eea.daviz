@@ -10,11 +10,10 @@ VERSION = open(join(*PATH)).read().strip()
 
 setup(name=NAME,
       version=VERSION,
-      description=("EEA DaViz is a plone product which uses Exhibit to lets "
-                   "you easily create web pages with advanced text search and "
-                   "filtering functionalities (facets), with interactive maps,"
-                   "timelines, and other visualizations like these examples "
-                   "can be seen at  http://www.simile-widgets.org/exhibit."),
+      description=("EEA DaViz is a plone product which uses Exhibit and Google "
+                   "Charts API to easily create data visualizations based "
+                   "on data from csv/tsv, JSON, SPARQL endpoints and more."
+                   ),
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       classifiers=[
@@ -22,7 +21,8 @@ setup(name=NAME,
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
-      keywords='eea daviz data visualization exhibit zope plone',
+      keywords='eea daviz data visualization exhibit googlecharts' \
+               'sparql rdf zope plone',
       author='European Environment Agency',
       author_email="webadmin@eea.europa.eu",
       url='http://svn.eionet.europa.eu/projects/Zope/wiki/DaViz',
@@ -38,11 +38,11 @@ setup(name=NAME,
           'p4a.z2utils',
           'collective.js.jqueryui',
           'rdflib',
+          'eea.sparql',
+          'eea.googlecharts'
 
           ## Optional
           #eea.relations,
-          #eea.googlechartsconfig,
-          #eea.sparql,
           #eea.cache,
 
       ],

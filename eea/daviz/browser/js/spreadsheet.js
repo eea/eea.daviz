@@ -34,6 +34,6 @@ jQuery(document).ready(function(){
   context.EEAFormsGroup(options);
 
   // Make formTabs a wizard
-  jQuery('.formTabs').EEAFormsWizard();
+  jQuery('form[name=edit_form] .formTabs').EEAFormsWizard();
 
 });

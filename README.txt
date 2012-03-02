@@ -1,9 +1,13 @@
 EEA Daviz product
 =================
-EEA DaViz is a plone product which uses Exhibit to lets you easily create web pages
-with advanced text search and filtering functionalities (facets), with interactive maps,
-timelines, and other visualizations like these examples can be seen
-at  http://www.simile-widgets.org/exhibit.
+EEA Daviz is a plone product for data visualizations. You can generate attractive 
+and interactive charts and combine them in a dashboard with facets/filters 
+which updates the charts simultaneously. Data can be uploade as CSV,TSV or you can 
+specify SPARQL to query Linked open data servers (sparql endpoints). 
+
+At the moment Simile Exhibit and Google Charts visualizations are supported. 
+
+The first Semantic web data visualisation tool for Plone.
 
 
 Contents
@@ -15,8 +19,13 @@ Contents
 Introduction
 ============
 
-It is simply to use, needs no desktop application, everything is done
-through the web by uploading an "excel file" and configure its visualisations.
+It is simple to use, needs no desktop application, everything is done
+through the web by uploading an "excel file", CSV, TSV. You can also query 
+the "web of data" via public available sparql endpoints. 
+
+You can easily make visualizations like: 
+   1. http://www.simile-widgets.org/exhibit
+   2. http://code.google.com/apis/chart/
 
 See also initial project wiki page https://svn.eionet.europa.eu/projects/Zope/wiki/DaViz
 for the reasoning behind this project.
@@ -25,10 +34,23 @@ for the reasoning behind this project.
 Main features
 =============
 
-EEA Daviz generates different views and a customisable faceted search on CSV/TSV data
-uploaded in a Plone site. Just upload a CSV file under a normal Plone file and
-go to actions menu and click convert to exhibit view, the page will automatically
-refresh to edit the Exhibit view
+
+The main features are:
+
+  1. no desktop tools needed to make visualizations. all web based.
+  2. data input: easy copy and paste of data table from any webpage or excel sheet
+  3. data input: drag-and-drop your data from CSV/TSV files, and we do the rest
+  4. data input advanced: retrieve data from any SPARQL endpoint on the fly
+  5. Intuitive visualization editor to create interactive charts.
+  6. Large amount of visualizations available: Area, Bar, \
+     Bubble, Candlestick, Column, Combo Chart, Gauge, Geo Intensity Maps, Line, Pie, Radar, Scatter, Stepped Area, Table, Tree Map, Motion Charts, Faceted search table, Faceted tiles, Faceted timeline, Faceted map and more...
+  7. Dashboard. Group charts into one dashboard.
+  8. Share any chart. Embeddabe visualization in any webpage.
+  9. Customizable chart options and colors
+  10. Data table manipulation via drag and drop, preparing table for chart
+  11. Pivot table (Transpose), tranform row values into columns and viceversa
+  12. Modular framework for extending it with more visualizations
+  13. And much more...
 
 More details about how to use this package can be found at the following link:
 
@@ -92,13 +114,16 @@ Dependecies
   3. p4a.z2utils
   4. collective.js.jqueryui
   5. rdflib
+  6. eea.sparql
+  7. eea.googlecharts
 
 
 Live demo
 =========
 
   1. http://www.simile-widgets.org/exhibit
-  2. http://www.eea.europa.eu/data-and-maps/data/national-emissions-reported-to-the-unfccc-and-to-the-eu-greenhouse-gas-monitoring-mechanism-3/national-total-excluding-lulucf/ghg_v10_extract.csv
+  2. Exhibit only: http://www.eea.europa.eu/data-and-maps/data/national-emissions-reported-to-the-unfccc-and-to-the-eu-greenhouse-gas-monitoring-mechanism-3/national-total-excluding-lulucf/ghg_v10_extract.csv
+  3. http://code.google.com/apis/chart/
 
 
 Source code
@@ -133,6 +158,7 @@ Links
   2. Simile widgets: http://www.simile-widgets.org/exhibit
   3. EEA Daviz howto: https://svn.eionet.europa.eu/projects/Zope/wiki/HowToDaviz
   4. EEA Daviz backlog wiki: https://svn.eionet.europa.eu/projects/Zope/wiki/DaViz
+  5. Google charts: http://code.google.com/apis/chart/
 
 Funding
 =======

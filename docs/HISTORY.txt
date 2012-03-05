@@ -1,8 +1,8 @@
 Changelog
 =========
 
-4.3-dev - (unreleased)
-----------------------
+4.3 - (2012-03-05)
+------------------
 * Bug fix: restricted data sources relations to exhibit json or sparql queries.
   Upgrade step: 
   ZMI > portal_setup > profile "EEA Daviz" > import Possible relations settings

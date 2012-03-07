@@ -1,12 +1,10 @@
-# -*- coding: utf-8 -*-
 """ App daviz interfaces
 """
-__author__ = """European Environment Agency (EEA)"""
-__docformat__ = 'plaintext'
-__credits__ = """contributions: Alin Voinea"""
+#BBB
+from eea.app.visualization.interfaces import \
+     IVisualizationConfig as IDavizConfig
 
-from zope.interface import Interface
-
-class IDavizConfig(Interface):
-    """ Access / Update daviz configuration
-    """
+import warnings
+warnings.warn("eea.daviz.app.interfaces are deprecated. "
+              "Please use eea.app.visualization.interfaces instead",
+              DeprecationWarning)

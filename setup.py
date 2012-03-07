@@ -32,6 +32,7 @@ setup(name=NAME,
       include_package_data=True,
       zip_safe=False,
       install_requires=[
+          'eea.app.visualization',
           'setuptools',
           'eea.forms',
           'eea.exhibit',

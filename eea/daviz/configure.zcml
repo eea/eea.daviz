@@ -2,6 +2,7 @@
   xmlns="http://namespaces.zope.org/browser"
   i18n_domain="eea.daviz">
 
+  <include package="eea.app.visualization" />
   <include package="eea.forms" />
   <include package="eea.exhibit" />
   <include package="p4a.z2utils" />
@@ -12,10 +13,8 @@
   <include package=".cache" />
   <include package=".content" />
   <include package=".babel" />
-  <include package=".subtypes" />
   <include package=".converter" />
   <include package=".browser" />
-  <include package=".app" />
   <include package=".facets" />
   <include package=".views" />
 

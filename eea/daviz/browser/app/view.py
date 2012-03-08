@@ -7,7 +7,7 @@ from zope.component import queryAdapter, queryMultiAdapter
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from eea.daviz.interfaces import IDavizConfig
-from eea.daviz.cache import ramcache, cacheJsonKey
+from eea.app.visualization.cache import ramcache, cacheJsonKey
 from eea.daviz.config import EEAMessageFactory as _
 from Products.statusmessages.interfaces import IStatusMessage
 

@@ -5,7 +5,7 @@ from zope.event import notify
 import logging
 import json
 from eea.daviz.events import DavizEnabledEvent
-from eea.daviz.cache import InvalidateCacheEvent
+from eea.app.visualization.cache import InvalidateCacheEvent
 from zope.component import queryMultiAdapter, queryAdapter, queryUtility
 from eea.daviz.converter.interfaces import IExhibitJsonConverter
 from eea.daviz.interfaces import IDavizConfig

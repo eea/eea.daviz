@@ -16,7 +16,7 @@ from eea.daviz.events import DavizEnabledEvent
 from eea.daviz.interfaces import IDavizConfig, IExhibitJson
 from eea.daviz.subtypes.interfaces import IDavizSubtyper
 from eea.daviz.browser.app.view import JSONView
-from eea.daviz.cache import ramcache, cacheJsonKey
+from eea.app.visualization.cache import ramcache, cacheJsonKey
 
 logger = logging.getLogger('eea.daviz.converter')
 

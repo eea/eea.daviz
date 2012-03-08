@@ -11,7 +11,6 @@
   <include file="profiles.zcml" />
 
   <include package=".content" />
-  <include package=".babel" />
   <include package=".browser" />
 
   <include package=".upgrades" />

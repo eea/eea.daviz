@@ -1,2 +1,0 @@
-""" Simile babel translators
-"""

@@ -8,3 +8,7 @@ import warnings
 warnings.warn("eea.daviz.app.interfaces are deprecated. "
               "Please use eea.app.visualization.interfaces instead",
               DeprecationWarning)
+
+__all__ = (
+    IDavizConfig.__name__,
+)

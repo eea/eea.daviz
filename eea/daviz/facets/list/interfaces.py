@@ -6,9 +6,9 @@ __credits__ = """contributions: Alin Voinea"""
 
 from zope.interface import Interface
 from zope.schema import TextLine, Bool
-from eea.daviz.facets.interfaces import IExhibitFacet
+from eea.app.visualization.facets.interfaces import IVisualizationFacet
 
-class IExhibitListFacet(IExhibitFacet):
+class IExhibitListFacet(IVisualizationFacet):
     """ Exhibit list facet
     """
     def gett(key, default):

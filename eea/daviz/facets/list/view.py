@@ -1,10 +1,5 @@
-# -*- coding: utf-8 -*-
 """ List facets view module
 """
-__author__ = """European Environment Agency (EEA)"""
-__docformat__ = 'plaintext'
-__credits__ = """contributions: Alin Voinea"""
-
 from zope.interface import implements
 from eea.daviz.facets.list.interfaces import IExhibitListFacet
 from Products.Five.browser import BrowserView

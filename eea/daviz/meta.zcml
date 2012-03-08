@@ -1,6 +1,6 @@
 <configure
   xmlns="http://namespaces.zope.org/zope">
 
-  <include package=".views" file="meta.zcml" />
+  <include package="eea.app.visualization" file="meta.zcml" />
 
 </configure>

@@ -1,14 +1,11 @@
-# -*- coding: utf-8 -*-
 """ Daviz config module
 """
-__author__ = """European Environment Agency (EEA)"""
-__docformat__ = 'plaintext'
-__credits__ = """contributions: Alec Ghica, Alin Voinea"""
-
-ANNO_VIEWS = 'eea.daviz.config.views'
-ANNO_FACETS = 'eea.daviz.config.facets'
-ANNO_JSON = 'eea.daviz.config.json'
-ANNO_SOURCES = 'eea.daviz.config.sources'
+#BBB
+from eea.app.visualization import config
+ANNO_VIEWS = config.ANNO_VIEWS
+ANNO_FACETS = config.ANNO_FACETS
+ANNO_JSON = config.ANNO_JSON
+ANNO_SOURCES = config.ANNO_SOURCES
 
 PACKAGE = 'eea.daviz'
 ADD_PERMISSION = "eea.daviz: Add presentation"

@@ -12,7 +12,6 @@
 
   <include package=".content" />
   <include package=".babel" />
-  <include package=".converter" />
   <include package=".browser" />
 
   <include package=".upgrades" />

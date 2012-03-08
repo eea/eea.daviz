@@ -27,8 +27,4 @@ def test_suite():
                   optionflags=OPTIONFLAGS,
                   package='eea.daviz',
                   test_class=DavizFunctionalTestCase),
-            Suite('converter/converter.py',
-                  optionflags=OPTIONFLAGS,
-                  package='eea.daviz',
-                  test_class=DavizFunctionalTestCase),
     ))

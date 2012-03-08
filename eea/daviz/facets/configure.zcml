@@ -3,7 +3,6 @@
   xmlns:browser="http://namespaces.zope.org/browser">
 
   <include package=".cloud" />
-  <include package=".list" />
   <include package=".numeric" />
   <include package=".slider" />
   <include package=".text" />

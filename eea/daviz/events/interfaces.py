@@ -1,23 +1,12 @@
 """ Daviz Events interfaces
 """
-
-__author__ = """European Environment Agency (EEA)"""
-__docformat__ = 'plaintext'
-__credits__ = """contributions: Alec Ghica, Alin Voinea"""
-
-from zope.component.interfaces import IObjectEvent
-
-class IDavizEvent(IObjectEvent):
-    """ All daviz events should inherit from this class
-    """
-
-class IDavizEnabledEvent(IDavizEvent):
-    """ Daviz was enabled
-    """
-
-class IDavizFacetDeletedEvent(IDavizEvent):
-    """ Daviz facet deleted
-    """
+#BBB
+from eea.app.visualization.events.interfaces import \
+     IVisualizationEvent as IDavizEvent
+from eea.app.visualization.events.interfaces import \
+     IVisualizationEnabledEvent as IDavizEnabledEvent
+from eea.app.visualization.events.interfaces import \
+     IVisualizationFacetDeletedEvent as IDavizFacetDeletedEvent
 
 class IDavizRelationsChangedEvent(IDavizEvent):
     """ Daviz relations changed

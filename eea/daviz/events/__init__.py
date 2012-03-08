@@ -1,29 +1,14 @@
 """ Daviz/events init module with DavizEnabledEvent class
 """
 from zope.interface import implements
-from eea.daviz.events.interfaces import IDavizEnabledEvent
-from eea.daviz.events.interfaces import IDavizFacetDeletedEvent
 from eea.daviz.events.interfaces import IDavizRelationsChangedEvent
 from eea.daviz.events.interfaces import IDavizSpreadSheetChanged
 
-class DavizEnabledEvent(object):
-    """ Sent if a document was converted to exhibit json
-    """
-    implements(IDavizEnabledEvent)
-
-    def __init__(self, context, **kwargs):
-        self.object = context
-        self.columns = kwargs.get('columns', [])
-        self.cleanup = kwargs.get('cleanup', True)
-
-class DavizFacetDeletedEvent(object):
-    """ Sent if a daviz facet was deleted
-    """
-    implements(IDavizFacetDeletedEvent)
-
-    def __init__(self, context, **kwargs):
-        self.object = context
-        self.facet = kwargs.get('facet', '')
+#BBB
+from eea.app.visualization.events import \
+     VisualizationEnabledEvent as DavizEnabledEvent
+from eea.app.visualization.events import \
+     VisualizationFacetDeletedEvent as DavizFacetDeletedEvent
 
 class DavizRelationsChanged(object):
     """ Sent if relations for a Daviz Visualization were changed
@@ -42,3 +27,10 @@ class DavizSpreadSheetChanged(object):
     def __init__(self, context, **kwargs):
         self.object = context
         self.spreadsheet = kwargs.get('spreadsheet', '')
+
+__all__ = (
+    DavizEnabledEvent.__name__,
+    DavizFacetDeletedEvent.__name__,
+    DavizRelationsChanged.__name__,
+    DavizSpreadSheetChanged.__name__,
+)

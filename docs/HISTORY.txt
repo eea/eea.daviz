@@ -3,18 +3,21 @@ Changelog
 
 4.4-dev - (unreleased)
 ----------------------
+* Feature: Refactoring to be able to use eea.googlecharts or eea.exhibit as
+  standalone packages or as part of eea.daviz visualization bundle.
+  [voineali #4996]
 
 4.3 - (2012-03-05)
 ------------------
 * Bug fix: restricted data sources relations to exhibit json or sparql queries.
-  Upgrade step: 
+  Upgrade step:
   ZMI > portal_setup > profile "EEA Daviz" > import Possible relations settings
   [demarant #4919]
-* Change: The new UI expects eea.googlecharts and eea.sparql, therefore they are 
+* Change: The new UI expects eea.googlecharts and eea.sparql, therefore they are
   now an integral part of this product and declared as dependencies.
   [demarant]
 * Change: Renamed DavizPresentation to DavizVisualization. [demarant]
-* Change: removed label widget for data input, no need for it, 
+* Change: removed label widget for data input, no need for it,
   we have already many headings. [demarant]
 * Change: Re-group DavizPresentation AT Schema
   [voineali #4980]

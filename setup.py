@@ -32,15 +32,12 @@ setup(name=NAME,
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'eea.app.visualization',
           'setuptools',
+          'eea.app.visualization',
           'eea.forms',
-          'eea.exhibit',
-          'p4a.z2utils',
-          'collective.js.jqueryui',
-          'rdflib',
           'eea.sparql',
-          'eea.googlecharts'
+          'eea.exhibit',
+          'eea.googlecharts',
 
           ## Optional
           #eea.relations,

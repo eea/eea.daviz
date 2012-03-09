@@ -9,19 +9,15 @@ __credits__ = """contributions: Alec Ghica, Alin Voinea"""
 from eea.daviz.subtypes.interfaces import IPossibleExhibitJson
 from eea.daviz.subtypes.interfaces import IExhibitJson
 
-# Accessors, mutators
-from eea.daviz.app.interfaces import IDavizConfig
-
 # Events
 from eea.daviz.events.interfaces import IDavizEnabledEvent
 from eea.daviz.events.interfaces import IDavizFacetDeletedEvent
 from eea.daviz.events.interfaces import IDavizRelationsChangedEvent
 
 __all__ = [
-    IPossibleExhibitJson,
-    IExhibitJson,
-    IDavizConfig,
-    IDavizEnabledEvent,
-    IDavizFacetDeletedEvent,
-    IDavizRelationsChangedEvent,
+    IPossibleExhibitJson.__name__,
+    IExhibitJson.__name__,
+    IDavizEnabledEvent.__name__,
+    IDavizFacetDeletedEvent.__name__,
+    IDavizRelationsChangedEvent.__name__,
 ]

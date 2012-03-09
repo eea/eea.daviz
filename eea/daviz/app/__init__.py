@@ -1,2 +1,0 @@
-""" App init module
-"""

@@ -57,8 +57,8 @@ Now let's use the browser interface
     >>> _ = converter.enable()
 
     >>> from zope.component import queryAdapter
-    >>> from eea.daviz.interfaces import IDavizConfig
-    >>> accessor = queryAdapter(daviz_file, IDavizConfig)
+    >>> from eea.app.visualization.interfaces import IVisualizationConfig
+    >>> accessor = queryAdapter(daviz_file, IVisualizationConfig)
     >>> accessor.json.__class__
     <class 'persistent.mapping.PersistentMapping'>
 

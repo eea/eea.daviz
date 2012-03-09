@@ -34,9 +34,9 @@ Let's test it in real world
     ...     alsoProvides(daviz_file, IExhibitJson)
 
     >>> from zope.component import getAdapter
-    >>> from eea.daviz.interfaces import IDavizConfig
+    >>> from eea.app.visualization.interfaces import IVisualizationConfig
 
-    >>> handler = getAdapter(daviz_file, IDavizConfig)
+    >>> handler = getAdapter(daviz_file, IVisualizationConfig)
     >>> handler.views
     []
 

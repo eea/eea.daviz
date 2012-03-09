@@ -7,8 +7,8 @@ import json
 from eea.daviz.events import DavizEnabledEvent
 from eea.app.visualization.cache import InvalidateCacheEvent
 from zope.component import queryMultiAdapter, queryAdapter, queryUtility
-from eea.daviz.converter.interfaces import IExhibitJsonConverter
-from eea.daviz.interfaces import IDavizConfig
+from eea.app.visualization.converter.interfaces import IExhibitJsonConverter
+from eea.app.visualization.interfaces import IVisualizationConfig
 logger = logging.getLogger('eea.daviz.events')
 
 def onRelationsChanged(obj, evt):
@@ -19,7 +19,7 @@ def onRelationsChanged(obj, evt):
     if not request:
         return
 
-    mutator = queryAdapter(obj, IDavizConfig)
+    mutator = queryAdapter(obj, IVisualizationConfig)
     if not mutator:
         return
 
@@ -60,7 +60,7 @@ def onSpreadSheetChanged(obj, evt):
     if not request:
         return
 
-    mutator = queryAdapter(obj, IDavizConfig)
+    mutator = queryAdapter(obj, IVisualizationConfig)
     if not mutator:
         return
 

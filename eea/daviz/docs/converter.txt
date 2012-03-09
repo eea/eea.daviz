@@ -28,11 +28,11 @@ Let's convert file data and check JSON output.
     >>> from StringIO import StringIO
     >>> from zope.component import getUtility
     >>> from zope.interface import implements, alsoProvides
-    >>> from eea.daviz.converter.interfaces import IExhibitJsonConverter
-    >>> from eea.daviz.interfaces import IExhibitJson
+    >>> from eea.app.visualization.converter.interfaces import IExhibitJsonConverter
+    >>> from eea.app.visualization.interfaces import IVisualizationEnabled
 
-    >>> if not IExhibitJson.providedBy(daviz_file):
-    ...     alsoProvides(daviz_file, IExhibitJson)
+    >>> if not IVisualizationEnabled.providedBy(daviz_file):
+    ...     alsoProvides(daviz_file, IVisualizationEnabled)
     >>> datafile = StringIO(daviz_file.getFile().data)
     >>> converter = getUtility(IExhibitJsonConverter)
     >>> columns, json = converter(datafile)
@@ -46,9 +46,9 @@ Let's convert file data and check JSON output.
                 'programme': 'NSV1 - Biodiversity',
                 'quantity': 10.5,
                 'starting_date': '01/01/2010'},
-    ...], 
-    'properties': {'country': {'valueType': 'text'}, 
-    ...}} 
+    ...],
+    'properties': {'country': {'valueType': 'text'},
+    ...}}
 
 Now let's use the browser interface
 
@@ -73,6 +73,6 @@ Now let's use the browser interface
                 'quantity': 10.5,
                 'starting_date': '01/01/2010'},
     ...
-    ...], 
-     'properties': {'country': {'valueType': 'text'}, 
-    ...}} 
+    ...],
+     'properties': {'country': {'valueType': 'text'},
+    ...}}

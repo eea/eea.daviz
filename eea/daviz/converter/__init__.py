@@ -1,2 +1,0 @@
-""" Converter init module
-"""

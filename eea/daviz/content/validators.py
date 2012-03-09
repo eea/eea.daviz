@@ -1,6 +1,6 @@
 """ Custom AT Validators
 """
-from eea.daviz.converter.interfaces import IExhibitJsonConverter
+from eea.app.visualization.converter.interfaces import IExhibitJsonConverter
 from zope.component import getUtility
 from Products.validation.interfaces.IValidator import IValidator
 from zope.interface import implements

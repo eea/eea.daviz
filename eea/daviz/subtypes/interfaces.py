@@ -4,8 +4,6 @@
 from eea.app.visualization.interfaces import \
     IPossibleVisualization as IPossibleExhibitJson
 from eea.app.visualization.interfaces import \
-     IVisualizationSubtyper as IDavizSubtyper
-from eea.app.visualization.interfaces import \
      IVisualizationEnabled as IExhibitJson
 
 import warnings
@@ -15,6 +13,5 @@ warnings.warn("eea.daviz.subtypes.interfaces are deprecated. "
 
 __all__ = (
     IPossibleExhibitJson.__name__,
-    IDavizSubtyper.__name__,
     IExhibitJson.__name__,
 )

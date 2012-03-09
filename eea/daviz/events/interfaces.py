@@ -1,25 +1,16 @@
 """ Daviz Events interfaces
 """
-#BBB
-from eea.app.visualization.events.interfaces import \
-     IVisualizationEvent as IDavizEvent
-from eea.app.visualization.events.interfaces import \
-     IVisualizationEnabledEvent as IDavizEnabledEvent
-from eea.app.visualization.events.interfaces import \
-     IVisualizationFacetDeletedEvent as IDavizFacetDeletedEvent
+from eea.app.visualization.events.interfaces import IVisualizationEvent
 
-class IDavizRelationsChangedEvent(IDavizEvent):
+class IDavizRelationsChangedEvent(IVisualizationEvent):
     """ Daviz relations changed
     """
 
-class IDavizSpreadSheetChanged(IDavizEvent):
+class IDavizSpreadSheetChanged(IVisualizationEvent):
     """ Daviz spreadsheet changed
     """
 
 __all__ = [
-    IDavizEvent,
-    IDavizEnabledEvent,
-    IDavizFacetDeletedEvent,
     IDavizRelationsChangedEvent,
     IDavizSpreadSheetChanged,
 ]

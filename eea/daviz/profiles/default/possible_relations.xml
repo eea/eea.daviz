@@ -58,7 +58,7 @@
  <object name="daviz-sources" meta_type="EEARelationsContentType">
   <property name="title">Data (daviz json)</property>
   <property name="ct_type"></property>
-  <property name="ct_interface">eea.daviz.subtypes.interfaces.IExhibitJson</property>
+  <property name="ct_interface">eea.app.visualization.interfaces.IVisualizationEnabled</property>
   <property name="ct_default_location">python:None</property>
   <criteria>
    <criterion name="c0">

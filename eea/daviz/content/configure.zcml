@@ -2,7 +2,7 @@
            i18n_domain="eea">
 
   <class class=".presentation.DavizVisualization">
-    <implements interface="eea.daviz.interfaces.IExhibitJson" />
+    <implements interface="eea.app.visualization.interfaces.IVisualizationEnabled" />
   </class>
 
   <subscriber for=".interfaces.IDavizVisualization

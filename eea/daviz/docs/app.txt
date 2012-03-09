@@ -28,10 +28,10 @@ Let's test it in real world
     >>> _ = sandbox.invokeFactory('File', 'daviz-file')
     >>> daviz_file = sandbox._getOb('daviz-file')
 
-    >>> from eea.daviz.interfaces import IExhibitJson
+    >>> from eea.app.visualization.interfaces import IVisualizationEnabled
     >>> from zope.interface import implements, alsoProvides
-    >>> if not IExhibitJson.providedBy(daviz_file):
-    ...     alsoProvides(daviz_file, IExhibitJson)
+    >>> if not IVisualizationEnabled.providedBy(daviz_file):
+    ...     alsoProvides(daviz_file, IVisualizationEnabled)
 
     >>> from zope.component import getAdapter
     >>> from eea.app.visualization.interfaces import IVisualizationConfig

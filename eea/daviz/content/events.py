@@ -4,7 +4,7 @@ from StringIO import StringIO
 from zope.event import notify
 import logging
 import json
-from eea.daviz.events import DavizEnabledEvent
+from eea.app.visualization.events import VisualizationEnabledEvent
 from eea.app.visualization.cache import InvalidateCacheEvent
 from zope.component import queryMultiAdapter, queryAdapter, queryUtility
 from eea.app.visualization.converter.interfaces import IExhibitJsonConverter
@@ -50,7 +50,7 @@ def onRelationsChanged(obj, evt):
             typo = 'text'
         columns.append((key, typo))
 
-    notify(DavizEnabledEvent(obj, columns=columns, cleanup=False))
+    notify(VisualizationEnabledEvent(obj, columns=columns, cleanup=False))
     notify(InvalidateCacheEvent(raw=True, dependencies=['eea.daviz']))
 
 def onSpreadSheetChanged(obj, evt):
@@ -79,5 +79,5 @@ def onSpreadSheetChanged(obj, evt):
     new_json['properties'].update(data.get('properties', {}))
     mutator.json = new_json
 
-    notify(DavizEnabledEvent(obj, columns=columns, cleanup=False))
+    notify(VisualizationEnabledEvent(obj, columns=columns, cleanup=False))
     notify(InvalidateCacheEvent(raw=True, dependencies=['eea.daviz']))

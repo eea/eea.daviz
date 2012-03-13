@@ -118,14 +118,25 @@ Dependecies
   7. eea.googlecharts
 
 
-Live demo
-=========
+Live demos
+==========
 
-  1. http://www.simile-widgets.org/exhibit
-  2. Exhibit only: http://www.eea.europa.eu/data-and-maps/data/national-emissions-reported-to-the-unfccc-and-to-the-eu-greenhouse-gas-monitoring-mechanism-3/national-total-excluding-lulucf/ghg_v10_extract.csv
-  3. http://code.google.com/apis/chart/
+Eurostat data employment rates 2000-2010 (demo using Linked Data): 
+   http://www.eea.europa.eu/data-and-maps/daviz/data-visualization-employement-trends-eu-1
 
+GHG vs GDP in Europe 1990 - 2009 (demo using Linked Data)
+   http://www.eea.europa.eu/data-and-maps/daviz/ghg-vs-gdp-in-europe
+   
+GHG national emissions reporting to UNFCC (Simile Exhibit demo with TSV)
+   http://www.eea.europa.eu/data-and-maps/data/national-emissions-reported-to-the-unfccc-and-to-the-eu-greenhouse-gas-monitoring-mechanism-3/national-total-excluding-lulucf/ghg_v10_extract.csv
 
+Google charts demos:
+   http://code.google.com/apis/chart/
+
+MIT Simile Exhibit demos:
+   http://www.simile-widgets.org/exhibit
+
+   
 Source code
 ===========
 

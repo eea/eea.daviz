@@ -45,7 +45,7 @@ Let's convert file data and check JSON output.
                 'label': 'Antonio De Marinis',
                 'programme': 'NSV1 - Biodiversity',
                 'quantity': 10.5,
-                'starting_date': '01/01/2010'},
+                'starting_date': '2010.01.01 00:00'},
     ...],
     'properties': {'country': {'valueType': 'text'},
     ...}}
@@ -71,7 +71,7 @@ Now let's use the browser interface
                 'label': 'Antonio De Marinis',
                 'programme': 'NSV1 - Biodiversity',
                 'quantity': 10.5,
-                'starting_date': '01/01/2010'},
+                'starting_date': '2010.01.01 00:00'},
     ...
     ...],
      'properties': {'country': {'valueType': 'text'},

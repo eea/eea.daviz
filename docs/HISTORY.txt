@@ -3,6 +3,8 @@ Changelog
 
 4.4-dev - (unreleased)
 ----------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for eea.daviz
 * Change: do not show duplicates of sparql and json data when adding existing
   data. show only last version. Upgrade step (not needed for EEA production):
   ZMI > portal_setup > profile "EEA Daviz" > import Possible relations settings

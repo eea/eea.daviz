@@ -84,7 +84,7 @@ SCHEMA = Schema((
                     default='Copy and paste a data table from a file/webpage'),
             description=_('daviz_help_spreadsheet',
               default=(
-                "Check this "
+                "Check these "
                 '<a target="_blank" href="/examples/daviz.html">examples</a> '
                 'or watch a '
                 '<a target="_blank" href="/tutorials/daviz.html">tutorial</a>'

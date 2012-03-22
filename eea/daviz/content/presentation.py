@@ -51,9 +51,12 @@ SCHEMA = Schema((
         widget=ReferenceBrowserWidget(
             label=_("daviz_label_related_items",
                     default="Find and reuse existing data"),
-            description=_("daviz_help_related_items", default=(
+            description=_("daviz_help_related_items",
+              default=(
                 "Look for compatible datasets in catalogue"
-                " (e.g. visualization data, .tsv, .csv, SPARQL, etc)")),
+                " (e.g. visualization data, .tsv, .csv, SPARQL, etc)"
+              )
+            ),
             i18n_domain="eea",
             visible={'edit' : 'visible', 'view' : 'invisible' }
         )),
@@ -63,9 +66,11 @@ SCHEMA = Schema((
         widget=QuickUploadWidget(
             label=_('daviz_label_quick_upload',
                     default='Upload CSV/TSV data files from your computer'),
-            description=_('daviz_help_quick_upload', default=(
+            description=_('daviz_help_quick_upload',
+              default=(
                 "drag and drop '.tsv, .csv files' in the area bellow"
-            )),
+              )
+            ),
             i18n_domain="eea",
             visible={'edit' : 'visible', 'view' : 'invisible' }
         )
@@ -77,10 +82,14 @@ SCHEMA = Schema((
         widget=TextAreaWidget(
             label=_('daviz_label_spreadsheet',
                     default='Copy and paste a data table from a file/webpage'),
-            description=_('daviz_help_spreadsheet', default=(
-                "copy and paste 'TAB separated or Comma separated text' "
-                "in the area bellow"
-            )),
+            description=_('daviz_help_spreadsheet',
+              default=(
+                "Check this "
+                '<a target="_blank" href="/examples/daviz.html">examples</a> '
+                'or watch a '
+                '<a target="_blank" href="/tutorials/daviz.html">tutorial</a>'
+              )
+            ),
         i18n_domain="eea",
         helper_js=('++resource++eea.daviz.spreadsheet.js',),
         helper_css=('++resource++eea.daviz.spreadsheet.css',),

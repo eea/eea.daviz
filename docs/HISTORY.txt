@@ -5,6 +5,9 @@ Changelog
 ----------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for eea.daviz
+* Feature: Updated Daviz Visualization fields help to provide examples and
+  tutorials
+  [voineali #4995]
 * Change: do not show duplicates of sparql and json data when adding existing
   data. show only last version. Upgrade step (not needed for EEA production):
   ZMI > portal_setup > profile "EEA Daviz" > import Possible relations settings

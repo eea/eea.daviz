@@ -3,6 +3,13 @@ Changelog
 
 4.4-dev - (unreleased)
 ----------------------
+* Change: added default workflow mapping for daviz visualization.
+  [demarant #5002]
+  Upgrade step: if you have already been using daviz visualization
+  you would need to migrate the instances to the new workflow states.
+  Plone > Site setup > Types > choose Daviz Visualization and
+  the new worklow to folder_workflow. Define the states mapping as
+  you prefer.
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for eea.daviz
 * Feature: Updated Daviz Visualization fields help to provide examples and

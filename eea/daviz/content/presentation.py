@@ -85,9 +85,9 @@ SCHEMA = Schema((
             description=_('daviz_help_spreadsheet',
               default=(
                 "Check these "
-                '<a target="_blank" href="/examples/daviz.html">examples</a> '
-                'or watch a '
-                '<a target="_blank" href="/tutorials/daviz.html">tutorial</a>'
+                '<a target="_blank" href="/data-and-maps/daviz/learn-more/examples">data examples</a> '
+                'or read '
+                '<a target="_blank" href="/data-and-maps/daviz/learn-more/prepare-data">how to prepare data</a>'
               )
             ),
         i18n_domain="eea",

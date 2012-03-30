@@ -68,7 +68,13 @@ SCHEMA = Schema((
                     default='Upload CSV/TSV data files from your computer'),
             description=_('daviz_help_quick_upload',
               default=(
-                "drag and drop '.tsv, .csv files' in the area bellow"
+                "Drag and drop '.tsv, .csv files' in the area below, see "
+                '<a target="_blank" href="http://www.eea.europa.eu/'
+                'data-and-maps/daviz/learn-more/examples">data examples</a> '
+                'or read '
+                '<a target="_blank" href="http://www.eea.europa.eu/'
+                'data-and-maps/daviz/learn-more/prepare-data">'
+                'how to prepare data</a>'
               )
             ),
             i18n_domain="eea",
@@ -85,9 +91,12 @@ SCHEMA = Schema((
             description=_('daviz_help_spreadsheet',
               default=(
                 "Check these "
-                '<a target="_blank" href="/data-and-maps/daviz/learn-more/examples">data examples</a> '
+                '<a target="_blank" href="http://www.eea.europa.eu/'
+                'data-and-maps/daviz/learn-more/examples">data examples</a> '
                 'or read '
-                '<a target="_blank" href="/data-and-maps/daviz/learn-more/prepare-data">how to prepare data</a>'
+                '<a target="_blank" href="http://www.eea.europa.eu/'
+                'data-and-maps/daviz/learn-more/prepare-data">'
+                'how to prepare data</a>'
               )
             ),
         i18n_domain="eea",

@@ -3,6 +3,9 @@ Changelog
 
 4.4-dev - (unreleased)
 ----------------------
+* Feature: added documentation and links on how to examples and 
+  how prepare data for visualizations.
+  [demarant #4995]
 * Change: added default workflow mapping for daviz visualization.
   [demarant #5002]
   Upgrade step: if you have already been using daviz visualization

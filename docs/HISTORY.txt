@@ -1,8 +1,8 @@
 Changelog
 =========
 
-4.4-dev - (unreleased)
-----------------------
+4.4 - (2012-03-30)
+------------------
 * Feature: added documentation and links on how to examples and 
   how prepare data for visualizations.
   [demarant #4995]

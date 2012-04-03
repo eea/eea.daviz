@@ -48,7 +48,7 @@ The main features are:
   8. Share any chart. Embeddabe visualization in any webpage.
   9. Customizable chart options and colors
   10. Data table manipulation via drag and drop, preparing table for chart
-  11. Pivot table (Transpose), tranform row values into columns and viceversa
+  11. Pivot table (Transpose), tranform row values into columns
   12. Modular framework for extending it with more visualizations
   13. And much more...
 

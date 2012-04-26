@@ -1,6 +1,9 @@
 Changelog
 =========
 
+4.6-dev - (unreleased)
+----------------------
+
 4.5 - (2012-04-26)
 ------------------
 * Feature: Possibility to add data provenance/source information when one

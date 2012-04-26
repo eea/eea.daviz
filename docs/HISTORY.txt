@@ -1,8 +1,8 @@
 Changelog
 =========
 
-4.5-dev - (unreleased)
-----------------------
+4.5 - (2012-04-26)
+------------------
 * Feature: Possibility to add data provenance/source information when one
   copy&paste data tables or upload them via QuickUpload Widget
   [voineali refs #5072]

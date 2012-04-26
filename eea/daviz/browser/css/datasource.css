@@ -1,0 +1,43 @@
+#dataTitle_help,
+#dataOwner_help,
+#dataLink_help {
+  border: none;
+  padding: 0;
+  font-size: 85% !important;
+}
+
+#davizvisualization-base-edit input#dataLink,
+#davizvisualization-base-edit input#dataTitle,
+#davizvisualization-base-edit input#dataOwner {
+  width: 500px;
+}
+
+#davizvisualization-base-edit #archetypes-fieldname-dataOwner {
+  max-width: 500px;
+}
+
+#davizvisualization-base-edit .selectautocomplete_widget {
+  width: auto ! important;
+}
+
+.eea-daviz-source-group-highlight {
+  padding: 1em;
+  border: 1px solid #ccc;
+  margin: 2em 1em;
+  box-shadow: 0px 0px 50px #ccc;
+  background: #fff;
+  border-radius: 10px;
+  position: relative;
+}
+
+.eea-daviz-source-group-highlight:before {
+  border: solid;
+  top: -20px;
+  content: "";
+  display: block;
+  left: 5%;
+  position: absolute;
+  border-color: #fff transparent;
+  -webkit-border-color: #eee transparent;
+  border-width: 0px 20px 20px;
+}

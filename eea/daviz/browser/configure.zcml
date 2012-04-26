@@ -1,0 +1,16 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  i18n_domain="eea">
+
+  <browser:resource
+    name="eea.daviz.datasource.js"
+    file="./js/datasource.js"
+   />
+
+  <browser:resource
+    name="eea.daviz.datasource.css"
+    file="./css/datasource.css"
+   />
+
+</configure>

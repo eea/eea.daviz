@@ -3,10 +3,13 @@ Changelog
 
 4.5-dev - (unreleased)
 ----------------------
+* Feature: Possibility to add data provenance/source information when one
+  copy&paste data tables or upload them via QuickUpload Widget
+  [voineali refs #5072]
 
 4.4 - (2012-03-30)
 ------------------
-* Feature: added documentation and links on how to examples and 
+* Feature: added documentation and links on how to examples and
   how prepare data for visualizations.
   [demarant #4995]
 * Change: added default workflow mapping for daviz visualization.

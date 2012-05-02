@@ -12,8 +12,10 @@ class Info(BrowserView):
 
     @property
     def info(self):
+        """ Info
+        """
         if not self._info:
-            self._info = info = {
+            self._info = {
                 'data': {
                     'title': '',
                     'url': '',
@@ -30,7 +32,7 @@ class Info(BrowserView):
         """
         relatedItems = self.context.getRelatedItems()
         for item in relatedItems:
-            info = queryMultiAdapter((self.context, self.request),
+            info = queryMultiAdapter((item, self.request),
                                      name=u'data.info')
             if not info:
                 continue

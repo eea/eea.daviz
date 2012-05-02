@@ -3,6 +3,9 @@ Changelog
 
 4.6-dev - (unreleased)
 ----------------------
+* Feature: Added @@data.info adapter for DavizVisualization content-type in order
+  to easily get data source and data owner metadata
+  [voineali refs #5072]
 
 4.5 - (2012-04-26)
 ------------------

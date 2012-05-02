@@ -3,6 +3,13 @@
   xmlns:browser="http://namespaces.zope.org/browser"
   i18n_domain="eea">
 
+  <browser:page
+    for="eea.daviz.content.interfaces.IDavizVisualization"
+    name="data.info"
+    class=".app.data.Info"
+    permission="zope2.View"
+    />
+
   <browser:resource
     name="eea.daviz.datasource.js"
     file="./js/datasource.js"

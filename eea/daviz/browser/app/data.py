@@ -16,7 +16,7 @@ class Info(BrowserView):
         """
         if not self._info:
             self._info = {
-                'data': {
+                'source': {
                     'title': '',
                     'url': '',
                     },
@@ -44,12 +44,12 @@ class Info(BrowserView):
     def __call__(self, **kwargs):
         field = self.context.getField('dataTitle')
         if field:
-            self.info['data']['title'] = field.getAccessor(self.context)()
+            self.info['source']['title'] = field.getAccessor(self.context)()
 
 
         field = self.context.getField('dataLink')
         if field:
-            self.info['data']['url'] = field.getAccessor(self.context)()
+            self.info['source']['url'] = field.getAccessor(self.context)()
 
         field = self.context.getField('dataOwner')
         if field:
@@ -59,6 +59,6 @@ class Info(BrowserView):
             self.info['owner']['title'] = title
             self.info['owner']['url'] = url
 
-        if self.info['data']['title'] or self.info['data']['url']:
+        if self.info['source']['title'] or self.info['source']['url']:
             return self.info
         return self.fallback()

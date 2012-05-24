@@ -7,7 +7,7 @@ from plone.app.folder.folder import ATFolder
 from eea.daviz.config import EEAMessageFactory as _
 from eea.daviz.events import DavizRelationsChanged, DavizSpreadSheetChanged
 from Products.Archetypes.public import StringField, ReferenceField
-from Products.Archetypes.public import TextAreaWidget, StringWidget
+from Products.Archetypes.public import TextAreaWidget, StringWidget, LabelWidget
 from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
 logger = logging.getLogger('eea.daviz')
@@ -75,7 +75,7 @@ SCHEMA = Schema((
               )
             ),
             i18n_domain="eea",
-            visible={'edit' : 'visible', 'view' : 'invisible' }
+            visible={'edit': 'visible', 'view': 'invisible' }
         )),
     StringField(
         'quickUpload',
@@ -95,7 +95,7 @@ SCHEMA = Schema((
               )
             ),
             i18n_domain="eea",
-            visible={'edit' : 'visible', 'view' : 'invisible' }
+            visible={'edit': 'visible', 'view': 'invisible' }
         )
     ),
     DavizStringField(
@@ -119,7 +119,28 @@ SCHEMA = Schema((
         i18n_domain="eea",
         helper_js=('++resource++eea.daviz.spreadsheet.js',),
         helper_css=('++resource++eea.daviz.spreadsheet.css',),
-        visible={'edit' : 'visible', 'view' : 'invisible' }
+        visible={'edit': 'visible', 'view': 'invisible'}
+        )
+    ),
+    StringField(
+        'dataWarning',
+        schemata='data input',
+        widget=LabelWidget(
+            label=_('daviz_label_dataWarning',
+                default='Warning'),
+            description=_('daviz_help_dataWarning',
+                default=(
+                    "Changing data sources may break existing "
+                    "visualizations for this context. You should consider "
+                    "creating a new Visualization rather than changing this "
+                    "one if the new data is different than the existing one. "
+                    "Are you sure you want to continue?"
+                )
+            ),
+            i18n_domain="eea",
+            helper_js=('++resource++eea.daviz.warnings.js',),
+            helper_css=('++resource++eea.daviz.edit.css',),
+            visible={'edit': 'visible', 'view': 'invisible'}
         )
     ),
     DavizDataField(

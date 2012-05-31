@@ -3,6 +3,8 @@ Changelog
 
 4.6-dev - (unreleased)
 ----------------------
+* Bug fix: fixed markup of HISTORY.txt file
+  [ciobabog refs #5231]
 * Feature: Warn user about changing data risks
   [voineali fixes #4973]
 * Feature: Added @@data.info adapter for DavizVisualization content-type in order
@@ -49,9 +51,11 @@ Changelog
 * Change: The new UI expects eea.googlecharts and eea.sparql, therefore they are
   now an integral part of this product and declared as dependencies.
   [demarant]
-* Change: Renamed DavizPresentation to DavizVisualization. [demarant]
+* Change: Renamed DavizPresentation to DavizVisualization.
+  [demarant]
 * Change: removed label widget for data input, no need for it,
-  we have already many headings. [demarant]
+  we have already many headings.
+  [demarant]
 * Change: Re-group DavizPresentation AT Schema
   [voineali #4980]
 * Change: Reordered the data input fields. Most common scenarion on top.
@@ -62,7 +66,7 @@ Changelog
   [voineali]
 * Fixed: Support case insensitive column types in CSV files
   [voineali #4975]
-* Feature: Also support CSV or any other *SV file by auto-detecting dialect
+* Feature: Also support CSV or any other SV file by auto-detecting dialect
   [voineali #4977]
 * Feature: Added SpreadSheet field to DavizPresentation Schema in order
   to easily copy & paste TAB separated text as data source

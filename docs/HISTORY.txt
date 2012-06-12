@@ -1,8 +1,8 @@
 Changelog
 =========
 
-4.6-dev - (unreleased)
-----------------------
+4.6 - (2012-06-12)
+------------------
 * Bug fix: fixed markup of HISTORY.txt file
   [ciobabog refs #5231]
 * Feature: Warn user about changing data risks

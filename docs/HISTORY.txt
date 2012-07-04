@@ -3,6 +3,9 @@ Changelog
 
 4.7-dev - (unreleased)
 ----------------------
+* Bug fix: Fixed possible_relations.xml when used togheter with eea.relations
+  on a non-EEA Plone site
+  [voineali refs #5330]
 
 4.6 - (2012-06-12)
 ------------------

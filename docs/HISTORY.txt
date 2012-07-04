@@ -1,6 +1,9 @@
 Changelog
 =========
 
+4.8-dev - (unreleased)
+----------------------
+
 4.7 - (2012-07-04)
 ------------------
 * Bug fix: Fixed possible_relations.xml when used togheter with eea.relations

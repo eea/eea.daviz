@@ -105,6 +105,18 @@ recipe to manage your project, you can do this:
 You can skip the ZCML slug if you are going to explicitly include the package
 from another package's configure.zcml file.
 
+Portal Property for Google Maps Api Key:
+
+In ZMI -> portal_properties add a plone property sheet called
+geographical_properties and inside it add a new string property
+called google_key. 
+
+In this property you have to paste the google maps API KEY, follow instruction
+https://developers.google.com/maps/documentation/javascript/v2/introduction#Obtaining_Key 
+
+The google account you use to generate the key has to be owner of the site, 
+this is done by verification via google webmaster tools.
+
 
 Dependecies
 ===========

@@ -3,6 +3,8 @@ Changelog
 
 4.8-dev - (unreleased)
 ----------------------
+* Change: updated readme with info about google map API KEY configuration.
+  [demarant refs #5338]
 
 4.7 - (2012-07-04)
 ------------------

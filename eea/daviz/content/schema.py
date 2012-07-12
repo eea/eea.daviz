@@ -66,10 +66,8 @@ SCHEMA = Schema((
         relationship='relatesTo',
         multiValued=True,
         widget=EEAReferenceBrowserWidget(
-            label=_("daviz_label_related_items",
-                    default="Find and reuse existing data"),
-            description=_("daviz_help_related_items",
-              default=(
+            label=_("Find and reuse existing data"),
+            description=_(u(
                 "Look for compatible datasets in catalogue"
                 " (e.g. visualization data, .tsv, .csv, SPARQL, etc)"
               )
@@ -81,10 +79,8 @@ SCHEMA = Schema((
         'quickUpload',
         schemata='data input',
         widget=QuickUploadWidget(
-            label=_('daviz_label_quick_upload',
-                    default='Upload CSV/TSV data files from your computer'),
-            description=_('daviz_help_quick_upload',
-              default=(
+            label=_('Upload CSV/TSV data files from your computer'),
+            description=_(u(
                 "Drag and drop '.tsv, .csv files' in the area below, see "
                 '<a target="_blank" href="http://www.eea.europa.eu/'
                 'data-and-maps/daviz/learn-more/examples">data examples</a> '
@@ -103,10 +99,8 @@ SCHEMA = Schema((
         schemata='data input',
         validators=('csvfile',),
         widget=TextAreaWidget(
-            label=_('daviz_label_spreadsheet',
-                    default='Copy and paste a data table from a file/webpage'),
-            description=_('daviz_help_spreadsheet',
-              default=(
+            label=_('Copy and paste a data table from a file/webpage'),
+            description=_(u(
                 "Check these "
                 '<a target="_blank" href="http://www.eea.europa.eu/'
                 'data-and-maps/daviz/learn-more/examples">data examples</a> '
@@ -126,10 +120,8 @@ SCHEMA = Schema((
         'dataWarning',
         schemata='data input',
         widget=LabelWidget(
-            label=_('daviz_label_dataWarning',
-                default='Warning'),
-            description=_('daviz_help_dataWarning',
-                default=(
+            label=_('Warning'),
+            description=_(u(
                     "Changing data sources may break existing "
                     "visualizations for this context. You should consider "
                     "creating a new Visualization rather than changing this "
@@ -147,9 +139,8 @@ SCHEMA = Schema((
         'dataTitle',
         schemata='default',
         widget=StringWidget(
-            label=_('daviz_label_dataTitle', default="Data source title"),
-            description=_('daviz_help_dataTitle',
-                          default="Specify data source"),
+            label=_("Data source title"),
+            description=_("Specify data source"),
             i18n_domain="eea",
         ),
     ),
@@ -157,9 +148,8 @@ SCHEMA = Schema((
         'dataLink',
         schemata='default',
         widget=StringWidget(
-            label=_('daviz_label_dataLink', default="Data source link"),
-            description=_('daviz_help_dataLink',
-                          default="Specify data source link"),
+            label=_("Data source link"),
+            description=_("Specify data source link"),
             i18n_domain="eea",
             helper_js=('++resource++eea.daviz.datasource.js',),
             helper_css=('++resource++eea.daviz.datasource.css',)
@@ -170,10 +160,8 @@ SCHEMA = Schema((
         schemata='default',
         vocabulary_factory=OrganisationsVocabulary,
         widget=OrganisationsWidget(
-            label=_('daviz_label_dataOwner',
-                    default="Data source Organisation"),
-            description=_('daviz_help_dataOwner',
-                          default="Specify data source Organisation"),
+            label=_("Data source Organisation"),
+            description=_("Specify data source Organisation"),
             i18n_domain="eea",
         )
     ),

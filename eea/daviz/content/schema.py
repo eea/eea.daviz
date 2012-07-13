@@ -67,10 +67,8 @@ SCHEMA = Schema((
         multiValued=True,
         widget=EEAReferenceBrowserWidget(
             label=_("Find and reuse existing data"),
-            description=_(u(
-                "Look for compatible datasets in catalogue"
+            description=_(u"Look for compatible datasets in catalogue"
                 " (e.g. visualization data, .tsv, .csv, SPARQL, etc)"
-              )
             ),
             i18n_domain="eea",
             visible={'edit': 'visible', 'view': 'invisible' }
@@ -80,7 +78,7 @@ SCHEMA = Schema((
         schemata='data input',
         widget=QuickUploadWidget(
             label=_('Upload CSV/TSV data files from your computer'),
-            description=_(u(
+            description=_(u"upload-csv-description", default=(
                 "Drag and drop '.tsv, .csv files' in the area below, see "
                 '<a target="_blank" href="http://www.eea.europa.eu/'
                 'data-and-maps/daviz/learn-more/examples">data examples</a> '
@@ -100,7 +98,7 @@ SCHEMA = Schema((
         validators=('csvfile',),
         widget=TextAreaWidget(
             label=_('Copy and paste a data table from a file/webpage'),
-            description=_(u(
+            description=_(u"copy-paste-description", default=(
                 "Check these "
                 '<a target="_blank" href="http://www.eea.europa.eu/'
                 'data-and-maps/daviz/learn-more/examples">data examples</a> '
@@ -121,13 +119,11 @@ SCHEMA = Schema((
         schemata='data input',
         widget=LabelWidget(
             label=_('Warning'),
-            description=_(u(
-                    "Changing data sources may break existing "
+            description=_(u"Changing data sources may break existing "
                     "visualizations for this context. You should consider "
                     "creating a new Visualization rather than changing this "
                     "one if the new data is different than the existing one. "
                     "Are you sure you want to continue?"
-                )
             ),
             i18n_domain="eea",
             helper_js=('++resource++eea.daviz.warnings.js',),

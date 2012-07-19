@@ -30,4 +30,10 @@ jQuery(document).ready(function(){
     jQuery(document).trigger('eea-wizard-changed');
   });
 
+  jQuery('#archetypes-fieldname-dataTitle').find("input").change(function(){
+    var titleinput = jQuery('#archetypes-fieldname-title').find("input");
+    if (titleinput.attr("originalvalue") === 'Data Visualization'){
+        titleinput.attr("value", jQuery(this).val());
+    }
+  });
 });

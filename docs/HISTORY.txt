@@ -3,6 +3,8 @@ Changelog
 
 4.9-dev - (unreleased)
 ----------------------
+* Feature: use title of data source as default title for visualisation
+  [szabozo0 refs #5138]
 
 4.8 - (2012-07-13)
 ------------------

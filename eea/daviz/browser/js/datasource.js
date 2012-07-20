@@ -30,10 +30,22 @@ jQuery(document).ready(function(){
     jQuery(document).trigger('eea-wizard-changed');
   });
 
-  jQuery('#archetypes-fieldname-dataTitle').find("input").change(function(){
-    var titleinput = jQuery('#archetypes-fieldname-title').find("input");
-    if (titleinput.attr("originalvalue") === 'Data Visualization'){
-        titleinput.attr("value", jQuery(this).val());
+  function setNewTitle(newTitle){
+    if (newTitle === ''){
+      newTitle = 'Data Visualization';
     }
+    var titleInput = jQuery('#archetypes-fieldname-title').find("input");
+    if (titleInput.attr("originalvalue") === 'Data Visualization'){
+      titleInput.attr("value", newTitle);
+    }
+  }
+  jQuery('#archetypes-fieldname-dataTitle').find("input").change(function(){
+    setNewTitle(jQuery(this).val())
   });
+
+  jQuery(document).bind('EEA-REFERENCEBROWSER-FINISHEDUPDATE', function(evt, data){
+    var newTitle = jQuery(jQuery(data).find(".tileHeadline")[0]).find("a").html()
+    setNewTitle(newTitle)
+  })
+
 });

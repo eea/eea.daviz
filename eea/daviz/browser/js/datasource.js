@@ -40,12 +40,12 @@ jQuery(document).ready(function(){
     }
   }
   jQuery('#archetypes-fieldname-dataTitle').find("input").change(function(){
-    setNewTitle(jQuery(this).val())
+    setNewTitle(jQuery(this).val());
   });
 
   jQuery(document).bind('EEA-REFERENCEBROWSER-FINISHEDUPDATE', function(evt, data){
-    var newTitle = jQuery(jQuery(data).find(".tileHeadline")[0]).find("a").html()
-    setNewTitle(newTitle)
-  })
+    var newTitle = jQuery(jQuery(data).find(".tileHeadline")[0]).find("a").html();
+    setNewTitle(newTitle);
+  });
 
 });

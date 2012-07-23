@@ -3,6 +3,8 @@ Changelog
 
 4.9-dev - (unreleased)
 ----------------------
+* Upgrade step:
+  ZMI > portal_setup > profile "EEA Daviz" > import Action Providers settings
 * Feature: Added new action on data visualization "Create another visualization"
   [szabozo0 refs #5347]
 * Feature: use title of data source as default title for visualisation

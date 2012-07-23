@@ -4,6 +4,14 @@
   i18n_domain="eea">
 
   <browser:page
+    for="*"
+    name="daviz-new.html"
+    class=".app.daviz.Daviz"
+    attribute="createNewDaviz"
+    permission="cmf.ModifyPortalContent"
+    />
+
+  <browser:page
     for="eea.daviz.content.interfaces.IDavizVisualization"
     name="data.info"
     class=".app.data.Info"

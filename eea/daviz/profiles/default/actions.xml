@@ -1,12 +1,33 @@
 <?xml version="1.0"?>
-<object name="portal_actions" meta_type="Plone Actions Tool"
- xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <action-provider name="portal_actions">
-  <action title="Create Another Visualization" action_id="daviz.new" category="object_buttons"
-    url_expr="string:${object/absolute_url}/daviz-new.html"
-    visible="True"
-    condition="python:object.portal_type == 'DavizVisualization'">
-    <permission>Modify portal content</permission>
-  </action>
- </action-provider>
+<object name="portal_actions" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+  <object name="object_buttons">
+    <object name="daviz.new.reuse" meta_type="CMF Action">
+      <property name="title">Create Another Visualization</property>
+      <property name="description"></property>
+      <property
+        name="url_expr">string:${object/absolute_url}/daviz-new-reuse.html</property>
+      <property name="link_target"></property>
+      <property name="icon_expr"></property>
+      <property
+        name="available_expr">python:object.portal_type == 'DavizVisualization'</property>
+      <property name="permissions">
+        <element value="Modify portal content"/>
+      </property>
+      <property name="visible">True</property>
+    </object>
+    <object name="daviz.new.sparql" meta_type="CMF Action">
+      <property name="title">Create Visualization With This Dataset</property>
+      <property name="description"></property>
+      <property
+        name="url_expr">string:${object/absolute_url}/daviz-new-create-sparql.html</property>
+      <property name="link_target"></property>
+      <property name="icon_expr"></property>
+      <property
+        name="available_expr">python:object.portal_type == 'Sparql'</property>
+      <property name="permissions">
+        <element value="Modify portal content"/>
+      </property>
+      <property name="visible">True</property>
+    </object>
+  </object>
 </object>

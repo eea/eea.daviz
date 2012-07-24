@@ -5,9 +5,17 @@
 
   <browser:page
     for="*"
-    name="daviz-new.html"
+    name="daviz-new-reuse.html"
     class=".app.daviz.Daviz"
-    attribute="createNewDaviz"
+    attribute="createNewDavizReuse"
+    permission="cmf.ModifyPortalContent"
+    />
+
+  <browser:page
+    for="*"
+    name="daviz-new-create-sparql.html"
+    class=".app.daviz.Daviz"
+    attribute="createNewDavizSparql"
     permission="cmf.ModifyPortalContent"
     />
 

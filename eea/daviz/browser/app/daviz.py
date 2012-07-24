@@ -3,7 +3,7 @@
 class Daviz(object):
     """ Daviz
     """
-    def createNewDaviz(self):
+    def createNewDavizReuse(self):
         """ create new visualization using 
         the datasources of current visualization
         """
@@ -16,4 +16,34 @@ class Daviz(object):
                 "?title=" + relatedItems[0].title
         for item in relatedItems:
             url = url + "&relatedItems:list=" + item.UID()
+        self.request.response.redirect(url)
+
+    def createNewDavizSparql(self):
+        """ create new visualization using 
+        the current Sparql
+        """
+        # Find parent folder where Daviz can be created
+        folder = self.context.aq_parent
+        found = False
+        while True:
+            try:
+                allowedContentTypes = folder.allowedContentTypes()
+            except AttributeError:
+                break
+            for allowedContentType in allowedContentTypes:
+                if allowedContentType.id == "DavizVisualization":
+                    found = True
+            if found:
+                break
+            folder = folder.aq_parent
+        if not found:
+            return
+
+        objId = folder.generateUniqueId("DavizVisualization")
+        url = folder.absolute_url() + \
+                "/portal_factory/DavizVisualization/" + \
+                objId + \
+                "/edit" + \
+                "?title=" + self.context.title
+        url = url + "&relatedItems:list=" + self.context.UID()
         self.request.response.redirect(url)

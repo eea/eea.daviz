@@ -29,5 +29,19 @@
       </property>
       <property name="visible">True</property>
     </object>
+    <object name="daviz.new.reuse.obj" meta_type="CMF Action">
+      <property name="title">Create Another Visualization</property>
+      <property name="description"></property>
+      <property
+        name="url_expr">string:${object/absolute_url}/daviz-new-reuse-obj.html</property>
+      <property name="link_target"></property>
+      <property name="icon_expr"></property>
+      <property
+        name="available_expr">python:'eea.app.visualization.subtypes.interfaces.IVisualizationEnabled' in object.restrictedTraverse('@@get_interfaces')() and object.portal_type != 'DavizVisualization'</property>
+      <property name="permissions">
+        <element value="Modify portal content"/>
+      </property>
+      <property name="visible">True</property>
+    </object>
   </object>
 </object>

@@ -13,6 +13,14 @@
 
   <browser:page
     for="*"
+    name="daviz-new-reuse-obj.html"
+    class=".app.daviz.Daviz"
+    attribute="createNewDavizReuseObj"
+    permission="cmf.ModifyPortalContent"
+    />
+
+  <browser:page
+    for="*"
     name="daviz-new-create-sparql.html"
     class=".app.daviz.Daviz"
     attribute="createNewDavizSparql"

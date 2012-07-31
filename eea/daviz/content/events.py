@@ -43,14 +43,21 @@ def onRelationsChanged(obj, evt):
     mutator.json = new_json
     properties = new_json.get('properties', {})
     columns = []
+    def_order = 0
     for key, val in properties.items():
         if isinstance(val, dict):
             typo = val.get('valueType', 'text')
+            order = val.get('order', def_order)
         else:
             typo = 'text'
-        columns.append((key, typo))
-
-    notify(VisualizationEnabledEvent(obj, columns=columns, cleanup=False))
+            order = def_order
+        def_order += 1
+        columns.append((order, key, typo))
+    columns.sort()
+    final_columns = []
+    for val in columns:
+        final_columns.append((val[1], val[2]))
+    notify(VisualizationEnabledEvent(obj, columns=final_columns, cleanup=False))
     notify(InvalidateCacheEvent(raw=True, dependencies=['eea.daviz']))
 
 def onSpreadSheetChanged(obj, evt):

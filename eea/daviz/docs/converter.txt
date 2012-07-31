@@ -47,7 +47,7 @@ Let's convert file data and check JSON output.
                 'quantity': 10.5,
                 'starting_date': '2010-01-01'},
     ...],
-    'properties': {'country': {'valueType': 'text'},
+    'properties': {'country': {'order': 3, 'valueType': 'text'},
     ...}}
 
 Now let's use the browser interface
@@ -74,5 +74,5 @@ Now let's use the browser interface
                 'starting_date': '2010-01-01'},
     ...
     ...],
-     'properties': {'country': {'valueType': 'text'},
+     'properties': {'country': {'order': 3, 'valueType': 'text'},
     ...}}

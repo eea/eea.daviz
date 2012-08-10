@@ -4,9 +4,23 @@
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
   i18n_domain="eea">
 
+  <!-- 4.4 => 4.9 -->
   <genericsetup:upgradeSteps
-    source="*"
-    destination="4.0"
+    source="4.4"
+    destination="4.9"
+    profile="eea.daviz:default">
+
+    <genericsetup:upgradeDepends
+      title="Import actions steps from eea.daviz profile"
+      import_steps="actions"
+      />
+
+  </genericsetup:upgradeSteps>
+
+  <!-- 4.3 => 4.4 -->
+  <genericsetup:upgradeSteps
+    source="4.3"
+    destination="4.4"
     profile="eea.daviz:default">
 
     <genericsetup:upgradeDepends
@@ -16,6 +30,33 @@
 
   </genericsetup:upgradeSteps>
 
+  <!-- 4.2 => 4.3 -->
+  <genericsetup:upgradeSteps
+      source="4.2"
+      destination="4.3"
+      profile="eea.daviz:default">
+
+    <genericsetup:upgradeStep
+          title="Migrate DavizPresentation instances to DavizVisualization"
+          handler="eea.daviz.upgrades.evolve43.presentation2visualization"
+          />
+
+  </genericsetup:upgradeSteps>
+
+  <!-- 4.1 => 4.2 -->
+  <genericsetup:upgradeSteps
+    source="4.1"
+    destination="4.2"
+    profile="eea.daviz:default">
+
+    <genericsetup:upgradeDepends
+      title="Import all steps from eea.daviz profile"
+      import_profile="eea.daviz:default"
+      />
+
+  </genericsetup:upgradeSteps>
+
+  <!-- 4.0 => 4.1 -->
   <genericsetup:upgradeSteps
     source="4.0"
     destination="4.1"
@@ -34,33 +75,10 @@
 
   </genericsetup:upgradeSteps>
 
+  <!-- all => 4.0 -->
   <genericsetup:upgradeSteps
-    source="4.1"
-    destination="4.2"
-    profile="eea.daviz:default">
-
-    <genericsetup:upgradeDepends
-      title="Import all steps from eea.daviz profile"
-      import_profile="eea.daviz:default"
-      />
-
-  </genericsetup:upgradeSteps>
-
-  <genericsetup:upgradeSteps
-      source="4.2"
-      destination="4.3"
-      profile="eea.daviz:default">
-
-    <genericsetup:upgradeStep
-          title="Migrate DavizPresentation instances to DavizVisualization"
-          handler="eea.daviz.upgrades.evolve43.presentation2visualization"
-          />
-
-  </genericsetup:upgradeSteps>
-
-  <genericsetup:upgradeSteps
-    source="4.3"
-    destination="4.4"
+    source="*"
+    destination="4.0"
     profile="eea.daviz:default">
 
     <genericsetup:upgradeDepends

@@ -1,11 +1,11 @@
 EEA Daviz product
 =================
-EEA Daviz is a plone product for data visualizations. You can generate attractive 
-and interactive charts and combine them in a dashboard with facets/filters 
-which updates the charts simultaneously. Data can be uploade as CSV,TSV or you can 
-specify SPARQL to query Linked open data servers (sparql endpoints). 
+EEA Daviz is a plone product for data visualizations. You can generate attractive
+and interactive charts and combine them in a dashboard with facets/filters
+which updates the charts simultaneously. Data can be uploade as CSV,TSV or you can
+specify SPARQL to query Linked open data servers (sparql endpoints).
 
-At the moment Simile Exhibit and Google Charts visualizations are supported. 
+At the moment Simile Exhibit and Google Charts visualizations are supported.
 
 The first Semantic web data visualisation tool for Plone.
 
@@ -20,10 +20,10 @@ Introduction
 ============
 
 It is simple to use, needs no desktop application, everything is done
-through the web by uploading an "excel file", CSV, TSV. You can also query 
-the "web of data" via public available sparql endpoints. 
+through the web by uploading an "excel file", CSV, TSV. You can also query
+the "web of data" via public available sparql endpoints.
 
-You can easily make visualizations like: 
+You can easily make visualizations like:
    1. http://www.simile-widgets.org/exhibit
    2. http://code.google.com/apis/chart/
 
@@ -109,12 +109,12 @@ Portal Property for Google Maps Api Key:
 
 In ZMI -> portal_properties add a plone property sheet called
 geographical_properties and inside it add a new string property
-called google_key. 
+called google_key.
 
 In this property you have to paste the google maps API KEY, follow instruction
-https://developers.google.com/maps/documentation/javascript/v2/introduction#Obtaining_Key 
+https://developers.google.com/maps/documentation/javascript/v2/introduction#Obtaining_Key
 
-The google account you use to generate the key has to be owner of the site, 
+The google account you use to generate the key has to be owner of the site,
 this is done by verification via google webmaster tools.
 
 
@@ -123,22 +123,21 @@ Dependecies
 
   1. Plone 4.x
   2. eea.exhibit
-  3. p4a.z2utils
-  4. collective.js.jqueryui
-  5. rdflib
-  6. eea.sparql
-  7. eea.googlecharts
+  3. collective.js.jqueryui
+  4. rdflib
+  5. eea.sparql
+  6. eea.googlecharts
 
 
 Live demos
 ==========
 
-Eurostat data employment rates 2000-2010 (demo using Linked Data): 
+Eurostat data employment rates 2000-2010 (demo using Linked Data):
    http://www.eea.europa.eu/data-and-maps/daviz/data-visualization-employement-trends-eu-1
 
 GHG vs GDP in Europe 1990 - 2009 (demo using Linked Data)
    http://www.eea.europa.eu/data-and-maps/daviz/ghg-vs-gdp-in-europe
-   
+
 GHG national emissions reporting to UNFCC (Simile Exhibit demo with TSV)
    http://www.eea.europa.eu/data-and-maps/data/national-emissions-reported-to-the-unfccc-and-to-the-eu-greenhouse-gas-monitoring-mechanism-3/national-total-excluding-lulucf/ghg_v10_extract.csv
 
@@ -148,7 +147,7 @@ Google charts demos:
 MIT Simile Exhibit demos:
    http://www.simile-widgets.org/exhibit
 
-   
+
 Source code
 ===========
 

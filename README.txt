@@ -4,8 +4,12 @@ EEA Daviz
 EEA Daviz is a plone product for data visualizations. You can generate
 attractive and interactive charts and combine them in a dashboard with
 facets/filters which updates the charts simultaneously. Data can be uploade
-as CSV,TSV or you can specify SPARQL to query Linked open data servers
+as CSV, TSV or you can specify SPARQL to query Linked open data servers
 (sparql endpoints).
+
+
+.. image:: http://eea.github.com/_static/visualization-layers.svg
+
 
 At the moment Simile Exhibit and Google Charts visualizations are supported.
 
@@ -70,7 +74,7 @@ recipe to manage your project, you can do this:
 
 * Update your buildout.cfg file:
 
-  * Add ``eea.daviz`` to the list of eggs to install, e.g.
+  * Add ``eea.daviz`` to the list of eggs to install
   * Tell the plone.recipe.zope2instance recipe to install a ZCML slug
 
   ::

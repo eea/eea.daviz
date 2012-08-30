@@ -22,6 +22,8 @@ __all__ = [
 
 
 class IDavizSettings(Interface):
+    """Daviz Settings
+    """
     defaultFolder = schema.Choice(
         title=u"Default Folder",
         description=u"Default Folder for creating Visualizations",

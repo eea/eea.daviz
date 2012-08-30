@@ -8,7 +8,7 @@ as CSV, TSV or you can specify SPARQL to query Linked open data servers
 (sparql endpoints).
 
 
-.. image:: http://eea.github.com/_static/visualization-layers.svg
+.. image:: http://eea.github.com/_images/eea.daviz.layers.svg
 
 
 At the moment Simile Exhibit and Google Charts visualizations are supported.

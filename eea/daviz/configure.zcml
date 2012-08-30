@@ -10,4 +10,7 @@
   <include package=".content" />
   <include package=".upgrades" />
 
+  <utility name="eea.daviz.vocabularies.DefaultFolderVocabulary"
+    factory=".vocabularies.DefaultFolder"/>
+
 </configure>

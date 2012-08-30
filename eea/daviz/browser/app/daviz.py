@@ -7,6 +7,7 @@ class Daviz(object):
         """ create new visualization using 
         the datasources of current visualization
         """
+        import pdb; pdb.set_trace()
         objId = self.context.aq_parent.generateUniqueId("DavizVisualization")
         relatedItems = self.context.getRelatedItems()
         url = self.context.aq_parent.absolute_url() + \

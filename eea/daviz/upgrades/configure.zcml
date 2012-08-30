@@ -4,6 +4,18 @@
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
   i18n_domain="eea">
 
+  <!-- 4.9 => 5.0 -->
+  <genericsetup:upgradeSteps
+    source="4.9"
+    destination="5.0"
+    profile="eea.daviz:default">
+
+    <genericsetup:upgradeStep
+      title="Add eea.daviz settings registry"
+      handler="eea.daviz.upgrades.evolve50.update_registry"
+      />
+  </genericsetup:upgradeSteps>
+
   <!-- 4.4 => 4.9 -->
   <genericsetup:upgradeSteps
     source="4.4"

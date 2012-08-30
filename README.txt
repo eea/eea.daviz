@@ -69,7 +69,7 @@ Installation
 
 zc.buildout
 -----------
-If you are using zc.buildout and the plone.recipe.zope2instance
+If you are using `zc.buildout`_ and the `plone.recipe.zope2instance`_
 recipe to manage your project, you can do this:
 
 * Update your buildout.cfg file:
@@ -80,10 +80,13 @@ recipe to manage your project, you can do this:
   ::
 
     [instance]
-    recipe = plone.recipe.zope2instance
+    ...
     eggs =
+      ...
       eea.daviz
+
     zcml =
+      ...
       eea.daviz
 
 * Re-run buildout, e.g. with::
@@ -209,3 +212,5 @@ EEA_ - European Environment Agency (EU)
 .. _`EEA App Visualization`: http://eea.github.com/docs/eea.app.visualization
 .. _`Simile Exhibit`: http://www.simile-widgets.org/exhibit
 .. _`Google Charts`: http://code.google.com/apis/chart
+.. _`plone.recipe.zope2instance`: http://pypi.python.org/pypi/plone.recipe.zope2instance
+.. _`zc.buildout`: http://pypi.python.org/pypi/zc.buildout

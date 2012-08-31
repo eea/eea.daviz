@@ -49,12 +49,4 @@
     file="./css/datasource.css"
    />
 
-  <!-- Control panel -->
-  <browser:page
-    name="daviz-settings"
-    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-    class=".app.controlpanel.DavizSettingsControlPanel"
-    permission="cmf.ManagePortal"
-  />
-
 </configure>

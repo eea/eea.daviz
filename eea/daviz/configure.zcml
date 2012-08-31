@@ -10,12 +10,4 @@
   <include package=".content" />
   <include package=".upgrades" />
 
-  <!--utility name="eea.daviz.vocabularies.DefaultFolderVocabulary"
-    factory=".vocabularies.DefaultFolder"/-->
-
-  <utility
-    component=".vocabularies.DefaultFolderVocabularyFactory"
-    name="eea.daviz.vocabularies.DefaultFolderVocabulary"
-    />
-
 </configure>

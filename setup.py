@@ -38,12 +38,17 @@ setup(name=NAME,
           'eea.sparql',
           'eea.exhibit',
           'eea.googlecharts',
-
-          ## Optional
-          #eea.relations,
-          #eea.cache,
-
       ],
+      extras_require={
+          'full': [
+              'eea.relations',
+              'eea.cache'
+              ],
+          'test': [
+              'plone.app.testing',
+          ]
+      },
+
       entry_points="""
       # -*- Entry points: -*-
       """,

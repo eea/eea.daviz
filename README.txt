@@ -133,6 +133,14 @@ The following package are optional. Still they can improve the user experience w
   - `eea.relations`_
   - `eea.cache`_
 
+    ::
+
+    [instance]
+    ...
+    eggs =
+      ...
+      eea.daviz [full]
+
 
 .. image:: http://eea.github.com/_images/eea.daviz.dependencies.svg
 

@@ -133,7 +133,7 @@ The following package are optional. Still they can improve the user experience w
   - `eea.relations`_
   - `eea.cache`_
 
-    ::
+  ::
 
     [instance]
     ...

@@ -42,7 +42,8 @@ setup(name=NAME,
       extras_require={
           'full': [
               'eea.relations',
-              'eea.cache'
+              'eea.cache',
+              'eea.depiction',
               ],
           'test': [
               'plone.app.testing',

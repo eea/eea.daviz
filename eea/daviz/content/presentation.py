@@ -1,20 +1,10 @@
-""" Daviz Visualization
+""" Daviz Presentation
 """
-from zope.interface import implements
-from plone.app.folder.folder import ATFolder
-from eea.daviz.content.interfaces import IDavizVisualization
-from eea.daviz.content import schema as daviz_schema
-
-class DavizVisualization(ATFolder):
-    """ Daviz Visualization
-    """
-    implements(IDavizVisualization)
-
-    meta_type = 'DavizVisualization'
-    portal_type = 'DavizVisualization'
-    archetype_name = 'DavizVisualization'
-
-    schema = daviz_schema.DAVIZ_SCHEMA
-
 #BBB
+from eea.daviz.content.visualization import DavizVisualization
 DavizPresentation = DavizVisualization
+
+import warnings
+warnings.warn("eea.daviz.content.presentation is deprecated. "
+              "Please use eea.daviz.content.visualization instead",
+              DeprecationWarning)

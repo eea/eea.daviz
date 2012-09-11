@@ -1,0 +1,14 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:zcml="http://namespaces.zope.org/zcml"
+  i18n_domain="eea">
+
+  <!-- Data adapters -->
+  <adapter
+    for="eea.daviz.content.interfaces.IDavizVisualization"
+    provides="eea.app.visualization.interfaces.IVisualizationData"
+    factory=".data.DavizVisualization"
+    />
+
+</configure>

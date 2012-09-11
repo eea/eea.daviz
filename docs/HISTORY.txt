@@ -3,6 +3,8 @@ Changelog
 
 5.0-dev - (unreleased)
 ----------------------
+* Change: Added IVisualizationData adapter for DavizVisualization content-type
+  [voineali #refs #5511]
 
 4.9 - (2012-08-10)
 ------------------

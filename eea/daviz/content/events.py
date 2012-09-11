@@ -4,11 +4,12 @@ from StringIO import StringIO
 from zope.event import notify
 import logging
 import json
+from zope.component import queryMultiAdapter, queryAdapter, queryUtility
 from eea.app.visualization.events import VisualizationEnabledEvent
 from eea.app.visualization.cache import InvalidateCacheEvent
-from zope.component import queryMultiAdapter, queryAdapter, queryUtility
-from eea.app.visualization.converter.interfaces import IExhibitJsonConverter
+from eea.app.visualization.interfaces import ITable2JsonConverter
 from eea.app.visualization.interfaces import IVisualizationConfig
+
 logger = logging.getLogger('eea.daviz.events')
 
 def onRelationsChanged(obj, evt):
@@ -75,7 +76,7 @@ def onSpreadSheetChanged(obj, evt):
     new_json['properties'].update(mutator.json.get('properties', {}))
 
     datafile = StringIO(evt.spreadsheet)
-    converter = queryUtility(IExhibitJsonConverter)
+    converter = queryUtility(ITable2JsonConverter)
     try:
         columns, data = converter(datafile)
     except Exception, err:

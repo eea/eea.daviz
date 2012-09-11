@@ -47,7 +47,7 @@ Let's convert file data and check JSON output.
                 'quantity': 10.5,
                 'starting_date': '2010-01-01'},
     ...],
-    'properties': {'country': {'order': 3, 'valueType': 'text'},
+    'properties': {'country': {'columnType': 'text', 'order': 3, 'valueType': 'text'},
     ...}}
 
 Now let's use the browser interface
@@ -63,16 +63,6 @@ Now let's use the browser interface
     <class 'persistent.mapping.PersistentMapping'>
 
     >>> pprint(dict(accessor.json))
-    {'items': [...
-    ...
-               {'country': 'Italy',
-                'description': '\xd0\x97\xd0\xb5\xd0\xbc\xd1\x8f',
-                'job_title': 'Head of Group',
-                'label': 'Antonio De Marinis',
-                'programme': 'NSV1 - Biodiversity',
-                'quantity': 10.5,
-                'starting_date': '2010-01-01'},
-    ...
-    ...],
-     'properties': {'country': {'order': 3, 'valueType': 'text'},
+    {'items': [],
+     'properties': {'country': {'columnType': 'text', 'order': 3, 'valueType': 'text'},
     ...}}

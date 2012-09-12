@@ -47,7 +47,9 @@ Let's convert file data and check JSON output.
                 'quantity': 10.5,
                 'starting_date': '2010-01-01'},
     ...],
-    'properties': {'country': {'columnType': 'text', 'order': 3, 'valueType': 'text'},
+     'properties': {'country': {'columnType': u'text',
+                                'order': 3,
+                                'valueType': u'text'},
     ...}}
 
 Now let's use the browser interface
@@ -64,5 +66,7 @@ Now let's use the browser interface
 
     >>> pprint(dict(accessor.json))
     {'items': [],
-     'properties': {'country': {'columnType': 'text', 'order': 3, 'valueType': 'text'},
+      'properties': {'country': {'columnType': u'text',
+                                'order': 3,
+                                'valueType': u'text'},
     ...}}

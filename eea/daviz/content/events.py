@@ -9,6 +9,7 @@ from eea.app.visualization.events import VisualizationEnabledEvent
 from eea.app.visualization.cache import InvalidateCacheEvent
 from eea.app.visualization.interfaces import ITable2JsonConverter
 from eea.app.visualization.interfaces import IVisualizationConfig
+from eea.app.visualization.interfaces import IVisualizationJsonUtils
 
 logger = logging.getLogger('eea.daviz.events')
 
@@ -28,6 +29,8 @@ def onRelationsChanged(obj, evt):
     new_json['items'].extend(mutator.json.get('items', []))
     new_json['properties'].update(mutator.json.get('properties', {}))
 
+    utils = queryUtility(IVisualizationJsonUtils)
+
     for item in relatedItems:
         daviz_json = queryMultiAdapter((item, request), name=u'daviz-view.json')
         if not daviz_json:
@@ -39,7 +42,7 @@ def onRelationsChanged(obj, evt):
             logger.exception(err)
             continue
 
-        new_json['properties'].update(daviz_json.get('properties', {}))
+        utils.merge(new_json['properties'], daviz_json.get('properties', {}))
 
     mutator.json = new_json
     properties = new_json.get('properties', {})
@@ -84,7 +87,9 @@ def onSpreadSheetChanged(obj, evt):
         return
 
     new_json['items'] = data.get('items', [])
-    new_json['properties'].update(data.get('properties', {}))
+
+    utils = queryUtility(IVisualizationJsonUtils)
+    utils.merge(new_json['properties'], data.get('properties', {}))
     mutator.json = new_json
 
     notify(VisualizationEnabledEvent(obj, columns=columns, cleanup=False))

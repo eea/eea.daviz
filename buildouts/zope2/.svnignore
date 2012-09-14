@@ -1,0 +1,12 @@
+dist
+.installed.cfg
+bootstrap.sh
+src
+.mr.developer.cfg
+alin.cfg
+bin
+develop-eggs
+include
+lib
+parts
+var

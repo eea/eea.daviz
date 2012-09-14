@@ -1,43 +1,33 @@
 =========
 EEA Daviz
 =========
-`EEA Daviz`_ is a Plone product for data visualizations. You can generate
-attractive and interactive charts and combine them in a dashboard with
-facets/filters which updates the charts simultaneously. Data can be uploaded
-as CSV, TSV or you can specify SPARQL to query Linked open data servers
-(sparql endpoints).
-
-
-.. image:: http://eea.github.com/_images/eea.daviz.layers.svg
-
-
-At the moment `Simile Exhibit`_ and `Google Charts`_ visualizations are supported.
-
-**The first Semantic web data visualization tool for Plone.**
-
-
-.. contents::
-
 
 Introduction
 ============
 
-It is simple to use, needs no desktop application, everything is done
-through the web by uploading an "excel file", CSV, TSV. You can also query
-the "web of data" via public available sparql endpoints.
+    |DaViz logo|
 
-You can easily make visualizations like:
+`EEA Daviz`_ is a web tool developed by the European Environment Agency which
+helps creating interactive data visualizations easily through the web
+browser, no extra tools are necessary. It is free and open source.
 
-1. http://www.simile-widgets.org/exhibit
-2. http://code.google.com/apis/chart/
+You can generate attractive and interactive charts and combine them in a
+dashboard with facets/filters which updates the charts simultaneously.
+Data can be uploaded as CSV/TSV or you can specify SPARQL to query
+online Linked open data servers (aka sparql endpoints).
 
-See also initial project wiki page
-https://svn.eionet.europa.eu/projects/Zope/wiki/DaViz for the reasoning behind
-this project.
+    **Daviz is the first Semantic web data visualisation tool for Plone CMS, entirely web-based!**
 
+At the moment `Simile Exhibit`_ and `Google Charts`_ visualizations are
+supported. The architecture allows to extend Daviz with more
+visualisation libraries (visualisations plugins).
+
+.. contents::
 
 Main features
 =============
+
+|Daviz features diagram|
 
 1. No desktop tools needed to make visualizations. all web based.
 2. Data input: easy copy and paste of data table from any webpage or
@@ -59,16 +49,64 @@ Main features
 13. And much more...
 
 
-More details about how to use this package can be found at the following link:
+It is simple to use, needs no desktop application, everything is done
+through the web by uploading an "excel file", CSV, TSV. You can also query
+the "web of data" via public available sparql endpoints.
 
-- http://svn.eionet.europa.eu/projects/Zope/wiki/HowToDaviz
+You can easily make visualizations like:
+
+1. http://www.simile-widgets.org/exhibit
+2. http://code.google.com/apis/chart/
+
+See also initial project wiki page
+https://svn.eionet.europa.eu/projects/Zope/wiki/DaViz for the reasoning behind
+this project.
+
+More documentation:
+
+-  `Daviz technical documentation on
+   github <http://eea.github.com/docs/eea.daviz/index.html>`_
+-  `Daviz plone product summary <http://plone.org/products/eea.daviz>`_
+-  `Data input 
+   examples <http://www.eea.europa.eu/data-and-maps/daviz/learn-more/examples>`_
+-  `How to prepare your
+   data <http://www.eea.europa.eu/data-and-maps/daviz/learn-more/prepare-data>`_
+
+Live demos
+==========
+
+Eurostat data employment rates 2000-2010 (demo using Linked Data):
+  http://www.eea.europa.eu/data-and-maps/daviz/data-visualization-employement-trends-eu-1
+
+GHG vs GDP in Europe 1990 - 2009 (demo using Linked Data)
+  http://www.eea.europa.eu/data-and-maps/daviz/ghg-vs-gdp-in-europe
+
+GHG national emissions reporting to UNFCC (Simile Exhibit demo with TSV)
+  
+http://www.eea.europa.eu/data-and-maps/data/national-emissions-reported-to-the-unfccc-and-to-the-eu-greenhouse-gas-monitoring-mechanism-3/national-total-excluding-lulucf/ghg_$
+
+Google charts demos:
+  http://code.google.com/apis/chart/
+
+MIT Simile Exhibit demos:
+  http://www.simile-widgets.org/exhibit
+
+
+Architecture overview
+=====================
+
+At the moment `Simile Exhibit`_ and `Google Charts`_ visualizations are
+supported. The architecture allows to extend Daviz with more
+visualisation libraries (visualisations plugins).
+
+.. image:: http://eea.github.com/_images/eea.daviz.layers.svg
 
 
 Installation
 ============
 
 zc.buildout
------------
+~~~~~~~~~~~
 If you are using `zc.buildout`_ and the `plone.recipe.zope2instance`_
 recipe to manage your project, you can do this:
 
@@ -98,7 +136,7 @@ from another package's configure.zcml file.
 
 
 Google Maps API Key
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Plone
 +++++
@@ -145,32 +183,13 @@ The following package are optional. Still they can improve the user experience w
 .. image:: http://eea.github.com/_images/eea.daviz.dependencies.svg
 
 
-Live demos
-==========
-
-Eurostat data employment rates 2000-2010 (demo using Linked Data):
-  http://www.eea.europa.eu/data-and-maps/daviz/data-visualization-employement-trends-eu-1
-
-GHG vs GDP in Europe 1990 - 2009 (demo using Linked Data)
-  http://www.eea.europa.eu/data-and-maps/daviz/ghg-vs-gdp-in-europe
-
-GHG national emissions reporting to UNFCC (Simile Exhibit demo with TSV)
-  http://www.eea.europa.eu/data-and-maps/data/national-emissions-reported-to-the-unfccc-and-to-the-eu-greenhouse-gas-monitoring-mechanism-3/national-total-excluding-lulucf/ghg_v10_extract.csv
-
-Google charts demos:
-  http://code.google.com/apis/chart/
-
-MIT Simile Exhibit demos:
-  http://www.simile-widgets.org/exhibit
-
-
 Source code
 ===========
 
 Latest source code (Plone 4 compatible):
   https://svn.eionet.europa.eu/repositories/Zope/trunk/eea.daviz/trunk
 
-Plone 2 and 3 compatible:
+Plone 2 and 3 compatible (Simile Exhibit visualisations only):
   https://svn.eionet.europa.eu/repositories/Zope/trunk/eea.daviz/branches/plone25
 
 
@@ -189,6 +208,18 @@ version.
 More details under eea.daviz/docs/License.txt
 
 
+More documentation
+==================
+
+-  `Daviz technical documentation on
+   github <http://eea.github.com/docs/eea.daviz/index.html>`_
+-  `Daviz plone product summary <http://plone.org/products/eea.daviz>`_
+-  `Data input
+   examples <http://www.eea.europa.eu/data-and-maps/daviz/learn-more/examples>`_
+-  `How to prepare your
+   data <http://www.eea.europa.eu/data-and-maps/daviz/learn-more/prepare-data>`_
+
+
 Links
 =====
 
@@ -199,8 +230,8 @@ Links
 5. Google charts: http://code.google.com/apis/chart/
 
 
-Funding
-=======
+Funding and project management
+==============================
 
 EEA_ - European Environment Agency (EU)
 
@@ -222,3 +253,7 @@ EEA_ - European Environment Agency (EU)
 .. _`Google Charts`: http://code.google.com/apis/chart
 .. _`plone.recipe.zope2instance`: http://pypi.python.org/pypi/plone.recipe.zope2instance
 .. _`zc.buildout`: http://pypi.python.org/pypi/zc.buildout
+.. |Daviz features diagram| image:: http://daviz.eionet.europa.eu/learn-more/davizdiagram.png/@@images/2d254f67-9af2-476c-be4c-8f1a5e602627.png
+.. |DaViz logo| image:: http://daviz.eionet.europa.eu/logo.png
+
+

@@ -8,7 +8,7 @@ EEA Daviz bundle for Plone in the Zope version of these packages.
 The following diagram describes how packages depends each other and which one
 are Plone dependent or not:
 
-.. image:: http://eea.github.com/_images/eea.daviz.dependencies.svg
+.. image:: images/eea.daviz.dependencies.svg
 
 Where should I start?
 ---------------------
@@ -32,8 +32,8 @@ Interface (ZMI)::
   http://localhost:9090/daviz/manage_addProduct/OFSP/fileAdd
 
 
-.. image:: http://eea.github.com/_images/eea.daviz.zope-addFile.png
-.. image:: http://eea.github.com/_images/eea.daviz.zope-addedFile.png
+.. image:: images/eea.daviz.zope-addFile.png
+.. image:: images/eea.daviz.zope-addedFile.png
 
 
 2. Visualization
@@ -55,7 +55,7 @@ visualization editor page::
   http://localhost:9090/daviz/mydata.csv/daviz-edit.html
 
 
-.. image:: http://eea.github.com/_images/eea.daviz.zope-daviz-edit.html.png
+.. image:: images/eea.daviz.zope-daviz-edit.html.png
 
 
 After your done editing the visualization you can view the results at::
@@ -63,7 +63,7 @@ After your done editing the visualization you can view the results at::
   http://localhost:9090/daviz/mydata.csv/daviz-view.html
 
 
-.. image:: http://eea.github.com/_images/eea.daviz.zope-daviz-view.html.png
+.. image:: images/eea.daviz.zope-daviz-view.html.png
 
 
 To disable visualization, you'll have to simply call::

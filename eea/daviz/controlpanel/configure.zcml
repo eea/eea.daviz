@@ -1,0 +1,6 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+    <utility component=".controlpanel.DavizSectionFactory"
+        name="eea.app.visualizations.controlpanel.controlpanel.DavizSection" />
+
+</configure>

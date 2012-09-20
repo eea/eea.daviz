@@ -1,47 +1,26 @@
 <?xml version="1.0"?>
 <object name="portal_actions" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
   <object name="object_buttons">
-    <object name="daviz.new.reuse" meta_type="CMF Action">
-      <property name="title">Create Another Visualization</property>
+    <object name="daviz.new.reuse" meta_type="CMF Action" remove="True">
+    </object>
+    <object name="daviz.new.sparql" meta_type="CMF Action" remove="True">
+    </object>
+    <object name="daviz.new.reuse.obj" meta_type="CMF Action" remove="True">
+    </object>
+    <object name="daviz.new" meta_type="CMF Action">
+      <property name="title">Create New Visualization</property>
       <property name="description"></property>
       <property
-        name="url_expr">string:${object/absolute_url}/daviz-new-reuse.html</property>
+        name="url_expr">string:${object/absolute_url}/daviz-create-new.html</property>
       <property name="link_target"></property>
       <property name="icon_expr"></property>
       <property
-        name="available_expr">python:object.portal_type == 'DavizVisualization'</property>
+        name="available_expr">python:(object.portal_type in ('DavizVisualization', 'Sparql')) or ('eea.app.visualization.subtypes.interfaces.IVisualizationEnabled' in object.restrictedTraverse('@@get_interfaces')())</property>
       <property name="permissions">
         <element value="Modify portal content"/>
       </property>
       <property name="visible">True</property>
     </object>
-    <object name="daviz.new.sparql" meta_type="CMF Action">
-      <property name="title">Create Visualization With This Dataset</property>
-      <property name="description"></property>
-      <property
-        name="url_expr">string:${object/absolute_url}/daviz-new-create-sparql.html</property>
-      <property name="link_target"></property>
-      <property name="icon_expr"></property>
-      <property
-        name="available_expr">python:object.portal_type == 'Sparql'</property>
-      <property name="permissions">
-        <element value="Modify portal content"/>
-      </property>
-      <property name="visible">True</property>
-    </object>
-    <object name="daviz.new.reuse.obj" meta_type="CMF Action">
-      <property name="title">Create Another Visualization</property>
-      <property name="description"></property>
-      <property
-        name="url_expr">string:${object/absolute_url}/daviz-new-reuse-obj.html</property>
-      <property name="link_target"></property>
-      <property name="icon_expr"></property>
-      <property
-        name="available_expr">python:'eea.app.visualization.subtypes.interfaces.IVisualizationEnabled' in object.restrictedTraverse('@@get_interfaces')() and object.portal_type != 'DavizVisualization'</property>
-      <property name="permissions">
-        <element value="Modify portal content"/>
-      </property>
-      <property name="visible">True</property>
-    </object>
+
   </object>
 </object>

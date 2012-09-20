@@ -3,6 +3,8 @@ Changelog
 
 5.0-dev - (unreleased)
 ----------------------
+* Feature: Use portal_daviz utility for default folder settings
+  [szabozo0 refs #5449]
 * Change: Added IVisualizationData adapter for DavizVisualization content-type
   [voineali #refs #5511]
 

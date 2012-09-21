@@ -2,7 +2,7 @@ Integration with Zope and other Zope frameworks
 ===============================================
 EEA Visualization packages were designed to work also outside Plone/CMF,
 having a minimal dependency of Zope 2. Not all the Visualization packages are
-Plone independent, that's why you may not find all the feature provided by
+Plone independent, that's why you may not find all the features provided by
 EEA Daviz bundle for Plone in the Zope version of these packages.
 
 The following diagram describes how packages depends each other and which one

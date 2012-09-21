@@ -5,8 +5,10 @@ Changelog
 ----------------------
 * Feature: Use portal_daviz utility for default folder settings
   [szabozo0 refs #5449]
+* Change: Added daviz.json adapter for IDavizVisualization content-type
+  [voineali refs #5449]
 * Change: Added IVisualizationData adapter for DavizVisualization content-type
-  [voineali #refs #5511]
+  [voineali refs #5511]
 
 4.9 - (2012-08-10)
 ------------------

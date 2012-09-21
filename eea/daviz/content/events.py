@@ -32,7 +32,7 @@ def onRelationsChanged(obj, evt):
     utils = queryUtility(IVisualizationJsonUtils)
 
     for item in relatedItems:
-        daviz_json = queryMultiAdapter((item, request), name=u'daviz-view.json')
+        daviz_json = queryMultiAdapter((item, request), name=u'daviz.json')
         if not daviz_json:
             continue
 

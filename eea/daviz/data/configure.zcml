@@ -11,4 +11,13 @@
     factory=".data.DavizVisualization"
     />
 
+  <!-- JSON adapters -->
+  <browser:page
+    for="eea.daviz.content.interfaces.IDavizVisualization"
+    name="daviz.json"
+    class=".browser.DavizJSON"
+    attribute="json"
+    permission="zope2.View"
+    />
+
 </configure>

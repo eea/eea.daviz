@@ -3,6 +3,9 @@ Changelog
 
 5.0-dev - (unreleased)
 ----------------------
+* Feature: On "Create Visualization" create the visualization and redirect to
+  "Edit visualization" tab
+  [szabozo0 refs #5449]
 * Feature: Use portal_daviz utility for default folder settings
   [szabozo0 refs #5449]
 * Change: Added daviz.json adapter for IDavizVisualization content-type

@@ -3,6 +3,7 @@
 from zope.app.component.hooks import getSite
 from zope.component import queryUtility
 from eea.app.visualization.controlpanel.interfaces import IDavizSettings
+from zope.app.container.interfaces import INameChooser
 
 class Daviz(object):
     """ Daviz
@@ -31,13 +32,14 @@ class Daviz(object):
                 folder = folder.aq_parent
             if not found:
                 return
-
-        objId = folder.generateUniqueId("DavizVisualization")
-        url = folder.absolute_url() + \
-                "/portal_factory/DavizVisualization/" + \
-                objId + \
-                "/edit" + \
-                "?title=" + self.context.title + \
-                "&relatedItems:list=" + self.context.UID()
-        self.request.response.redirect(url)
+        chooser = INameChooser(folder)
+        newId = chooser.chooseName(self.context.title, folder)
+        if newId in folder.objectIds():
+            raise NameError, 'Object id %s already exists' % newId
+        else:
+            folder.invokeFactory("DavizVisualization", newId)
+        newObj = folder[newId]
+        newObj.title = self.context.title
+        newObj.setRelatedItems([self.context])
+        self.request.response.redirect(newObj.absolute_url()+"/daviz-edit.html")
 

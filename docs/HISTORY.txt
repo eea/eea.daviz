@@ -3,6 +3,9 @@ Changelog
 
 5.0-dev - (unreleased)
 ----------------------
+* Feature: Added Visualization data source provenance adapter for
+  DavizVisualization objects
+  [voineali refs #5490]
 * Feature: On "Create Visualization" create the visualization and redirect to
   "Edit visualization" tab
   [szabozo0 refs #5449]

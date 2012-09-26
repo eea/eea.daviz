@@ -11,6 +11,13 @@
     factory=".data.DavizVisualization"
     />
 
+  <!-- Data source adapters -->
+  <adapter
+    for="eea.daviz.content.interfaces.IDavizVisualization"
+    provides="eea.app.visualization.interfaces.IDataProvenance"
+    factory=".source.DavizDataProvenance"
+    />
+
   <!-- JSON adapters -->
   <browser:page
     for="eea.daviz.content.interfaces.IDavizVisualization"

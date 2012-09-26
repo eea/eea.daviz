@@ -1,70 +1,40 @@
-# -*- coding: utf-8 -*-
-""" Base tests module
+""" Testing
 """
-__author__ = """European Environment Agency (EEA)"""
-__docformat__ = 'plaintext'
-__credits__ = """contributions: Alec Ghica, Alin Voinea"""
+from plone.testing import z2
+from plone.app.testing import TEST_USER_ID
+from plone.app.testing import setRoles
+from plone.app.testing import PloneSandboxLayer
+from plone.app.testing import applyProfile
+from plone.app.testing import PLONE_FIXTURE
+from plone.app.testing import FunctionalTesting
 
-import os
-from StringIO import StringIO
-from App.Common import package_home
-from cgi import FieldStorage
-from ZPublisher.HTTPRequest import FileUpload
-from Products.Five import zcml
-from Products.Five import fiveconfigure
-product_globals = globals()
-
-# Import PloneTestCase - this registers more products with Zope as a side effect
-from Products.PloneTestCase import PloneTestCase as ptc
-from Products.PloneTestCase.layer import onsetup
-
-
-@onsetup
-def setup_eea_daviz():
-    """Set up the additional products.
-
-    The @onsetup decorator causes the execution of this body to be deferred
-    until the setup of the Plone site testing layer.
+class EEAFixture(PloneSandboxLayer):
+    """ EEA Testing Policy
     """
-    fiveconfigure.debug_mode = True
-    import Products.Five
-    zcml.load_config('meta.zcml', Products.Five)
+    defaultBases = (PLONE_FIXTURE,)
 
-    import eea.daviz
-    zcml.load_config('configure.zcml', eea.daviz)
-    fiveconfigure.debug_mode = False
-
-    ptc.installProduct('Five')
-
-setup_eea_daviz()
-ptc.setupPloneSite()
-
-class DavizTestCase(ptc.PloneTestCase):
-    """ Base class for integration tests for the 'DaViz' product.
-    """
-
-class DavizFunctionalTestCase(ptc.FunctionalTestCase, DavizTestCase):
-    """ Base class for functional integration tests for the 'DaViz' product.
-    """
-    def loadfile(self, rel_filename, ctype='text/xml', zope=False):
-        """ Loads a file
+    def setUpZope(self, app, configurationContext):
+        """ Setup Zope
         """
-        home = package_home(product_globals)
-        filename = os.path.sep.join([home, rel_filename])
-        data = open(filename, 'r').read()
+        import eea.daviz
+        self.loadZCML(package=eea.daviz)
+        z2.installProduct(app, 'eea.daviz')
+        z2.installProduct(app, 'eea.sparql')
 
-        fp = StringIO(data)
-        fp.seek(0)
+    def tearDownZope(self, app):
+        """ Uninstall Zope
+        """
+        z2.uninstallProduct(app, 'eea.daviz')
+        z2.uninstallProduct(app, 'eea.sparql')
 
-        if not zope:
-            return fp
+    def setUpPloneSite(self, portal):
+        """ Setup Plone
+        """
+        applyProfile(portal, 'eea.daviz:default')
 
-        header_filename = rel_filename.split('/')[-1]
-        env = {'REQUEST_METHOD':'PUT'}
-        headers = {'content-type' : ctype,
-                   'content-length': len(data),
-                   'content-disposition':'attachment; filename=%s'
-                                                % header_filename}
+        # Login as manager
+        setRoles(portal, TEST_USER_ID, ['Manager'])
 
-        fs = FieldStorage(fp=fp, environ=env, headers=headers)
-        return FileUpload(fs)
+EEAFIXTURE = EEAFixture()
+FUNCTIONAL_TESTING = FunctionalTesting(bases=(EEAFIXTURE,),
+                                       name='EEADaviz:Functional')

@@ -5,7 +5,7 @@ Use for debug: import pdb; pdb.set_trace()
 
 Let's upload a file.
 
-    >>> self.loginAsPortalOwner()
+    >>> portal = layer['portal']
     >>> _ = portal.invokeFactory('Folder', 'sandbox')
     >>> sandbox = portal._getOb('sandbox')
     >>> _ = sandbox.invokeFactory('File', 'daviz-file')
@@ -15,7 +15,8 @@ Let's upload a file.
     >>> IPossibleVisualization.providedBy(daviz_file)
     True
 
-    >>> csv_file = self.loadfile('data/file.tsv', ctype='text/csv')
+    >>> from eea.daviz.tests.utils import preparefile
+    >>> csv_file = preparefile('data/file.tsv', ctype='text/csv')
     >>> daviz_file.setFile(csv_file)
 
 Let's check if file uploaded.

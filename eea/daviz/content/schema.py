@@ -2,6 +2,7 @@
 """
 import logging
 from zope.event import notify
+from zope.component import queryAdapter
 from Products.Archetypes.atapi import Schema
 from plone.app.folder.folder import ATFolder
 from eea.daviz.config import EEAMessageFactory as _
@@ -10,6 +11,7 @@ from Products.Archetypes.public import StringField, ReferenceField
 from Products.Archetypes.public import TextAreaWidget, StringWidget, LabelWidget
 from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
+from eea.app.visualization.interfaces import IDataProvenance
 logger = logging.getLogger('eea.daviz')
 #
 # eea.relations
@@ -58,10 +60,26 @@ class DavizStringField(StringField):
 class DavizDataField(StringField):
     """ Custom data field
     """
+    _properties = StringField._properties.copy()
+    _properties.update({
+        'alias': '',
+    })
+
+    def get(self, instance, **kwargs):
+        """ Get data source from annotations
+        """
+        config = queryAdapter(instance, IDataProvenance)
+        return getattr(config, self.alias, u'')
+
+    def set(self, instance, value, **kwargs):
+        """ Updates data source
+        """
+        config = queryAdapter(instance, IDataProvenance)
+        setattr(config, self.alias, value)
+
 
 SCHEMA = Schema((
-    DavizReferenceField(
-        'relatedItems',
+    DavizReferenceField('relatedItems',
         schemata="data input",
         relationship='relatesTo',
         multiValued=True,
@@ -73,8 +91,7 @@ SCHEMA = Schema((
             i18n_domain="eea",
             visible={'edit': 'visible', 'view': 'invisible' }
         )),
-    StringField(
-        'quickUpload',
+    StringField('quickUpload',
         schemata='data input',
         widget=QuickUploadWidget(
             label=_('Upload CSV/TSV data files from your computer'),
@@ -92,8 +109,7 @@ SCHEMA = Schema((
             visible={'edit': 'visible', 'view': 'invisible' }
         )
     ),
-    DavizStringField(
-        'spreadsheet',
+    DavizStringField('spreadsheet',
         schemata='data input',
         validators=('csvfile',),
         widget=TextAreaWidget(
@@ -114,8 +130,7 @@ SCHEMA = Schema((
         visible={'edit': 'visible', 'view': 'invisible'}
         )
     ),
-    StringField(
-        'dataWarning',
+    StringField('dataWarning',
         schemata='data input',
         widget=LabelWidget(
             label=_('Warning'),
@@ -131,8 +146,7 @@ SCHEMA = Schema((
             visible={'edit': 'visible', 'view': 'invisible'}
         )
     ),
-    DavizDataField(
-        'dataTitle',
+    DavizDataField('dataTitle', alias="title",
         schemata='default',
         widget=StringWidget(
             label=_("Data source title"),
@@ -140,8 +154,7 @@ SCHEMA = Schema((
             i18n_domain="eea",
         ),
     ),
-    DavizDataField(
-        'dataLink',
+    DavizDataField('dataLink', alias="link",
         schemata='default',
         widget=StringWidget(
             label=_("Data source link"),
@@ -151,8 +164,7 @@ SCHEMA = Schema((
             helper_css=('++resource++eea.daviz.datasource.css',)
         )
     ),
-    DavizDataField(
-        'dataOwner',
+    DavizDataField('dataOwner', alias="owner",
         schemata='default',
         vocabulary_factory=OrganisationsVocabulary,
         widget=OrganisationsWidget(

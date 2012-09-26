@@ -22,11 +22,11 @@ Daviz configuration is keept in annotations like:
 
 Let's test it in real world
 
-    >>> self.loginAsPortalOwner()
+    >>> portal = layer['portal']
     >>> _ = portal.invokeFactory('Folder', 'sandbox')
     >>> sandbox = portal._getOb('sandbox')
-    >>> _ = sandbox.invokeFactory('File', 'daviz-file')
-    >>> daviz_file = sandbox._getOb('daviz-file')
+    >>> daviz_file = sandbox.invokeFactory('File', 'daviz-file')
+    >>> daviz_file = sandbox._getOb(daviz_file)
 
     >>> from eea.app.visualization.interfaces import IVisualizationEnabled
     >>> from zope.interface import implements, alsoProvides

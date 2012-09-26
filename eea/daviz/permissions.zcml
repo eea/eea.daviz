@@ -1,0 +1,11 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  i18n_domain="eea">
+
+  <permission
+    id="eea.daviz.add"
+    title="eea.daviz: Add presentation"
+    description="Add Daviz Visualization"
+    />
+
+</configure>

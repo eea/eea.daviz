@@ -4,6 +4,19 @@
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
   i18n_domain="eea">
 
+  <!-- 4.9 => 6.0 -->
+  <genericsetup:upgradeSteps
+    source="4.9"
+    destination="6.0"
+    profile="eea.daviz:default">
+
+    <genericsetup:upgradeStep
+      title="Migrate Data Provenance from Visualization to Source Data"
+      handler="eea.daviz.upgrades.evolve60.migrate_data_provenance"
+      />
+
+  </genericsetup:upgradeSteps>
+
   <!-- 4.4 => 4.9 -->
   <genericsetup:upgradeSteps
     source="4.4"

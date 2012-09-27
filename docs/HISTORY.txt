@@ -1,7 +1,7 @@
 Changelog
 =========
 
-5.0-dev - (unreleased)
+6.0-dev - (unreleased)
 ----------------------
 * Feature: Added Visualization data source provenance adapter for
   DavizVisualization objects

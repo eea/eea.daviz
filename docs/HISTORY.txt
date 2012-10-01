@@ -3,6 +3,7 @@ Changelog
 
 6.0-dev - (unreleased)
 ----------------------
+* Upgrade step: ZMI > portal_setup > profile "EEA Daviz" > import Action Providers settings
 * Feature: Added Visualization data source provenance adapter for
   DavizVisualization objects
   [voineali refs #5490]

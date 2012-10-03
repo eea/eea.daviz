@@ -25,6 +25,7 @@ Usage
 Authors
 =======
 
-"European Environment Agency", mailto:webadmin@eea europa eu
+  EEA_ - European Environment Agency (EU)
 
+.. _EEA: http://www.eea.europa.eu/
 .. _`EEA Daviz`: http://eea.github.com/docs/eea.daviz

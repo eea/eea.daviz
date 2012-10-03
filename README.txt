@@ -175,7 +175,8 @@ Source code
 ===========
 
 Latest source code (Plone 4 compatible):
-  https://svn.eionet.europa.eu/repositories/Zope/trunk/eea.daviz/trunk
+  - `Plone Collective on Github <https://github.com/collective/eea.daviz>`_
+  - `EEA on Github <https://github.com/eea/eea.daviz>`_
 
 Plone 2 and 3 compatible (Simile Exhibit visualisations only):
   https://svn.eionet.europa.eu/repositories/Zope/trunk/eea.daviz/branches/plone25

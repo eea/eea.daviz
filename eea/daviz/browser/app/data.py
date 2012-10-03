@@ -1,5 +1,6 @@
 """ Data controllers
 """
+from urllib2 import urlparse
 from zope.component import queryMultiAdapter
 from Products.Five.browser import BrowserView
 
@@ -57,7 +58,12 @@ class Info(BrowserView):
             url = field.getAccessor(self.context)()
             title = self.context.displayValue(vocab, url)
             self.info['owner']['title'] = title
-            self.info['owner']['url'] = url
+
+            parser = urlparse.urlparse(url)
+            if all((parser.scheme, parser.netloc)):
+                self.info['owner']['url'] = url
+            else:
+                self.info['owner']['url'] = self.info['source']['url']
 
         if self.info['source']['title'] or self.info['source']['url']:
             return self.info

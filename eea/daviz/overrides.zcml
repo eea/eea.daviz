@@ -1,0 +1,10 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:zcml="http://namespaces.zope.org/zcml"
+  i18n_domain="eea">
+
+  <configure zcml:condition="installed eea.cache">
+    <include package="eea.cache" file="overrides.zcml" />
+  </configure>
+
+</configure>

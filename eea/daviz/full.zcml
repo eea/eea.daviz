@@ -1,0 +1,16 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  i18n_domain="eea">
+
+  <include package="eea.depiction" />
+  <include package="eea.relations" />
+
+  <include file="configure.zcml" />
+
+  <genericsetup:importStep
+    name="eea-daviz-various"
+    title="EEA Daviz Various" description="Various setup for eea.daviz"
+    handler="eea.daviz.setuphandlers.importVarious" />
+
+</configure>

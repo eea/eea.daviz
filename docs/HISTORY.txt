@@ -1,6 +1,9 @@
 Changelog
 =========
 
+6.1-dev - (unreleased)
+----------------------
+
 6.0 - (2012-10-08)
 ------------------
 * Upgrade step: ZMI > portal_setup > profile "EEA Daviz" > import Action Providers settings

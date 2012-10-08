@@ -87,7 +87,7 @@ Installation
 ============
 
 zc.buildout
-~~~~~~~~~~~
+-----------
 If you are using `zc.buildout`_ and the `plone.recipe.zope2instance`_
 recipe to manage your project, you can do this:
 

@@ -179,7 +179,7 @@ Latest source code (Plone 4 compatible):
   - `EEA on Github <https://github.com/eea/eea.daviz>`_
 
 Plone 2 and 3 compatible (Simile Exhibit visualisations only):
-  https://svn.eionet.europa.eu/repositories/Zope/trunk/eea.daviz/branches/plone25
+  https://github.com/collective/eea.daviz/tree/plone25
 
 
 Copyright and license

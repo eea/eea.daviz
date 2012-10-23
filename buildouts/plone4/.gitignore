@@ -1,8 +1,11 @@
 dist
 .installed.cfg
+bootstrap.sh
+.mr.developer.cfg
 bin
 develop-eggs
 include
 lib
 parts
 var
+src

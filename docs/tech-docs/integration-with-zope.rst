@@ -74,7 +74,7 @@ To disable visualization, you'll have to simply call::
 ``XXX: To be continued...``
 
 
-.. _`demo buildout`: https://github.com/collective/eea.daviz/tree/plone25
+.. _`demo buildout`: https://github.com/collective/eea.daviz/tree/master/buildouts/zope2
 .. _`Simile Exhibit`: https://github.com/collective/eea.exhibit/tree/master/buildouts/zope2
 .. _`Google Charts`: https://github.com/collective/eea.googlecharts/tree/master/buildouts/zope2
 .. _`EEA App Visualization API`: http://eea.github.com/docs/eea.app.visualization/api/API.html

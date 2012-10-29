@@ -1,5 +1,7 @@
 dist
 .installed.cfg
+.mr.developer.cfg
+bootstrap.sh
 bin
 develop-eggs
 include

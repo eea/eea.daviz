@@ -130,6 +130,17 @@ SCHEMA = Schema((
         visible={'edit': 'visible', 'view': 'invisible'}
         )
     ),
+    StringField('external',
+        schemata="data input",
+        validators=('isURL',),
+        widget=StringWidget(
+            label=_(u"Add data from URL"),
+            description=_(u"Add a data URL which returns CSV/TSV, "
+                          "standard JSON, Exhibit JSON or Google Spreadsheet")
+        ),
+        i18n_domain="eea",
+        visible={'edit': 'visible', 'view': 'invisible'}
+    ),
     StringField('dataWarning',
         schemata='data input',
         widget=LabelWidget(
@@ -202,12 +213,12 @@ def finalizeSchema(schema=DAVIZ_SCHEMA):
     # Reorder data input fields
     schema.moveField('spreadsheet', pos=0)
     schema.moveField('quickUpload', after="spreadsheet")
-    schema.moveField('relatedItems', after="quickUpload")
+    schema.moveField('external', after="quickUpload")
+    schema.moveField('relatedItems', after="external")
 
     # Reorder data source fields
     schema.moveField('dataTitle', after='description')
     schema.moveField('dataLink', after='dataTitle')
     schema.moveField('dataOwner', after='dataLink')
-
 
 finalizeSchema(DAVIZ_SCHEMA)

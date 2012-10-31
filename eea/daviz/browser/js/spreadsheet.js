@@ -36,5 +36,6 @@ jQuery(document).ready(function(){
 
   // Make formTabs a wizard
   jQuery("form[name='edit_form'] .formTabs").EEAFormsWizard();
+  jQuery('#archetypes-fieldname-external').height('auto');
 
 });

@@ -29,8 +29,18 @@
    />
 
   <browser:resource
+    name="eea.daviz.spreadsheet.js"
+    file="./js/spreadsheet.js"
+   />
+
+  <browser:resource
     name="eea.daviz.datasource.css"
     file="./css/datasource.css"
    />
+
+  <browser:resource
+    name="eea.daviz.spreadsheet.css"
+    file="./css/spreadsheet.css"
+    />
 
 </configure>

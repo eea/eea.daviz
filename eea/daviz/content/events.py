@@ -2,7 +2,6 @@
 """
 from StringIO import StringIO
 from zope.event import notify
-from zope.component import queryUtility
 import logging
 import json
 from zope.component import queryMultiAdapter, queryAdapter, queryUtility

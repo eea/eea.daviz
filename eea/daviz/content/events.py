@@ -2,11 +2,13 @@
 """
 from StringIO import StringIO
 from zope.event import notify
+from zope.component import queryUtility
 import logging
 import json
 from zope.component import queryMultiAdapter, queryAdapter, queryUtility
 from eea.app.visualization.events import VisualizationEnabledEvent
 from eea.app.visualization.cache import InvalidateCacheEvent
+from eea.app.visualization.interfaces import IExternalData
 from eea.app.visualization.interfaces import ITable2JsonConverter
 from eea.app.visualization.interfaces import IVisualizationConfig
 from eea.app.visualization.interfaces import IVisualizationJsonUtils
@@ -67,6 +69,9 @@ def onRelationsChanged(obj, evt):
 def onSpreadSheetChanged(obj, evt):
     """ Handle spreadsheet
     """
+    if not evt.spreadsheet:
+        return
+
     request = getattr(obj, 'REQUEST', None)
     if not request:
         return
@@ -79,6 +84,44 @@ def onSpreadSheetChanged(obj, evt):
     new_json['properties'].update(mutator.json.get('properties', {}))
 
     datafile = StringIO(evt.spreadsheet)
+    converter = queryUtility(ITable2JsonConverter)
+    try:
+        columns, data = converter(datafile)
+    except Exception, err:
+        logger.exception(err)
+        return
+
+    new_json['items'] = data.get('items', [])
+
+    utils = queryUtility(IVisualizationJsonUtils)
+    utils.merge(new_json['properties'], data.get('properties', {}))
+    mutator.json = new_json
+
+    notify(VisualizationEnabledEvent(obj, columns=columns, cleanup=False))
+    notify(InvalidateCacheEvent(raw=True, dependencies=['eea.daviz']))
+
+def onExternalChanged(obj, evt):
+    """ Handle external URL
+    """
+    if not evt.external:
+        return
+
+    request = getattr(obj, 'REQUEST', None)
+    if not request:
+        return
+
+    mutator = queryAdapter(obj, IVisualizationConfig)
+    if not mutator:
+        return
+
+    new_json = {'items': [], 'properties': {}}
+    new_json['properties'].update(mutator.json.get('properties', {}))
+
+    data = queryUtility(IExternalData)
+    if not data:
+        return
+
+    datafile = StringIO(data(evt.external))
     converter = queryUtility(ITable2JsonConverter)
     try:
         columns, data = converter(datafile)

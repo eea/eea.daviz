@@ -18,6 +18,7 @@ jQuery(document).ready(function(){
 
   relatedItems = jQuery(relatedSelector, form).length;
   var spreadsheet = jQuery('#spreadsheet', form);
+  var external = jQuery('#external', form);
   var label = jQuery('div.label', warning).hide();
   warning.attr('title', label.text());
   warning.dialog({
@@ -42,17 +43,20 @@ jQuery(document).ready(function(){
     changed = true;
   });
 
+  jQuery('#external', form).change(function(){
+    changed = true;
+  });
+
   jQuery(document).bind('qq-file-uploaded', function(evt, data){
     changed = true;
   });
 
   // If there is no data previously set, we're in the add form, so exit
   if(relatedItems === 0){
-    if(!spreadsheet.length){
-      return;
-    }
-    if(spreadsheet.val().trim() === ""){
-      return;
+    if(!spreadsheet.length || (spreadsheet.val().trim() === "")){
+      if(!external.length || (external.val().trim() === "")){
+        return;
+      }
     }
   }
 

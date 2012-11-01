@@ -3,6 +3,10 @@ Changelog
 
 6.1-dev - (unreleased)
 ----------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for eea.daviz
+* Feature: Possibility to add data source from a external URL
+  [voineali refs #9576]
 
 6.0 - (2012-10-08)
 ------------------

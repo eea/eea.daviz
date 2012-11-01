@@ -6,7 +6,9 @@ from zope.component import queryAdapter
 from Products.Archetypes.atapi import Schema
 from plone.app.folder.folder import ATFolder
 from eea.daviz.config import EEAMessageFactory as _
-from eea.daviz.events import DavizRelationsChanged, DavizSpreadSheetChanged
+from eea.daviz.events import DavizRelationsChanged
+from eea.daviz.events import DavizSpreadSheetChanged
+from eea.daviz.events import DavizExternalChanged
 from Products.Archetypes.public import StringField, ReferenceField
 from Products.Archetypes.public import TextAreaWidget, StringWidget, LabelWidget
 from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
@@ -56,6 +58,15 @@ class DavizStringField(StringField):
         """
         super(DavizStringField, self).set(instance, value, **kwargs)
         notify(DavizSpreadSheetChanged(instance, spreadsheet=value))
+
+class DavizUrlField(StringField):
+    """ Notify on set
+    """
+    def set(self, instance, value, **kwargs):
+        """ Custom set
+        """
+        super(DavizUrlField, self).set(instance, value, **kwargs)
+        notify(DavizExternalChanged(instance, external=value))
 
 class DavizDataField(StringField):
     """ Custom data field
@@ -130,9 +141,9 @@ SCHEMA = Schema((
         visible={'edit': 'visible', 'view': 'invisible'}
         )
     ),
-    StringField('external',
+    DavizUrlField('external',
         schemata="data input",
-        validators=('isURL',),
+        validators=('externalURL',),
         widget=StringWidget(
             label=_(u"Add data from URL"),
             description=_(u"Add a data URL which returns CSV/TSV, "

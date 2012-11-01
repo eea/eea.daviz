@@ -10,7 +10,12 @@ class IDavizSpreadSheetChanged(IVisualizationEvent):
     """ Daviz spreadsheet changed
     """
 
+class IDavizExternalChanged(IVisualizationEvent):
+    """ Daviz external URL changed
+    """
+
 __all__ = [
-    IDavizRelationsChangedEvent,
-    IDavizSpreadSheetChanged,
+    IDavizRelationsChangedEvent.__name__,
+    IDavizSpreadSheetChanged.__name__,
+    IDavizExternalChanged.__name__,
 ]

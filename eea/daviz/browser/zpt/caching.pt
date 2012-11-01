@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+  metal:use-macro="here/main_template/macros/master"
+  i18n:domain="eea">
+  <head>
+    <metal:slot fill-slot="head_slot">
+      <title i18n:translate="">Invalidate cache</title>
+    </metal:slot>
+    <metal:slot fill-slot="css_slot">
+    </metal:slot>
+  </head>
+  <body>
+    <div metal:fill-slot="main" >
+      <form method="POST" action="" tal:attributes="action string:${context/absolute_url}/@@caching">
+
+        <input type="submit" name="submit" value="Invalidate cache"
+               i18n:attributes="value"  />
+
+      </form>
+    </div>
+  </body>
+</html>

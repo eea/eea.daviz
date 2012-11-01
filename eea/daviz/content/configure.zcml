@@ -1,15 +1,26 @@
 <configure xmlns="http://namespaces.zope.org/zope"
-           i18n_domain="eea">
+  i18n_domain="eea">
 
   <class class=".presentation.DavizVisualization">
     <implements interface="eea.app.visualization.interfaces.IVisualizationEnabled" />
   </class>
 
-  <subscriber for=".interfaces.IDavizVisualization
-                   eea.daviz.events.interfaces.IDavizRelationsChangedEvent"
-              handler=".events.onRelationsChanged" />
+  <subscriber
+    for=".interfaces.IDavizVisualization
+    eea.daviz.events.interfaces.IDavizRelationsChangedEvent"
+    handler=".events.onRelationsChanged"
+    />
 
-  <subscriber for=".interfaces.IDavizVisualization
-                   eea.daviz.events.interfaces.IDavizSpreadSheetChanged"
-              handler=".events.onSpreadSheetChanged" />
+  <subscriber
+    for=".interfaces.IDavizVisualization
+    eea.daviz.events.interfaces.IDavizSpreadSheetChanged"
+    handler=".events.onSpreadSheetChanged"
+  />
+
+  <subscriber
+    for=".interfaces.IDavizVisualization
+    eea.daviz.events.interfaces.IDavizExternalChanged"
+    handler=".events.onExternalChanged"
+    />
+
 </configure>

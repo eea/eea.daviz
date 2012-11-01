@@ -47,4 +47,11 @@
     i18n:attributes="title">
   <permission value="Modify portal content"/>
  </action>
+ <action title="Caching" action_id="caching" category="object"
+    condition_expr=""
+    url_expr="string:${object/absolute_url}/caching"
+    visible="True"
+    i18n:attributes="title">
+  <permission value="Modify portal content"/>
+ </action>
 </object>

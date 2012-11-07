@@ -1,8 +1,16 @@
 =========
 EEA Daviz
 =========
-
 |DaViz logo|
+
+.. image:: http://ci.eionet.europa.eu/job/eea.daviz-www/badge/icon
+  :target: http://ci.eionet.europa.eu/job/eea.daviz-www/lastBuild
+.. image:: http://ci.eionet.europa.eu/job/eea.daviz-plone4/badge/icon
+  :target: http://ci.eionet.europa.eu/job/eea.daviz-plone4/lastBuild
+.. image:: http://ci.eionet.europa.eu/job/eea.daviz-zope/badge/icon
+  :target: http://ci.eionet.europa.eu/job/eea.daviz-zope/lastBuild
+
+
 
 Introduction
 ============

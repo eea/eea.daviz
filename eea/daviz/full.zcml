@@ -5,6 +5,7 @@
 
   <include package="eea.depiction" />
   <include package="eea.relations" />
+  <include package="eea.relations.default" />
 
   <include file="configure.zcml" />
 

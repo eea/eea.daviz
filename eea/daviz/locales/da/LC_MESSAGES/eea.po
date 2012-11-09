@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-11-09 13:08+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: ../../daviz/content/schema.py:149
+msgid "Add a data URL which returns CSV/TSV, standard JSON, Exhibit JSON or Google Spreadsheet"
+msgstr ""
+
+#: ../../daviz/content/schema.py:148
+msgid "Add data from URL"
+msgstr ""
+
+#: ../../daviz/content/schema.py:159
+msgid "Changing data sources may break existing visualizations for this context. You should consider creating a new Visualization rather than changing this one if the new data is different than the existing one. Are you sure you want to continue?"
+msgstr ""
+
+#: ../../daviz/content/schema.py:127
+msgid "Copy and paste a data table from a file/webpage"
+msgstr ""
+
+#: ../../daviz/content/schema.py:193
+msgid "Data source Organisation"
+msgstr ""
+
+#: ../../daviz/content/schema.py:182
+msgid "Data source link"
+msgstr ""
+
+#: ../../daviz/content/schema.py:174
+msgid "Data source title"
+msgstr ""
+
+#: ../../daviz/content/schema.py:98
+msgid "Find and reuse existing data"
+msgstr ""
+
+#: ../../daviz/browser/zpt/caching.pt:6
+msgid "Invalidate cache"
+msgstr ""
+
+#: ../../daviz/content/schema.py:99
+msgid "Look for compatible datasets in catalogue (e.g. visualization data, .tsv, .csv, SPARQL, etc)"
+msgstr ""
+
+#: ../../daviz/content/validators.py:48
+msgid "Provided URL doesn't provide valid data for visualization or this type of data is not supported, yet."
+msgstr ""
+
+#: ../../daviz/content/schema.py:175
+msgid "Specify data source"
+msgstr ""
+
+#: ../../daviz/content/schema.py:194
+msgid "Specify data source Organisation"
+msgstr ""
+
+#: ../../daviz/content/schema.py:183
+msgid "Specify data source link"
+msgstr ""
+
+#: ../../daviz/content/schema.py:108
+msgid "Upload CSV/TSV data files from your computer"
+msgstr ""
+
+#: ../../daviz/content/schema.py:158
+msgid "Warning"
+msgstr ""
+
+#: ../../daviz/content/validators.py:27
+msgid "You should provide data in a valid CSV format(.csv, .tsv, etc)"
+msgstr ""
+
+#. Default: "Check these <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/examples\">data examples</a> or read <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/prepare-data\">how to prepare data</a>"
+#: ../../daviz/content/schema.py:128
+msgid "copy-paste-description"
+msgstr ""
+
+#. Default: "Drag and drop '.tsv, .csv files' in the area below, see <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/examples\">data examples</a> or read <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/prepare-data\">how to prepare data</a>"
+#: ../../daviz/content/schema.py:109
+msgid "upload-csv-description"
+msgstr ""
+

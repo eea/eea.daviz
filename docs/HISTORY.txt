@@ -5,6 +5,8 @@ Changelog
 ----------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for eea.daviz
+* Feature: Added i18n translations
+  [avoinea]
 * Feature: Possibility to add data source from a external URL
   [voineali refs #9576]
 

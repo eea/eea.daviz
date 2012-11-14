@@ -3,6 +3,8 @@ Changelog
 
 6.2-dev - (unreleased)
 ----------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for eea.daviz
 
 6.1 - (2012-11-09)
 ------------------

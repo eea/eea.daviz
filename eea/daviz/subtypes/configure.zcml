@@ -1,0 +1,14 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  i18n_domain="eea">
+
+  <browser:page
+    name="daviz_support"
+    for="eea.daviz.content.interfaces.IDavizVisualization"
+    class=".support.DavizVisualizationSupport"
+    permission="zope.Public"
+    allowed_interface="eea.app.visualization.subtypes.interfaces.IVisualizationSubtyper"
+    />
+
+</configure>

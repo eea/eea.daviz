@@ -4,6 +4,19 @@
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
   i18n_domain="eea">
 
+  <!-- 6.1 => 6.2 -->
+  <genericsetup:upgradeSteps
+    source="6.1"
+    destination="6.2"
+    profile="eea.daviz:default">
+
+    <genericsetup:upgradeDepends
+      title="Import modified steps from eea.daviz profile: typeinfo"
+      import_steps="typeinfo"
+      />
+
+  </genericsetup:upgradeSteps>
+
   <!-- 6.0 => 6.1 -->
   <genericsetup:upgradeSteps
     source="6.0"

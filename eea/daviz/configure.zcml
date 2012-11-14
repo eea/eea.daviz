@@ -8,9 +8,11 @@
   <include file="permissions.zcml" />
 
   <include package=".browser" />
-  <include package=".data" />
   <include package=".content" />
-  <include package=".upgrades" />
   <include package=".controlpanel" />
+  <include package=".data" />
+  <include package=".subtypes" />
+
+  <include package=".upgrades" />
 
 </configure>

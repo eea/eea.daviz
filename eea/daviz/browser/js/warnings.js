@@ -9,11 +9,11 @@ jQuery(document).ready(function(){
   var changed = false;
 
   var form = warning.parents('form');
-  var relatedItems = jQuery("select[name=relatedItems:list]", form);
+  var relatedItems = jQuery("select[name='relatedItems:list']", form);
   if(relatedItems.length){
-    relatedSelector = 'select[name=relatedItems:list] option';
+    relatedSelector = "select[name='relatedItems:list'] option";
   }else{
-    relatedSelector = 'input[name=relatedItems:list]:checked';
+    relatedSelector = "input[name='relatedItems:list']:checked";
   }
 
   relatedItems = jQuery(relatedSelector, form).length;
@@ -75,7 +75,7 @@ jQuery(document).ready(function(){
     }
   });
 
-  jQuery('[name=form.button.cancel]', form).click(function(){
+  jQuery("[name='form.button.cancel']", form).click(function(){
     changed = false;
     relatedItems = jQuery(relatedSelector, form).length;
   });

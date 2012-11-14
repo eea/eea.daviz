@@ -136,8 +136,12 @@ SCHEMA = Schema((
               )
             ),
         i18n_domain="eea",
-        helper_js=('++resource++eea.daviz.spreadsheet.js',),
-        helper_css=('++resource++eea.daviz.spreadsheet.css',),
+        helper_js=(
+            '++resource++eea.daviz.common.js',
+            '++resource++eea.daviz.spreadsheet.js',),
+        helper_css=(
+            '++resource++eea.daviz.common.css',
+            '++resource++eea.daviz.spreadsheet.css',),
         visible={'edit': 'visible', 'view': 'invisible'}
         )
     ),

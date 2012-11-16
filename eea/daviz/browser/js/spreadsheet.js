@@ -29,7 +29,7 @@ EEA.Daviz.Spreadsheet.prototype = {
     }
 
     self.grid = null;
-    self.textarea = jQuery('#spreadsheet', self.context);
+    self.textarea = jQuery('#spreadsheet', self.context).addClass('spreadsheet-textarea');
     if(self.textarea.val().trim() !== ""){
       self.initialized = true;
       self.reload();
@@ -65,27 +65,28 @@ EEA.Daviz.Spreadsheet.prototype = {
 
   reloadTable: function(data){
     var self = this;
+    self.table = data;
 
     if(self.grid){
       self.grid.destroy();
       jQuery(".daviz-data-table", self.context).remove();
     }
 
-    if(!data.items.length){
-      self.textarea.show();
+    if(!self.table.items.length){
+      self.textarea.slideDown();
       return;
     }else{
-      self.textarea.hide();
+      self.textarea.slideUp();
     }
 
     self.gridview = jQuery('<div>')
       .addClass('daviz-data-table')
       .addClass('daviz-jsongrid')
-      .appendTo(self.context)
       .width(self.context.parent().width())
       .height(400);
+    self.textarea.after(self.gridview);
 
-    var colNames = Object.keys(data.properties || {});
+    var colNames = Object.keys(self.table.properties || {});
     var columns = [
       {
         id: "selector",
@@ -107,8 +108,18 @@ EEA.Daviz.Spreadsheet.prototype = {
     ];
 
     jQuery.each(colNames, function(index, key){
-      var colType = data.properties[key].columnType || data.properties[key].valueType;
-      var label = key;
+      var colType = self.table.properties[key].columnType || self.table.properties[key].valueType;
+      var label = self.table.properties[key].label || key;
+
+      var editor = Slick.Editors.Text;
+      var formatter;
+      if(colType === 'date'){
+        editor = Slick.Editors.Date;
+      }
+      if(colType === 'boolean'){
+        editor = Slick.Editors.YesNoSelect;
+        formatter = Slick.Formatters.YesNo;
+      }
 
       var column = {
         id: key,
@@ -119,11 +130,15 @@ EEA.Daviz.Spreadsheet.prototype = {
         selectable: true,
         resizable: true,
         focusable: true,
-        editor: Slick.Editors.Text,
+        editor: editor,
         header: {
           menu: EEA.Daviz.ColumnMenu({columnType: colType})
         }
       };
+
+      if(formatter){
+        column.formatter = formatter;
+      }
 
       columns.push(column);
     });
@@ -137,12 +152,12 @@ EEA.Daviz.Spreadsheet.prototype = {
       autoEdit: true
     };
 
-    self.items = jQuery.map(data.items, function(item, index){
+    self.table.items = jQuery.map(self.table.items, function(item, index){
       item.num = index + 1;
       return item;
     });
 
-    self.grid = new Slick.Grid('.daviz-data-table', self.items, columns, options);
+    self.grid = new Slick.Grid('.daviz-data-table', self.table.items, columns, options);
 
     // Plugins
 
@@ -166,11 +181,21 @@ EEA.Daviz.Spreadsheet.prototype = {
 
     self.grid.onAddNewRow.subscribe(function (e, args) {
       var item = args.item;
-      item.num = self.items.length + 1;
-      self.grid.invalidateRow(self.items.length);
-      self.items.push(item);
+      item.num = self.table.items.length + 1;
+      self.grid.invalidateRow(self.table.items.length);
+      self.table.items.push(item);
       self.grid.updateRowCount();
       self.grid.render();
+    });
+
+    // Header right-click
+    self.grid.onHeaderContextMenu.subscribe(function(e, args){
+      e.preventDefault();
+      jQuery('.slick-header-menubutton', e.srcElement).click();
+    });
+
+    self.grid.onCellChange.subscribe(function(e, args){
+      self.save();
     });
   },
 
@@ -194,14 +219,17 @@ EEA.Daviz.Spreadsheet.prototype = {
 
   edit_body: function(args){
     var self = this;
-    console.log('Edit body');
-    console.log(args);
+    if(self.textarea.is(':visible')){
+      self.textarea.slideUp();
+    }else{
+      self.textarea.slideDown();
+    }
   },
 
   edit_header: function(column){
     var self = this;
-    var text = 'NOT-SET-YET';
-    var popup = jQuery("<div title='Rename column: " + column.field + "' />")
+    var text = column.name;
+    var popup = jQuery("<div title='Rename column: " + column.name + "' />")
       .append(
         jQuery('<input>').attr('type', 'text').val(text).width('80%')
       ).dialog({
@@ -214,8 +242,10 @@ EEA.Daviz.Spreadsheet.prototype = {
             jQuery(this).dialog('close');
           },
           Rename: function(){
-            //facet.val(jQuery('input', this).val()).change();
-            alert('Not implemented yet');
+            var value = jQuery('input', popup).val();
+            self.table.properties[column.id].label = value;
+            self.grid.updateColumnHeader(column.id, value);
+            self.save();
             jQuery(this).dialog('close');
           }
         }
@@ -224,9 +254,30 @@ EEA.Daviz.Spreadsheet.prototype = {
 
   convert_column: function(to, column){
     var self = this;
-    console.log(to);
-    console.log(column);
+    self.table.properties[column.id].columnType = to;
+    self.save();
   },
+
+  save: function(){
+    var self = this;
+    //EEA.Daviz.Status.start('Reloading table ...');
+    jQuery.ajax({
+      type: 'POST',
+      url: '@@daviz-json2table.tsv',
+      dataType: 'text',
+      data: {'json': JSON.stringify(self.table)},
+      success: function(data){
+        self.textarea.val(data);
+        self.textarea.change();
+      },
+      error: function(jqXHR, textStatus, errorThrown){
+        // XXX Do something;
+      },
+      complete: function(jqXHR, textStatus){
+        //EEA.Daviz.Status.stop(textStatus);
+      }
+    });
+  }
 };
 
 jQuery.fn.EEADavizSpreadsheet = function(options){

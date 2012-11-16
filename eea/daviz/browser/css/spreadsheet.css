@@ -4,6 +4,28 @@
   margin: 0 0 3em;
 }
 
-#spreadsheet {
+#archetypes-fieldname-spreadsheet {
   margin: 0 0 3em;
+}
+
+#content #spreadsheet.spreadsheet-textarea,
+#spreadsheet.spreadsheet-textarea,
+.spreadsheet-textarea {
+  border: none;
+  width: 99.9%;
+  margin: 0;
+  box-shadow: 0 0 1px #000;
+}
+
+#content #spreadsheet.spreadsheet-textarea:focus,
+#spreadsheet.spreadsheet-textarea:focus,
+.spreadsheet-textarea:focus {
+ -webkit-transition: box-shadow linear 0.2s;
+    -moz-transition: box-shadow linear 0.2s;
+      -o-transition: box-shadow linear 0.2s;
+         transition: box-shadow linear 0.2s;
+
+ -webkit-box-shadow: inset 0 0px 5px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+    -moz-box-shadow: inset 0 0px 5px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+         box-shadow: inset 0 0px 5px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }

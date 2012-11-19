@@ -45,7 +45,7 @@ setup(name=NAME,
           'eea.forms >= 5.1',
           'eea.sparql >= 2.0',
           'eea.exhibit >= 6.1',
-          'eea.googlecharts >= 6.3',
+          'eea.googlecharts >= 6.2',
       ],
       extras_require={
           'full': [

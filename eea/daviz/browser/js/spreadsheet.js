@@ -195,7 +195,7 @@ EEA.Daviz.Spreadsheet.prototype = {
     });
 
     self.grid.onCellChange.subscribe(function(e, args){
-      self.save();
+      self.save(false);
     });
   },
 
@@ -245,7 +245,7 @@ EEA.Daviz.Spreadsheet.prototype = {
             var value = jQuery('input', popup).val();
             self.table.properties[column.id].label = value;
             self.grid.updateColumnHeader(column.id, value);
-            self.save();
+            self.save(false);
             jQuery(this).dialog('close');
           }
         }
@@ -255,12 +255,12 @@ EEA.Daviz.Spreadsheet.prototype = {
   convert_column: function(to, column){
     var self = this;
     self.table.properties[column.id].columnType = to;
-    self.save();
+    self.save(true);
   },
 
-  save: function(){
+  save: function(reload){
     var self = this;
-    //EEA.Daviz.Status.start('Reloading table ...');
+    self.loading();
     jQuery.ajax({
       type: 'POST',
       url: '@@daviz-json2table.tsv',
@@ -268,15 +268,39 @@ EEA.Daviz.Spreadsheet.prototype = {
       data: {'json': JSON.stringify(self.table)},
       success: function(data){
         self.textarea.val(data);
-        self.textarea.change();
+        if(reload){
+          self.textarea.change();
+        }
       },
       error: function(jqXHR, textStatus, errorThrown){
         // XXX Do something;
       },
       complete: function(jqXHR, textStatus){
-        //EEA.Daviz.Status.stop(textStatus);
+        self.loading();
       }
     });
+  },
+
+  loading: function(){
+    var self = this;
+    var style, img;
+
+    img = jQuery('div[style*="pencil.png"]', self.context);
+    if(img.length){
+      style = img.attr('style');
+      style = style.replace('pencil.png', 'ajax-loader-small.gif');
+      img.attr('style', style);
+      return;
+    }
+
+    img = jQuery('div[style*="ajax-loader-small.gif"]', self.context);
+    if(img.length){
+      style = img.attr('style');
+      style = style.replace('ajax-loader-small.gif', 'pencil.png');
+      img.attr('style', style);
+      return;
+    }
+
   }
 };
 

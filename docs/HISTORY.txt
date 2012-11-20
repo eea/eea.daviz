@@ -5,6 +5,9 @@ Changelog
 ----------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for eea.daviz
+* Feature: Added WYSIWYG table editor (SlickGrid) when one directly copy&paste
+  dataset within free text field
+  [voineali refs #9610]
 
 6.1 - (2012-11-09)
 ------------------

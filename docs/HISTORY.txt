@@ -8,6 +8,8 @@ Changelog
 * Feature: Added WYSIWYG table editor (SlickGrid) when one directly copy&paste
   dataset within free text field
   [voineali refs #9610]
+* Feature: added integration with eea.relations
+  [tiberich refs #9571]
 
 6.1 - (2012-11-09)
 ------------------

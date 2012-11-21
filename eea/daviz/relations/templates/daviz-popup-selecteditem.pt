@@ -1,0 +1,104 @@
+<div class="tileItem visualIEFloatFix vevent" tal:define="
+  item python:view.context;
+  item_title_or_id item/pretty_title_or_id;
+  item_absolute_url item/absolute_url;
+  breadcrumbs item/@@breadcrumbs_view;
+  breadcrumbs python:breadcrumbs.breadcrumbs();
+  wftool python:view.context.portal_workflow;
+  state python:wftool.getInfoFor(item, 'review_state', 'visible');
+  ">
+
+  <input type="checkbox" checked="checked" style="display: none"
+    tal:condition="python:view.mode == 'edit'"
+    tal:attributes="
+    name python:view.field + '-input';
+    value python:item.UID()" />
+  <a class="tileImage" target="_blank"
+    tal:define="display item/@@imgview/display|nothing;"
+    tal:condition="display"
+    tal:attributes="href item_absolute_url;
+    title item_title_or_id;
+    alt item_title_or_id;
+    class string:tileImage">
+    <img tal:attributes="src string:${item_absolute_url}/image_thumb;
+      title item_title_or_id;
+      alt item_title_or_id" />
+  </a>
+
+  <div class="tileHeadline"
+    metal:define-macro="listitem">
+
+    <a target="_blank"
+      tal:attributes="class string:state-$state; href item_absolute_url; "
+      tal:content="item_title_or_id"
+      >
+      Item Title
+    </a>
+  </div>
+  <div class="tileBreadcrumbs">
+    <tal:rep repeat="b breadcrumbs">
+      <tal:cont content="b/Title" />
+      <tal:cond condition="not: repeat/b/end">
+        &raquo;
+      </tal:cond>
+    </tal:rep>
+  </div>
+
+    <tal:cond tal:condition="python:view.mode=='view'">
+        <style>
+        .chart-title {
+            padding:2px;
+            background-color:#005E7D; 
+            color:white;
+            display:block;
+            float:left;
+            margin-right:2px;
+        }
+        </style>
+        <div class="daviz_chart_select_container" 
+            tal:define="objcontext python:view.kwargs['context']; 
+                        daviz_uid item/UID; 
+                        davizview nocall:item/@@daviz-view.html;
+                        get_daviz_charts nocall:objcontext/@@get_daviz_chart;
+                        selected_charts python:get_daviz_charts.get_charts(daviz_uid);">
+                <div class="chart-titles" style="overflow:hidden">
+                    <div style="width:550px"><strong class="label">Selected charts:</strong></div>
+                    <span class="chart-title" tal:repeat="chart selected_charts" >
+                        <tal:def define="thischart python:[x for x in davizview.tabs if x['name'] == chart][0]" >
+                            <img tal:attributes="src string:${thischart/fallback-image}/image_icon" />
+                            <span tal:content="thischart/title" />
+                        </tal:def>
+                    </span>
+                    <span tal:condition="not:selected_charts">No chart selected</span>
+                </div>
+                <div> <input type="button" class="popup_btn" value="Select chart" /></div>
+            <span class="metadata" style="display:none" >
+                <span class="vizualization_uid" tal:attributes="value item/UID" />
+                <span class="daviz_uid" tal:content="daviz_uid" />
+                <span class="url" tal:content="string:${objcontext/absolute_url}/@@set_daviz_chart"  />
+                <div tal:content="nocall:davizview/tabs" />
+                <select class="chart_options" multiple="multiple" name="chart" >
+                   <option tal:repeat="tab davizview/tabs" 
+                           tal:content="tab/title" 
+                           tal:attributes="value tab/name; 
+                                           selected python:tab['name'] in selected_charts; 
+                                           rel tab/fallback-image"></option>
+                </select>
+            </span>
+        </div>
+        <script >
+            $('.daviz_chart_select_container .popup_btn').each(function(){
+                var btn = $(this);
+                if (btn.hasClass('initialized')) { return null; };
+                btn.addClass('initialized');
+                btn.click(function(evt){
+                    new DavizChartSelection(this);
+                    evt.stopPropagation();
+                    return false;
+                });
+            });
+        </script>
+    </tal:cond>
+
+  <div class="visualClear"></div>
+</div>

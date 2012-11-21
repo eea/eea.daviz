@@ -1,5 +1,6 @@
 <configure
   xmlns="http://namespaces.zope.org/zope"
+  xmlns:zcml="http://namespaces.zope.org/zcml"
   i18n_domain="eea">
 
   <includeDependencies package="." />
@@ -14,5 +15,7 @@
   <include package=".subtypes" />
 
   <include package=".upgrades" />
+
+  <include package=".relations" zcml:condition="installed eea.relations" />
 
 </configure>

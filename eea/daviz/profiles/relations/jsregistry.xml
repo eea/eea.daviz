@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts" meta_type="JavaScripts Registry">
+
+   <javascript cacheable="True"
+             compression="safe"
+             authenticated="True"
+             cookable="True"
+             enabled="True"
+             expression=""
+             id="++resource++daviz_relations.js"
+             inline="False"/>
+
+</object>

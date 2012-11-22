@@ -69,14 +69,16 @@ class GetDavizChart(BrowserView):
         for uid in annot.keys():
             brains = uids_cat.searchResults(UID=uid)
             if not brains:
-                logger.warning("Could not find visualization with UID %s" % uid)
+                logger.warning("Couldn't find visualization with UID %s" % uid)
             obj = brains[0].getObject()
-            tabs = getMultiAdapter((obj, self.request), name="daviz-view.html").tabs
+            tabs = getMultiAdapter((obj, self.request), 
+                                    name="daviz-view.html").tabs
             charts = []
             for chart in annot[uid]:
                 for tab in tabs:
                     if tab['name'] == chart:
-                        charts.append((chart, tab['title'], tab['fallback-image']))
+                        charts.append((chart, tab['title'], 
+                                       tab['fallback-image']))
             info[uid] = (obj, charts)
 
         #print info

@@ -1,8 +1,8 @@
 var DavizChartSelection = function (btnel) {
-        var btn = $(btnel);
+        var btn = jQuery(btnel);
         var divparent = btn.parent().parent();
         var metadata = divparent.find('.metadata');
-        var popup = $("<div>");
+        var popup = jQuery("<div>");
 
         btn.after(popup);
         popup.html('<p><label>Select chart</label></p>');
@@ -14,7 +14,7 @@ var DavizChartSelection = function (btnel) {
         var uid = metadata.find('.daviz_uid').text();
         var url = metadata.find('.url').text();
 
-        var chart_titles = $(divparent).find('.chart-titles');
+        var chart_titles = jQuery(divparent).find('.chart-titles');
 
         popup.dialog({
             modal:true,
@@ -22,22 +22,22 @@ var DavizChartSelection = function (btnel) {
                 'OK':function(){
                     select.replaceWith(cloned_select);
                     chart_titles.find('span').remove();
-                    var selected_options = $(cloned_select).find('option:selected');
+                    var selected_options = jQuery(cloned_select).find('option:selected');
                     if (!selected_options.length) {
                         chart_titles.append("<span>No chart selected</span>");
                     };
                     selected_options.each(function(){
-                        var span = $("<span>");
+                        var span = jQuery("<span>");
                         span.addClass("chart-title");
-                        span.text($(this).text());
-                        var img = $("<img>");
-                        var url = $(this).attr('rel');
+                        span.text(jQuery(this).text());
+                        var img = jQuery("<img>");
+                        var url = jQuery(this).attr('rel');
                         img.attr('src', url+'/image_icon');
                         span.prepend(img);
                         chart_titles.append(span);
                     });
                     var b = this;
-                    $.ajax({
+                    jQuery.ajax({
                         type:'POST',
                         url:url, 
                         data:{ 
@@ -48,13 +48,13 @@ var DavizChartSelection = function (btnel) {
                             alert("Could not save data on server");
                         },
                         success:function(){
-                            $(b).dialog('close');
+                            jQuery(b).dialog('close');
                         }
                     });
                 }, 
                 'Cancel':function(){
                     // select.replaceWith(cloned_select);
-                    $(this).dialog('close');
+                    jQuery(this).dialog('close');
                 }
             }
         });

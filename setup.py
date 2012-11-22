@@ -29,7 +29,7 @@ setup(name=NAME,
           "License :: OSI Approved :: GNU General Public License (GPL)",
           "License :: OSI Approved :: Mozilla Public License 1.0 (MPL)",
         ],
-      keywords=('eea daviz data visualization exhibit googlecharts'
+      keywords=('eea daviz data visualization exhibit googlecharts '
                 'sparql rdf zope plone'),
       author='European Environment Agency',
       author_email="webadmin@eea.europa.eu",

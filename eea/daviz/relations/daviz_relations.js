@@ -20,14 +20,14 @@ var DavizChartSelection = function (btnel) {
         popup.dialog({
             modal: true,
             buttons: {
-                'OK': function() {
+                'OK': function () {
                     select.replaceWith(cloned_select);
                     chart_titles.find('span').remove();
                     var selected_options = jQuery(cloned_select).find('option:selected');
                     if (!selected_options.length) {
                         chart_titles.append("<span>No chart selected</span>");
                     }
-                    selected_options.each(function() {
+                    selected_options.each(function () {
                         var span = jQuery("<span>");
                         span.addClass("chart-title");
                         span.text(jQuery(this).text());
@@ -42,22 +42,22 @@ var DavizChartSelection = function (btnel) {
                         type: 'POST',
                         url: url, 
                         data: { 
-                            'chart':cloned_select.serialize(),
-                            'daviz_uid':uid
+                            'chart': cloned_select.serialize(),
+                            'daviz_uid': uid
                         },
-                        error: function(){
+                        error: function () {
                             alert("Could not save data on server");
                         },
-                        success: function(){
+                        success: function () {
                             jQuery(b).dialog('close');
                         }
                     });
                 }, 
-                'Cancel': function() {
+                'Cancel': function () {
                     // select.replaceWith(cloned_select);
                     jQuery(this).dialog('close');
                 }
             }
         });
 
-};
+    };

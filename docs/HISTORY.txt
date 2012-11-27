@@ -3,6 +3,9 @@ Changelog
 
 6.2-dev - (unreleased)
 ----------------------
+* Upgrade Step: if you have eea.relations installed in your system,
+  in portal_setup, Import tab, select the profile "EEA Daviz: eea.relations
+  integration" and import the Javascripts Registry step.
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for eea.daviz
 * Feature: Added WYSIWYG table editor (SlickGrid) when one directly copy&paste

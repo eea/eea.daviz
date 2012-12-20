@@ -80,6 +80,7 @@ EEA.Daviz.Spreadsheet.prototype = {
     }
 
     self.gridview = jQuery('<div>')
+      .addClass('daviz-slick-table')
       .addClass('daviz-data-table')
       .addClass('daviz-jsongrid')
       .width(self.context.parent().width())

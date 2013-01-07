@@ -48,10 +48,10 @@
         <style>
         .chart-title {
             padding:2px;
-            background-color:#005E7D; 
-            color:white;
+            /*background-color:#005E7D; 
+            color:white;*/
             display:block;
-            float:left;
+            float:none;
             margin-right:2px;
         }
         </style>
@@ -62,28 +62,32 @@
                         get_daviz_charts nocall:objcontext/@@get_daviz_chart;
                         selected_charts python:get_daviz_charts.get_charts(daviz_uid);">
                 <div class="chart-titles" style="overflow:hidden">
-                    <div style="width:550px"><strong class="label">Selected charts:</strong></div>
+                    <div style="width:400px"><strong class="label">Selected charts:</strong>
+                     <input type="button" class="popup_btn" value="Choose charts" style="float:right"/>
+                    </div>
                     <span class="chart-title" tal:repeat="chart selected_charts" >
                         <tal:def define="thischart python:[x for x in davizview.tabs if x['name'] == chart][0]" >
-                            <img tal:attributes="src string:${thischart/fallback-image}/image_icon" />
+                            <!--<img tal:attributes="src string:${thischart/fallback-image}/image_icon" />-->
                             <span tal:content="thischart/title" />
                         </tal:def>
                     </span>
                     <span tal:condition="not:selected_charts">No chart selected</span>
                 </div>
-                <div> <input type="button" class="popup_btn" value="Select chart" /></div>
             <span class="metadata" style="display:none" >
-                <span class="vizualization_uid" tal:attributes="value item/UID" />
+                <span class="vizualization_uid" tal:content="item/UID" />
                 <span class="daviz_uid" tal:content="daviz_uid" />
                 <span class="url" tal:content="string:${objcontext/absolute_url}/@@set_daviz_chart"  />
-                <div tal:content="nocall:davizview/tabs" />
-                <select class="chart_options" multiple="multiple" name="chart" >
-                   <option tal:repeat="tab davizview/tabs" 
-                           tal:content="tab/title" 
-                           tal:attributes="value tab/name; 
-                                           selected python:tab['name'] in selected_charts; 
+                <!--<div tal:content="nocall:davizview/tabs" />-->
+                <!--this needs to be replicated for multiple daviz vizualizations-->
+                <select class="all_charts" multiple="multiple" name="chart" >-->
+                   <option tal:repeat="tab davizview/tabs"
+                           tal:content="tab/title"
+                           tal:attributes="value tab/name;
+                                           selected python:tab['name'] in selected_charts;
                                            rel tab/fallback-image"></option>
                 </select>
+                <select name="live" id="live"></select>
+                <select name="previews" id="preview"></select>
             </span>
         </div>
         <script >

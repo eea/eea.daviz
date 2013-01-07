@@ -27,9 +27,8 @@ class SetDavizChart(BrowserView):
         else:
             selected_charts = []
 
-        #context_uid = self.request.form.get("context_uid")
-        #looks like relatedItems-96797d03-1e39-432f-ae82-8c3eedcf2342-widget
-        #obj_uid = context_uid[13:-7]
+        # selected_charts is a list in form [(chartId, type_of_view),...]
+        # where type_of_view is either "live" or "preview"
 
         obj = self.context
         annot = IAnnotations(obj)
@@ -74,10 +73,11 @@ class GetDavizChart(BrowserView):
             tabs = getMultiAdapter((obj, self.request), 
                                     name="daviz-view.html").tabs
             charts = []
-            for chart in annot[uid]:
+            for chart, type_of_view in annot[uid]:
                 for tab in tabs:
                     if tab['name'] == chart:
-                        charts.append((chart, tab['title'], 
+                        code = None #to be filled in, waiting for api in daviz
+                        charts.append((chart, tab['title'], code,
                                        tab['fallback-image']))
             info[uid] = (obj, charts)
 

@@ -5,9 +5,9 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from eea.app.visualization.interfaces import IDataProvenance
 from persistent.mapping import PersistentMapping
+from urlparse import parse_qs
 from zope.annotation.interfaces import IAnnotations
 from zope.component import getMultiAdapter
-import urlparse
 import logging
 
 logger = logging.getLogger("eea.indicators")
@@ -20,15 +20,17 @@ class SetDavizChart(BrowserView):
     def __call__(self):
         """info is a dict of uid:[list of chart ids] values
         """
+        form = self.request.form
         uid = self.request.form.get("daviz_uid")
-        chart = self.request.form.get("chart")
-        if chart:
-            selected_charts = urlparse.parse_qs(chart)['chart']
-        else:
-            selected_charts = []
 
-        # selected_charts is a list in form [(chartId, type_of_view),...]
-        # where type_of_view is either "live" or "preview"
+        live_charts = form.get("lives", [])
+        preview_charts = form.get("previews", [])
+
+        if live_charts:
+            live_charts = parse_qs(live_charts)['live']
+
+        if preview_charts:
+            preview_charts = parse_qs(preview_charts)['preview']
 
         obj = self.context
         annot = IAnnotations(obj)
@@ -36,7 +38,10 @@ class SetDavizChart(BrowserView):
         if not 'DAVIZ_CHARTS' in annot:
             annot['DAVIZ_CHARTS'] = PersistentMapping()
         
-        annot['DAVIZ_CHARTS'][uid.strip()] = selected_charts
+        annot['DAVIZ_CHARTS'][uid.strip()] = {
+            'live':live_charts or [],
+            'preview':preview_charts or []
+        }
 
         print obj, annot['DAVIZ_CHARTS'].items()
         
@@ -53,10 +58,14 @@ class GetDavizChart(BrowserView):
         return self
 
     def get_charts(self, uid):
-        """return daviz charts as a dict of uid:[list of chart ids]
+        """return daviz charts as a dict of {live:[], preview:[]}
         """
         annot = IAnnotations(self.context).get('DAVIZ_CHARTS', {})
-        return annot.get(uid, [])
+        q = {'live':[], 'preview':[]}
+        res = annot.get(uid, q)
+        if isinstance(res, list):   #during the development format has changed
+            res = q
+        return res
 
     def get_daviz(self):
         """Given an object, it will return the daviz+charts assigned
@@ -72,12 +81,24 @@ class GetDavizChart(BrowserView):
             obj = brains[0].getObject()
             tabs = getMultiAdapter((obj, self.request), 
                                     name="daviz-view.html").tabs
-            charts = []
-            for chart, type_of_view in annot[uid]:
+            charts = {'live':[], 'preview':[]}
+
+            #compensate for format change during development
+            annot_info = annot[uid]
+            if not isinstance(annot_info, dict):
+                annot_info= {'live':[], 'preview':[]}
+
+            for chart in annot_info['live']:
                 for tab in tabs:
                     if tab['name'] == chart:
                         code = None #to be filled in, waiting for api in daviz
-                        charts.append((chart, tab['title'], code,
+                        charts['live'].append((chart, tab['title'], code,
+                                       tab['fallback-image']))
+            for chart in annot_info['preview']:
+                for tab in tabs:
+                    if tab['name'] == chart:
+                        code = None #to be filled in, waiting for api in daviz
+                        charts['preview'].append((chart, tab['title'], code,
                                        tab['fallback-image']))
             info[uid] = (obj, charts)
 

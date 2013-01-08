@@ -8,8 +8,8 @@ var DavizChartSelection = function (btnel) {
         var uid            = metadata.find('.daviz_uid').text();
         var url            = metadata.find('.url').text();
         var select         = metadata.find("select.all_charts");
-        var select_live    = jQuery("#live", metadata);
-        var select_preview = jQuery("#preview", metadata);
+        var select_live    = jQuery("select[name='live']", metadata);
+        var select_preview = jQuery("select[name='preview']", metadata);
 
         var popup = jQuery("<div>");
 
@@ -30,11 +30,20 @@ var DavizChartSelection = function (btnel) {
 
             jQuery(charts).each(function(index, v){
                 var chart_id = v[0];
-                var p = jQuery("<p class='disabled' style='overflow:hidden'>");
-                var chk_div = jQuery("<div style='display:none'>");
+                var is_activated = false;
+                if ((lives.indexOf(chart_id) >= 0)||(previews.indexOf(chart_id) >=0)){
+                    is_activated = true;
+                }
+                var p = jQuery("<p style='overflow:hidden'>");
+                var chk_div = jQuery("<div/>");
+                if (!is_activated) {
+                    chk_div.css({'display':'none'});
+                    p.addClass('disabled');
+                }
                 var disabler = jQuery("<input>").attr({
                     'type':'checkbox',
-                    'class':'disabler'
+                    'class':'disabler',
+                    'checked':is_activated
                 });
                 disabler.change(function(){
                     chk_div.fadeToggle();
@@ -59,11 +68,11 @@ var DavizChartSelection = function (btnel) {
                 inp_preview.attr('name', "preview");
 
                 var flag = false;
-                if (previews.indexOf(chart_id) > 0) {
+                if (previews.indexOf(chart_id) >=0) {
                     inp_preview.attr('checked', true);
                     flag = true;
                 }
-                if (lives.indexOf(chart_id) > 0 || !flag) { // always enable live if not previewed
+                if (lives.indexOf(chart_id) >= 0 || !flag) { // always enable live if not previewed
                     inp_live.attr('checked', true);
                 }
 
@@ -107,38 +116,51 @@ var DavizChartSelection = function (btnel) {
                             previews.push($(this).val());
                     });
 
-                    console.log("Lives", lives);
-                    console.log("Previews",previews);
-
                     select_preview.empty();
                     $(previews).each(function(){
-                        select_preview.append(jQuery("<option>").attr('value', this));
+                        jQuery("<option/>", {'value':this, 
+                                             'textContent':this, 
+                                             'selected':true}).appendTo(select_preview);
                     });
 
                     select_live.empty();
                     $(lives).each(function(){
-                        select_live.append(jQuery("<option>").attr('value', this));
+                        jQuery("<option/>", {'value':this, 
+                                             'textContent':this, 
+                                             'selected':true}).appendTo(select_live);
                     });
 
-                    return false;
 
-
-                    //select.replaceWith(cloned_select);
-                    chart_titles.find('span').remove();
-                    var selected_options = jQuery(cloned_select).find('option:selected');
-                    if (!selected_options.length) {
-                        chart_titles.append("<span>No chart selected</span>");
+                    var selected_charts = chart_titles.find('.selected_charts');
+                    selected_charts.empty();
+                    if (!(lives.length || previews.length)){
+                        selected_charts.append("<span>No chart selected</span>");
                     }
-                    selected_options.each(function () {
-                        var span = jQuery("<span>");
-                        span.addClass("chart-title");
-                        span.text(jQuery(this).text());
-                        var img = jQuery("<img>");
-                        var url = jQuery(this).attr('rel');
-                        img.attr('src', url + '/image_icon');
-                        //span.prepend(img);
-                        chart_titles.append(span);
+
+                    jQuery("option", select).each(function(i, v){
+                        var option = jQuery(v);
+                        var chart_id = option.attr('value');
+                        var is_activated = false;
+                        if (lives.indexOf(chart_id) >= 0) {
+                            is_activated = 'live';
+                        }
+                        if(previews.indexOf(chart_id) >=0) {
+                            is_activated = 'preview';
+                        }
+                        if (is_activated){
+                            var span = jQuery("<span>");
+                            span.addClass("chart-title");
+                            span.text(option.attr('textContent') + ": " + is_activated);
+                            var img = jQuery("<img>");
+                            var url = jQuery(option).attr('rel');
+                            img.attr('src', url + '/image_icon');
+                            //span.prepend(img);
+                            selected_charts.append(span);
+                        }
                     });
+
+                    //return jQuery(this).dialog('close');
+
                     var b = this;
                     jQuery.ajax({
                         type: 'POST',

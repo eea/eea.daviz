@@ -60,18 +60,26 @@
                         daviz_uid item/UID; 
                         davizview nocall:item/@@daviz-view.html;
                         get_daviz_charts nocall:objcontext/@@get_daviz_chart;
-                        selected_charts python:get_daviz_charts.get_charts(daviz_uid);">
+                        selected_charts python:get_daviz_charts.get_charts(daviz_uid);
+                        live_charts selected_charts/live;
+                        preview_charts selected_charts/preview;
+                        all_charts python:sorted(live_charts+preview_charts)">
                 <div class="chart-titles" style="overflow:hidden">
                     <div style="width:400px"><strong class="label">Selected charts:</strong>
                      <input type="button" class="popup_btn" value="Choose charts" style="float:right"/>
                     </div>
-                    <span class="chart-title" tal:repeat="chart selected_charts" >
-                        <tal:def define="thischart python:[x for x in davizview.tabs if x['name'] == chart][0]" >
-                            <!--<img tal:attributes="src string:${thischart/fallback-image}/image_icon" />-->
-                            <span tal:content="thischart/title" />
-                        </tal:def>
-                    </span>
-                    <span tal:condition="not:selected_charts">No chart selected</span>
+                    <div class="selected_charts">
+                        <span class="chart-title" tal:repeat="chart all_charts" >
+                            <tal:def define="thischart python:[x for x in davizview.tabs if x['name'] == chart][0]" >
+                                <!--[><img tal:attributes="src string:${thischart/fallback-image}/image_icon" /><]-->
+                                <span>
+                                    <span tal:replace="thischart/title" />: 
+                                    <span tal:content="python:chart in live_charts and 'live' or 'preview'" />
+                                </span>
+                            </tal:def>
+                        </span>
+                        <span tal:condition="python: not (live_charts or preview_charts)">No chart selected</span>
+                    </div>
                 </div>
             <span class="metadata" style="display:none" >
                 <span class="vizualization_uid" tal:content="item/UID" />
@@ -86,8 +94,12 @@
                                            selected python:tab['name'] in selected_charts;
                                            rel tab/fallback-image"></option>
                 </select>
-                <select name="live" id="live"></select>
-                <select name="previews" id="preview"></select>
+                <select name="live" multiple="multiple">
+                    <option tal:repeat="l live_charts" tal:attributes="value l" tal:content="l" />
+                </select>
+                <select name="preview" multiple="multiple">
+                    <option tal:repeat="l preview_charts" tal:attributes="value l" tal:content="l" />
+                </select>
             </span>
         </div>
         <script >

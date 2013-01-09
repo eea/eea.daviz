@@ -1,4 +1,4 @@
-/*jslint white: true, browser: true, devel: true */
+/*jslint white: false, browser: true, devel: true */
 
 var DavizChartSelection = function (btnel) {
         var btn            = jQuery(btnel);
@@ -18,8 +18,8 @@ var DavizChartSelection = function (btnel) {
         var previews = [];      // just chartids which are for preview viewing
 
         select.find('option').each(function(i,el){
-            var el = jQuery(el);
-            charts.push([el.attr('value'), el.text(), el.attr('rel')]);
+            var xel = jQuery(el);
+            charts.push([xel.attr('value'), xel.text(), xel.attr('rel')]);
         });
 
         select_live.find('option').each(function(){lives.push(jQuery(this).attr('value'));});
@@ -64,7 +64,7 @@ var DavizChartSelection = function (btnel) {
                     'name':'live',
                     'value':chart_id
                     });
-                var inp_preview = inp_live.clone()
+                var inp_preview = inp_live.clone();
                 inp_preview.attr('name', "preview");
 
                 var flag = false;
@@ -89,7 +89,7 @@ var DavizChartSelection = function (btnel) {
             });
 
             return thisel;
-        };
+        }
 
         var nodes = make_chart_options(charts);
 

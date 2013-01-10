@@ -1,6 +1,9 @@
 Changelog
 =========
 
+6.3-dev - (unreleased)
+----------------------
+
 6.2 - (2013-01-10)
 ------------------
 * Upgrade Step: if you have eea.relations installed in your system,

@@ -13,6 +13,8 @@ Changelog
   - EEA Google Charts (eea.googlecharts);
   - EEA Exhibit (eea.exhibit);
   - EEA Daviz (eea.daviz)
+* Feature: Added italian translations
+  [simahawk]
 
 6.2 - (2013-01-10)
 ------------------

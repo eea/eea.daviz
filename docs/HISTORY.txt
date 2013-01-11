@@ -3,6 +3,16 @@ Changelog
 
 6.3-dev - (unreleased)
 ----------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" run upgrades (if available)
+  for the following packages in the same order as bellow:
+
+  - EEA Versions (eea.forms)
+  - EEA Forms (eea.forms)
+  - EEA Sparql (eea.sparql)
+  - EEA Visualization API (eea.app.visualisation);
+  - EEA Google Charts (eea.googlecharts);
+  - EEA Exhibit (eea.exhibit);
+  - EEA Daviz (eea.daviz)
 
 6.2 - (2013-01-10)
 ------------------

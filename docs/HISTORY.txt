@@ -1,8 +1,23 @@
 Changelog
 =========
 
-6.2-dev - (unreleased)
+6.3-dev - (unreleased)
 ----------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" run upgrades (if available)
+  for the following packages in the same order as bellow:
+
+  - EEA Versions (eea.forms)
+  - EEA Forms (eea.forms)
+  - EEA Sparql (eea.sparql)
+  - EEA Visualization API (eea.app.visualisation);
+  - EEA Google Charts (eea.googlecharts);
+  - EEA Exhibit (eea.exhibit);
+  - EEA Daviz (eea.daviz)
+* Feature: Added italian translations
+  [simahawk]
+
+6.2 - (2013-01-10)
+------------------
 * Upgrade Step: if you have eea.relations installed in your system,
   in portal_setup, Import tab, select the profile "EEA Daviz: eea.relations
   integration" and import the Javascripts Registry step.

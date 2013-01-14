@@ -34,17 +34,17 @@ class SetDavizChart(BrowserView):
 
         obj = self.context
         annot = IAnnotations(obj)
-        
+
         if not 'DAVIZ_CHARTS' in annot:
             annot['DAVIZ_CHARTS'] = PersistentMapping()
-        
+
         annot['DAVIZ_CHARTS'][uid.strip()] = {
-            'live':live_charts or [],
-            'preview':preview_charts or []
+            'live': live_charts or [],
+            'preview': preview_charts or []
         }
 
         print obj, annot['DAVIZ_CHARTS'].items()
-        
+
         return "done"
 
 
@@ -61,7 +61,7 @@ class GetDavizChart(BrowserView):
         """return daviz charts as a dict of {live:[], preview:[]}
         """
         annot = IAnnotations(self.context).get('DAVIZ_CHARTS', {})
-        q = {'live':[], 'preview':[]}
+        q = {'live': [], 'preview': []}
         res = annot.get(uid, q)
         if isinstance(res, list):   #during the development format has changed
             res = q
@@ -79,27 +79,27 @@ class GetDavizChart(BrowserView):
             if not brains:
                 logger.warning("Couldn't find visualization with UID %s" % uid)
             obj = brains[0].getObject()
-            tabs = getMultiAdapter((obj, self.request), 
-                                    name="daviz-view.html").tabs
-            charts = {'live':[], 'preview':[]}
+            tabs = getMultiAdapter((obj, self.request),
+                                   name="daviz-view.html").tabs
+            charts = {'live': [], 'preview': []}
 
             #compensate for format change during development
             annot_info = annot[uid]
             if not isinstance(annot_info, dict):
-                annot_info = {'live':[], 'preview':[]}
+                annot_info = {'live': [], 'preview': []}
 
             for chart in annot_info['live']:
                 for tab in tabs:
                     if tab['name'] == chart:
                         code = None #to be filled in, waiting for api in daviz
                         charts['live'].append((chart, tab['title'], code,
-                                       tab['fallback-image']))
+                                               tab['fallback-image']))
             for chart in annot_info['preview']:
                 for tab in tabs:
                     if tab['name'] == chart:
                         code = None #to be filled in, waiting for api in daviz
                         charts['preview'].append((chart, tab['title'], code,
-                                       tab['fallback-image']))
+                                                  tab['fallback-image']))
             info[uid] = (obj, charts)
 
         #print info
@@ -113,7 +113,7 @@ class DavizDataSource(BrowserView):
     def __call__(self):
         adapter = IDataProvenance(self.context)
         return {
-            'title':adapter.title,
-            'link':adapter.link,
-            'owner':adapter.owner
+            'title': adapter.title,
+            'link': adapter.link,
+            'owner': adapter.owner
         }

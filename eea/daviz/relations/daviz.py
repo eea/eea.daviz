@@ -86,7 +86,7 @@ class GetDavizChart(BrowserView):
             #compensate for format change during development
             annot_info = annot[uid]
             if not isinstance(annot_info, dict):
-                annot_info= {'live':[], 'preview':[]}
+                annot_info = {'live':[], 'preview':[]}
 
             for chart in annot_info['live']:
                 for tab in tabs:

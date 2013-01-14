@@ -66,7 +66,7 @@
                         all_charts python:sorted(live_charts+preview_charts)">
                 <div class="chart-titles" style="overflow:hidden">
                     <div style="width:400px"><strong class="label">Selected charts:</strong>
-                     <input type="button" class="popup_btn" value="Choose charts" style="float:right"/>
+                     <input type="button" class="popup_btn" value="Please wait..." style="float:right"/>
                     </div>
                     <div class="selected_charts">
                         <span class="chart-title" tal:repeat="chart all_charts" >
@@ -78,7 +78,7 @@
                                 </span>
                             </tal:def>
                         </span>
-                        <span tal:condition="python: not (live_charts or preview_charts)">No chart selected</span>
+                        <span tal:condition="python: not (live_charts or preview_charts)" style="color:red" >No chart selected!</span>
                     </div>
                 </div>
             <span class="metadata" style="display:none" >
@@ -107,6 +107,7 @@
                 var btn = $(this);
                 if (btn.hasClass('initialized')) { return null; };
                 btn.addClass('initialized');
+                btn.val("Choose charts");
                 btn.click(function(evt){
                     new DavizChartSelection(this);
                     evt.stopPropagation();

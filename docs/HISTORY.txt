@@ -1,11 +1,13 @@
 Changelog
 =========
 
-6.3-dev - (unreleased)
+6.4-dev - (unreleased)
 ----------------------
+
+6.3 - (2013-01-15)
+------------------
 * Upgrade step: Within "Plone > Site setup > Add-ons" run upgrades (if available)
   for the following packages in the same order as bellow:
-
   - EEA Versions (eea.forms)
   - EEA Forms (eea.forms)
   - EEA Sparql (eea.sparql)

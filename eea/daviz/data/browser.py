@@ -11,11 +11,19 @@ class DavizJSON(JSON):
     """ Merged JSON from related items
     """
     @ramcache(cacheJsonKey, dependencies=['eea.daviz'])
-    def json(self, column_types=None):
+    def json(self, **kwargs):
         """ JSON
         """
-        my_json = super(DavizJSON, self).json(column_types)
+        my_json = super(DavizJSON, self).json(
+            column_types=kwargs.get('column_types'),
+            annotations=kwargs.get('annotations')
+        )
         my_json = simplejson.loads(my_json)
+
+        column_types = kwargs.get('column_types',
+                                  None) or self.column_types(my_json)
+        annotations = kwargs.get('annotations',
+                                 None) or self.annotations(my_json)
 
         relatedItems = getattr(self.context, 'getRelatedItems', ())
         if relatedItems:
@@ -30,14 +38,8 @@ class DavizJSON(JSON):
                 continue
 
             try:
-                column_types = dict(
-                    (key, value.get('columnType',
-                                    value.get('valueType', 'text'))
-                     if isinstance(value, dict) else value)
-                    for key, value in my_json.get('properties', {}).items()
-                )
-                daviz_json = simplejson.loads(
-                    daviz_json(column_types=column_types))
+                daviz_json = simplejson.loads(daviz_json(
+                    column_types=column_types, annotations=annotations))
             except Exception, err:
                 logger.exception(err)
                 continue

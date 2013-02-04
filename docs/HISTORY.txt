@@ -1,8 +1,11 @@
 Changelog
 =========
 
-6.4-dev - (unreleased)
+6.5-dev - (unreleased)
 ----------------------
+
+6.4 - (2013-02-04)
+------------------
 * Feature: Support data annotations
   [voineali refs #9558]
 

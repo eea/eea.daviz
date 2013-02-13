@@ -64,7 +64,7 @@ the "web of data" via public available sparql endpoints.
 
 You can easily make visualizations like:
 
-1. `Simile Exhibit <http://www.simile-widgets.org/exhibit>`_
+1. `Simile Exhibit <http://www.simile-widgets.org/exhibit3>`_
 2. `Google Charts <http://code.google.com/apis/chart>`_
 
 See also initial project `wiki page <https://svn.eionet.europa.eu/projects/Zope/wiki/DaViz>`_
@@ -78,7 +78,7 @@ Live demos
 * `GHG vs GDP in Europe 1990 - 2009 (demo using Linked Data) <http://www.eea.europa.eu/data-and-maps/daviz/ghg-vs-gdp-in-europe>`_
 * `GHG national emissions reporting to UNFCC (Simile Exhibit demo with TSV) <http://www.eea.europa.eu/data-and-maps/data/national-emissions-reported-to-the-unfccc-and-to-the-eu-greenhouse-gas-monitoring-mechanism-3/national-total-excluding-lulucf/ghg_v10_extract.csv>`_
 * `Google charts demos <http://code.google.com/apis/chart>`_
-* `MIT Simile Exhibit demos <http://www.simile-widgets.org/exhibit>`_
+* `MIT Simile Exhibit demos <http://www.simile-widgets.org/exhibit3>`_
 
 
 Architecture overview
@@ -247,7 +247,7 @@ EEA_ - European Environment Agency (EU)
 .. _`eea.relations`: http://eea.github.com/docs/eea.relations
 .. _`plone.recipe.zope2instance`: http://pypi.python.org/pypi/plone.recipe.zope2instance
 .. _`EEA App Visualization`: http://eea.github.com/docs/eea.app.visualization
-.. _`Simile Exhibit`: http://www.simile-widgets.org/exhibit
+.. _`Simile Exhibit`: http://www.simile-widgets.org/exhibit3
 .. _`Google Charts`: http://code.google.com/apis/chart
 .. _`plone.recipe.zope2instance`: http://pypi.python.org/pypi/plone.recipe.zope2instance
 .. _`zc.buildout`: http://pypi.python.org/pypi/zc.buildout

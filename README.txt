@@ -41,21 +41,23 @@ Main features
 1. No desktop tools needed to make visualizations. all web based.
 2. Data input: easy copy and paste of data table from any webpage or
    excel sheet
-3. Data input: drag-and-drop your data from CSV/TSV files, and we do the rest
-4. Data input advanced: retrieve data from any SPARQL endpoint on the fly
-5. Intuitive visualization editor to create interactive charts.
-6. Large amount of visualizations available: Area, Bar,
+3. Data input from URL (CSV/TSV/JSON)
+4. Data input: drag-and-drop your data from CSV/TSV files, and we do the rest
+5. Data input advanced: retrieve data from any SPARQL endpoint on the fly
+6. Intuitive visualization editor to create interactive charts.
+7. Large amount of visualizations available: Area, Bar,
    Bubble, Candlestick, Column, Combo Chart, Gauge, Geo Intensity Maps,
    Line, Pie, Radar, Scatter, Stepped Area, Table, Tree Map, Motion Charts,
    Faceted search table, Faceted tiles, Faceted timeline,
    Faceted map and more...
-7. Dashboard. Group charts into one dashboard.
-8. Share any chart. Embeddable visualization in any webpage.
-9. Customizable chart options and colors
-10. Data table manipulation via drag and drop, preparing table for chart
-11. Pivot table (Transpose), transform row values into columns
-12. Modular framework for extending it with more visualizations
-13. And much more...
+8. Dashboard. Group charts into one or more dashboards.
+9. Share any chart. Embeddable visualization in any webpage.
+10. Customizable chart options and colors
+11. Data table manipulation via drag and drop, preparing table for chart
+12. Pivot table (Transpose), transform row values into columns
+13. Modular framework for extending it with more visualizations
+14. Branding: add your own logo to each chart + QR code
+15. And much more...
 
 
 It is simple to use, needs no desktop application, everything is done
@@ -74,9 +76,7 @@ for the reasoning behind this project.
 Live demos
 ==========
 
-* `Eurostat data employment rates 2000-2010 (demo using Linked Data) <http://www.eea.europa.eu/data-and-maps/daviz/data-visualization-employement-trends-eu-1>`_
-* `GHG vs GDP in Europe 1990 - 2009 (demo using Linked Data) <http://www.eea.europa.eu/data-and-maps/daviz/ghg-vs-gdp-in-europe>`_
-* `GHG national emissions reporting to UNFCC (Simile Exhibit demo with TSV) <http://www.eea.europa.eu/data-and-maps/data/national-emissions-reported-to-the-unfccc-and-to-the-eu-greenhouse-gas-monitoring-mechanism-3/national-total-excluding-lulucf/ghg_v10_extract.csv>`_
+* `Daviz showroom <http://daviz.eionet.europa.eu>`_
 * `Google charts demos <http://code.google.com/apis/chart>`_
 * `MIT Simile Exhibit demos <http://www.simile-widgets.org/exhibit>`_
 

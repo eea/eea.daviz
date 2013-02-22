@@ -106,14 +106,3 @@ class GetDavizChart(BrowserView):
         return info
 
 
-class DavizDataSource(BrowserView):
-    """Info about data source for daviz
-    """
-
-    def __call__(self):
-        adapter = IDataProvenance(self.context)
-        return {
-            'title': adapter.title,
-            'link': adapter.link,
-            'owner': adapter.owner
-        }

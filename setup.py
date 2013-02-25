@@ -41,11 +41,11 @@ setup(name=NAME,
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'eea.app.visualization >= 6.2',
-          'eea.forms >= 5.1',
-          'eea.sparql >= 2.2',
-          'eea.exhibit >= 6.2',
-          'eea.googlecharts >= 6.3',
+          'eea.app.visualization >= 7.0',
+          'eea.forms >= 5.2',
+          'eea.sparql >= 2.4',
+          'eea.exhibit >= 7.0',
+          'eea.googlecharts >= 7.0',
       ],
       extras_require={
           'full': [

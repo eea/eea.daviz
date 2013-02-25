@@ -1,9 +1,9 @@
 Changelog
 =========
 
-6.5-dev - (unreleased)
+7.0-dev - (unreleased)
 ----------------------
-* Change: removed redundant and unnecessary data_source provenance code, 
+* Change: removed redundant and unnecessary data_source provenance code,
   which is already better implemented with @@data.info
   [demarant refs #9561 and #9571]
 

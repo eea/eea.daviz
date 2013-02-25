@@ -3,7 +3,6 @@
 
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
-from eea.app.visualization.interfaces import IDataProvenance
 from persistent.mapping import PersistentMapping
 from urlparse import parse_qs
 from zope.annotation.interfaces import IAnnotations

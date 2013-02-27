@@ -102,7 +102,6 @@ recipe to manage your project, you can do this:
 * Update your buildout.cfg file:
 
   * Add ``eea.daviz`` to the list of eggs to install
-  * Tell the plone.recipe.zope2instance recipe to install a ZCML slug
 
   ::
 
@@ -112,16 +111,9 @@ recipe to manage your project, you can do this:
       ...
       eea.daviz
 
-    zcml =
-      ...
-      eea.daviz
-
 * Re-run buildout, e.g. with::
 
   $ ./bin/buildout
-
-You can skip the ZCML slug if you are going to explicitly include the package
-from another package's configure.zcml file.
 
 
 Google Maps API Key

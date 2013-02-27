@@ -77,6 +77,7 @@ class GetDavizChart(BrowserView):
             brains = uids_cat.searchResults(UID=uid)
             if not brains:
                 logger.warning("Couldn't find visualization with UID %s" % uid)
+                continue
             obj = brains[0].getObject()
             tabs = getMultiAdapter((obj, self.request),
                                    name="daviz-view.html").tabs

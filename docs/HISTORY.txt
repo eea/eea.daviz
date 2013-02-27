@@ -3,6 +3,8 @@ Changelog
 
 7.1-dev - (unreleased)
 ----------------------
+* Bug fix: fixed small bug in code that broke get_daviz when daviz was deleted
+  [tiberich #13993]
 
 7.0 - (2013-02-25)
 ------------------

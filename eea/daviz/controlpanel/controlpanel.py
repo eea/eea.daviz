@@ -5,6 +5,7 @@ from eea.app.visualization.controlpanel.interfaces import IDavizSection
 from zope.formlib.form import FormFields
 from zope import schema
 from zope.app.component.hooks import getSite
+from eea.daviz.config import EEAMessageFactory as _
 
 class InvalidDavizFolder(schema.ValidationError, Exception):
     """Daviz DefaultFolder Error
@@ -39,7 +40,9 @@ class DavizSection(object):
         self.form_fields = FormFields(
             schema.TextLine(
                 __name__='daviz.defaultfolder',
-                title=u'Default Folder for Visualizations',
+                title=_(u'Default Folder for Visualizations'),
+                description=_(u"""Default location where
+                                  Visualizations are created"""),
                 constraint=validateDefaultFolder,
                 required=False)
             )

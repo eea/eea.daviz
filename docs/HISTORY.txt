@@ -3,6 +3,8 @@ Changelog
 
 7.1-dev - (unreleased)
 ----------------------
+* Change: Added description to controlpanel fields
+  [szabozo0]
 * Bug fix: fixed small bug in code that broke get_daviz when daviz was deleted
   [tiberich #13993]
 

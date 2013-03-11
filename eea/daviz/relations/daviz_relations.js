@@ -7,25 +7,20 @@ var DavizChartSelection = function (btnel) {
         var metadata       = divparent.find('.metadata');
         var uid            = metadata.find('.daviz_uid').text();
         var url            = metadata.find('.url').text();
-        var select         = metadata.find("select.all_charts");
-        var select_live    = jQuery("select[name='live']", metadata);
-        var select_preview = jQuery("select[name='preview']", metadata);
+        var select_charts_definition = metadata.find("select.select_charts_definition");
+        var select_charts_selection = metadata.find("select.select_charts_selection");
 
         var popup = jQuery("<div>");
 
         var charts = [];        // full chart options
-        var lives = [];         // just chart ids which are for live viewing
-        var previews = [];      // just chartids which are for preview viewing
 
         select.find('option').each(function(i,el){
             var xel = jQuery(el);
             charts.push([xel.attr('value'), xel.text(), xel.attr('rel')]);
         });
 
-        select_live.find('option').each(function(){lives.push(jQuery(this).attr('value'));});
-        select_preview.find('option').each(function(){previews.push(jQuery(this).attr('value'));});
-
         function make_chart_options(charts){
+            // builds the chart selection area
             var thisel = jQuery("<div>");
 
             jQuery(charts).each(function(index, v){

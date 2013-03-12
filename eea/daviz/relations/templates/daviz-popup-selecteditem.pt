@@ -89,7 +89,7 @@
                 <!--<div tal:content="nocall:davizview/tabs" />-->
 
                 <!--This defines the charts, their image, etc-->
-                <select class="select_charts_definition" multiple="multiple" name="chart" >-->
+                <select class="select_charts_definition" multiple="multiple" name="chart" >
                    <option tal:repeat="tab davizview/tabs"
                            tal:content="tab/title"
                            tal:attributes="value tab/name;
@@ -98,11 +98,14 @@
                 </select>
 
                 <!--This is used to save chart selection in DB-->
-                <select name="select_charts_selection" multiple="multiple">
-                    <option tal:repeat="chart charts" tal:attributes="value python:charts[chart]" tal:content="chart"/>
-                </select>
+                <div class="select_charts_selection">
+                    <tal:rep tal:repeat="chart charts" >
+                        <input type="hidden" tal:attributes="name chart; value python:charts[chart]" />
+                    </tal:rep>
+                </div>
 
             </span>
+
         </div>
         <script >
             $('.daviz_chart_select_container .popup_btn').each(function(){

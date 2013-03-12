@@ -8,33 +8,74 @@ var DavizChartSelection = function (btnel) {
         var uid            = metadata.find('.daviz_uid').text();
         var url            = metadata.find('.url').text();
         var select_charts_definition = metadata.find("select.select_charts_definition");
-        var select_charts_selection = metadata.find("select.select_charts_selection");
+        var select_charts_selection = metadata.find(".select_charts_selection");
 
         var popup = jQuery("<div>");
 
-        var charts = [];        // full chart options
+        var chart_definitions = [];        // full chart options
+        var chart_selection = [];          // selected charts [chart_id, embed_type]
 
-        select.find('option').each(function(i,el){
+        // we need an array with the selected charts and their embed type
+        select_charts_selection.find('input').each(function(i,el){
             var xel = jQuery(el);
-            charts.push([xel.attr('value'), xel.text(), xel.attr('rel')]);
+            chart_selection.push({
+                id:xel.attr('name'),
+                embed:xel.attr('value')
+            });
         });
+        console.log("Chart selection", chart_selection);
+
+        // we take the charts from the select and put them in a JS array
+        select_charts_definition.find('option').each(function(i,el){
+            var xel = jQuery(el);
+            chart_definitions.push({
+                id:xel.attr('value'),
+                label:xel.text(),
+                image:xel.attr('rel')
+            });
+        });
+        console.log("Chart definition", chart_definitions);
+
+        // returns embed type given a chart_id
+        // will return null if chart is not selected
+        function get_embed_type(chart_id){
+            var embed = null;
+            jQuery(chart_selection).each(function(){
+                if (chart_id == this.id){
+                    embed = this.embed;
+                }
+            });
+            return embed;
+        };
+
+        // return all definition info for the chart_id
+        function get_info(chart_id){
+            var info = null;
+            jQuery(chart_definitions).each(function(){
+                if (chart_id == this.id){
+                    info = this
+                }
+            });
+            return info;
+        };
 
         function make_chart_options(charts){
             // builds the chart selection area
             var thisel = jQuery("<div>");
 
-            jQuery(charts).each(function(index, v){
-                var chart_id = v[0];
-                var is_activated = false;
-                if ((lives.indexOf(chart_id) >= 0)||(previews.indexOf(chart_id) >=0)){
-                    is_activated = true;
-                }
+            jQuery(charts).each(function(){
+                var info = this;
+                var chart_id = info.id;
+                var embed_type = get_embed_type(chart_id);
+                var is_activated = (embed_type !== null);
+
                 var p = jQuery("<p style='overflow:hidden'>");
                 var chk_div = jQuery("<div/>");
                 if (!is_activated) {
                     chk_div.css({'display':'none'});
                     p.addClass('disabled');
                 }
+
                 var disabler = jQuery("<input>").attr({
                     'type':'checkbox',
                     'class':'disabler',
@@ -45,10 +86,10 @@ var DavizChartSelection = function (btnel) {
                     $(this).parent().toggleClass('disabled');
                 });
                 var title = jQuery("<span style='font-weight:bold'>");
-                title.text(" " + v[1] + ':');
+                title.text(" " + info.label + ':');
                 p.append(disabler, title, "<br/>", chk_div); 
 
-                p.prepend(jQuery("<img>").attr('src', v[2]+'/image_thumb').css({
+                p.prepend(jQuery("<img>").attr('src', info.image+'/image_thumb').css({
                     'float':'left',
                     'border':'1px solid black',
                     'margin':'3px'
@@ -57,17 +98,16 @@ var DavizChartSelection = function (btnel) {
                 var inp_live = jQuery("<input>").attr({
                     'type':'checkbox',
                     'name':'live',
+                    'class':'selector',
                     'value':chart_id
                     });
                 var inp_preview = inp_live.clone();
                 inp_preview.attr('name', "preview");
+                // to fill in here
 
-                var flag = false;
-                if (previews.indexOf(chart_id) >=0) {
+                if (embed_type === 'preview') {
                     inp_preview.attr('checked', true);
-                    flag = true;
-                }
-                if (lives.indexOf(chart_id) >= 0 || !flag) { // always enable live if not previewed
+                } else {    // live is default
                     inp_live.attr('checked', true);
                 }
 
@@ -86,7 +126,7 @@ var DavizChartSelection = function (btnel) {
             return thisel;
         }
 
-        var nodes = make_chart_options(charts);
+        var nodes = make_chart_options(chart_definitions);
 
         btn.after(popup);
         popup.append(nodes);
@@ -97,61 +137,42 @@ var DavizChartSelection = function (btnel) {
             buttons: {
                 'OK': function () {
 
-                    var l_nodes = nodes.find("p:not(.disabled) input[name='live']:checked");
-                    var p_nodes = nodes.find("p:not(.disabled) input[name='preview']:checked");
+                    // this is what the input_nodes look like 
+                    //<input type="checkbox" name="live" class="selector" value="chart_1">
+                    var input_nodes = nodes.find("p:not(.disabled) input.selector:checked");
+                    console.log("Input nodes", input_nodes);
 
-                    var lives = [];
-                    var previews = [];
-
-                    $(l_nodes).each(function(){
-                            lives.push($(this).val());
-                    });
-
-                    $(p_nodes).each(function(){
-                            previews.push($(this).val());
-                    });
-
-                    select_preview.empty();
-                    $(previews).each(function(){
-                        jQuery("<option/>", {'value':this, 
-                                             'textContent':this, 
-                                             'selected':true}).appendTo(select_preview);
-                    });
-
-                    select_live.empty();
-                    $(lives).each(function(){
-                        jQuery("<option/>", {'value':this, 
-                                             'textContent':this, 
-                                             'selected':true}).appendTo(select_live);
-                    });
-
-
+                    // Show which charts have been selected;
                     var selected_charts = chart_titles.find('.selected_charts');
                     selected_charts.empty();
-                    if (!(lives.length || previews.length)){
+                    if (!input_nodes.length){
                         selected_charts.append("<span>No chart selected</span>");
                     }
 
-                    jQuery("option", select).each(function(i, v){
-                        var option = jQuery(v);
-                        var chart_id = option.attr('value');
-                        var is_activated = false;
-                        if (lives.indexOf(chart_id) >= 0) {
-                            is_activated = 'live';
-                        }
-                        if(previews.indexOf(chart_id) >=0) {
-                            is_activated = 'preview';
-                        }
-                        if (is_activated){
-                            var span = jQuery("<span>");
-                            span.addClass("chart-title");
-                            span.text(option.attr('textContent') + ": " + is_activated);
-                            var img = jQuery("<img>");
-                            var url = jQuery(option).attr('rel');
-                            img.attr('src', url + '/image_icon');
-                            //span.prepend(img);
-                            selected_charts.append(span);
-                        }
+                    // save options into select_charts_selection
+                    select_charts_selection.empty();
+                    $(input_nodes).each(function(){
+                        var node = jQuery(this);
+                        var chart_id = node.attr('value');
+                        var embed = node.attr('name');
+                        jQuery("<input/>", {
+                            'type':'hidden', 
+                            'value':embed,
+                            'name':chart_id
+                         }).appendTo(select_charts_selection);
+
+                        // display that the chart has been selected;
+
+                        var info = get_info(chart_id);
+                        console.log("Info node", info);
+
+                        var span = jQuery("<span>");
+                        span.addClass("chart-title");
+                        span.text(info.label + ": " + embed);
+                        // var img = jQuery("<img>", {'src':info.image + '/image_icon'});
+                        // span.prepend(img);
+                        selected_charts.append(span);
+
                     });
 
                     //return jQuery(this).dialog('close');
@@ -161,9 +182,8 @@ var DavizChartSelection = function (btnel) {
                         type: 'POST',
                         url: url, 
                         data: { 
-                            'previews': select_preview.serialize(),
-                            'lives':select_live.serialize(),
-                            'daviz_uid': uid
+                            'daviz_uid': uid,
+                            'charts':select_charts_selection.find("input").serialize()
                         },
                         error: function () {
                             alert("Could not save data on server");

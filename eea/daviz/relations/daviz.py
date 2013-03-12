@@ -4,11 +4,11 @@
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from persistent.mapping import PersistentMapping
-from urlparse import parse_qs
+from zc.dict import OrderedDict
 from zope.annotation.interfaces import IAnnotations
 from zope.component import getMultiAdapter
 import logging
-from zc.dict import OrderedDict
+#from urlparse import parse_qs
 
 logger = logging.getLogger("eea.indicators")
 
@@ -26,8 +26,17 @@ class SetDavizChart(BrowserView):
         """info is a dict of uid:[list of chart ids] values
         """
         form = self.request.form
-        uid = self.request.form.get("daviz_uid", "").strip()    #needs refactoring
-        #live_charts = parse_qs(live_charts)['live']    #needs refactoring
+        uid = self.request.form.get("daviz_uid", "").strip()    
+
+        #this is a string like: 'chart_1=preview&chart_2=live'
+        #cannot use parse_qs because it doesn't guarantee order
+        req_charts = self.request.form.get("charts", "").strip()
+        charts = []
+
+        for pair in req_charts.split("&"):
+            if pair:
+                chart_id, embed = pair.split("=")
+                charts.append((chart_id, embed))
 
         obj = self.context
         annot = IAnnotations(obj)
@@ -39,7 +48,8 @@ class SetDavizChart(BrowserView):
         if not info:
             info = annot['DAVIZ_CHARTS'][uid] = OrderedDict()
 
-        info.update()   #to be completed
+        info.clear()
+        info.update(charts)
 
         return "OK"
 

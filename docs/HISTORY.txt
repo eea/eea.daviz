@@ -3,6 +3,8 @@ Changelog
 
 7.1-dev - (unreleased)
 ----------------------
+* WIP: Change: make chart selection for relations sortable
+  [tiberich #13993]
 * Feature: added information for contributors
   [ciobabog refs #13892]
 * Change: Added description to controlpanel fields

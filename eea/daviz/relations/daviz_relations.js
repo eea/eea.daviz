@@ -10,7 +10,7 @@ var DavizChartSelection = function (btnel) {
         var select_charts_definition = metadata.find("select.select_charts_definition");
         var select_charts_selection = metadata.find(".select_charts_selection");
 
-        var popup = jQuery("<div>");
+        var popup = jQuery("<div/>");
 
         var chart_definitions = [];        // full chart options
         var chart_selection = [];          // selected charts [chart_id, embed_type]
@@ -61,7 +61,7 @@ var DavizChartSelection = function (btnel) {
 
         function make_chart_options(charts){
             // builds the chart selection area
-            var thisel = jQuery("<div>");
+            var thisel = jQuery("<ul class='reorder' style='padding:0' />");
 
             jQuery(charts).each(function(){
                 var info = this;
@@ -69,7 +69,7 @@ var DavizChartSelection = function (btnel) {
                 var embed_type = get_embed_type(chart_id);
                 var is_activated = (embed_type !== null);
 
-                var p = jQuery("<p style='overflow:hidden'>");
+                var p = jQuery("<li style='overflow:hidden; display:list-item; clear:both' class='list-item'>");
                 var chk_div = jQuery("<div/>");
                 if (!is_activated) {
                     chk_div.css({'display':'none'});
@@ -93,6 +93,11 @@ var DavizChartSelection = function (btnel) {
                     'float':'left',
                     'border':'1px solid black',
                     'margin':'3px'
+                }));
+                p.prepend(jQuery("<span />").attr({
+                    'title':'Drag & drop to set order',
+                    'class':'handler ui-icon ui-icon-arrowthick-2-n-s',
+                    'style':'float:left'
                 }));
 
                 var inp_live = jQuery("<input>").attr({
@@ -131,15 +136,27 @@ var DavizChartSelection = function (btnel) {
         btn.after(popup);
         popup.append(nodes);
 
+        popup.sortable({
+            handle:'.handler',
+            items:'.list-item',
+            placeholder: 'ui-state-highlight',
+            axis:'y'
+        });
+
+        var height = Math.min(popup.height(), 500) + 100;
+        console.log(height);
+
         popup.dialog({
-            modal: true,
             'title':'Select charts',
+            modal: true,
+            minHeight:height,
+            'height':height,
             buttons: {
                 'OK': function () {
 
                     // this is what the input_nodes look like 
                     //<input type="checkbox" name="live" class="selector" value="chart_1">
-                    var input_nodes = nodes.find("p:not(.disabled) input.selector:checked");
+                    var input_nodes = nodes.find("li:not(.disabled) input.selector:checked");
                     console.log("Input nodes", input_nodes);
 
                     // Show which charts have been selected;

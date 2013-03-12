@@ -18,7 +18,7 @@ class SetDavizChart(BrowserView):
 
     We store the charts in an annotation on the context object;
     This annotation is an OrderedDict, where the keys are the UIDs
-    of the daviz objects; As values we have OrderedDicts of 
+    of the daviz objects; As values we have OrderedDicts of
     chart_id:type_of_embed, where type_of_embed is either "live" or "preview"
     """
 
@@ -26,11 +26,11 @@ class SetDavizChart(BrowserView):
         """info is a dict of uid:[list of chart ids] values
         """
         form = self.request.form
-        uid = self.request.form.get("daviz_uid", "").strip()    
+        uid = form.get("daviz_uid", "").strip()
 
         #this is a string like: 'chart_1=preview&chart_2=live'
         #cannot use parse_qs because it doesn't guarantee order
-        req_charts = self.request.form.get("charts", "").strip()
+        req_charts = form.get("charts", "").strip()
         charts = []
 
         for pair in req_charts.split("&"):
@@ -73,7 +73,7 @@ class GetDavizChart(BrowserView):
     def get_daviz(self):
         """Given an object, it will return the daviz+charts assigned
 
-        It returns a mapping of 
+        It returns a mapping of
         <daviz uid A>:
             [(chart_id, chart title, embed_type, fallback_image)],
         <daviz uid B>:

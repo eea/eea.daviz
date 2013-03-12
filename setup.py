@@ -46,6 +46,7 @@ setup(name=NAME,
           'eea.sparql >= 2.4',
           'eea.exhibit > 6.9',
           'eea.googlecharts > 6.9',
+          'zc.dict',
       ],
       extras_require={
           'full': [

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-11-09 13:08+0000\n"
+"POT-Creation-Date: 2013-03-12 16:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: eea\n"
 
-#: ../../daviz/content/schema.py:149
+#: ../../daviz/content/schema.py:153
 msgid "Add a data URL which returns CSV/TSV, standard JSON, Exhibit JSON or Google Spreadsheet"
 msgstr ""
 
-#: ../../daviz/content/schema.py:148
+#: ../../daviz/content/schema.py:152
 msgid "Add data from URL"
 msgstr ""
 
-#: ../../daviz/content/schema.py:159
+#: ../../daviz/content/schema.py:163
 msgid "Changing data sources may break existing visualizations for this context. You should consider creating a new Visualization rather than changing this one if the new data is different than the existing one. Are you sure you want to continue?"
 msgstr ""
 
@@ -33,16 +33,25 @@ msgstr ""
 msgid "Copy and paste a data table from a file/webpage"
 msgstr ""
 
-#: ../../daviz/content/schema.py:193
+#: ../../daviz/content/schema.py:197
 msgid "Data source Organisation"
 msgstr ""
 
-#: ../../daviz/content/schema.py:182
+#: ../../daviz/content/schema.py:186
 msgid "Data source link"
 msgstr ""
 
-#: ../../daviz/content/schema.py:174
+#: ../../daviz/content/schema.py:178
 msgid "Data source title"
+msgstr ""
+
+#: ../../daviz/controlpanel/controlpanel.py:43
+msgid "Default Folder for Visualizations"
+msgstr ""
+
+#: ../../daviz/controlpanel/controlpanel.py:44
+msgid "Default location where
+                                  Visualizations are created"
 msgstr ""
 
 #: ../../daviz/content/schema.py:98
@@ -61,15 +70,15 @@ msgstr ""
 msgid "Provided URL doesn't provide valid data for visualization or this type of data is not supported, yet."
 msgstr ""
 
-#: ../../daviz/content/schema.py:175
+#: ../../daviz/content/schema.py:179
 msgid "Specify data source"
 msgstr ""
 
-#: ../../daviz/content/schema.py:194
+#: ../../daviz/content/schema.py:198
 msgid "Specify data source Organisation"
 msgstr ""
 
-#: ../../daviz/content/schema.py:183
+#: ../../daviz/content/schema.py:187
 msgid "Specify data source link"
 msgstr ""
 
@@ -77,7 +86,7 @@ msgstr ""
 msgid "Upload CSV/TSV data files from your computer"
 msgstr ""
 
-#: ../../daviz/content/schema.py:158
+#: ../../daviz/content/schema.py:162
 msgid "Warning"
 msgstr ""
 

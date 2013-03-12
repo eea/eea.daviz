@@ -46,18 +46,18 @@ var DavizChartSelection = function (btnel) {
                 }
             });
             return embed;
-        };
+        }
 
         // return all definition info for the chart_id
         function get_info(chart_id){
             var info = null;
             jQuery(chart_definitions).each(function(){
                 if (chart_id == this.id){
-                    info = this
+                    info = this;
                 }
             });
             return info;
-        };
+        }
 
         function make_chart_options(charts){
             // builds the chart selection area
@@ -87,7 +87,7 @@ var DavizChartSelection = function (btnel) {
                 });
                 var title = jQuery("<span style='font-weight:bold'>");
                 title.text(" " + info.label + ':');
-                p.append(disabler, title, "<br/>", chk_div); 
+                p.append(disabler, title, "<br/>", chk_div);
 
                 p.prepend(jQuery("<img>").attr('src', info.image+'/image_thumb').css({
                     'float':'left',
@@ -154,7 +154,7 @@ var DavizChartSelection = function (btnel) {
             buttons: {
                 'OK': function () {
 
-                    // this is what the input_nodes look like 
+                    // this is what the input_nodes look like
                     //<input type="checkbox" name="live" class="selector" value="chart_1">
                     var input_nodes = nodes.find("li:not(.disabled) input.selector:checked");
                     console.log("Input nodes", input_nodes);
@@ -173,7 +173,7 @@ var DavizChartSelection = function (btnel) {
                         var chart_id = node.attr('value');
                         var embed = node.attr('name');
                         jQuery("<input/>", {
-                            'type':'hidden', 
+                            'type':'hidden',
                             'value':embed,
                             'name':chart_id
                          }).appendTo(select_charts_selection);
@@ -197,8 +197,8 @@ var DavizChartSelection = function (btnel) {
                     var b = this;
                     jQuery.ajax({
                         type: 'POST',
-                        url: url, 
-                        data: { 
+                        url: url,
+                        data: {
                             'daviz_uid': uid,
                             'charts':select_charts_selection.find("input").serialize()
                         },
@@ -209,7 +209,7 @@ var DavizChartSelection = function (btnel) {
                             jQuery(b).dialog('close');
                         }
                     });
-                }, 
+                },
                 'Cancel': function () {
                     // select.replaceWith(cloned_select);
                     jQuery(this).dialog('close');

@@ -4,10 +4,10 @@
 if (!Array.prototype.indexOf) {
     Array.prototype.indexOf = function (searchElement /*, fromIndex */ ) {
         "use strict";
-        if (this == null) {
+        if (this === null) {
             throw new TypeError();
         }
-        var t = Object(this);
+        var t = new Object(this);
         var len = t.length >>> 0;
         if (len === 0) {
             return -1;
@@ -17,7 +17,7 @@ if (!Array.prototype.indexOf) {
             n = Number(arguments[1]);
             if (n != n) { // shortcut for verifying if it's NaN
                 n = 0;
-            } else if (n != 0 && n != Infinity && n != -Infinity) {
+            } else if (n !== 0 && n !== Infinity && n !== -Infinity) {
                 n = (n > 0 || -1) * Math.floor(Math.abs(n));
             }
         }
@@ -31,7 +31,7 @@ if (!Array.prototype.indexOf) {
             }
         }
         return -1;
-    }
+    };
 }
 
 var DavizChartSelection = function (btnel) {
@@ -60,8 +60,6 @@ var DavizChartSelection = function (btnel) {
             });
             order.push(chart_id);
         });
-        console.log("Chart selection", chart_selection);
-        console.log("Chart order", order);
 
         // we take the charts from the select and put them in a JS array
         select_charts_definition.find('option').each(function(i,el){
@@ -72,19 +70,14 @@ var DavizChartSelection = function (btnel) {
                 label:xel.text(),
                 image:xel.attr('rel')
             });
-            if (order.indexOf(chart_id) === -1) order.push(chart_id);            
+            if (order.indexOf(chart_id) === -1) { order.push(chart_id) };
         });
-        console.log("Chart definition", chart_definitions);
-        console.log("Chart order", order);
 
         function sorter(a,b) {
-            console.log("Sorting", a, b, order.indexOf(a.id), order.indexOf(b.id));
             return order.indexOf(a.id) > order.indexOf(b.id);
         }
 
         chart_definitions.sort(sorter);
-        // TODO: reorder charts based on order from select_charts
-        // console.log("Chart definition", chart_definitions);
 
         // returns embed type given a chart_id
         // will return null if chart is not selected
@@ -135,7 +128,7 @@ var DavizChartSelection = function (btnel) {
                 });
                 disabler.change(function(){
                     chk_div.fadeToggle();
-                    $(this).parent().toggleClass('disabled');
+                    jQuery(this).parent().toggleClass('disabled');
                 });
                 var title = jQuery("<span style='font-weight:bold'>");
                 title.text(" " + info.label + ':');
@@ -209,7 +202,6 @@ var DavizChartSelection = function (btnel) {
                     // this is what the input_nodes look like
                     //<input type="checkbox" name="live" class="selector" value="chart_1">
                     var input_nodes = nodes.find("li:not(.disabled) input.selector:checked");
-                    // console.log("Input nodes", input_nodes);
 
                     // Show which charts have been selected;
                     var selected_charts = chart_titles.find('.selected_charts');
@@ -220,7 +212,7 @@ var DavizChartSelection = function (btnel) {
 
                     // save options into select_charts_selection
                     select_charts_selection.empty();
-                    $(input_nodes).each(function(){
+                    jQuery(input_nodes).each(function(){
                         var node = jQuery(this);
                         var chart_id = node.attr('value');
                         var embed = node.attr('name');
@@ -233,7 +225,6 @@ var DavizChartSelection = function (btnel) {
                         // display that the chart has been selected;
 
                         var info = get_info(chart_id);
-                        // console.log("Info node", info);
 
                         var span = jQuery("<span>");
                         span.addClass("chart-title");

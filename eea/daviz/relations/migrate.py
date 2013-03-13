@@ -1,3 +1,5 @@
+"""Migration for daviz/eea.relations integration
+"""
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from zope.annotation.interfaces import IAnnotations

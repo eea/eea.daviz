@@ -23,7 +23,7 @@ var DavizChartSelection = function (btnel) {
                 embed:xel.attr('value')
             });
         });
-        console.log("Chart selection", chart_selection);
+        // console.log("Chart selection", chart_selection);
 
         // we take the charts from the select and put them in a JS array
         select_charts_definition.find('option').each(function(i,el){
@@ -34,7 +34,8 @@ var DavizChartSelection = function (btnel) {
                 image:xel.attr('rel')
             });
         });
-        console.log("Chart definition", chart_definitions);
+        // TODO: reorder charts based on order from select_charts
+        // console.log("Chart definition", chart_definitions);
 
         // returns embed type given a chart_id
         // will return null if chart is not selected
@@ -63,6 +64,8 @@ var DavizChartSelection = function (btnel) {
             // builds the chart selection area
             var thisel = jQuery("<ul class='reorder' style='padding:0' />");
 
+
+            // TODO: preserve order from selected charts
             jQuery(charts).each(function(){
                 var info = this;
                 var chart_id = info.id;
@@ -143,8 +146,8 @@ var DavizChartSelection = function (btnel) {
             axis:'y'
         });
 
+        // we need to hardcode height otherwise the dialog gets too minified
         var height = Math.min(popup.height(), 500) + 100;
-        console.log(height);
 
         popup.dialog({
             'title':'Select charts',
@@ -157,7 +160,7 @@ var DavizChartSelection = function (btnel) {
                     // this is what the input_nodes look like
                     //<input type="checkbox" name="live" class="selector" value="chart_1">
                     var input_nodes = nodes.find("li:not(.disabled) input.selector:checked");
-                    console.log("Input nodes", input_nodes);
+                    // console.log("Input nodes", input_nodes);
 
                     // Show which charts have been selected;
                     var selected_charts = chart_titles.find('.selected_charts');
@@ -181,7 +184,7 @@ var DavizChartSelection = function (btnel) {
                         // display that the chart has been selected;
 
                         var info = get_info(chart_id);
-                        console.log("Info node", info);
+                        // console.log("Info node", info);
 
                         var span = jQuery("<span>");
                         span.addClass("chart-title");

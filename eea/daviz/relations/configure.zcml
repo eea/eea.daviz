@@ -26,4 +26,10 @@
                 name="daviz_relations.js" 
                 file="daviz_relations.js" />
 
+  <browser:page for="*"                                                                                                                                                                        
+                name="migrate_daviz_relations"
+                class=".migrate.MigrateRelations"
+                permission="cmf.ManagePortal"
+                />
+
 </configure>

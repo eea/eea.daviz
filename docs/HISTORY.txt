@@ -3,7 +3,10 @@ Changelog
 
 7.1-dev - (unreleased)
 ----------------------
-* WIP: Change: make chart selection for relations sortable
+* Change: make chart selection for relations sortable
+  [tiberich #13993]
+* Upgrade step: go to /www/@@migrate_daviz_relations to migrate to sortable
+  relations for daviz/ims integration
   [tiberich #13993]
 * Feature: added information for contributors
   [ciobabog refs #13892]

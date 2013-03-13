@@ -1,5 +1,39 @@
 /*jslint white: false, browser: true, devel: true */
 
+// InternetExplorer 8 compatibility
+if (!Array.prototype.indexOf) {
+    Array.prototype.indexOf = function (searchElement /*, fromIndex */ ) {
+        "use strict";
+        if (this == null) {
+            throw new TypeError();
+        }
+        var t = Object(this);
+        var len = t.length >>> 0;
+        if (len === 0) {
+            return -1;
+        }
+        var n = 0;
+        if (arguments.length > 1) {
+            n = Number(arguments[1]);
+            if (n != n) { // shortcut for verifying if it's NaN
+                n = 0;
+            } else if (n != 0 && n != Infinity && n != -Infinity) {
+                n = (n > 0 || -1) * Math.floor(Math.abs(n));
+            }
+        }
+        if (n >= len) {
+            return -1;
+        }
+        var k = n >= 0 ? n : Math.max(len - Math.abs(n), 0);
+        for (; k < len; k++) {
+            if (k in t && t[k] === searchElement) {
+                return k;
+            }
+        }
+        return -1;
+    }
+}
+
 var DavizChartSelection = function (btnel) {
         var btn            = jQuery(btnel);
         var chart_titles   = btn.parent().parent();
@@ -14,26 +48,41 @@ var DavizChartSelection = function (btnel) {
 
         var chart_definitions = [];        // full chart options
         var chart_selection = [];          // selected charts [chart_id, embed_type]
+        var order = [];     // temporary array used to hold order
 
         // we need an array with the selected charts and their embed type
         select_charts_selection.find('input').each(function(i,el){
             var xel = jQuery(el);
+            var chart_id = xel.attr('name');
             chart_selection.push({
-                id:xel.attr('name'),
+                id:chart_id,
                 embed:xel.attr('value')
             });
+            order.push(chart_id);
         });
-        // console.log("Chart selection", chart_selection);
+        console.log("Chart selection", chart_selection);
+        console.log("Chart order", order);
 
         // we take the charts from the select and put them in a JS array
         select_charts_definition.find('option').each(function(i,el){
             var xel = jQuery(el);
+            var chart_id = xel.attr('value');
             chart_definitions.push({
-                id:xel.attr('value'),
+                id:chart_id,
                 label:xel.text(),
                 image:xel.attr('rel')
             });
+            if (order.indexOf(chart_id) === -1) order.push(chart_id);            
         });
+        console.log("Chart definition", chart_definitions);
+        console.log("Chart order", order);
+
+        function sorter(a,b) {
+            console.log("Sorting", a, b, order.indexOf(a.id), order.indexOf(b.id));
+            return order.indexOf(a.id) > order.indexOf(b.id);
+        }
+
+        chart_definitions.sort(sorter);
         // TODO: reorder charts based on order from select_charts
         // console.log("Chart definition", chart_definitions);
 

@@ -25,7 +25,7 @@ class MigrateRelations(BrowserView):
         self.out = StringIO()
         catalog = getToolByName(self.context, 'portal_catalog')
 
-        types = ['Assessment']
+        types = ['AssessmentPart']
 
         self.log("Started migration of daviz relations")
         self.log("Will migrate the following types: %s" % 
@@ -38,7 +38,7 @@ class MigrateRelations(BrowserView):
             for brain in brains:
                 obj = brain.getObject()
                 annot = IAnnotations(obj)
-                if not "DAVIZ_CHARTS" in annot.keys():
+                if "DAVIZ_CHARTS" not in annot:
                     continue
 
                 container = annot['DAVIZ_CHARTS']
@@ -51,7 +51,7 @@ class MigrateRelations(BrowserView):
                     for chart_id in container.pop('preview'):
                         container[chart_id] = 'preview'
 
-                self.log("Migrated daviz relations for %s" % obj)
+                self.log("Migrated daviz relations for %s" % obj.absolute_url())
 
             self.log("Done migrating all objects of type: %s" % _type)
             

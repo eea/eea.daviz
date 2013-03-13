@@ -67,19 +67,19 @@
                      <input type="button" class="popup_btn" value="Please wait..." style="float:right"/>
                     </div>
                     <div class="selected_charts">
-                        <span class="chart-title" tal:repeat="chart python:charts.keys()" >
-                            <tal:def define="possible_chart python:[x for x in davizview.tabs if x['name'] == chart];">
+                        <span class="chart-title" tal:repeat="chart charts" >
+                            <tal:def define="possible_chart python:[x for x in davizview.tabs if x['name'] == chart[0]];">
                                 <!-- we need to see if the chart id still exists in daviz -->
                                 <tal:def define="thischart python:possible_chart and possible_chart[0]" >
                                     <!--[><img tal:attributes="src string:${thischart/fallback-image}/image_icon" /><]-->
                                     <span>
                                         <span tal:replace="thischart/title" />: 
-                                        <span tal:content="python:charts[chart]" />
+                                        <span tal:content="python:chart[2]" />
                                     </span>
                                 </tal:def>
                             </tal:def>
                         </span>
-                        <span tal:condition="python: None" style="color:red" >No chart selected!</span>
+                        <span tal:condition="python: not charts" style="color:red" >No chart selected!</span>
                     </div>
                 </div>
             <span class="metadata" style="display:none" >
@@ -100,7 +100,7 @@
                 <!--This is used to save chart selection in DB-->
                 <div class="select_charts_selection">
                     <tal:rep tal:repeat="chart charts" >
-                        <input type="hidden" tal:attributes="name chart; value python:charts[chart]" />
+                        <input type="hidden" tal:attributes="name python:chart[0]; value python:chart[2]" />
                     </tal:rep>
                 </div>
 

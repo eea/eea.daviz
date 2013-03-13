@@ -8,7 +8,6 @@ from zc.dict import OrderedDict
 from zope.annotation.interfaces import IAnnotations
 from zope.component import getMultiAdapter
 import logging
-#from urlparse import parse_qs
 
 logger = logging.getLogger("eea.indicators")
 
@@ -29,6 +28,7 @@ class SetDavizChart(BrowserView):
         uid = form.get("daviz_uid", "").strip()
 
         #this is a string like: 'chart_1=preview&chart_2=live'
+        #from urlparse import parse_qs
         #cannot use parse_qs because it doesn't guarantee order
         req_charts = form.get("charts", "").strip()
         charts = []
@@ -66,18 +66,19 @@ class GetDavizChart(BrowserView):
     def get_charts(self, uid):
         """return daviz charts as a dict of {chart_id:"preview|live"}
         """
-        annot = IAnnotations(self.context).get('DAVIZ_CHARTS', {})
-        res = annot.get(uid, {})
-        return res
+        info = self.get_daviz().get(uid)
+        if info:
+            return info[1]  #only the charts
+        return []
 
     def get_daviz(self):
         """Given an object, it will return the daviz+charts assigned
 
         It returns a mapping of
         <daviz uid A>:
-            [(chart_id, chart title, embed_type, fallback_image)],
+            [daviz, (chart_id, chart title, embed_type, fallback_image)],
         <daviz uid B>:
-            [(chart_id, chart title, embed_type, fallback_image)],
+            [daviz, (chart_id, chart title, embed_type, fallback_image)],
         """
         annot = IAnnotations(self.context).get('DAVIZ_CHARTS', {})
 
@@ -88,21 +89,21 @@ class GetDavizChart(BrowserView):
             if not brains:
                 logger.warning("Couldn't find visualization with UID %s" % uid)
                 continue
-            obj = brains[0].getObject()
-            tabs = getMultiAdapter((obj, self.request),
+            daviz = brains[0].getObject()
+            tabs = getMultiAdapter((daviz, self.request),
                                    name="daviz-view.html").tabs
 
             annot_info = annot.get(uid, {})
             charts = []
 
-            for chart in annot_info.keys():
+            for chart_id in annot_info.keys():
                 for tab in tabs:
-                    if tab['name'] == chart:
+                    if tab['name'] == chart_id:
                         #code = None #for the future, needs api in daviz
-                        embed_type = annot_info[chart]
-                        charts.append((chart, tab['title'], embed_type,
-                                               tab['fallback-image']))
-            info[uid] = (obj, charts)
+                        embed_type = annot_info[chart_id]
+                        charts.append((chart_id, tab['title'], embed_type,
+                                       tab['fallback-image']))
+            info[uid] = (daviz, charts)
 
         return info
 

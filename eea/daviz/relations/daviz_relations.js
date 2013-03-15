@@ -1,4 +1,5 @@
 /*jslint white: false, browser: true, devel: true */
+/*global  jQuery: false */
 
 // InternetExplorer 8 compatibility
 if (!Array.prototype.indexOf) {
@@ -7,7 +8,7 @@ if (!Array.prototype.indexOf) {
         if (this === null) {
             throw new TypeError();
         }
-        var t = new Object(this);
+        var t = {};
         var len = t.length >>> 0;
         if (len === 0) {
             return -1;
@@ -70,7 +71,7 @@ var DavizChartSelection = function (btnel) {
                 label:xel.text(),
                 image:xel.attr('rel')
             });
-            if (order.indexOf(chart_id) === -1) { order.push(chart_id) };
+            if (order.indexOf(chart_id) === -1) { order.push(chart_id); }
         });
 
         function sorter(a,b) {

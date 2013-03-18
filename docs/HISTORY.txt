@@ -1,6 +1,9 @@
 Changelog
 =========
 
+7.3-dev - (unreleased)
+----------------------
+
 7.2 - (2013-03-18)
 ------------------
 * Bug fix: Fixed loss of data settings customizations if one would have changed

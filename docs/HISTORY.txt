@@ -3,6 +3,10 @@ Changelog
 
 7.2-dev - (unreleased)
 ----------------------
+* Bug fix: Fixed loss of data settings customizations if one would have changed
+  any other metadata than 'spreadsheet (Copy and paste a data table from a
+  file/webpage)'within Edit tab
+  [voineali refs #14172]
 
 7.1 - (2013-03-15)
 ------------------

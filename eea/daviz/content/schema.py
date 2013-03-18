@@ -56,8 +56,16 @@ class DavizStringField(StringField):
     def set(self, instance, value, **kwargs):
         """ Custom set
         """
+        try:
+            old = self.getStorage(instance).get(
+                self.getName(), instance, **kwargs)
+        except Exception, err:
+            logger.debug(err)
+            old = u''
+
         super(DavizStringField, self).set(instance, value, **kwargs)
-        notify(DavizSpreadSheetChanged(instance, spreadsheet=value))
+        if old != value:
+            notify(DavizSpreadSheetChanged(instance, spreadsheet=value))
 
 class DavizUrlField(StringField):
     """ Notify on set

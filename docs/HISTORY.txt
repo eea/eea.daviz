@@ -1,8 +1,8 @@
 Changelog
 =========
 
-7.2-dev - (unreleased)
-----------------------
+7.2 - (2013-03-18)
+------------------
 * Bug fix: Fixed loss of data settings customizations if one would have changed
   any other metadata than 'spreadsheet (Copy and paste a data table from a
   file/webpage)'within Edit tab

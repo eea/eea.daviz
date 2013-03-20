@@ -1,7 +1,7 @@
 """ Daviz Visualization
 """
 from zope.interface import implements
-from plone.app.folder.folder import ATFolder
+from Products.ATContentTypes.content.folder import ATFolder
 from eea.daviz.content.interfaces import IDavizVisualization
 from eea.daviz.content import schema as daviz_schema
 

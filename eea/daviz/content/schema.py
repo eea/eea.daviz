@@ -1,19 +1,22 @@
 """ Daviz content schema
 """
-import logging
-from zope.event import notify
-from zope.component import queryAdapter
+
+from Products.ATContentTypes.content.folder import ATFolder
 from Products.Archetypes.atapi import Schema
-from plone.app.folder.folder import ATFolder
-from eea.daviz.config import EEAMessageFactory as _
-from eea.daviz.events import DavizRelationsChanged
-from eea.daviz.events import DavizSpreadSheetChanged
-from eea.daviz.events import DavizExternalChanged
 from Products.Archetypes.public import StringField, ReferenceField
 from Products.Archetypes.public import TextAreaWidget, StringWidget, LabelWidget
 from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
-from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
 from eea.app.visualization.interfaces import IDataProvenance
+from eea.daviz.config import EEAMessageFactory as _
+from eea.daviz.events import DavizExternalChanged
+from eea.daviz.events import DavizRelationsChanged
+from eea.daviz.events import DavizSpreadSheetChanged
+from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
+from zope.component import queryAdapter
+from zope.event import notify
+import logging
+
+
 logger = logging.getLogger('eea.daviz')
 #
 # eea.relations

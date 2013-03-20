@@ -1,8 +1,8 @@
 Changelog
 =========
 
-7.3-dev - (unreleased)
-----------------------
+7.3 - (2013-03-20)
+------------------
 * Bug fix: make DavizVisualization inherit from Products.ATContentTypes
   instead of plone.app.folder to avoid problem with LinguaPlone generated
   mutators

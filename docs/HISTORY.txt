@@ -1,6 +1,9 @@
 Changelog
 =========
 
+7.4-dev - (unreleased)
+----------------------
+
 7.3 - (2013-03-20)
 ------------------
 * Bug fix: make DavizVisualization inherit from Products.ATContentTypes

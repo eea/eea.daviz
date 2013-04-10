@@ -70,7 +70,7 @@ class MigrateRelations(BrowserView):
 
                 obj._p_changed = True
                 self.log("Content of %s: %s" % (obj, 
-                                   list(obj.__annotations__['DAVIZ_CHARTS'].items()))
+                                   list(obj.__annotations__['DAVIZ_CHARTS'].items())))
 
                 self.log("Migrated daviz relations for %s" % obj.absolute_url())
 

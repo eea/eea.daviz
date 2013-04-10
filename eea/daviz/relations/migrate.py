@@ -4,7 +4,10 @@ from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from zope.annotation.interfaces import IAnnotations
 from StringIO import StringIO
+from persistent.mapping import PersistentMapping
+from zc.dict import OrderedDict
 import logging
+import transaction
 
 logger = logging.getLogger("eea.daviz.relations")
     
@@ -44,18 +47,36 @@ class MigrateRelations(BrowserView):
                     continue
 
                 container = annot['DAVIZ_CHARTS']
+                d = {}
 
-                if container.has_key('live'):
-                    for chart_id in container.pop('live'):
-                        container[chart_id] = 'live'
+                for UID in container.keys():
+                    d[UID] = OrderedDict()
+                    daviz = container[UID]
 
-                if container.has_key('preview'):
-                    for chart_id in container.pop('preview'):
-                        container[chart_id] = 'preview'
+                    if daviz.has_key('live'):
+                        for chart_id in daviz.pop('live'):
+                            daviz[chart_id] = 'live'
+                            d[UID][chart_id] = 'live'
+
+                    if daviz.has_key('preview'):
+                        for chart_id in daviz.pop('preview'):
+                            daviz[chart_id] = 'preview'
+                            d[UID][chart_id] = 'preview'
+
+                    d[UID].update(daviz)
+                
+                obj.__annotations__['DAVIZ_CHARTS'] = PersistentMapping()
+                obj.__annotations__['DAVIZ_CHARTS'].update(d)
+
+                obj._p_changed = True
+                self.log("Content of %s: %s" % (obj, 
+                                   list(obj.__annotations__['DAVIZ_CHARTS'].items()))
 
                 self.log("Migrated daviz relations for %s" % obj.absolute_url())
 
             self.log("Done migrating all objects of type: %s" % _type)
+
+        transaction.commit()
             
         self.log("Finished migration of daviz relations")
 

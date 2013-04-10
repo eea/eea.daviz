@@ -51,6 +51,8 @@ class SetDavizChart(BrowserView):
         info.clear()
         info.update(charts)
 
+        self.context._p_changed = True
+
         return "OK"
 
 

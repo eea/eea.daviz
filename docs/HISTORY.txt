@@ -3,6 +3,8 @@ Changelog
 
 7.4-dev - (unreleased)
 ----------------------
+* Bug fix: fix migration in eea.relations integration
+  [tiberich #14267]
 
 7.3 - (2013-03-20)
 ------------------

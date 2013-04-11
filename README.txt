@@ -147,6 +147,8 @@ Dependencies
   - `eea.forms`_
   - `eea.googlecharts`_
   - `eea.exhibit`_
+  - `collective.js.jqueryui < 1.9`_ (Plone 4.0, 4.1, 4.2)
+  - `collective.js.jqueryui > 1.9`_ (Plone 4.3+)
 
 The following package are optional. Still they can improve the user experience with this tool:
   - `eea.relations`_
@@ -246,3 +248,5 @@ EEA_ - European Environment Agency (EU)
 .. |Daviz features diagram| image:: http://daviz.eionet.europa.eu/learn-more/davizdiagram.png/@@images/2d254f67-9af2-476c-be4c-8f1a5e602627.png
 .. |DaViz logo| image:: http://daviz.eionet.europa.eu/logo.png
 .. _`Plone 4.x`: http://plone.org
+.. _`collective.js.jqueryui < 1.9`: https://pypi.python.org/pypi/collective.js.jqueryui
+.. _`collective.js.jqueryui > 1.9`: https://pypi.python.org/pypi/collective.js.jqueryui

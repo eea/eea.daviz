@@ -245,7 +245,7 @@ EEA_ - European Environment Agency (EU)
 .. _`Google Charts`: http://code.google.com/apis/chart
 .. _`plone.recipe.zope2instance`: http://pypi.python.org/pypi/plone.recipe.zope2instance
 .. _`zc.buildout`: http://pypi.python.org/pypi/zc.buildout
-.. |Daviz features diagram| image:: http://daviz.eionet.europa.eu/learn-more/davizdiagram.png/@@images/2d254f67-9af2-476c-be4c-8f1a5e602627.png
+.. |Daviz features diagram| image:: http://daviz.eionet.europa.eu/learn-more/davizdiagram.png/image_large
 .. |DaViz logo| image:: http://daviz.eionet.europa.eu/logo.png
 .. _`Plone 4.x`: http://plone.org
 .. _`collective.js.jqueryui < 1.9`: https://pypi.python.org/pypi/collective.js.jqueryui

@@ -10,7 +10,7 @@ import logging
 import transaction
 
 logger = logging.getLogger("eea.daviz.relations")
-    
+
 
 class MigrateRelations(BrowserView):
     """A page that will migrate unsorted relations to sorted
@@ -33,7 +33,7 @@ class MigrateRelations(BrowserView):
         types = ['AssessmentPart']
 
         self.log("Started migration of daviz relations")
-        self.log("Will migrate the following types: %s" % 
+        self.log("Will migrate the following types: %s" %
                         ", ".join(types))
 
         for _type in types:
@@ -64,20 +64,20 @@ class MigrateRelations(BrowserView):
                             d[UID][chart_id] = 'preview'
 
                     d[UID].update(daviz)
-                
+
                 obj.__annotations__['DAVIZ_CHARTS'] = PersistentMapping()
                 obj.__annotations__['DAVIZ_CHARTS'].update(d)
 
                 obj._p_changed = True
-                self.log("Content of %s: %s" % (obj, 
-                                   list(obj.__annotations__['DAVIZ_CHARTS'].items())))
+                self.log("Content of %s: %s" % (obj,
+                             list(obj.__annotations__['DAVIZ_CHARTS'].items())))
 
                 self.log("Migrated daviz relations for %s" % obj.absolute_url())
 
             self.log("Done migrating all objects of type: %s" % _type)
 
         transaction.commit()
-            
+
         self.log("Finished migration of daviz relations")
 
         self.out.seek(0)

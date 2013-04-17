@@ -1,6 +1,9 @@
 Changelog
 =========
 
+7.5-dev - (unreleased)
+----------------------
+
 7.4 - (2013-04-17)
 ------------------
 * Bug fix: fix migration in eea.relations integration

@@ -1,12 +1,9 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-04-29 14:49+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"PO-Revision-Date: 2013-04-29 11:29-0300\n"
+"Last-Translator: Gustavo Lepri <gustavolepri@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -15,92 +12,87 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: eea\n"
+"Domain: DOMAIN\n"
 
 #: ../../daviz/content/schema.py:164
 msgid "Add a data URL which returns CSV/TSV, standard JSON, Exhibit JSON or Google Spreadsheet"
-msgstr ""
+msgstr "Adicionar uma URL de dados que retorna CSV/TSV, JSON padrão,  JSON de exbição ou Planilha do Google"
 
 #: ../../daviz/content/schema.py:163
 msgid "Add data from URL"
-msgstr ""
+msgstr "Adicionar dados a partir de uma URL"
 
 #: ../../daviz/content/schema.py:174
 msgid "Changing data sources may break existing visualizations for this context. You should consider creating a new Visualization rather than changing this one if the new data is different than the existing one. Are you sure you want to continue?"
-msgstr ""
+msgstr "Alterar fontes de dados podem quebrar visualizações existentes para este contexto. Você deve considerar a criação de uma nova visualização ao invés de mudar este se os novos dados são diferentes do existente. Tem certeza de que deseja continuar?"
 
 #: ../../daviz/content/schema.py:138
 msgid "Copy and paste a data table from a file/webpage"
-msgstr ""
+msgstr "Copiar e colar uma tabela de dados de um arquivo/página web"
 
 #: ../../daviz/content/schema.py:208
 msgid "Data source Organisation"
-msgstr ""
+msgstr "Fonte de dados da Organização"
 
 #: ../../daviz/content/schema.py:197
 msgid "Data source link"
-msgstr ""
+msgstr "Link da fonte de dados"
 
 #: ../../daviz/content/schema.py:189
 msgid "Data source title"
-msgstr ""
+msgstr "Título da fonte de dados"
 
 #: ../../daviz/controlpanel/controlpanel.py:43
 msgid "Default Folder for Visualizations"
-msgstr ""
-
-#: ../../daviz/controlpanel/controlpanel.py:44
-msgid "Default location where
-                                  Visualizations are created"
-msgstr ""
+msgstr "Pasta Padrão para as Visualizações"
 
 #: ../../daviz/content/schema.py:109
 msgid "Find and reuse existing data"
-msgstr ""
+msgstr "Encontrar e reutilizar dados existentes"
 
 #: ../../daviz/browser/zpt/caching.pt:6
 msgid "Invalidate cache"
-msgstr ""
+msgstr "Cache inválido"
 
 #: ../../daviz/content/schema.py:110
 msgid "Look for compatible datasets in catalogue (e.g. visualization data, .tsv, .csv, SPARQL, etc)"
-msgstr ""
+msgstr "Procurar no catálogo por conjuntos de dados compatíveis (ex: visualization data, .tsv, .csv, SPARQL, etc)"
 
 #: ../../daviz/content/validators.py:48
 msgid "Provided URL doesn't provide valid data for visualization or this type of data is not supported, yet."
-msgstr ""
+msgstr "A URL informada não provê dados válidos para visualizações ou este tipo de dados ainda não é suportado."
 
 #: ../../daviz/content/schema.py:190
 msgid "Specify data source"
-msgstr ""
+msgstr "Especificar fonte de dados"
 
 #: ../../daviz/content/schema.py:209
 msgid "Specify data source Organisation"
-msgstr ""
+msgstr "Especificar fonte de dados d"
 
 #: ../../daviz/content/schema.py:198
 msgid "Specify data source link"
-msgstr ""
+msgstr "Especificar link da fonte de dados"
 
 #: ../../daviz/content/schema.py:119
 msgid "Upload CSV/TSV data files from your computer"
-msgstr ""
+msgstr "Upload arquivos CSV/TSV a partir do seu computador"
 
 #: ../../daviz/content/schema.py:173
 msgid "Warning"
-msgstr ""
+msgstr "Aviso"
 
 #: ../../daviz/content/validators.py:27
 msgid "You should provide data in a valid CSV format(.csv, .tsv, etc)"
-msgstr ""
+msgstr "Você deveria prover dados em um formato CSV válido (.csv, .tsv, etc)"
 
 #. Default: "Check these <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/examples\">data examples</a> or read <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/prepare-data\">how to prepare data</a>"
 #: ../../daviz/content/schema.py:139
 msgid "copy-paste-description"
-msgstr ""
+msgstr "Default: \"Verifique estes <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/examples\">exemplos de dados</a> ou leia <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/prepare-data\">como preparar dados</a>\""
 
 #. Default: "Drag and drop '.tsv, .csv files' in the area below, see <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/examples\">data examples</a> or read <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/prepare-data\">how to prepare data</a>"
 #: ../../daviz/content/schema.py:120
 msgid "upload-csv-description"
-msgstr ""
+msgstr "Default: \"Arraste e solte 'arquivos .tsv, .csv' na área abaixo, veja <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/examples\">dados de exemplos</a> ou leia <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/prepare-data\">como preparar dados</a>\""
 

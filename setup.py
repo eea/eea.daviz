@@ -47,6 +47,7 @@ setup(name=NAME,
           'eea.exhibit > 6.9',
           'eea.googlecharts > 6.9',
           'zc.dict',
+          'Products.DataGridField',
       ],
       extras_require={
           'full': [

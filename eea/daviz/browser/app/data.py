@@ -31,6 +31,7 @@ class Info(BrowserView):
     def fallback(self):
         """ Try to get data info from relatedItems
         """
+#        import pdb; pdb.set_trace()
         relatedItems = self.context.getRelatedItems()
         for item in relatedItems:
             info = queryMultiAdapter((item, self.request),
@@ -43,6 +44,7 @@ class Info(BrowserView):
         return self.info
 
     def __call__(self, **kwargs):
+#        import pdb; pdb.set_trace()
         field = self.context.getField('dataTitle')
         if field:
             self.info['source']['title'] = field.getAccessor(self.context)()

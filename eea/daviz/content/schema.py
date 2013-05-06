@@ -16,6 +16,10 @@ from zope.component import queryAdapter
 from zope.event import notify
 import logging
 
+from Products.DataGridField import DataGridField, DataGridWidget
+from Products.DataGridField.Column import Column
+from Products.DataGridField.SelectColumn import SelectColumn
+
 
 logger = logging.getLogger('eea.daviz')
 #
@@ -178,8 +182,8 @@ SCHEMA = Schema((
                     "Are you sure you want to continue?"
             ),
             i18n_domain="eea",
-            helper_js=('++resource++eea.daviz.warnings.js',),
-            helper_css=('++resource++eea.daviz.edit.css',),
+#            helper_js=('++resource++eea.daviz.warnings.js',),
+#            helper_css=('++resource++eea.daviz.edit.css',),
             visible={'edit': 'visible', 'view': 'invisible'}
         )
     ),
@@ -210,6 +214,29 @@ SCHEMA = Schema((
             i18n_domain="eea",
         )
     ),
+
+    DataGridField(
+        name='provenance',
+        searchable=True,
+        widget=DataGridWidget(
+            label="Data Provenance",
+            description="""List of Data Provenance""",
+            columns={'title':Column("Title"),
+                     'link':Column("Link"),
+                     'owner':Column("Owner"),
+                     },
+            auto_insert=True,
+            i18n_domain='eea',
+            helper_js=('++resource++eea.daviz.datasource.js', 'datagridwidget.js'),
+            helper_css=('++resource++eea.daviz.datasource.css', 'datagridwidget.css')
+            ),
+        #schemata="Classification",
+        columns=("title", "link", "owner"),
+        #required_for_published=True,
+        #validators=('unique_specification_code',),
+        #allow_empty_rows=True,
+
+    ),    
 ))
 
 DAVIZ_SCHEMA = ATFolder.schema.copy() + SCHEMA.copy()
@@ -246,5 +273,7 @@ def finalizeSchema(schema=DAVIZ_SCHEMA):
     schema.moveField('dataTitle', after='description')
     schema.moveField('dataLink', after='dataTitle')
     schema.moveField('dataOwner', after='dataLink')
+
+    schema.moveField('provenance', after='dataOwner')
 
 finalizeSchema(DAVIZ_SCHEMA)

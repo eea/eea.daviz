@@ -230,13 +230,8 @@ SCHEMA = Schema((
             helper_js=('++resource++eea.daviz.datasource.js', 'datagridwidget.js'),
             helper_css=('++resource++eea.daviz.datasource.css', 'datagridwidget.css')
             ),
-        #schemata="Classification",
         columns=("title", "link", "owner"),
-        #required_for_published=True,
-        #validators=('unique_specification_code',),
-        #allow_empty_rows=True,
-
-    ),    
+    ),
 ))
 
 DAVIZ_SCHEMA = ATFolder.schema.copy() + SCHEMA.copy()

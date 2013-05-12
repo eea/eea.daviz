@@ -1,8 +1,6 @@
 """ Daviz content schema
 """
 
-import json
-
 from Products.ATContentTypes.content.folder import ATFolder
 from Products.Archetypes.atapi import Schema
 from Products.Archetypes.public import StringField, ReferenceField
@@ -21,7 +19,6 @@ import logging
 
 from Products.DataGridField import DataGridField, DataGridWidget
 from Products.DataGridField.Column import Column
-from Products.DataGridField.SelectColumn import SelectColumn
 
 logger = logging.getLogger('eea.daviz')
 #
@@ -105,11 +102,17 @@ class DavizDataField(StringField):
         setattr(config, self.alias, value)
 
 class DavizDataGridField(DataGridField):
+    """ Custom data grid field
+    """
     def get(self, instance, **kwargs):
+        """ get provenances
+        """
         config = queryAdapter(instance, IMultiDataProvenance)
         return getattr(config, 'provenances', ({},))
 
     def set(self, instance, value, **kwargs):
+        """ update provenances
+        """
         config = queryAdapter(instance, IMultiDataProvenance)
         setattr(config, 'provenances', value)
 
@@ -235,8 +238,10 @@ SCHEMA = Schema((
                      },
             auto_insert=True,
             i18n_domain='eea',
-            helper_js=('++resource++eea.daviz.datasource.js', 'datagridwidget.js'),
-            helper_css=('++resource++eea.daviz.datasource.css', 'datagridwidget.css')
+            helper_js=('++resource++eea.daviz.datasource.js',
+                        'datagridwidget.js'),
+            helper_css=('++resource++eea.daviz.datasource.css',
+                        'datagridwidget.css')
             ),
         columns=("title", "link", "owner"),
     ),

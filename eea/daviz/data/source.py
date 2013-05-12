@@ -142,6 +142,8 @@ class DavizMultiDataProvenance(MultiDataProvenance):
 
     @property
     def provenances(self):
+        """ getter
+        """
         anno = IAnnotations(self.context)
         anno_provenances = anno.get(ANNO_MULTIDATA, ({},))
 
@@ -159,8 +161,9 @@ class DavizMultiDataProvenance(MultiDataProvenance):
 
         return anno_provenances
 
-
     @provenances.setter
     def provenances(self, value):
+        """ setter
+        """
         anno = IAnnotations(self.context)
         anno[ANNO_MULTIDATA] = value

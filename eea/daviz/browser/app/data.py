@@ -24,14 +24,14 @@ class Info(BrowserView):
                 'owner': {
                     'title': '',
                     'url': ''
-                }
+                },
+                'provenances': []
             }
         return self._info
 
     def fallback(self):
         """ Try to get data info from relatedItems
         """
-#        import pdb; pdb.set_trace()
         relatedItems = self.context.getRelatedItems()
         for item in relatedItems:
             info = queryMultiAdapter((item, self.request),
@@ -44,7 +44,6 @@ class Info(BrowserView):
         return self.info
 
     def __call__(self, **kwargs):
-#        import pdb; pdb.set_trace()
         field = self.context.getField('dataTitle')
         if field:
             self.info['source']['title'] = field.getAccessor(self.context)()
@@ -67,6 +66,32 @@ class Info(BrowserView):
             else:
                 self.info['owner']['url'] = self.info['source']['url']
 
-        if self.info['source']['title'] or self.info['source']['url']:
-            return self.info
-        return self.fallback()
+#        if self.info['source']['title'] or self.info['source']['url']:
+#            return self.info
+
+        field = self.context.getField('provenances')
+        provenances = field.getAccessor(self.context)()
+        formatted_provenances = []
+        for provenance in provenances:
+            title = getattr(provenance, 'title', '')
+            link = getattr(provenance, 'link', '')
+            owner = getattr(provenance, 'owner', '')
+            if title != '' or owner != '' or link != '':
+                formatted_provenance = {'source':{}, 'owner':{}}
+                formatted_provenance['source']['title'] = title
+                formatted_provenance['source']['url'] = link
+
+                if owner != '':
+                    vocab = field.Vocabulary(self.context)
+                    owner_title = self.context.displayValue(vocab, owner)
+                    formatted_provenance['owner']['title'] = owner_title
+                    parser = urlparse.urlparse(owner)
+                    if all((parser.scheme, parser.netloc)):
+                        formatted_provenance['owner']['url'] = owner
+                    else:
+                        formatted_provenance['owner']['url'] = link
+                formatted_provenances.append(formatted_provenance)
+
+        self.info['provenances'] = formatted_provenances
+        return self.info
+#        return self.fallback()

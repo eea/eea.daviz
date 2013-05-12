@@ -3,6 +3,8 @@ Changelog
 
 7.5-dev - (unreleased)
 ----------------------
+* Feature: Changed data provenance to allow multiple data provenances; and precedence of provenances
+  [szabozo0 #9561]
 
 7.4 - (2013-04-17)
 ------------------

@@ -155,10 +155,10 @@ class DavizMultiDataProvenance(MultiDataProvenance):
                 source = queryAdapter(item, IMultiDataProvenance)
                 item_provenances = getattr(source, 'provenances')
                 for item_provenance in item_provenances:
-                    item_provenance['orderindex_'] = orderindex
+                    dict_item_provenance = dict(item_provenance)
+                    dict_item_provenance['orderindex_'] = orderindex
                     orderindex = orderindex + 1
-                    anno_provenances = anno_provenances + (item_provenance,)
-
+                    anno_provenances = anno_provenances + (dict_item_provenance,)
         return anno_provenances
 
     @provenances.setter

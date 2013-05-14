@@ -59,16 +59,16 @@ jQuery(document).ready(function(){
   });
 
   function setDataGridWidgetTRLabels(){
-    jQuery('#datagridwidget-tbody-provenance').find(".eea-datagridwidget-tr-label").remove();
+    jQuery('#datagridwidget-tbody-provenances').find(".eea-datagridwidget-tr-label").remove();
     jQuery.each(jQuery('#datagridwidget-tbody-provenance').find("tr"), function(idx, tr){
         var tr_label = jQuery("<td>").addClass("eea-datagridwidget-tr-label").text("Data Provenance #"+(idx+1).toString());
         jQuery(tr).prepend(tr_label);
     });
   }
   function setColumnClasses(){
-    jQuery('input[name="provenance.title:records"]').closest("td").addClass("datagridwidget-column-1");
-    jQuery('input[name="provenance.link:records"]').closest("td").addClass("datagridwidget-column-2");
-    jQuery('input[name="provenance.owner:records"]').closest("td").addClass("datagridwidget-column-3");
+    jQuery('input[name="provenances.title:records"]').closest("td").addClass("datagridwidget-column-1");
+    jQuery('input[name="provenances.link:records"]').closest("td").addClass("datagridwidget-column-2");
+    jQuery('input[name="provenances.owner:records"]').closest("td").addClass("datagridwidget-column-3");
     setDataGridWidgetTRLabels();
   }
   jQuery(document).delegate(".datagridwidget-manipulator img", "click", setColumnClasses);

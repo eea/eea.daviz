@@ -156,9 +156,12 @@ class DavizMultiDataProvenance(MultiDataProvenance):
                 item_provenances = getattr(source, 'provenances')
                 for item_provenance in item_provenances:
                     dict_item_provenance = dict(item_provenance)
-                    dict_item_provenance['orderindex_'] = orderindex
-                    orderindex = orderindex + 1
-                    anno_provenances = anno_provenances + (dict_item_provenance,)
+                    if dict_item_provenance['title'] != '' and \
+                        dict_item_provenance['link'] != '' and \
+                        dict_item_provenance['owner'] != '':
+                        dict_item_provenance['orderindex_'] = orderindex
+                        orderindex = orderindex + 1
+                        anno_provenances = anno_provenances + (dict_item_provenance,)
         return anno_provenances
 
     @provenances.setter

@@ -7,6 +7,7 @@ from Products.Archetypes.public import StringField, ReferenceField
 from Products.Archetypes.public import TextAreaWidget, StringWidget, LabelWidget
 from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 from eea.app.visualization.interfaces import IDataProvenance
+from eea.app.visualization.interfaces import IMultiDataProvenance
 from eea.daviz.config import EEAMessageFactory as _
 from eea.daviz.events import DavizExternalChanged
 from eea.daviz.events import DavizRelationsChanged
@@ -16,6 +17,8 @@ from zope.component import queryAdapter
 from zope.event import notify
 import logging
 
+from Products.DataGridField import DataGridField, DataGridWidget
+from Products.DataGridField.Column import Column
 
 logger = logging.getLogger('eea.daviz')
 #
@@ -69,7 +72,6 @@ class DavizStringField(StringField):
         super(DavizStringField, self).set(instance, value, **kwargs)
         if old != value:
             notify(DavizSpreadSheetChanged(instance, spreadsheet=value))
-
 class DavizUrlField(StringField):
     """ Notify on set
     """
@@ -99,6 +101,20 @@ class DavizDataField(StringField):
         config = queryAdapter(instance, IDataProvenance)
         setattr(config, self.alias, value)
 
+class DavizDataGridField(DataGridField):
+    """ Custom data grid field
+    """
+    def get(self, instance, **kwargs):
+        """ get provenances
+        """
+        config = queryAdapter(instance, IMultiDataProvenance)
+        return getattr(config, 'provenances', ({},))
+
+    def set(self, instance, value, **kwargs):
+        """ update provenances
+        """
+        config = queryAdapter(instance, IMultiDataProvenance)
+        setattr(config, 'provenances', value)
 
 SCHEMA = Schema((
     DavizReferenceField('relatedItems',
@@ -178,8 +194,6 @@ SCHEMA = Schema((
                     "Are you sure you want to continue?"
             ),
             i18n_domain="eea",
-            helper_js=('++resource++eea.daviz.warnings.js',),
-            helper_css=('++resource++eea.daviz.edit.css',),
             visible={'edit': 'visible', 'view': 'invisible'}
         )
     ),
@@ -189,6 +203,7 @@ SCHEMA = Schema((
             label=_("Data source title"),
             description=_("Specify data source"),
             i18n_domain="eea",
+            visible={'edit': 'invisible', 'view': 'invisible'}
         ),
     ),
     DavizDataField('dataLink', alias="link",
@@ -197,8 +212,7 @@ SCHEMA = Schema((
             label=_("Data source link"),
             description=_("Specify data source link"),
             i18n_domain="eea",
-            helper_js=('++resource++eea.daviz.datasource.js',),
-            helper_css=('++resource++eea.daviz.datasource.css',)
+            visible={'edit': 'invisible', 'view': 'invisible'}
         )
     ),
     DavizDataField('dataOwner', alias="owner",
@@ -208,7 +222,28 @@ SCHEMA = Schema((
             label=_("Data source Organisation"),
             description=_("Specify data source Organisation"),
             i18n_domain="eea",
+            visible={'edit': 'invisible', 'view': 'invisible'}
         )
+    ),
+
+    DavizDataGridField(
+        name='provenances',
+        searchable=False,
+        widget=DataGridWidget(
+            label="Data Provenance",
+            description="""List of Data Provenance""",
+            columns={'title':Column("Title"),
+                     'link':Column("Link"),
+                     'owner':Column("Owner"),
+                     },
+            auto_insert=True,
+            i18n_domain='eea',
+            helper_js=('++resource++eea.daviz.datasource.js',
+                        'datagridwidget.js'),
+            helper_css=('++resource++eea.daviz.datasource.css',
+                        'datagridwidget.css')
+            ),
+        columns=("title", "link", "owner"),
     ),
 ))
 
@@ -243,8 +278,6 @@ def finalizeSchema(schema=DAVIZ_SCHEMA):
     schema.moveField('relatedItems', after="external")
 
     # Reorder data source fields
-    schema.moveField('dataTitle', after='description')
-    schema.moveField('dataLink', after='dataTitle')
-    schema.moveField('dataOwner', after='dataLink')
+    schema.moveField('provenances', after='description')
 
 finalizeSchema(DAVIZ_SCHEMA)

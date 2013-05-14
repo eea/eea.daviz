@@ -8,6 +8,13 @@ from zope.component import queryAdapter
 from eea.app.visualization.interfaces import IDataProvenance
 from eea.app.visualization.data.source import DataProvenance
 
+from eea.app.visualization.interfaces import IMultiDataProvenance
+from eea.app.visualization.data.source import MultiDataProvenance
+
+from zope.annotation.interfaces import IAnnotations
+
+from eea.app.visualization.config import ANNO_MULTIDATA
+
 class DavizDataProvenance(DataProvenance):
     """
     Daviz Visualization data provenance metadata accessor/mutator
@@ -128,3 +135,35 @@ class DavizDataProvenance(DataProvenance):
 
         """
         return self.setProperty('owner', value)
+
+class DavizMultiDataProvenance(MultiDataProvenance):
+    """ daviz multi data provenance
+    """
+
+    @property
+    def provenances(self):
+        """ getter
+        """
+        anno = IAnnotations(self.context)
+        anno_provenances = anno.get(ANNO_MULTIDATA, ({},))
+
+        orderindex = 0
+        if anno_provenances == ({},):
+            anno_provenances = ()
+            relatedItems = self.context.getRelatedItems()
+            for item in relatedItems:
+                source = queryAdapter(item, IMultiDataProvenance)
+                item_provenances = getattr(source, 'provenances')
+                for item_provenance in item_provenances:
+                    item_provenance['orderindex_'] = orderindex
+                    orderindex = orderindex + 1
+                    anno_provenances = anno_provenances + (item_provenance,)
+
+        return anno_provenances
+
+    @provenances.setter
+    def provenances(self, value):
+        """ setter
+        """
+        anno = IAnnotations(self.context)
+        anno[ANNO_MULTIDATA] = value

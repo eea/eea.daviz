@@ -20,6 +20,11 @@ import logging
 from Products.DataGridField import DataGridField, DataGridWidget
 from Products.DataGridField.Column import Column
 
+from archetypes.schemaextender.interfaces import ISchemaExtender
+from archetypes.schemaextender.field import ExtensionField
+
+from zope.interface import implements
+
 logger = logging.getLogger('eea.daviz')
 #
 # eea.relations
@@ -101,7 +106,7 @@ class DavizDataField(StringField):
         config = queryAdapter(instance, IDataProvenance)
         setattr(config, self.alias, value)
 
-class DavizDataGridField(DataGridField):
+class DavizDataGridField(ExtensionField, DataGridField):
     """ Custom data grid field
     """
     def get(self, instance, **kwargs):
@@ -226,25 +231,6 @@ SCHEMA = Schema((
         )
     ),
 
-    DavizDataGridField(
-        name='provenances',
-        searchable=False,
-        widget=DataGridWidget(
-            label="Data Provenance",
-            description="""List of Data Provenance""",
-            columns={'title':Column("Title"),
-                     'link':Column("Link"),
-                     'owner':Column("Owner"),
-                     },
-            auto_insert=True,
-            i18n_domain='eea',
-            helper_js=('++resource++eea.daviz.datasource.js',
-                        'datagridwidget.js'),
-            helper_css=('++resource++eea.daviz.datasource.css',
-                        'datagridwidget.css')
-            ),
-        columns=("title", "link", "owner"),
-    ),
 ))
 
 DAVIZ_SCHEMA = ATFolder.schema.copy() + SCHEMA.copy()
@@ -277,7 +263,38 @@ def finalizeSchema(schema=DAVIZ_SCHEMA):
     schema.moveField('external', after="quickUpload")
     schema.moveField('relatedItems', after="external")
 
-    # Reorder data source fields
-    schema.moveField('provenances', after='description')
-
 finalizeSchema(DAVIZ_SCHEMA)
+
+class MultiDataProvenanceSchemaExtender(object):
+    implements(ISchemaExtender)
+
+    fields = {
+        DavizDataGridField(
+            name='provenances',
+            schemata='Data Provenance',
+            searchable=False,
+            widget=DataGridWidget(
+                label="Data Provenance",
+                description="""List of Data Provenance""",
+                columns={'title':Column("Title"),
+                         'link':Column("Link"),
+                         'owner':Column("Owner"),
+                         },
+                auto_insert=True,
+                i18n_domain='eea',
+                helper_js=('++resource++eea.daviz.datasource.js',
+                            'datagridwidget.js'),
+                helper_css=('++resource++eea.daviz.datasource.css',
+                            'datagridwidget.css')
+                ),
+            columns=("title", "link", "owner"),
+        ),
+    }
+
+    def __init__(self, context):
+        self.context = context
+
+    def getFields(self):
+        """ Returns provenance list field
+        """
+        return self.fields

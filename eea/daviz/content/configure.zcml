@@ -23,4 +23,9 @@
     handler=".events.onExternalChanged"
     />
 
+  <adapter
+    for=".interfaces.IDavizVisualization"
+    factory=".schema.MultiDataProvenanceSchemaExtender"
+    />
+
 </configure>

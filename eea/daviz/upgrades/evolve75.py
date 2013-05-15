@@ -13,7 +13,6 @@ def migrate_data_provenance_to_multiple_data_provenances(context):
     total = len(brains)
     logger.info(('Migrating data provenance of %s DavizVisualizations'), total)
 
-    #TODO: Migration 
     with_related = 0
     without_provenance_info = 0
     migrated = 0
@@ -22,26 +21,27 @@ def migrate_data_provenance_to_multiple_data_provenances(context):
             logger.info('\t Migration status: %s/%s %s',
                         index+1, total, brain.getURL())
             doc = brain.getObject()
-	    if len(doc.getRelatedItems()) == 0:
-		title = doc['dataTitle']
-		owner = doc['dataOwner']
-		link = doc['dataLink']
-		if title != u'' or owner != u'' or link != u'':
-	            logger.info('\t\t Migrating provenance info for visualization')
-		    provenance = (
-			{'title' : title,
-			'owner' : owner,
-			'link' : link},
-		    )
-		    doc.getField('provenances').getMutator(doc)(provenance)
-		    doc.reindexObject()
-		    migrated = migrated + 1
-		else:
-	            logger.info('\t\t No provenance info')
-		    without_provenance_info = without_provenance_info + 1
-	    else:
+            if len(doc.getRelatedItems()) == 0:
+                title = doc['dataTitle']
+                owner = doc['dataOwner']
+                link = doc['dataLink']
+                if title != u'' or owner != u'' or link != u'':
+                    logger.info(
+                        '\t\t Migrating provenance info for visualization')
+                    provenance = (
+                        {'title' : title,
+                        'owner' : owner,
+                        'link' : link},
+                    )
+                    doc.getField('provenances').getMutator(doc)(provenance)
+                    doc.reindexObject()
+                    migrated = migrated + 1
+                else:
+                    logger.info('\t\t No provenance info')
+                    without_provenance_info = without_provenance_info + 1
+            else:
                 logger.info('\t\t Provenance info stored in related item')
-		with_related = with_related + 1
+                with_related = with_related + 1
         except Exception, err:
             logger.exception(err)
 

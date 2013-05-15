@@ -270,7 +270,7 @@ class MultiDataProvenanceSchemaExtender(object):
     """
     implements(ISchemaExtender)
 
-    fields = {
+    fields = (
         DavizDataGridField(
             name='provenances',
             schemata='Data Provenance',
@@ -291,7 +291,7 @@ class MultiDataProvenanceSchemaExtender(object):
                 ),
             columns=("title", "link", "owner"),
         ),
-    }
+    )
 
     def __init__(self, context):
         self.context = context

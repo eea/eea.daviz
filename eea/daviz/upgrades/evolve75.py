@@ -14,33 +14,41 @@ def migrate_data_provenance_to_multiple_data_provenances(context):
     logger.info(('Migrating data provenance of %s DavizVisualizations'), total)
 
     #TODO: Migration 
-
+    with_related = 0
+    without_provenance_info = 0
+    migrated = 0
     for index, brain in enumerate(brains[:]):
         try:
-            import pdb; pdb.set_trace()
+            logger.info('\t Migration status: %s/%s %s',
+                        index+1, total, brain.getURL())
             doc = brain.getObject()
-#            logger.info('\t Migration status: %s/%s %s',
-#                        index+1, total, brain.getURL())
-
-#            title = getattr(doc, 'dataTitle', None)
-#            if title is not None:
-#                delattr(doc, 'dataTitle')
-#                doc.getField('dataTitle').getMutator(doc)(title)
-
-#            link = getattr(doc, 'dataLink', None)
-#            if link is not None:
-#                delattr(doc, 'dataLink')
-#                doc.getField('dataLink').getMutator(doc)(link)
-
-#            owner = getattr(doc, 'dataOwner', None)
-#            if owner is not None:
-#                delattr(doc, 'dataOwner')
-#                doc.getField('dataOwner').getMutator(doc)(owner)
-
-#            doc.reindexObject()
+	    if len(doc.getRelatedItems()) == 0:
+		title = doc['dataTitle']
+		owner = doc['dataOwner']
+		link = doc['dataLink']
+		if title != u'' or owner != u'' or link != u'':
+	            logger.info('\t\t Migrating provenance info for visualization')
+		    provenance = (
+			{'title' : title,
+			'owner' : owner,
+			'link' : link},
+		    )
+		    doc.getField('provenances').getMutator(doc)(provenance)
+		    doc.reindexObject()
+		    migrated = migrated + 1
+		else:
+	            logger.info('\t\t No provenance info')
+		    without_provenance_info = without_provenance_info + 1
+	    else:
+                logger.info('\t\t Provenance info stored in related item')
+		with_related = with_related + 1
         except Exception, err:
             logger.exception(err)
 
-
     logger.info(('Finish migration of %s instances of '
                  'Daviz Visualization data provenance'), total)
+
+    logger.info('\t Migrated %s: ', migrated)
+    logger.info('\t No provenance info: %s ', without_provenance_info)
+    logger.info('\t Provenance info from related: %s ', with_related)
+

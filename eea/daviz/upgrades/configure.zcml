@@ -10,6 +10,11 @@
     destination="7.5"
     profile="eea.daviz:default">
 
+    <genericsetup:upgradeDepends
+      title="Import all steps from Products.DataGridField profile"
+      import_profile="Products.DataGridField:default"
+      />
+
     <genericsetup:upgradeStep
       title="Migrate Data Provenance to Multiple of Data Provenances"
       handler="eea.daviz.upgrades.evolve75.migrate_data_provenance_to_multiple_data_provenances"

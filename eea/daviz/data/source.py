@@ -161,7 +161,8 @@ class DavizMultiDataProvenance(MultiDataProvenance):
                         dict_item_provenance['owner'] != '':
                         dict_item_provenance['orderindex_'] = orderindex
                         orderindex = orderindex + 1
-                        anno_provenances = anno_provenances + (dict_item_provenance,)
+                        anno_provenances = anno_provenances + \
+                                            (dict_item_provenance,)
         return anno_provenances
 
     @provenances.setter

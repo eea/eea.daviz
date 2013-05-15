@@ -66,9 +66,6 @@ class Info(BrowserView):
             else:
                 self.info['owner']['url'] = self.info['source']['url']
 
-#        if self.info['source']['title'] or self.info['source']['url']:
-#            return self.info
-
         field = self.context.getField('provenances')
         provenances = field.getAccessor(self.context)()
         formatted_provenances = []

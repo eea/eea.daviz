@@ -266,6 +266,8 @@ def finalizeSchema(schema=DAVIZ_SCHEMA):
 finalizeSchema(DAVIZ_SCHEMA)
 
 class MultiDataProvenanceSchemaExtender(object):
+    """ Schema extender for content types with data provenance
+    """
     implements(ISchemaExtender)
 
     fields = {

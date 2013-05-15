@@ -70,9 +70,9 @@ class Info(BrowserView):
         provenances = field.getAccessor(self.context)()
         formatted_provenances = []
         for provenance in provenances:
-            title = getattr(provenance, 'title', '')
-            link = getattr(provenance, 'link', '')
-            owner = getattr(provenance, 'owner', '')
+            title = provenance.get('title', '')
+            link = provenance.get('link', '')
+            owner = provenance.get('owner', '')
             if title != '' or owner != '' or link != '':
                 formatted_provenance = {'source':{}, 'owner':{}}
                 formatted_provenance['source']['title'] = title

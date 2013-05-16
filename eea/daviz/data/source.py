@@ -4,16 +4,13 @@
     >>> from eea.app.visualization.interfaces import IDataProvenance
 
 """
+from zope.interface import implements
 from zope.component import queryAdapter
 from eea.app.visualization.interfaces import IDataProvenance
 from eea.app.visualization.data.source import DataProvenance
 
 from eea.app.visualization.interfaces import IMultiDataProvenance
 from eea.app.visualization.data.source import MultiDataProvenance
-
-from zope.annotation.interfaces import IAnnotations
-
-from eea.app.visualization.config import ANNO_MULTIDATA
 
 class DavizDataProvenance(DataProvenance):
     """
@@ -139,35 +136,24 @@ class DavizDataProvenance(DataProvenance):
 class DavizMultiDataProvenance(MultiDataProvenance):
     """ daviz multi data provenance
     """
+    implements(IMultiDataProvenance)
 
-    @property
-    def provenances(self):
-        """ getter
+    def defaultProvenances(self):
+        """ default provenances
         """
-        anno = IAnnotations(self.context)
-        anno_provenances = anno.get(ANNO_MULTIDATA, ({},))
-
+        relatedProvenances = ()
+        relatedItems = self.context.getRelatedItems()
         orderindex = 0
-        if anno_provenances == ({},):
-            anno_provenances = ()
-            relatedItems = self.context.getRelatedItems()
-            for item in relatedItems:
-                source = queryAdapter(item, IMultiDataProvenance)
-                item_provenances = getattr(source, 'provenances')
-                for item_provenance in item_provenances:
-                    dict_item_provenance = dict(item_provenance)
-                    if dict_item_provenance['title'] != '' and \
-                        dict_item_provenance['link'] != '' and \
-                        dict_item_provenance['owner'] != '':
-                        dict_item_provenance['orderindex_'] = orderindex
-                        orderindex = orderindex + 1
-                        anno_provenances = anno_provenances + \
-                                            (dict_item_provenance,)
-        return anno_provenances
-
-    @provenances.setter
-    def provenances(self, value):
-        """ setter
-        """
-        anno = IAnnotations(self.context)
-        anno[ANNO_MULTIDATA] = value
+        for item in relatedItems:
+            source = queryAdapter(item, IMultiDataProvenance)
+            item_provenances = getattr(source, 'provenances')
+            for item_provenance in item_provenances:
+                dict_item_provenance = dict(item_provenance)
+                if dict_item_provenance.get('title', '') != '' and \
+                    dict_item_provenance.get('link', '') != '' and \
+                    dict_item_provenance.get('owner', '') != '':
+                    dict_item_provenance['orderindex_'] = orderindex
+                    orderindex = orderindex + 1
+                    relatedProvenances = relatedProvenances + \
+                                        (dict_item_provenance,)
+        return relatedProvenances

@@ -18,7 +18,7 @@
     factory=".source.DavizDataProvenance"
     />
 
-  <!-- Data source adapters -->
+  <!-- Multi Data source adapters -->
   <adapter
     for="eea.daviz.content.interfaces.IDavizVisualization"
     provides="eea.app.visualization.interfaces.IMultiDataProvenance"

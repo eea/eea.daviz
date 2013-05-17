@@ -118,9 +118,7 @@ class GetDavizChart(BrowserView):
 def handle_daviz_delete(context, event):
     """Remove annotations from assessmentparts when a daviz has been deleted
     """
-    req = context.REQUEST
     context_uid = context.UID() 
-
     refs = context.getBRefs()
 #   refs = [o for o in context.getBRefs() 
 #                   if o.portal_type == "AssessmentPart"]

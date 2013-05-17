@@ -32,4 +32,8 @@
                 permission="cmf.ManagePortal"
                 />
 
+  <subscriber for="eea.daviz.content.interfaces.IDavizVisualization
+    eea.daviz.content.events.IDavizWillBeRemovedEvent"
+    handler=".daviz.handle_daviz_delete" />
+
 </configure>

@@ -11,6 +11,7 @@ import logging
 
 logger = logging.getLogger("eea.indicators")
 
+KEY = 'DAVIZ_CHARTS'
 
 class SetDavizChart(BrowserView):
     """Edit the chart for a daviz presentation that's set as related
@@ -41,12 +42,12 @@ class SetDavizChart(BrowserView):
         obj = self.context
         annot = IAnnotations(obj)
 
-        if not 'DAVIZ_CHARTS' in annot:
-            annot['DAVIZ_CHARTS'] = PersistentMapping()
+        if not KEY in annot:
+            annot[KEY] = PersistentMapping()
 
-        info = annot['DAVIZ_CHARTS'].get(uid)
+        info = annot[KEY].get(uid)
         if not info:
-            info = annot['DAVIZ_CHARTS'][uid] = OrderedDict()
+            info = annot[KEY][uid] = OrderedDict()
 
         info.clear()
         info.update(charts)
@@ -92,8 +93,12 @@ class GetDavizChart(BrowserView):
                 logger.warning("Couldn't find visualization with UID %s" % uid)
                 continue
             daviz = brains[0].getObject()
+            if daviz is None:   #brain does not lead to object?
+                logger.warning("Couldn't find object for brain with UID %s" 
+                                % uid)
+                continue
             tabs = getMultiAdapter((daviz, self.request),
-                                   name="daviz-view.html").tabs
+                                       name="daviz-view.html").tabs
 
             annot_info = annot.get(uid, {})
             charts = []
@@ -110,3 +115,19 @@ class GetDavizChart(BrowserView):
         return info
 
 
+def handle_daviz_delete(context, event):
+    """Remove annotations from assessmentparts when a daviz has been deleted
+    """
+    req = context.REQUEST
+    context_uid = context.UID() 
+
+    refs = context.getBRefs()
+#   refs = [o for o in context.getBRefs() 
+#                   if o.portal_type == "AssessmentPart"]
+
+    for o in refs:
+        annot = IAnnotations(o).get(KEY, {})
+        if context_uid in annot.keys():
+            del annot[context_uid]
+            annot._p_changed = True
+            o._p_changed = True

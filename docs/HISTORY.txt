@@ -3,6 +3,10 @@ Changelog
 
 7.5-dev - (unreleased)
 ----------------------
+* Bug fix: add an override for manage_beforeDelete to trigger a
+  DavizWillBeRemovedEvent; intercept this event to delete the annotation
+  on the backreferenced object that involves the deleted daviz
+  [tiberich #14341]
 
 7.4 - (2013-04-17)
 ------------------

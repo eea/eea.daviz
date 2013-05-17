@@ -1,16 +1,20 @@
 """ Events
 """
 from StringIO import StringIO
-from zope.event import notify
-import logging
-import json
-from zope.component import queryMultiAdapter, queryAdapter, queryUtility
-from eea.app.visualization.events import VisualizationEnabledEvent
 from eea.app.visualization.cache import InvalidateCacheEvent
+from eea.app.visualization.events import VisualizationEnabledEvent
 from eea.app.visualization.interfaces import IExternalData
 from eea.app.visualization.interfaces import ITable2JsonConverter
 from eea.app.visualization.interfaces import IVisualizationConfig
 from eea.app.visualization.interfaces import IVisualizationJsonUtils
+from zope.component import queryMultiAdapter, queryAdapter, queryUtility
+from zope.component.interfaces import IObjectEvent
+from zope.component.interfaces import ObjectEvent
+from zope.event import notify
+from zope.interface import Attribute
+from zope.interface import implements
+import json
+import logging
 
 logger = logging.getLogger('eea.daviz.events')
 
@@ -136,3 +140,22 @@ def onExternalChanged(obj, evt):
 
     notify(VisualizationEnabledEvent(obj, columns=columns, cleanup=False))
     notify(InvalidateCacheEvent(raw=True, dependencies=['eea.daviz']))
+
+
+class IDavizWillBeRemovedEvent(IObjectEvent):
+    """A daviz will be removed."""
+    oldParent = Attribute("The old location parent for the object.")
+    oldName = Attribute("The old location name for the object.")
+    newParent = Attribute("The new location parent for the object.")
+    newName = Attribute("The new location name for the object.")
+
+
+class DavizWillBeRemovedEvent(ObjectEvent):
+    """A daviz will be removed from a container."""
+
+    implements(IDavizWillBeRemovedEvent)
+
+    def __init__(self, object, oldParent=None, oldName=None):
+        ObjectEvent.__init__(self, object)
+        self.oldParent = oldParent
+        self.oldName = oldName

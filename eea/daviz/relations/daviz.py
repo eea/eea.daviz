@@ -94,7 +94,7 @@ class GetDavizChart(BrowserView):
                 continue
             daviz = brains[0].getObject()
             if daviz is None:   #brain does not lead to object?
-                logger.warning("Couldn't find object for brain with UID %s" 
+                logger.warning("Couldn't find object for brain with UID %s"
                                 % uid)
                 continue
             tabs = getMultiAdapter((daviz, self.request),
@@ -116,11 +116,11 @@ class GetDavizChart(BrowserView):
 
 
 def handle_daviz_delete(context, event):
-    """Remove annotations from assessmentparts when a daviz has been deleted
+    """ Remove annotations from assessmentparts when a daviz has been deleted
     """
-    context_uid = context.UID() 
+    context_uid = context.UID()
     refs = context.getBRefs()
-#   refs = [o for o in context.getBRefs() 
+#   refs = [o for o in context.getBRefs()
 #                   if o.portal_type == "AssessmentPart"]
 
     for o in refs:

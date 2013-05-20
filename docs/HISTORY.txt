@@ -7,6 +7,8 @@ Changelog
   DavizWillBeRemovedEvent; intercept this event to delete the annotation
   on the backreferenced object that involves the deleted daviz
   [tiberich #14341]
+* Bug fix: pylint fixes
+  [ghicaale refs #14554]
 
 7.4 - (2013-04-17)
 ------------------

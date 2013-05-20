@@ -20,17 +20,18 @@ class DavizVisualization(ATFolder):
     schema = daviz_schema.DAVIZ_SCHEMA
 
     def manage_beforeDelete(self, item, container):
-        """Override manage_beforeDelete to be able to catch the 
+        """Override manage_beforeDelete to be able to catch the
         proper backreferences. We could not use ObjectWillBeRemovedEvent
         because there's an override in Archetypes.Referenceble
         that will remove all relations and we need them
         """
 
-        #only trigger event once, at the end, when dealing 
+        #only trigger event once, at the end, when dealing
         #with plone.app.linkintegrity
         if self.REQUEST.getURL().endswith('delete_confirmation'):
+            #delete has been confirmed
             if self.REQUEST.form.get('_authenticator') and \
-                not self.REQUEST.form.get('form.submitted'): #delete has been confirmed
+                not self.REQUEST.form.get('form.submitted'):
                 notify(DavizWillBeRemovedEvent(self))
         else:
             notify(DavizWillBeRemovedEvent(self))

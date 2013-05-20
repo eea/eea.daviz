@@ -151,8 +151,8 @@ class IDavizWillBeRemovedEvent(IObjectEvent):
 
 
 class DavizWillBeRemovedEvent(ObjectEvent):
-    """A daviz will be removed from a container."""
-
+    """A daviz will be removed from a container.
+    """
     implements(IDavizWillBeRemovedEvent)
 
     def __init__(self, object, oldParent=None, oldName=None):

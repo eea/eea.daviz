@@ -90,12 +90,13 @@ class GetDavizChart(BrowserView):
         for uid in annot.keys():
             brains = uids_cat.searchResults(UID=uid)
             if not brains:
-                logger.warning("Couldn't find visualization with UID %s" % uid)
+                msg = "Couldn't find visualization with UID %s" % uid
+                logger.warning(msg)
                 continue
             daviz = brains[0].getObject()
             if daviz is None:   #brain does not lead to object?
-                logger.warning("Couldn't find object for brain with UID %s"
-                                % uid)
+                msg = "Couldn't find object for brain with UID %s" % uid
+                logger.warning(msg)
                 continue
             tabs = getMultiAdapter((daviz, self.request),
                                        name="daviz-view.html").tabs
@@ -120,8 +121,6 @@ def handle_daviz_delete(context, event):
     """
     context_uid = context.UID()
     refs = context.getBRefs()
-#   refs = [o for o in context.getBRefs()
-#                   if o.portal_type == "AssessmentPart"]
 
     for o in refs:
         annot = IAnnotations(o).get(KEY, {})

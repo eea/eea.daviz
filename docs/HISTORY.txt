@@ -7,6 +7,8 @@ Changelog
   DavizWillBeRemovedEvent; intercept this event to delete the annotation
   on the backreferenced object that involves the deleted daviz
   [tiberich #14341]
+* Feature: Changed data provenance to allow multiple data provenances; and precedence of provenances
+  [szabozo0 #9561]
 
 7.4 - (2013-04-17)
 ------------------

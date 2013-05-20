@@ -4,9 +4,13 @@
     >>> from eea.app.visualization.interfaces import IDataProvenance
 
 """
+from zope.interface import implements
 from zope.component import queryAdapter
 from eea.app.visualization.interfaces import IDataProvenance
 from eea.app.visualization.data.source import DataProvenance
+
+from eea.app.visualization.interfaces import IMultiDataProvenance
+from eea.app.visualization.data.source import MultiDataProvenance
 
 class DavizDataProvenance(DataProvenance):
     """
@@ -128,3 +132,28 @@ class DavizDataProvenance(DataProvenance):
 
         """
         return self.setProperty('owner', value)
+
+class DavizMultiDataProvenance(MultiDataProvenance):
+    """ daviz multi data provenance
+    """
+    implements(IMultiDataProvenance)
+
+    def defaultProvenances(self):
+        """ default provenances
+        """
+        relatedProvenances = ()
+        relatedItems = self.context.getRelatedItems()
+        orderindex = 0
+        for item in relatedItems:
+            source = queryAdapter(item, IMultiDataProvenance)
+            item_provenances = getattr(source, 'provenances')
+            for item_provenance in item_provenances:
+                dict_item_provenance = dict(item_provenance)
+                if dict_item_provenance.get('title', '') != '' and \
+                    dict_item_provenance.get('link', '') != '' and \
+                    dict_item_provenance.get('owner', '') != '':
+                    dict_item_provenance['orderindex_'] = orderindex
+                    orderindex = orderindex + 1
+                    relatedProvenances = relatedProvenances + \
+                                        (dict_item_provenance,)
+        return relatedProvenances

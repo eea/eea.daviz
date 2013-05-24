@@ -2,7 +2,7 @@
 """
 
 from Products.ATContentTypes.content.folder import ATFolder
-from Products.Archetypes.atapi import Schema
+from Products.Archetypes.atapi import Schema, DisplayList
 from Products.Archetypes.public import StringField, ReferenceField
 from Products.Archetypes.public import TextAreaWidget, StringWidget, LabelWidget
 from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
@@ -13,17 +13,25 @@ from eea.daviz.events import DavizExternalChanged
 from eea.daviz.events import DavizRelationsChanged
 from eea.daviz.events import DavizSpreadSheetChanged
 from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
-from zope.component import queryAdapter
+from zope.component import queryAdapter, queryUtility
+
+from zope.schema.interfaces import IVocabularyFactory
+
+
 from zope.event import notify
 import logging
 
+from Products.Archetypes.interfaces import IVocabulary
+
 from Products.DataGridField import DataGridField, DataGridWidget
 from Products.DataGridField.Column import Column
+from Products.DataGridField.SelectColumn import SelectColumn
 
 from archetypes.schemaextender.interfaces import ISchemaExtender
 from archetypes.schemaextender.field import ExtensionField
 
 from zope.interface import implements
+
 
 logger = logging.getLogger('eea.daviz')
 #
@@ -41,9 +49,29 @@ except ImportError:
 #
 OrganisationsWidget = StringWidget
 OrganisationsVocabulary = None
+OwnerColumn = Column("Owner")
 try:
     from eea.dataservice.widgets import OrganisationsWidget
     OrganisationsVocabulary = u'Organisations'
+    class ArchetypesOrganisationsVocabulary:
+        """Wrapper for OrganisationsVocabulary to Archetypes Vocabulary
+        """
+        implements(IVocabulary)
+
+        def getDisplayList(self, instance):
+            """getDisplayList
+            """
+            voc_fact = queryUtility(IVocabularyFactory, OrganisationsVocabulary)
+            items = [(t.value, t.title or t.token) for t in voc_fact(instance)]
+            items.insert(0, ('',''))
+            vocabulary = DisplayList(items)
+            return vocabulary
+
+    tmpOrganisationsVocabulary = ArchetypesOrganisationsVocabulary()
+    OwnerColumn = SelectColumn("Owner",
+                                vocabulary=tmpOrganisationsVocabulary,
+                                default='')
+
 except ImportError:
     logger.warn('eea.dataservice is not installed')
 
@@ -265,11 +293,11 @@ def finalizeSchema(schema=DAVIZ_SCHEMA):
 
 finalizeSchema(DAVIZ_SCHEMA)
 
+
 class MultiDataProvenanceSchemaExtender(object):
     """ Schema extender for content types with data provenance
     """
     implements(ISchemaExtender)
-
     fields = (
         DavizDataGridField(
             name='provenances',
@@ -280,18 +308,21 @@ class MultiDataProvenanceSchemaExtender(object):
                 description="""List of Data Provenance""",
                 columns={'title':Column("Title"),
                          'link':Column("Link"),
-                         'owner':Column("Owner"),
+#                         'owner':Column("Owner"),
+                         'owner':OwnerColumn,
                          },
                 auto_insert=True,
                 i18n_domain='eea',
                 helper_js=('++resource++eea.daviz.datasource.js',
-                            'datagridwidget.js'),
+                            'datagridwidget.js',
+                            'selectautocomplete_widget.js',),
                 helper_css=('++resource++eea.daviz.datasource.css',
                             'datagridwidget.css')
                 ),
             columns=("title", "link", "owner"),
         ),
     )
+
 
     def __init__(self, context):
         self.context = context
@@ -300,3 +331,4 @@ class MultiDataProvenanceSchemaExtender(object):
         """ Returns provenance list field
         """
         return self.fields
+

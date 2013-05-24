@@ -2,6 +2,7 @@ jQuery(document).ready(function(){
   jQuery('#archetypes-fieldname-dataTitle').addClass('eea-daviz-source');
   jQuery('#archetypes-fieldname-dataLink').addClass('eea-daviz-source');
   jQuery('#archetypes-fieldname-dataOwner').addClass('eea-daviz-source');
+  jQuery('#archetypes-fieldname-provenances').addClass('eea-daviz-source');
 
   jQuery('.eea-daviz-source').wrapAll(
     '<div class="eea-daviz-source-group" />');
@@ -68,10 +69,13 @@ jQuery(document).ready(function(){
   function setColumnClasses(){
     jQuery('input[name="provenances.title:records"]').closest("td").addClass("datagridwidget-column-1");
     jQuery('input[name="provenances.link:records"]').closest("td").addClass("datagridwidget-column-2");
-    jQuery('input[name="provenances.owner:records"]').closest("td").addClass("datagridwidget-column-3");
+    jQuery('select[name="provenances.owner:records"]').closest("td").addClass("datagridwidget-column-3");
     setDataGridWidgetTRLabels();
+
   }
   jQuery(document).delegate(".datagridwidget-manipulator img", "click", setColumnClasses);
   jQuery(document).delegate(".datagridwidget-add-button", "click", setColumnClasses);
   setDataGridWidgetTRLabels();
+  jQuery('select[name="provenances.owner:records"]').SelectAutocompleteWidget();
+
 });

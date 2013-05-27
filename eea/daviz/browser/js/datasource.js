@@ -59,23 +59,35 @@ jQuery(document).ready(function(){
     setNewTitle(newTitle);
   });
 
+  function MakeAllSelectAutocompletWidget(){
+    jQuery.each(jQuery('select[name="provenances.owner:records"]'), function(idx, col){
+      if (!jQuery(col).data("SelectAutocompleteWidget")){
+        jQuery(col).parent().find(".selectautocomplete_widget").remove()
+        jQuery(col).SelectAutocompleteWidget();
+      }
+    });
+  }
+
   function setDataGridWidgetTRLabels(){
     jQuery('#datagridwidget-tbody-provenances').find(".eea-datagridwidget-tr-label").remove();
-    jQuery.each(jQuery('#datagridwidget-tbody-provenance').find("tr"), function(idx, tr){
+    jQuery.each(jQuery('#datagridwidget-tbody-provenances').find("tr"), function(idx, tr){
         var tr_label = jQuery("<td>").addClass("eea-datagridwidget-tr-label").text("Data Provenance #"+(idx+1).toString());
         jQuery(tr).prepend(tr_label);
     });
+    if (jQuery().SelectAutocompleteWidget){
+        MakeAllSelectAutocompletWidget()
+    }
   }
+
   function setColumnClasses(){
     jQuery('input[name="provenances.title:records"]').closest("td").addClass("datagridwidget-column-1");
     jQuery('input[name="provenances.link:records"]').closest("td").addClass("datagridwidget-column-2");
     jQuery('select[name="provenances.owner:records"]').closest("td").addClass("datagridwidget-column-3");
     setDataGridWidgetTRLabels();
-
   }
+
+  jQuery(".datagridwidget-add-button").text("Add new provenance info");
   jQuery(document).delegate(".datagridwidget-manipulator img", "click", setColumnClasses);
   jQuery(document).delegate(".datagridwidget-add-button", "click", setColumnClasses);
   setDataGridWidgetTRLabels();
-  jQuery('select[name="provenances.owner:records"]').SelectAutocompleteWidget();
-
 });

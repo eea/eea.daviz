@@ -75,10 +75,14 @@ td.datagridwidget-manipulator {
 }*/
 
 .datagridwidget-table-edit {
-    width:350px !important;
+    width:500px !important;
 }
 
 .eea-datagridwidget-tr-label {
     vertical-align: top;
     width: 140px;
+}
+
+#archetypes-fieldname-provenances {
+    overflow:hidden;
 }

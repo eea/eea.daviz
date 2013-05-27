@@ -311,7 +311,7 @@ class MultiDataProvenanceSchemaExtender(object):
 #                         'owner':Column("Owner"),
                          'owner':OwnerColumn,
                          },
-                auto_insert=True,
+                auto_insert=False,
                 i18n_domain='eea',
                 helper_js=('++resource++eea.daviz.datasource.js',
                             'datagridwidget.js',

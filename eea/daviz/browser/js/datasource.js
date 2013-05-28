@@ -1,7 +1,4 @@
 jQuery(document).ready(function(){
-  jQuery('#archetypes-fieldname-dataTitle').addClass('eea-daviz-source');
-  jQuery('#archetypes-fieldname-dataLink').addClass('eea-daviz-source');
-  jQuery('#archetypes-fieldname-dataOwner').addClass('eea-daviz-source');
   jQuery('#archetypes-fieldname-provenances').addClass('eea-daviz-source');
 
   jQuery('.eea-daviz-source').wrapAll(
@@ -16,6 +13,7 @@ jQuery(document).ready(function(){
       spreadsheet.append(container);
     }
     container.show();
+    jQuery("#fieldsetlegend-data-provenance").parent().remove()
     jQuery(document).trigger('eea-wizard-changed');
   });
 
@@ -27,6 +25,7 @@ jQuery(document).ready(function(){
       external.append(container);
     }
     container.show();
+    jQuery("#fieldsetlegend-data-provenance").parent().remove()
     jQuery(document).trigger('eea-wizard-changed');
   });
 
@@ -38,6 +37,7 @@ jQuery(document).ready(function(){
       quickUpload.append(container);
     }
     container.show();
+    jQuery("#fieldsetlegend-data-provenance").parent().remove()
     jQuery(document).trigger('eea-wizard-changed');
   });
 
@@ -80,9 +80,9 @@ jQuery(document).ready(function(){
   }
 
   function setColumnClasses(){
-    jQuery('input[name="provenances.title:records"]').closest("td").addClass("datagridwidget-column-1");
-    jQuery('input[name="provenances.link:records"]').closest("td").addClass("datagridwidget-column-2");
-    jQuery('select[name="provenances.owner:records"]').closest("td").addClass("datagridwidget-column-3");
+    jQuery('[name="provenances.title:records"]').closest("td").addClass("datagridwidget-column-1");
+    jQuery('[name="provenances.link:records"]').closest("td").addClass("datagridwidget-column-2");
+    jQuery('[name="provenances.owner:records"]').closest("td").addClass("datagridwidget-column-3");
     setDataGridWidgetTRLabels();
   }
 

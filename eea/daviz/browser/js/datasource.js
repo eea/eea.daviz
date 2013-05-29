@@ -1,6 +1,7 @@
 jQuery(document).ready(function(){
   jQuery('#archetypes-fieldname-provenances').addClass('eea-daviz-source');
 
+
   jQuery('.eea-daviz-source').wrapAll(
     '<div class="eea-daviz-source-group" />');
   var container = jQuery('.eea-daviz-source-group');
@@ -13,7 +14,7 @@ jQuery(document).ready(function(){
       spreadsheet.append(container);
     }
     container.show();
-    jQuery("#fieldsetlegend-data-provenance").parent().remove()
+    jQuery("#fieldsetlegend-data-provenance").parent().remove();
     jQuery(document).trigger('eea-wizard-changed');
   });
 
@@ -25,7 +26,7 @@ jQuery(document).ready(function(){
       external.append(container);
     }
     container.show();
-    jQuery("#fieldsetlegend-data-provenance").parent().remove()
+    jQuery("#fieldsetlegend-data-provenance").parent().remove();
     jQuery(document).trigger('eea-wizard-changed');
   });
 
@@ -37,7 +38,7 @@ jQuery(document).ready(function(){
       quickUpload.append(container);
     }
     container.show();
-    jQuery("#fieldsetlegend-data-provenance").parent().remove()
+    jQuery("#fieldsetlegend-data-provenance").parent().remove();
     jQuery(document).trigger('eea-wizard-changed');
   });
 
@@ -59,10 +60,19 @@ jQuery(document).ready(function(){
     setNewTitle(newTitle);
   });
 
+  function EditInheritedProvenances(){
+    jQuery('.eea-daviz-readonly').removeClass('eea-daviz-readonly');
+    jQuery('#archetypes-fieldname-provenances').find('input').removeClass('eea-daviz-readonly').removeAttr('readonly');
+    jQuery('#archetypes-fieldname-provenances').find('select').removeClass('eea-daviz-readonly').removeAttr('disabled');
+    jQuery('.datagridwidget-manipulator').find('img').show();
+    jQuery('#datagridwidget-add-button').show();
+    jQuery('.edit-provenances').hide();
+  }
+
   function MakeAllSelectAutocompletWidget(){
     jQuery.each(jQuery('select[name="provenances.owner:records"]'), function(idx, col){
       if (!jQuery(col).data("SelectAutocompleteWidget")){
-        jQuery(col).parent().find(".selectautocomplete_widget").remove()
+        jQuery(col).parent().find(".selectautocomplete_widget").remove();
         jQuery(col).SelectAutocompleteWidget();
       }
     });
@@ -75,7 +85,7 @@ jQuery(document).ready(function(){
         jQuery(tr).prepend(tr_label);
     });
     if (jQuery().SelectAutocompleteWidget){
-        MakeAllSelectAutocompletWidget()
+        MakeAllSelectAutocompletWidget();
     }
   }
 
@@ -90,4 +100,16 @@ jQuery(document).ready(function(){
   jQuery(document).delegate(".datagridwidget-manipulator img", "click", setColumnClasses);
   jQuery(document).delegate(".datagridwidget-add-button", "click", setColumnClasses);
   setDataGridWidgetTRLabels();
+
+  if (jQuery('#inheritedprovenance').attr('checked')){
+    jQuery('#archetypes-fieldname-provenances').addClass('eea-daviz-readonly');
+    jQuery('.datagridwidget-manipulator').find('img').hide();
+    jQuery('#datagridwidget-add-button').hide();
+    jQuery('#archetypes-fieldname-provenances').find('input').addClass('eea-daviz-readonly').attr('readonly', 'readonly');
+    jQuery('#archetypes-fieldname-provenances').find('select').addClass('eea-daviz-readonly').attr('disabled', 'disabled');
+    jQuery('#archetypes-fieldname-provenances').append('<span class="edit-provenances">The provenance info is inherited from the related datasources. You can edit them by clicking on the <b>Edit provenance info</b> button</span> <br/>');
+    jQuery('#archetypes-fieldname-provenances').append('<input type="button" class="edit-provenances" value="Edit procenance info"/>');
+    jQuery('input.edit-provenances').bind('click', EditInheritedProvenances);
+  }
+
 });

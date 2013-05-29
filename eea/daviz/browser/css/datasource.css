@@ -86,3 +86,11 @@ td.datagridwidget-manipulator {
 #archetypes-fieldname-provenances {
     overflow:hidden;
 }
+
+.eea-daviz-readonly {
+    background-color : #CACACA !important;
+}
+
+#archetypes-fieldname-inheritedprovenance {
+    display: none;
+}

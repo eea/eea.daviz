@@ -158,6 +158,8 @@ class DavizBooleanField(ExtensionField, BooleanField):
     """ BooleanField for schema extender
     """
     def get(self, instance, **kwargs):
+        """ check if provenance info is inherited or not
+        """
         config = queryAdapter(instance, IMultiDataProvenance)
         return getattr(config, 'isInheritedProvenance', False)
 
@@ -336,7 +338,7 @@ class MultiDataProvenanceSchemaExtender(object):
             searchable=False,
             widget=BooleanWidget(
                 label='Inherited Provenance',
-                description='The provenance info is inherited from related datasources',
+                description= 'Inherited Provenance',
             )
         ),
 
@@ -349,6 +351,5 @@ class MultiDataProvenanceSchemaExtender(object):
     def getFields(self):
         """ Returns provenance list field
         """
-        self.fields[0].widget.helper_js = self.fields[0].widget.helper_js + ('myjs.js',)
         return self.fields
 

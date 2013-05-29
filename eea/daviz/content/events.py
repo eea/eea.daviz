@@ -146,16 +146,14 @@ class IDavizWillBeRemovedEvent(IObjectEvent):
     """A daviz will be removed."""
     oldParent = Attribute("The old location parent for the object.")
     oldName = Attribute("The old location name for the object.")
-    newParent = Attribute("The new location parent for the object.")
-    newName = Attribute("The new location name for the object.")
 
 
 class DavizWillBeRemovedEvent(ObjectEvent):
-    """A daviz will be removed from a container."""
-
+    """A daviz will be removed from a container.
+    """
     implements(IDavizWillBeRemovedEvent)
 
-    def __init__(self, object, oldParent=None, oldName=None):
-        ObjectEvent.__init__(self, object)
+    def __init__(self, obj, oldParent=None, oldName=None):
+        ObjectEvent.__init__(self, obj)
         self.oldParent = oldParent
         self.oldName = oldName

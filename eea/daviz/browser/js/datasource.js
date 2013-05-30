@@ -67,6 +67,7 @@ jQuery(document).ready(function(){
     jQuery('.datagridwidget-manipulator').find('img').show();
     jQuery('#datagridwidget-add-button').show();
     jQuery('.edit-provenances').hide();
+    jQuery(document).trigger('eea-wizard-changed');
   }
 
   function MakeAllSelectAutocompletWidget(){
@@ -94,6 +95,7 @@ jQuery(document).ready(function(){
     jQuery('[name="provenances.link:records"]').closest("td").addClass("datagridwidget-column-2");
     jQuery('[name="provenances.owner:records"]').closest("td").addClass("datagridwidget-column-3");
     setDataGridWidgetTRLabels();
+    jQuery(document).trigger('eea-wizard-changed');
   }
 
   jQuery(".datagridwidget-add-button").text("Add new provenance info");

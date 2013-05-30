@@ -16,7 +16,7 @@
   max-width: 500px;
 }
 
-#davizvisualization-base-edit .selectautocomplete_widget {
+.datagridwidget-table-edit .selectautocomplete_widget {
   width: auto ! important;
 }
 
@@ -69,10 +69,6 @@ td.datagridwidget-manipulator {
     display:inline !important;
     float:left !important;
 }
-
-/*#datagridwidget-empty-row {
-    display:none;
-}*/
 
 .datagridwidget-table-edit {
     width:500px !important;

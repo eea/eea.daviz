@@ -9,6 +9,7 @@ Changelog
   [tiberich #14341]
 * Bug fix: pylint fixes
   [ghicaale refs #14554]
+* Feature: locales improved [lepri]
 
 7.4 - (2013-04-17)
 ------------------

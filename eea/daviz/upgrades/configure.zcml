@@ -4,6 +4,25 @@
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
   i18n_domain="eea">
 
+  <!-- 7.4 => 7.5 -->
+  <genericsetup:upgradeSteps
+    source="7.4"
+    destination="7.5"
+    profile="eea.daviz:default">
+
+    <genericsetup:upgradeDepends
+      title="Import all steps from Products.DataGridField profile"
+      import_profile="Products.DataGridField:default"
+      />
+
+    <genericsetup:upgradeStep
+      title="Migrate Data Provenance to Multiple of Data Provenances"
+      handler="eea.daviz.upgrades.evolve75.migrate_data_provenance_to_multiple_data_provenances"
+      />
+
+  </genericsetup:upgradeSteps>
+
+
   <!-- 6.1 => 6.2 -->
   <genericsetup:upgradeSteps
     source="6.1"
@@ -30,18 +49,6 @@
 
   </genericsetup:upgradeSteps>
 
-  <!-- 4.9 => 6.0 -->
-  <genericsetup:upgradeSteps
-    source="4.9"
-    destination="6.0"
-    profile="eea.daviz:default">
-
-    <genericsetup:upgradeStep
-      title="Migrate Data Provenance from Visualization to Source Data"
-      handler="eea.daviz.upgrades.evolve60.migrate_data_provenance"
-      />
-
-  </genericsetup:upgradeSteps>
 
   <!-- 4.4 => 4.9 -->
   <genericsetup:upgradeSteps

@@ -2,19 +2,36 @@
 """
 
 from Products.ATContentTypes.content.folder import ATFolder
-from Products.Archetypes.atapi import Schema
-from Products.Archetypes.public import StringField, ReferenceField
+from Products.Archetypes.atapi import Schema, DisplayList
+from Products.Archetypes.public import StringField, ReferenceField, \
+                                        BooleanWidget, BooleanField
 from Products.Archetypes.public import TextAreaWidget, StringWidget, LabelWidget
 from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 from eea.app.visualization.interfaces import IDataProvenance
+from eea.app.visualization.interfaces import IMultiDataProvenance
 from eea.daviz.config import EEAMessageFactory as _
 from eea.daviz.events import DavizExternalChanged
 from eea.daviz.events import DavizRelationsChanged
 from eea.daviz.events import DavizSpreadSheetChanged
 from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
-from zope.component import queryAdapter
+from zope.component import queryAdapter, queryUtility
+
+from zope.schema.interfaces import IVocabularyFactory
+
+
 from zope.event import notify
 import logging
+
+from Products.Archetypes.interfaces import IVocabulary
+
+from Products.DataGridField import DataGridField, DataGridWidget
+from Products.DataGridField.Column import Column
+from Products.DataGridField.SelectColumn import SelectColumn
+
+from archetypes.schemaextender.interfaces import ISchemaExtender
+from archetypes.schemaextender.field import ExtensionField
+
+from zope.interface import implements
 
 
 logger = logging.getLogger('eea.daviz')
@@ -33,9 +50,33 @@ except ImportError:
 #
 OrganisationsWidget = StringWidget
 OrganisationsVocabulary = None
+OwnerColumn = Column("Owner")
+widget_helper_js = ('++resource++eea.daviz.datasource.js',
+                   'datagridwidget.js',)
 try:
     from eea.dataservice.widgets import OrganisationsWidget
     OrganisationsVocabulary = u'Organisations'
+    class ArchetypesOrganisationsVocabulary:
+        """Wrapper for OrganisationsVocabulary to Archetypes Vocabulary
+        """
+        implements(IVocabulary)
+
+        def getDisplayList(self, instance):
+            """getDisplayList
+            """
+            voc_fact = queryUtility(IVocabularyFactory, OrganisationsVocabulary)
+            items = [(t.value, t.title or t.token) for t in voc_fact(instance)]
+            items.insert(0, ('',''))
+            vocabulary = DisplayList(items)
+            return vocabulary
+
+    tmpOrganisationsVocabulary = ArchetypesOrganisationsVocabulary()
+    OwnerColumn = SelectColumn("Owner",
+                                vocabulary=tmpOrganisationsVocabulary,
+                                default='')
+    widget_helper_js = ('++resource++eea.daviz.datasource.js',
+                        'datagridwidget.js',
+                        'selectautocomplete_widget.js',)
 except ImportError:
     logger.warn('eea.dataservice is not installed')
 
@@ -69,7 +110,6 @@ class DavizStringField(StringField):
         super(DavizStringField, self).set(instance, value, **kwargs)
         if old != value:
             notify(DavizSpreadSheetChanged(instance, spreadsheet=value))
-
 class DavizUrlField(StringField):
     """ Notify on set
     """
@@ -99,6 +139,29 @@ class DavizDataField(StringField):
         config = queryAdapter(instance, IDataProvenance)
         setattr(config, self.alias, value)
 
+class DavizDataGridField(ExtensionField, DataGridField):
+    """ Custom data grid field
+    """
+    def get(self, instance, **kwargs):
+        """ get provenances
+        """
+        config = queryAdapter(instance, IMultiDataProvenance)
+        return getattr(config, 'provenances', ({},))
+
+    def set(self, instance, value, **kwargs):
+        """ update provenances
+        """
+        config = queryAdapter(instance, IMultiDataProvenance)
+        setattr(config, 'provenances', value)
+
+class DavizBooleanField(ExtensionField, BooleanField):
+    """ BooleanField for schema extender
+    """
+    def get(self, instance, **kwargs):
+        """ check if provenance info is inherited or not
+        """
+        config = queryAdapter(instance, IMultiDataProvenance)
+        return getattr(config, 'isInheritedProvenance', False)
 
 SCHEMA = Schema((
     DavizReferenceField('relatedItems',
@@ -178,8 +241,6 @@ SCHEMA = Schema((
                     "Are you sure you want to continue?"
             ),
             i18n_domain="eea",
-            helper_js=('++resource++eea.daviz.warnings.js',),
-            helper_css=('++resource++eea.daviz.edit.css',),
             visible={'edit': 'visible', 'view': 'invisible'}
         )
     ),
@@ -189,6 +250,7 @@ SCHEMA = Schema((
             label=_("Data source title"),
             description=_("Specify data source"),
             i18n_domain="eea",
+            visible={'edit': 'invisible', 'view': 'invisible'}
         ),
     ),
     DavizDataField('dataLink', alias="link",
@@ -197,8 +259,7 @@ SCHEMA = Schema((
             label=_("Data source link"),
             description=_("Specify data source link"),
             i18n_domain="eea",
-            helper_js=('++resource++eea.daviz.datasource.js',),
-            helper_css=('++resource++eea.daviz.datasource.css',)
+            visible={'edit': 'invisible', 'view': 'invisible'}
         )
     ),
     DavizDataField('dataOwner', alias="owner",
@@ -208,8 +269,10 @@ SCHEMA = Schema((
             label=_("Data source Organisation"),
             description=_("Specify data source Organisation"),
             i18n_domain="eea",
+            visible={'edit': 'invisible', 'view': 'invisible'}
         )
     ),
+
 ))
 
 DAVIZ_SCHEMA = ATFolder.schema.copy() + SCHEMA.copy()
@@ -242,9 +305,51 @@ def finalizeSchema(schema=DAVIZ_SCHEMA):
     schema.moveField('external', after="quickUpload")
     schema.moveField('relatedItems', after="external")
 
-    # Reorder data source fields
-    schema.moveField('dataTitle', after='description')
-    schema.moveField('dataLink', after='dataTitle')
-    schema.moveField('dataOwner', after='dataLink')
-
 finalizeSchema(DAVIZ_SCHEMA)
+
+
+class MultiDataProvenanceSchemaExtender(object):
+    """ Schema extender for content types with data provenance
+    """
+    implements(ISchemaExtender)
+    fields = (
+        DavizDataGridField(
+            name='provenances',
+            schemata='Data Provenance',
+            searchable=False,
+            widget=DataGridWidget(
+                label="Data Provenance",
+                description="""List of Data Provenance""",
+                columns={'title':Column("Title"),
+                         'link':Column("Link"),
+                         'owner':OwnerColumn,
+                         },
+                auto_insert=False,
+                i18n_domain='eea',
+                helper_js=widget_helper_js,
+                helper_css=('++resource++eea.daviz.datasource.css',
+                            'datagridwidget.css')
+                ),
+            columns=("title", "link", "owner"),
+        ),
+        DavizBooleanField(
+            name='inheritedprovenance',
+            schemata='Data Provenance',
+            searchable=False,
+            widget=BooleanWidget(
+                label='Inherited Provenance',
+                description= 'Inherited Provenance',
+            )
+        ),
+
+    )
+
+
+    def __init__(self, context):
+        self.context = context
+
+    def getFields(self):
+        """ Returns provenance list field
+        """
+        return self.fields
+

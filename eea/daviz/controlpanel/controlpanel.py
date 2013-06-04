@@ -18,7 +18,7 @@ class DavizSection(object):
     """
     implements(IDavizSection)
     prefix = 'daviz'
-    title = 'Daviz Settings'
+    title = _('Daviz Settings')
 
     def __init__(self):
         def validateDefaultFolder(value):

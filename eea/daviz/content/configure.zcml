@@ -1,4 +1,6 @@
-<configure xmlns="http://namespaces.zope.org/zope"
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:zcml="http://namespaces.zope.org/zcml"
   i18n_domain="eea">
 
   <class class=".presentation.DavizVisualization">
@@ -23,9 +25,17 @@
     handler=".events.onExternalChanged"
     />
 
+  <!-- Multiple data source schema extender -->
   <adapter
     for=".interfaces.IDavizVisualization"
     factory=".schema.MultiDataProvenanceSchemaExtender"
     />
+
+  <adapter
+    zcml:condition="installed plone.app.blob"
+    for="plone.app.blob.interfaces.IATBlobFile"
+    factory=".schema.MultiDataProvenanceSchemaExtender"
+    />
+
 
 </configure>

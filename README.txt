@@ -131,7 +131,7 @@ Within ZMI -> Top Folder -> manage_propertiesForm add a string property called
 google_key
 
 In this property you have to paste the Google maps API KEY, follow instruction
-https://developers.google.com/maps/documentation/javascript/v2/introduction#Obtaining_Key
+https://developers.google.com/maps/documentation/javascript/tutorial#api_key
 
 The Google account you use to generate the key has to be owner of the site,
 this is done by verification via Google webmaster tools.

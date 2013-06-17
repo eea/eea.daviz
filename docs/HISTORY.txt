@@ -1,8 +1,8 @@
 Changelog
 =========
 
-7.5-dev - (unreleased)
-----------------------
+7.5 - (2013-06-17)
+------------------
 * Feature: Changed data provenance to allow multiple data provenances; and precedence of provenances
   [szabozo0 #9561]
 * Bug fix: add an override for manage_beforeDelete to trigger a

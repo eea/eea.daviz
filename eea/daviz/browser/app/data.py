@@ -3,6 +3,12 @@
 from urllib2 import urlparse
 from Products.Five.browser import BrowserView
 
+try:
+    from eea.daviz.content.schema import tmpOrganisationsVocabulary
+    hasVocab = True
+except ImportError:
+    hasVocab = False
+
 class Info(BrowserView):
     """ Data source info
     """
@@ -35,8 +41,11 @@ class Info(BrowserView):
                 formatted_provenance['source']['url'] = link
 
                 if owner != '':
-                    vocab = field.Vocabulary(self.context)
-                    owner_title = self.context.displayValue(vocab, owner)
+                    if hasVocab:
+                        owner_title = tmpOrganisationsVocabulary.\
+                            getDisplayList(self.context).getValue(owner)
+                    else:
+                        owner_title = owner
                     formatted_provenance['owner']['title'] = owner_title
                     parser = urlparse.urlparse(owner)
                     if all((parser.scheme, parser.netloc)):

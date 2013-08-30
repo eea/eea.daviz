@@ -1,8 +1,8 @@
 Changelog
 =========
 
-7.6-dev - (unreleased)
-----------------------
+7.6 - (2013-08-30)
+------------------
 * Bug fix: Display data owner title in provenance info
   [szabozo0 #16585]
 

@@ -4,7 +4,7 @@ from zope.interface import implements
 from eea.app.visualization.controlpanel.interfaces import IDavizSection
 from zope.formlib.form import FormFields
 from zope import schema
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 from eea.daviz.config import EEAMessageFactory as _
 
 class InvalidDavizFolder(schema.ValidationError, Exception):

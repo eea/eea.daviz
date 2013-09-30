@@ -1,9 +1,9 @@
 """ Create visualizations with datasources
 """
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 from zope.component import queryUtility
 from eea.app.visualization.controlpanel.interfaces import IDavizSettings
-from zope.app.container.interfaces import INameChooser
+from zope.container.interfaces import INameChooser
 
 class Daviz(object):
     """ Daviz

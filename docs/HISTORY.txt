@@ -3,6 +3,9 @@ Changelog
 
 7.8-dev - (unreleased)
 ----------------------
+* Change: Updated package dependencies to reference the newly prefered Zope
+  locations that require minimum Plone 4.1
+  [ichimdav refs #15651]
 
 7.7 - (2013-09-06)
 ------------------

@@ -1,102 +1,142 @@
+#
+#
+# FULL NAME <EMAIL@ADDRESS>, 2013.
+# Bitouzé Denis <dbitouze@wanadoo.fr>, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-10-15 10:00+0200\n"
+"Last-Translator: Bitouzé Denis <dbitouze@wanadoo.fr>\n"
+"Language-Team: French <>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
+"X-Generator: Lokalize 1.5\n"
+"Language: fr\n"
 
 #: ../../daviz/content/schema.py:164
-msgid "Add a data URL which returns CSV/TSV, standard JSON, Exhibit JSON or Google Spreadsheet"
+msgid ""
+"Add a data URL which returns CSV/TSV, standard JSON, Exhibit JSON or Google "
+"Spreadsheet"
 msgstr ""
+"Ajouter une adresse Web de données qui renvoie un fichier CSV/TSV, JSON "
+"standard, Exhibit JSON ou tableur Google"
 
 #: ../../daviz/content/schema.py:163
 msgid "Add data from URL"
-msgstr ""
+msgstr "Ajouter de données à partir d'une adresse Web"
 
 #: ../../daviz/content/schema.py:174
-msgid "Changing data sources may break existing visualizations for this context. You should consider creating a new Visualization rather than changing this one if the new data is different than the existing one. Are you sure you want to continue?"
+msgid ""
+"Changing data sources may break existing visualizations for this context. "
+"You should consider creating a new Visualization rather than changing this "
+"one if the new data is different than the existing one. Are you sure you "
+"want to continue?"
 msgstr ""
+"Modifier les sources de données peut corrompre les visualisations existant "
+"dans ce contexte. "
+"Vous devriez plutôt créer une nouvelle visualisation plutôt que modifier "
+"celle-ci "
+"si les nouvelles données sont différentes de celles existantes. Êtes-vous "
+"certain de vouloir "
+"continuer ?"
 
 #: ../../daviz/content/schema.py:138
 msgid "Copy and paste a data table from a file/webpage"
 msgstr ""
+"Copier-coller un tableau de données à partir d'un fichier/d'une page Web"
 
 #: ../../daviz/content/schema.py:208
 msgid "Data source Organisation"
-msgstr ""
+msgstr "Organisme de la source de données"
 
 #: ../../daviz/content/schema.py:197
 msgid "Data source link"
-msgstr ""
+msgstr "Lien vers la source de données"
 
 #: ../../daviz/content/schema.py:189
 msgid "Data source title"
-msgstr ""
+msgstr "Titre de la source de données"
 
 #: ../../daviz/controlpanel/controlpanel.py:21
 msgid "Daviz Settings"
-msgstr ""
+msgstr "Configuration de Daviz"
 
 #: ../../daviz/controlpanel/controlpanel.py:43
 msgid "Default Folder for Visualizations"
-msgstr ""
+msgstr "Dossier par défaut pour les visualisations"
 
 #: ../../daviz/content/schema.py:109
 msgid "Find and reuse existing data"
-msgstr ""
+msgstr "Trouver et réutiliser des données existantes"
 
 #: ../../daviz/browser/zpt/caching.pt:6
 msgid "Invalidate cache"
-msgstr ""
+msgstr "Invalider le cache"
 
 #: ../../daviz/content/schema.py:110
-msgid "Look for compatible datasets in catalogue (e.g. visualization data, .tsv, .csv, SPARQL, etc)"
+msgid ""
+"Look for compatible datasets in catalogue (e.g. visualization data, .tsv, ."
+"csv, SPARQL, etc)"
 msgstr ""
+"Chercher des ensemble de données compatibles dans un catalogue (par exemple "
+"données de visualisation, .tsv, .csv, SPARQL, etc.)"
 
 #: ../../daviz/content/validators.py:48
-msgid "Provided URL doesn't provide valid data for visualization or this type of data is not supported, yet."
+msgid ""
+"Provided URL doesn't provide valid data for visualization or this type of "
+"data is not supported, yet."
 msgstr ""
+"L'adresse Web fournie ne renvoie pas des données pouvant être visualisées "
+"ou ce type de données n'est pas supporté pour le moment"
 
 #: ../../daviz/content/schema.py:190
 msgid "Specify data source"
-msgstr ""
+msgstr "Spécifier la source des données"
 
 #: ../../daviz/content/schema.py:209
 msgid "Specify data source Organisation"
-msgstr ""
+msgstr "Spécifier l'organisme de la source de données"
 
 #: ../../daviz/content/schema.py:198
 msgid "Specify data source link"
-msgstr ""
+msgstr "Spécifier le lien vers la source des données"
 
 #: ../../daviz/content/schema.py:119
 msgid "Upload CSV/TSV data files from your computer"
-msgstr ""
+msgstr "Télécharger des fichiers de données CSV/TSV depuis votre ordinateur"
 
 #: ../../daviz/content/schema.py:173
 msgid "Warning"
-msgstr ""
+msgstr "Avertissement"
 
 #: ../../daviz/content/validators.py:27
 msgid "You should provide data in a valid CSV format(.csv, .tsv, etc)"
 msgstr ""
+"Vous devriez fournir des données dans un format CSV valide (.csv, .tsv, etc)"
 
 #. Default: "Check these <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/examples\">data examples</a> or read <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/prepare-data\">how to prepare data</a>"
 #: ../../daviz/content/schema.py:139
 msgid "copy-paste-description"
 msgstr ""
+"Voir ces <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/da"
+"viz/learn-more/examples\">exemples de données</a> ou lire <a "
+"target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-mo"
+"re/prepare-data\">comment préparer des données</a>\""
 
 #. Default: "Drag and drop '.tsv, .csv files' in the area below, see <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/examples\">data examples</a> or read <a target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/prepare-data\">how to prepare data</a>"
 #: ../../daviz/content/schema.py:120
 msgid "upload-csv-description"
 msgstr ""
+"Glissez-déposez des fichiers .csv/.tsv dans la zone ci-dessous (voir <a "
+"target=\"_blank\" href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-mo"
+"re/examples\">des exemples de données</a> ou lire <a target=\"_blank\" "
+"href=\"http://www.eea.europa.eu/data-and-maps/daviz/learn-more/prepare-data\">"
+"comment préparer des données</a>\""
 

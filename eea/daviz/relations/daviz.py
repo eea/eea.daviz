@@ -56,6 +56,10 @@ class SetDavizChart(BrowserView):
 
         return "OK"
 
+    def set_daviz_size(self):
+        """Set the custom size of the chart
+        """
+        pass
 
 class GetDavizChart(BrowserView):
     """Get the chart for a daviz presentation that's set as related

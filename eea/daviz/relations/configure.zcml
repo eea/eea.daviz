@@ -3,30 +3,37 @@
            xmlns:plone="http://namespaces.plone.org/plone"
            i18n_domain="eea">
 
-  <browser:page for="eea.daviz.content.interfaces.IDavizVisualization"                                                                                                                                                                        
+  <browser:page for="eea.daviz.content.interfaces.IDavizVisualization"
                 name="eeareferencebrowser-popup-selecteditem.html"
                 template="templates/daviz-popup-selecteditem.pt"
                 class="eea.relations.browser.app.popup.PopupSelectedItem"
                 permission="zope2.View"
                 allowed_attributes="mode" />
 
-  <browser:page for="*"                                                                                                                                                                        
+  <browser:page for="*"
                 name="set_daviz_chart"
                 class=".daviz.SetDavizChart"
                 permission="cmf.ModifyPortalContent"
                 />
 
-  <browser:page for="*"                                                                                                                                                                        
+  <browser:page for="*"
+                name="set_daviz_size"
+                class=".daviz.SetDavizChart"
+                attribute="set_daviz_size"
+                permission="cmf.ModifyPortalContent"
+                />
+
+  <browser:page for="*"
                 name="get_daviz_chart"
                 class=".daviz.GetDavizChart"
                 permission="zope2.View"
                 />
 
-  <browser:resource 
+  <browser:resource
                 name="daviz_relations.js" 
                 file="daviz_relations.js" />
 
-  <browser:page for="*"                                                                                                                                                                        
+  <browser:page for="*"
                 name="migrate_daviz_relations"
                 class=".migrate.MigrateRelations"
                 permission="cmf.ManagePortal"

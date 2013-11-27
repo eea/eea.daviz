@@ -1,5 +1,5 @@
 /*jslint white: false, browser: true, devel: true */
-/*global  jQuery: false */
+/*global  jQuery: false, DavizInlineResizer: true */
 
 // InternetExplorer 8 compatibility
 if (!Array.prototype.indexOf) {
@@ -262,3 +262,22 @@ var DavizChartSelection = function (btnel) {
         });
 
     };
+
+jQuery(document).ready(function($){
+    // handle inline resize
+    jQuery(document).delegate(".googlechart_dashboard", DavizInlineResizer.Events.charts.resized, function(evt, value){
+        var metadata = jQuery(this).closest(".embedded-daviz-visualization").find(".metadata");
+        var part_url = metadata.find(".part_url").text();
+        var uid = metadata.find(".daviz_uid").text();
+        jQuery.ajax({
+            type: 'POST',
+            url: part_url + "/@@set_daviz_size",
+            data: {'daviz_uid': uid},
+            error: function(){
+                alert("Could not save data on server");
+            },
+            success: function(data){
+            }
+        });
+    });
+});

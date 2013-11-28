@@ -37,7 +37,9 @@ class SetDavizChart(BrowserView):
         for pair in req_charts.split("&"):
             if pair:
                 chart_id, embed = pair.split("=")
-                charts.append((chart_id, embed))
+                chart_settings = PersistentMapping()
+                chart_settings['type'] = embed
+                charts.append((chart_id, chart_settings))
 
         obj = self.context
         annot = IAnnotations(obj)

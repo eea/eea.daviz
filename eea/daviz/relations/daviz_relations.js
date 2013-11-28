@@ -269,10 +269,12 @@ jQuery(document).ready(function($){
         var metadata = jQuery(this).closest(".embedded-daviz-visualization").find(".metadata");
         var part_url = metadata.find(".part_url").text();
         var uid = metadata.find(".daviz_uid").text();
+        value.daviz_uid = uid;
+        value.chart_id = value.chart_id;
         jQuery.ajax({
             type: 'POST',
             url: part_url + "/@@set_daviz_size",
-            data: {'daviz_uid': uid},
+            data: value,
             error: function(){
                 alert("Could not save data on server");
             },

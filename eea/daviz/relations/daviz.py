@@ -61,7 +61,23 @@ class SetDavizChart(BrowserView):
     def set_daviz_size(self):
         """Set the custom size of the chart
         """
-        pass
+        form = self.request.form
+        uid = form.get("daviz_uid", "").strip()
+        chart_id = form.get("chart_id", "").strip()
+
+        annot = IAnnotations(self.context).get("DAVIZ_CHARTS", {})
+
+        form = self.request.form
+        uid = form.get("daviz_uid", "").strip()
+        chart_id = form.get("chart_id", "").strip()
+
+        chart_settings = annot[uid][chart_id]
+        chart_settings['width'] = form.get("width", "").strip()
+        chart_settings['height'] = form.get("height", "").strip()
+        chart_settings['chartAreaWidth'] = form.get("chartAreaWidth", "").strip()
+        chart_settings['chartAreaHeight'] = form.get("chartAreaHeight", "").strip()
+        chart_settings['chartAreaTop'] = form.get("chartAreaTop", "").strip()
+        chart_settings['chartAreaLeft'] = form.get("chartAreaLeft", "").strip()
 
 class GetDavizChart(BrowserView):
     """Get the chart for a daviz presentation that's set as related

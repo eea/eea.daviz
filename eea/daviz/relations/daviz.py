@@ -28,6 +28,20 @@ class SetDavizChart(BrowserView):
         form = self.request.form
         uid = form.get("daviz_uid", "").strip()
 
+        obj = self.context
+        annot = IAnnotations(obj)
+
+        if not KEY in annot:
+            annot[KEY] = PersistentMapping()
+
+        info = annot[KEY].get(uid)
+        if not info:
+            info = annot[KEY][uid] = OrderedDict()
+
+        previous_info = dict(info)
+        info.clear()
+
+
         #this is a string like: 'chart_1=preview&chart_2=live'
         #from urlparse import parse_qs
         #cannot use parse_qs because it doesn't guarantee order
@@ -39,19 +53,13 @@ class SetDavizChart(BrowserView):
                 chart_id, embed = pair.split("=")
                 chart_settings = PersistentMapping()
                 chart_settings['type'] = embed
+                for prev_key, prev_val in previous_info.get(chart_id, {}).\
+                    items():
+                    if prev_key != 'type':
+                        chart_settings[prev_key] = prev_val
                 charts.append((chart_id, chart_settings))
 
-        obj = self.context
-        annot = IAnnotations(obj)
 
-        if not KEY in annot:
-            annot[KEY] = PersistentMapping()
-
-        info = annot[KEY].get(uid)
-        if not info:
-            info = annot[KEY][uid] = OrderedDict()
-
-        info.clear()
         info.update(charts)
 
         self.context._p_changed = True
@@ -74,8 +82,10 @@ class SetDavizChart(BrowserView):
         chart_settings = annot[uid][chart_id]
         chart_settings['width'] = form.get("width", "").strip()
         chart_settings['height'] = form.get("height", "").strip()
-        chart_settings['chartAreaWidth'] = form.get("chartAreaWidth", "").strip()
-        chart_settings['chartAreaHeight'] = form.get("chartAreaHeight", "").strip()
+        chart_settings['chartAreaWidth'] = form.get("chartAreaWidth", "").\
+            strip()
+        chart_settings['chartAreaHeight'] = form.get("chartAreaHeight", "").\
+            strip()
         chart_settings['chartAreaTop'] = form.get("chartAreaTop", "").strip()
         chart_settings['chartAreaLeft'] = form.get("chartAreaLeft", "").strip()
 

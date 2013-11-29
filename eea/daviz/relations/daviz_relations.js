@@ -265,7 +265,7 @@ var DavizChartSelection = function (btnel) {
 
 jQuery(document).ready(function($){
     // handle inline resize
-    jQuery(document).delegate(".googlechart_dashboard", DavizInlineResizer.Events.charts.resized, function(evt, value){
+    jQuery(document).delegate(".googlechart_dashboard", "google-chart-inlineresized", function(evt, value){
         var metadata = jQuery(this).closest(".embedded-daviz-visualization").find(".metadata");
         var part_url = metadata.find(".part_url").text();
         var uid = metadata.find(".daviz_uid").text();

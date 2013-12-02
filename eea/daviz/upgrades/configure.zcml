@@ -5,9 +5,9 @@
   i18n_domain="eea">
 
 
-  <!-- 7.8 => 7.9 -->
+  <!-- 7.5 => 7.9 -->
   <genericsetup:upgradeSteps
-    source="7.8"
+    source="7.5"
     destination="7.9"
     profile="eea.daviz:default">
 

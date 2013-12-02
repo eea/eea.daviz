@@ -28,17 +28,6 @@ class SetDavizChart(BrowserView):
         form = self.request.form
         uid = form.get("daviz_uid", "").strip()
 
-        #this is a string like: 'chart_1=preview&chart_2=live'
-        #from urlparse import parse_qs
-        #cannot use parse_qs because it doesn't guarantee order
-        req_charts = form.get("charts", "").strip()
-        charts = []
-
-        for pair in req_charts.split("&"):
-            if pair:
-                chart_id, embed = pair.split("=")
-                charts.append((chart_id, embed))
-
         obj = self.context
         annot = IAnnotations(obj)
 
@@ -49,13 +38,56 @@ class SetDavizChart(BrowserView):
         if not info:
             info = annot[KEY][uid] = OrderedDict()
 
+        previous_info = dict(info)
         info.clear()
+
+
+        #this is a string like: 'chart_1=preview&chart_2=live'
+        #from urlparse import parse_qs
+        #cannot use parse_qs because it doesn't guarantee order
+        req_charts = form.get("charts", "").strip()
+        charts = []
+
+        for pair in req_charts.split("&"):
+            if pair:
+                chart_id, embed = pair.split("=")
+                chart_settings = PersistentMapping()
+                chart_settings['type'] = embed
+                for prev_key, prev_val in previous_info.get(chart_id, {}).\
+                    items():
+                    if prev_key != 'type':
+                        chart_settings[prev_key] = prev_val
+                charts.append((chart_id, chart_settings))
+
+
         info.update(charts)
 
         self.context._p_changed = True
 
         return "OK"
 
+    def set_daviz_size(self):
+        """Set the custom size of the chart
+        """
+        form = self.request.form
+        uid = form.get("daviz_uid", "").strip()
+        chart_id = form.get("chart_id", "").strip()
+
+        annot = IAnnotations(self.context).get("DAVIZ_CHARTS", {})
+
+        form = self.request.form
+        uid = form.get("daviz_uid", "").strip()
+        chart_id = form.get("chart_id", "").strip()
+
+        chart_settings = annot[uid][chart_id]
+        chart_settings['width'] = form.get("width", "").strip()
+        chart_settings['height'] = form.get("height", "").strip()
+        chart_settings['chartAreaWidth'] = form.get("chartAreaWidth", "").\
+            strip()
+        chart_settings['chartAreaHeight'] = form.get("chartAreaHeight", "").\
+            strip()
+        chart_settings['chartAreaTop'] = form.get("chartAreaTop", "").strip()
+        chart_settings['chartAreaLeft'] = form.get("chartAreaLeft", "").strip()
 
 class GetDavizChart(BrowserView):
     """Get the chart for a daviz presentation that's set as related

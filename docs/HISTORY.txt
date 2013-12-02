@@ -3,6 +3,8 @@ Changelog
 
 7.9-dev - (unreleased)
 ----------------------
+* Feature: Save chart's customized size in the DAVIZ_CHARTS annotation
+  [szabozo0 refs #17453]
 
 7.8 - (2013-10-04)
 ------------------

@@ -74,7 +74,7 @@
                                     <!--[><img tal:attributes="src string:${thischart/fallback-image}/image_icon" /><]-->
                                     <span>
                                         <span tal:replace="thischart/title" />: 
-                                        <span tal:content="python:chart[2]" />
+                                        <span tal:content="python:chart[2]['type']" />
                                     </span>
                                 </tal:def>
                             </tal:def>
@@ -100,7 +100,7 @@
                 <!--This is used to save chart selection in DB-->
                 <div class="select_charts_selection">
                     <tal:rep tal:repeat="chart charts" >
-                        <input type="hidden" tal:attributes="name python:chart[0]; value python:chart[2]" />
+                        <input type="hidden" tal:attributes="name python:chart[0]; value python:chart[2]['type']" />
                     </tal:rep>
                 </div>
 

@@ -15,23 +15,17 @@ from eea.daviz.events import DavizRelationsChanged
 from eea.daviz.events import DavizSpreadSheetChanged
 from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
 from zope.component import queryAdapter, queryUtility
-
 from zope.schema.interfaces import IVocabularyFactory
-
-
 from zope.event import notify
 import logging
-
 from Products.Archetypes.interfaces import IVocabulary
-
 from Products.DataGridField import DataGridField, DataGridWidget
 from Products.DataGridField.Column import Column
 from Products.DataGridField.SelectColumn import SelectColumn
-
 from archetypes.schemaextender.interfaces import ISchemaExtender
 from archetypes.schemaextender.field import ExtensionField
-
 from zope.interface import implements
+from Products.CMFCore.utils import getToolByName
 
 
 logger = logging.getLogger('eea.daviz')
@@ -152,7 +146,46 @@ class DavizDataGridField(ExtensionField, DataGridField):
         """ update provenances
         """
         config = queryAdapter(instance, IMultiDataProvenance)
+        original_values = getattr(config, 'provenances', ({},))
         setattr(config, 'provenances', value)
+
+        # Add relation when adding internal link for data provenance
+        new_links = []
+        portal_url = getToolByName(instance, 'portal_url')()
+        for val in value:
+            if val['link'].startswith(portal_url):
+                source_obj = self.getRelation(instance, val['link'])
+                if source_obj:
+                    relatedItems = source_obj.getRelatedItems()
+                    relatedItems.append(instance)
+                    source_obj.setRelatedItems(relatedItems)
+                new_links.append(val['link'])
+
+        # Delete the relation if the internal link was removed
+        for val in original_values:
+            if (not val['link'] in new_links) and \
+                                   val['link'].startswith(portal_url):
+                source_obj = self.getRelation(instance, val['link'])
+                if source_obj:
+                    relatedItems = source_obj.getRelatedItems()
+                    relatedItems.remove(instance)
+                    source_obj.setRelatedItems(relatedItems)
+
+    def getRelation(self, instance, path=None):
+        """ Extract referer from request or return self.context
+        """
+        portal_url = getToolByName(instance, 'portal_url')
+        path = path.replace(portal_url(), '', 1)
+        site = portal_url.getPortalObject().absolute_url(1)
+        if site and (not path.startswith(site)):
+            path = site + path
+
+        try:
+            referer = instance.restrictedTraverse(path)
+        except Exception:
+            logger.info('Relation object not found')
+            referer = None
+        return referer
 
 class DavizBooleanField(ExtensionField, BooleanField):
     """ BooleanField for schema extender

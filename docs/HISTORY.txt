@@ -3,6 +3,8 @@ Changelog
 
 8.0-dev - (unreleased)
 ----------------------
+* Feature: When adding internal link for data provenance add the object as a related item
+  [ghicaale refs #16666]
 
 7.9 - (2013-12-09)
 ------------------
@@ -17,6 +19,7 @@ Changelog
 
 7.7 - (2013-09-06)
 ------------------
+* No changes
 
 7.6 - (2013-08-30)
 ------------------

@@ -146,7 +146,7 @@ class DavizDataGridField(ExtensionField, DataGridField):
         """ update provenances
         """
         config = queryAdapter(instance, IMultiDataProvenance)
-        original_values = getattr(config, 'provenances', ({},))
+        original_values = getattr(config, 'provenances', ({'link': ''},))
         setattr(config, 'provenances', value)
 
         # Add relation when adding internal link for data provenance

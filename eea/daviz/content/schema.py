@@ -174,7 +174,7 @@ class DavizDataGridField(ExtensionField, DataGridField):
                     source_obj.setRelatedItems(relatedItems)
 
     def getRelation(self, instance, path=None):
-        """ Extract referer from request or return self.context
+        """ Extract the relation object
         """
         portal_url = getToolByName(instance, 'portal_url')
         path = path.replace(portal_url(), '', 1)

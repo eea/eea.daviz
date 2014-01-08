@@ -152,8 +152,9 @@ class DavizDataGridField(ExtensionField, DataGridField):
         # Add relation when adding internal link for data provenance
         new_links = []
         portal_url = getToolByName(instance, 'portal_url')()
+        if value == ({},): value = ({'link': ''},)
         for val in value:
-            if val['link'].startswith(portal_url):
+            if val.get('link').startswith(portal_url):
                 source_obj = self.getRelation(instance, val['link'])
                 if source_obj:
                     relatedItems = source_obj.getRelatedItems()
@@ -163,12 +164,13 @@ class DavizDataGridField(ExtensionField, DataGridField):
 
         # Delete the relation if the internal link was removed
         for val in original_values:
-            if (not val['link'] in new_links) and \
+            if (not val.get('link') in new_links) and \
                                    val['link'].startswith(portal_url):
                 source_obj = self.getRelation(instance, val['link'])
                 if source_obj:
                     relatedItems = source_obj.getRelatedItems()
-                    relatedItems.remove(instance)
+                    relatedItems.remove(instance) if instance \
+                                                      in relatedItems else None
                     source_obj.setRelatedItems(relatedItems)
 
     def getRelation(self, instance, path=None):

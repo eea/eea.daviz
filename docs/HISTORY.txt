@@ -3,6 +3,8 @@ Changelog
 
 8.0-dev - (unreleased)
 ----------------------
+* Bugfix: Don't reload edit page after a file was uploaded
+  [szabozo0]
 * Feature: When adding internal link for data provenance add the object as a related item
   [ghicaale refs #16666]
 

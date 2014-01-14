@@ -1,6 +1,9 @@
 Changelog
 =========
 
+8.1-dev - (unreleased)
+----------------------
+
 8.0 - (2014-01-14)
 ------------------
 * Bugfix: Don't reload edit page after a file was uploaded

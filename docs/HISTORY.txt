@@ -1,8 +1,8 @@
 Changelog
 =========
 
-8.0-dev - (unreleased)
-----------------------
+8.0 - (2014-01-14)
+------------------
 * Bugfix: Don't reload edit page after a file was uploaded
   [szabozo0]
 * Feature: When adding internal link for data provenance add the object as a related item

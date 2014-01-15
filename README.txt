@@ -69,7 +69,7 @@ You can easily make visualizations like:
 1. `Simile Exhibit <http://www.simile-widgets.org/exhibit3>`_
 2. `Google Charts <http://code.google.com/apis/chart>`_
 
-See also initial project `wiki page <https://svn.eionet.europa.eu/projects/Zope/wiki/DaViz>`_
+See also initial project `wiki page <http://taskman.eionet.europa.eu/projects/zope/wiki/DaViz>`_
 for the reasoning behind this project.
 
 
@@ -216,8 +216,8 @@ Links
 
 1. Simile Wiki - Exhibit 2.0: http://simile.mit.edu/wiki/Exhibit
 2. Simile widgets: http://www.simile-widgets.org/exhibit
-3. EEA Daviz how-to: https://svn.eionet.europa.eu/projects/Zope/wiki/HowToDaviz
-4. EEA Daviz backlog wiki: https://svn.eionet.europa.eu/projects/Zope/wiki/DaViz
+3. EEA Daviz how-to: http://taskman.eionet.europa.eu/projects/zope/wiki/HowToDaViz
+4. EEA Daviz backlog wiki: http://taskman.eionet.europa.eu/projects/zope/wiki/DaViz
 5. Google charts: http://code.google.com/apis/chart/
 
 

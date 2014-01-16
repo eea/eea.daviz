@@ -152,7 +152,8 @@ class DavizDataGridField(ExtensionField, DataGridField):
         # Add relation when adding internal link for data provenance
         new_links = []
         portal_url = getToolByName(instance, 'portal_url')()
-        if value == ({},): value = ({'link': ''},)
+        if value == ({},):
+            value = ({'link': ''},)
         for val in value:
             if val.get('link').startswith(portal_url):
                 source_obj = self.getRelation(instance, val['link'])
@@ -169,8 +170,8 @@ class DavizDataGridField(ExtensionField, DataGridField):
                 source_obj = self.getRelation(instance, val['link'])
                 if source_obj:
                     relatedItems = source_obj.getRelatedItems()
-                    relatedItems.remove(instance) if instance \
-                                                      in relatedItems else None
+                    if instance in relatedItems:
+                        relatedItems.remove(instance)
                     source_obj.setRelatedItems(relatedItems)
 
     def getRelation(self, instance, path=None):
@@ -186,7 +187,7 @@ class DavizDataGridField(ExtensionField, DataGridField):
         try:
             referer = instance.restrictedTraverse(path)
         except Exception:
-            logger.info('Relation object not found: %s' % path)
+            logger.info('Relation object not found: %s', path)
             referer = None
         return referer
 

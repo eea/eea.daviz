@@ -26,6 +26,7 @@ from archetypes.schemaextender.interfaces import ISchemaExtender
 from archetypes.schemaextender.field import ExtensionField
 from zope.interface import implements
 from Products.CMFCore.utils import getToolByName
+from Products.Archetypes.interfaces import IBaseObject
 
 
 logger = logging.getLogger('eea.daviz')
@@ -188,8 +189,14 @@ class DavizDataGridField(ExtensionField, DataGridField):
             referer = instance.restrictedTraverse(path)
         except Exception:
             logger.info('Relation object not found: %s', path)
-            referer = None
-        return referer
+            return None
+
+        if IBaseObject.providedBy(referer):
+            return referer
+
+        path = '/'.join(path.split('/')[:-1])
+
+        return self.getRelation(instance, path)
 
 class DavizBooleanField(ExtensionField, BooleanField):
     """ BooleanField for schema extender

@@ -5,6 +5,7 @@
 
   <includeDependencies package="." />
 
+  <include file="documentation.zcml" />
   <include file="profiles.zcml" />
   <include file="permissions.zcml" />
 

@@ -5,6 +5,8 @@ Changelog
 ----------------------
 * Bug fix: Fixed the case then provenance URL points to a view or template
   [ghicaale refs #16666]
+* Feature: adding Sphinx-generated documentation in Page Template format
+  [batradav refs #9502]
 
 8.0 - (2014-01-14)
 ------------------

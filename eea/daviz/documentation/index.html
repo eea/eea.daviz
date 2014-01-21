@@ -1,5 +1,5 @@
 
-<tal:block define="context python: request.PARENTS[-2]; here nocall:context">
+<tal:block define="context python: request.PARENTS[1]; here nocall:context">
 <html metal:use-macro="context/main_template/macros/master"
       i18n:domain="plone">
 
@@ -19,6 +19,7 @@
   <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="_static/sphinx-bootstrap.css" type="text/css"/>
   <link rel="stylesheet" href="_static/pygments.css" type="text/css"/>
+  <link rel="stylesheet" href="_static/theme.css" type="text/css"/>
 </metal:styleslot>
 <metal:javascriptslot fill-slot="javascript_head_slot">
   <script type="text/javascript">
@@ -310,56 +311,6 @@ data</a></li>
         </div>
     </div>
 </metal:main>
-
-<metal:right-portlet fill-slot="portlets_two_slot">
-      <div class="span3">
-          
-        <div class="sphinxsidebar">
-            <div class="sphinxsidebarwrapper">
-  <h3><a href="#">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">EEA Daviz</a><ul>
-<li><a class="reference internal" href="#introduction">Introduction</a></li>
-<li><a class="reference internal" href="#main-features">Main features</a></li>
-<li><a class="reference internal" href="#live-demos">Live demos</a></li>
-<li><a class="reference internal" href="#architecture-overview">Architecture overview</a></li>
-<li><a class="reference internal" href="#installation">Installation</a><ul>
-<li><a class="reference internal" href="#zc-buildout">zc.buildout</a><ul>
-<li><a class="reference internal" href="#google-maps-api-key">Google Maps API Key</a><ul>
-<li><a class="reference internal" href="#plone">Plone</a></li>
-<li><a class="reference internal" href="#zope">Zope</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
-<li><a class="reference internal" href="#source-code">Source code</a></li>
-<li><a class="reference internal" href="#copyright-and-license">Copyright and license</a></li>
-<li><a class="reference internal" href="#more-documentation">More documentation</a></li>
-<li><a class="reference internal" href="#links">Links</a></li>
-<li><a class="reference internal" href="#funding-and-project-management">Funding and project management</a></li>
-<li><a class="reference internal" href="#api-documentation">API Documentation</a><ul>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <h4>Next topic</h4>
-  <p class="topless"><a href="api/index.html"
-                        title="next chapter">EEA Daviz Developer Documentation</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/index.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-            </div>
-        </div>
-      </div>
-  
-</metal:right-portlet>
 
 </body>
 </html>

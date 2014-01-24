@@ -183,7 +183,8 @@ class DavizDataGridField(ExtensionField, DataGridField):
         site = portal_url.getPortalObject().absolute_url(1)
         if site and (not path.startswith(site)):
             path = site + path
-        path = path[1:]
+        if path.startswith('/'):
+            path = path[1:]
 
         try:
             referer = instance.restrictedTraverse(path)

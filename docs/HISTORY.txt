@@ -3,6 +3,8 @@ Changelog
 
 8.2-dev - (unreleased)
 ----------------------
+* Bug fix: Fixed path handling of internal links
+  [ghicaale refs #16666]
 
 8.1 - (2014-01-22)
 ------------------

@@ -3,3 +3,5 @@
 *.pyo
 *.mo
 dist
+documentation/searchindex.js
+documentation/search.html

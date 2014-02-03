@@ -1,6 +1,9 @@
 Changelog
 =========
 
+8.3-dev - (unreleased)
+----------------------
+
 8.2 - (2014-02-03)
 ------------------
 * Bug fix: Fixed path handling of internal links

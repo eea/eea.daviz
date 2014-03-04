@@ -3,6 +3,8 @@ Changelog
 
 8.3-dev - (unreleased)
 ----------------------
+* Change: Link video tutorials within documentation
+  [avoinea]
 
 8.2 - (2014-02-03)
 ------------------

@@ -31,6 +31,10 @@ At the moment `Simile Exhibit`_ and `Google Charts`_ visualizations are
 supported. The architecture allows to extend Daviz with more
 visualisation libraries (visualisations plugins).
 
+.. image:: http://eea.github.io/_images/eea.daviz.cover.png
+   :target: http://www.youtube.com/watch?list=PLVPSQz7ahsByeq8nVKC7TT9apArEXBrV0&v=fjVR06lbQ_8
+
+
 .. contents::
 
 Main features
@@ -76,6 +80,8 @@ for the reasoning behind this project.
 Live demos
 ==========
 
+* `Basic tutorials <http://www.youtube.com/playlist?list=PLVPSQz7ahsByeq8nVKC7TT9apArEXBrV0>`_
+* `Advanced tutorials <http://www.youtube.com/playlist?list=PLVPSQz7ahsBxbe8pwzFWLQuvDSP9JFn8I>`_
 * `Daviz showroom <http://daviz.eionet.europa.eu>`_
 * `Google charts demos <http://code.google.com/apis/chart>`_
 * `MIT Simile Exhibit demos <http://www.simile-widgets.org/exhibit3>`_

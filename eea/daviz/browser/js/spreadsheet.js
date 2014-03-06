@@ -356,4 +356,7 @@ jQuery(document).ready(function(){
   jQuery("form[name='edit_form'] .formTabs").EEAFormsWizard();
   jQuery('#archetypes-fieldname-external').height('auto');
 
+  // Always display the tutorial and example links on top of the data table
+  jQuery("#fieldset-data-input .eeaforms-group-help").remove()
+  jQuery("#spreadsheet_help").show()
 });

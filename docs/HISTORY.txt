@@ -1,8 +1,11 @@
 Changelog
 =========
 
-8.3-dev - (unreleased)
+8.4-dev - (unreleased)
 ----------------------
+
+8.3 - (2014-03-10)
+------------------
 * Change: Always display the tutorials and example links on edit
   [szabozo0 refs #18400]
 * Change: Link video tutorials within documentation

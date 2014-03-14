@@ -3,6 +3,8 @@ Changelog
 
 8.4-dev - (unreleased)
 ----------------------
+* Change: Added tutorials link on edit page
+  [szabozo0 refs #18400]
 
 8.3 - (2014-03-10)
 ------------------

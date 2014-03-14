@@ -232,7 +232,11 @@ SCHEMA = Schema((
                 'or read '
                 '<a target="_blank" href="http://www.eea.europa.eu/'
                 'data-and-maps/daviz/learn-more/prepare-data">'
-                'how to prepare data</a>'
+                'how to prepare data</a> '
+                'or watch the '
+                '<a target="_blank" href="daviz-tutorials.html#create">'
+                '<span class="eea-icon eea-icon-youtube-square"></span>'
+                'video tutorials</a>'
               )
             ),
             i18n_domain="eea",
@@ -251,7 +255,11 @@ SCHEMA = Schema((
                 'or read '
                 '<a target="_blank" href="http://www.eea.europa.eu/'
                 'data-and-maps/daviz/learn-more/prepare-data">'
-                'how to prepare data</a>'
+                'how to prepare data</a> '
+                'or watch the '
+                '<a target="_blank" href="daviz-tutorials.html#create">'
+                '<span class="eea-icon eea-icon-youtube-square"></span>'
+                'video tutorials</a>'
               )
             ),
         i18n_domain="eea",

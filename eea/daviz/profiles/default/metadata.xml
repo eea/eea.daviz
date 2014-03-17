@@ -7,5 +7,6 @@
     <dependency>profile-eea.sparql:default</dependency>
     <dependency>profile-eea.exhibit:default</dependency>
     <dependency>profile-eea.googlecharts:default</dependency>
+    <dependency>profile-Products.DataGridField:default</dependency>
   </dependencies>
 </metadata>

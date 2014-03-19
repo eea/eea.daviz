@@ -3,6 +3,8 @@ Changelog
 
 8.4-dev - (unreleased)
 ----------------------
+* Feature: Added file type to allowed content types list, required for saving svg versions of the charts
+  [szabozo0 refs #18910]
 * Change: Added tutorials link on edit page
   [szabozo0 refs #18400]
 

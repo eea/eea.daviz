@@ -5,6 +5,19 @@
   i18n_domain="eea">
 
 
+  <!-- 8.3 => 8.4 -->
+  <genericsetup:upgradeSteps
+    source="8.3"
+    destination="8.4"
+    profile="eea.daviz:default">
+
+    <genericsetup:upgradeDepends
+      title="Import types from eea.daviz profile"
+      import_steps="typeinfo"
+      />
+
+  </genericsetup:upgradeSteps>
+
   <!-- 7.5 => 7.9 -->
   <genericsetup:upgradeSteps
     source="7.5"

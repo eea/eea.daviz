@@ -233,7 +233,8 @@ SCHEMA = Schema((
                 '<a target="_blank" href="http://www.eea.europa.eu/'
                 'data-and-maps/daviz/learn-more/prepare-data">'
                 'how to prepare data</a> '
-                '<div style="display:none">' #temporarily hide the link to tutorials
+                #temporarily hide the link to tutorials
+                '<div style="display:none">'
                 'or watch the '
                 '<a target="_blank" href="daviz-tutorials.html#create">'
                 '<span class="eea-icon eea-icon-youtube-square"></span>'
@@ -258,7 +259,8 @@ SCHEMA = Schema((
                 '<a target="_blank" href="http://www.eea.europa.eu/'
                 'data-and-maps/daviz/learn-more/prepare-data">'
                 'how to prepare data</a> '
-                '<div style="display:none">' #temporarily hide the link to tutorials
+                #temporarily hide the link to tutorials
+                '<div style="display:none">'
                 'or watch the '
                 '<a target="_blank" href="daviz-tutorials.html#create">'
                 '<span class="eea-icon eea-icon-youtube-square"></span>'

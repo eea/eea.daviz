@@ -108,6 +108,25 @@ EEA.Daviz.Spreadsheet.prototype = {
       }
     ];
 
+    var href_parts = window.location.href.split("/");
+    var rename = false;
+    href_parts[href_parts.length -1] = "daviz.json";
+    jQuery.ajax({
+        url: href_parts.join("/"),
+        async: false,
+        success: function(data){
+            try{
+                data = JSON.parse(data);
+                if (jQuery.isEmptyObject(data.properties)){
+                    rename = true;
+                }
+            }
+            catch(err){
+                rename = true;
+            }
+        }
+    });
+
     jQuery.each(colNames, function(index, key){
       var colType = self.table.properties[key].columnType || self.table.properties[key].valueType;
       var label = self.table.properties[key].label || key;
@@ -133,7 +152,7 @@ EEA.Daviz.Spreadsheet.prototype = {
         focusable: true,
         editor: editor,
         header: {
-          menu: EEA.Daviz.ColumnMenu({columnType: colType})
+          menu: EEA.Daviz.ColumnMenu({columnType: colType, rename:rename})
         }
       };
 

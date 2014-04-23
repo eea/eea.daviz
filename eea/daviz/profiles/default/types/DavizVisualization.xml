@@ -41,13 +41,6 @@
     visible="False" i18n:attributes="title">
   <permission value="ATContentTypes: View history"/>
  </action>
- <action title="Edit Visualizations" action_id="daviz.edit" category="object"
-    condition_expr=""
-    url_expr="string:${object/absolute_url}/daviz-edit.html"
-    visible="False"
-    i18n:attributes="title">
-  <permission value="Modify portal content"/>
- </action>
  <action title="Caching" action_id="caching" category="object"
     condition_expr=""
     url_expr="string:${object/absolute_url}/caching"

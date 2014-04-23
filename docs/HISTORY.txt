@@ -3,6 +3,8 @@ Changelog
 
 8.4-dev - (unreleased)
 ----------------------
+* Change: Made Daviz Visualization plone_lock_info aware
+  [voineali refs #19172]
 * Bug fix: Disabled rename on spreadsheet when editing an already existing visualization
   [szabozo0 refs #19149]
 * Feature: Added file type to allowed content types list, required for saving svg versions of the charts

@@ -3,6 +3,8 @@ Changelog
 
 8.4-dev - (unreleased)
 ----------------------
+* Change: Added support for null value for slickgrid boolean fields
+  [olimpiurob refs #19206]
 * Change: Made Daviz Visualization plone_lock_info aware
   [voineali refs #19172]
 * Bug fix: Disabled rename on spreadsheet when editing an already existing visualization

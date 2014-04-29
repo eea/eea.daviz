@@ -1,8 +1,8 @@
 Changelog
 =========
 
-8.4-dev - (unreleased)
-----------------------
+8.4 - (2014-04-29)
+------------------
 * Change: Made Daviz Visualization plone_lock_info aware
   [voineali refs #19172]
 * Bug fix: Disabled rename on spreadsheet when editing an already existing visualization

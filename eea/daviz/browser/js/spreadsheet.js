@@ -137,8 +137,8 @@ EEA.Daviz.Spreadsheet.prototype = {
         editor = Slick.Editors.Date;
       }
       if(colType === 'boolean'){
-        editor = Slick.Editors.YesNoSelect;
-        formatter = Slick.Formatters.YesNo;
+        editor = self.YesNoSelectEditor;
+        formatter = self.boolean_formatter;
       }
 
       var column = {
@@ -217,6 +217,67 @@ EEA.Daviz.Spreadsheet.prototype = {
     self.grid.onCellChange.subscribe(function(e, args){
       self.save(false);
     });
+  },
+
+  boolean_formatter: function(row, cell, value, columnDef, dataContext) {
+    if (value === undefined || value === 'null') {
+      return '';
+    }
+    return value ? "Yes" : "No";
+  },
+
+  YesNoSelectEditor: function(args) {
+    var $select;
+    var defaultValue;
+    var scope = this;
+
+    this.init = function () {
+      $select = $("<SELECT tabIndex='0' class='editor-yesno'><OPTION value='yes'>Yes</OPTION><OPTION value='no'>No</OPTION><OPTION value='null'>Null</OPTION></SELECT>");
+      $select.appendTo(args.container);
+      $select.focus();
+    };
+
+    this.destroy = function () {
+      $select.remove();
+    };
+
+    this.focus = function () {
+      $select.focus();
+    };
+
+    this.loadValue = function (item) {
+      if (item[args.column.field] === undefined || item[args.column.field] === 'null') {
+        $select.val(defaultValue = '');
+      } else {
+        $select.val((defaultValue = item[args.column.field]) ? "yes" : "no");
+      }
+      $select.select();
+    };
+
+    this.serializeValue = function () {
+      if ($select.val() === "null") {
+        return "null";
+      } else {
+        return ($select.val() == "yes");
+      }
+    };
+
+    this.applyValue = function (item, state) {
+      item[args.column.field] = state;
+    };
+
+    this.isValueChanged = function () {
+      return ($select.val() != defaultValue);
+    };
+
+    this.validate = function () {
+      return {
+        valid: true,
+        msg: null
+      };
+    };
+
+    this.init();
   },
 
   handle_menu_action: function(args){

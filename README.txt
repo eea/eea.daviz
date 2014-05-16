@@ -32,7 +32,7 @@ supported. The architecture allows to extend Daviz with more
 visualisation libraries (visualisations plugins).
 
 .. image:: http://eea.github.io/_images/eea.daviz.cover.png
-   :target: http://www.youtube.com/watch?list=PLVPSQz7ahsByeq8nVKC7TT9apArEXBrV0&v=fjVR06lbQ_8
+   :target: http://www.youtube.com/watch?list=PLVPSQz7ahsByeq8nVKC7TT9apArEXBrV0&v=CYEAAAdyWII
 
 
 .. contents::

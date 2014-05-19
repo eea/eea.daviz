@@ -1,46 +1,3 @@
-//TODO: move tags in youtube video descriptions
-var video_tags = {
-    "My first DaViz | DaViz tutorial" : "create, Basic tutorials",
-    "Create DaViz - data via copy and paste | DaViz tutorial" : "create, Basic tutorials",
-    "Create DaViz - data via CSV/TSV upload | DaViz tutorial" : "create, Basic tutorials",
-    "Create DaViz - data from URL (external site) | DaViz tutorial" : "create, Basic tutorials",
-    "Create DaViz - data from another DaViz | DaViz tutorial" : "create, Basic tutorials",
-    "Create DaViz - data from SPARQL query (Linked Data) | DaViz tutorial" : "create, Basic tutorials",
-    "Basic DaViz editing | DaViz tutorial" : "edit chart, Basic tutorials",
-    "Add visualization - Bar chart | DaViz tutorial" : "edit chart, bar, Basic tutorials",
-    "Add visualization - Column chart | DaViz tutorial" : "edit chart, column, Basic tutorials",
-    "Basic chart customization | DaViz tutorial" : "edit chart, bar, Basic tutorials",
-    "Add visualization - Pie chart | DaViz tutorial" : "edit chart, pie, Basic tutorials",
-    "Add visualization - Line chart | DaViz tutorial" : "edit chart, line, Basic tutorials",
-    "Add visualization - Map chart | DaViz tutorial" : "edit chart, map, Basic tutorials",
-    "Rearrange charts | DaViz Tutorial" : "edit chart, Basic tutorials",
-    "Add Visualisation - Chart with intervals | DaViz tutorial" : "edit chart, intervals, Basic tutorials",
-    "Introduction to Exhibit visualizations | DaViz tutorial" : "exhibit, Advanced tutorials",
-    "Map view - Exhibit visualization | DaViz tutorial" : "exhibit, map, Advanced tutorials",
-    "Tabular view - Exhibit visualization | DaViz tutorial" : "exhibit, tabular, Advanced tutorials",
-    "Timeline view - Exhibit visualization | DaViz tutorial" : "exhibit, timeline, Advanced tutorials",
-    "Tile view - Exhibit visualization | DaViz tutorial" : "exhibit, tile, Advanced tutorials",
-    "Lens - Exhibit visualization | DaViz tutorial" : "exhibit, lens, Advanced tutorials",
-    "Facets - Exhibit visualization | DaViz tutorial" : "exhibit, facets, Advanced tutorials",
-    "Hide/Show table columns - Using the table configurator | DaViz tutorial" : "edit chart, table, hide/show, Advanced tutorials",
-    "Table formatters - Using the table configurator | DaViz tutorial" : "edit chart, table, formatters, Advanced tutorials",
-    "Unpivot table - Using the table configurator | DaViz tutorial" : "edit chart, table, unpivot, Advanced tutorials",
-    "Pivot table - Using the table configurator | DaViz tutorial" : "edit chart, table, pivot, Advanced tutorials",
-    "Filter - Using the table configurator | DaViz tutorial" : "edit chart, table, rowfilters, Advanced tutorials",
-    "Scatterplots matrix - Using the table configurator | DaViz tutorial" : "edit chart, table, scatterplots, matrices, Advanced tutorials",
-    "Other matrices - Using the table configurator | DaViz tutorial" : "edit chart, table, matrices, Advanced tutorials",
-    "Adding Filters, sorting and chart notes - Interactive charts | DaViz tutorial" : "edit chart, filters, notes, sort, Advanced tutorials",
-    "Creating dashboards - Combine multiple charts in a dashboard | DaViz tutorial" : "dashboard, Advanced tutorials",
-    "Embed charts or dashboards in other sites - Embedding in webpages | DaViz tutorial" : "view, embed, chart, dashboard, Advanced tutorials",
-    "Keep chart's filter settings when embedding - Embedding in webpages | DaViz tutorial" : "view, embed, chart, dashboard, filters, Advanced tutorials",
-    "Embed a static image - Embedding in webpages | DaViz tutorial" : "view, embed, chart, Advanced tutorials",
-    "Customize CSS when embedding - Embedding in webpages | DaViz tutorial" : "view, embed, csscustomization, Advanced tutorials",
-    "Embed and use DaViz in EEA indicators | DaViz tutorial" : "view, embed, chart, dashboard, indicators, Advanced tutorials",
-    "Data visualisation web tool (DaViz): Intro and main features overview" : "intro",
-    "Data Analysis - Differences | DaViz tutorial" : "differences, chart, data analysis, Basic tutorials",
-    "Data Analysis - Trendlines | DaViz tutorial avi" : "trendlines, chart, data analysis, Basic tutorials",
-    "Data Analysis - Intervals | DaViz tutorial" : "intervals, chart, data analysis, Basic tutorials"
-};
 
 
 jQuery(document).ready(function(){
@@ -58,8 +15,54 @@ DavizEdit.DavizTutorials = function(context, options){
 };
 
 DavizEdit.DavizTutorials.prototype = {
+
     initialize: function(options){
         var self = this;
+
+        //TODO: move tags in youtube video descriptions
+        var video_tags = {
+            "My first DaViz | DaViz tutorial" : "create, Basic tutorials",
+            "Create DaViz - data via copy and paste | DaViz tutorial" : "create, Basic tutorials",
+            "Create DaViz - data via CSV/TSV upload | DaViz tutorial" : "create, Basic tutorials",
+            "Create DaViz - data from URL (external site) | DaViz tutorial" : "create, Basic tutorials",
+            "Create DaViz - data from another DaViz | DaViz tutorial" : "create, Basic tutorials",
+            "Create DaViz - data from SPARQL query (Linked Data) | DaViz tutorial" : "create, Basic tutorials",
+            "Basic DaViz editing | DaViz tutorial" : "edit chart, Basic tutorials",
+            "Add visualization - Bar chart | DaViz tutorial" : "edit chart, bar, Basic tutorials",
+            "Add visualization - Column chart | DaViz tutorial" : "edit chart, column, Basic tutorials",
+            "Basic chart customization | DaViz tutorial" : "edit chart, bar, Basic tutorials",
+            "Add visualization - Pie chart | DaViz tutorial" : "edit chart, pie, Basic tutorials",
+            "Add visualization - Line chart | DaViz tutorial" : "edit chart, line, Basic tutorials",
+            "Add visualization - Map chart | DaViz tutorial" : "edit chart, map, Basic tutorials",
+            "Rearrange charts | DaViz Tutorial" : "edit chart, Basic tutorials",
+            "Add Visualisation - Chart with intervals | DaViz tutorial" : "edit chart, intervals, Basic tutorials",
+            "Introduction to Exhibit visualizations | DaViz tutorial" : "exhibit, Advanced tutorials",
+            "Map view - Exhibit visualization | DaViz tutorial" : "exhibit, map, Advanced tutorials",
+            "Tabular view - Exhibit visualization | DaViz tutorial" : "exhibit, tabular, Advanced tutorials",
+            "Timeline view - Exhibit visualization | DaViz tutorial" : "exhibit, timeline, Advanced tutorials",
+            "Tile view - Exhibit visualization | DaViz tutorial" : "exhibit, tile, Advanced tutorials",
+            "Lens - Exhibit visualization | DaViz tutorial" : "exhibit, lens, Advanced tutorials",
+            "Facets - Exhibit visualization | DaViz tutorial" : "exhibit, facets, Advanced tutorials",
+            "Hide/Show table columns - Using the table configurator | DaViz tutorial" : "edit chart, table, hide/show, Advanced tutorials",
+            "Table formatters - Using the table configurator | DaViz tutorial" : "edit chart, table, formatters, Advanced tutorials",
+            "Unpivot table - Using the table configurator | DaViz tutorial" : "edit chart, table, unpivot, Advanced tutorials",
+            "Pivot table - Using the table configurator | DaViz tutorial" : "edit chart, table, pivot, Advanced tutorials",
+            "Filter - Using the table configurator | DaViz tutorial" : "edit chart, table, rowfilters, Advanced tutorials",
+            "Scatterplots matrix - Using the table configurator | DaViz tutorial" : "edit chart, table, scatterplots, matrices, Advanced tutorials",
+            "Other matrices - Using the table configurator | DaViz tutorial" : "edit chart, table, matrices, Advanced tutorials",
+            "Adding Filters, sorting and chart notes - Interactive charts | DaViz tutorial" : "edit chart, filters, notes, sort, Advanced tutorials",
+            "Creating dashboards - Combine multiple charts in a dashboard | DaViz tutorial" : "dashboard, Advanced tutorials",
+            "Embed charts or dashboards in other sites - Embedding in webpages | DaViz tutorial" : "view, embed, chart, dashboard, Advanced tutorials",
+            "Keep chart's filter settings when embedding - Embedding in webpages | DaViz tutorial" : "view, embed, chart, dashboard, filters, Advanced tutorials",
+            "Embed a static image - Embedding in webpages | DaViz tutorial" : "view, embed, chart, Advanced tutorials",
+            "Customize CSS when embedding - Embedding in webpages | DaViz tutorial" : "view, embed, csscustomization, Advanced tutorials",
+            "Embed and use DaViz in EEA indicators | DaViz tutorial" : "view, embed, chart, dashboard, indicators, Advanced tutorials",
+            "Data visualisation web tool (DaViz): Intro and main features overview" : "intro",
+            "Data Analysis - Differences | DaViz tutorial" : "differences, chart, data analysis, Basic tutorials",
+            "Data Analysis - Trendlines | DaViz tutorial avi" : "trendlines, chart, data analysis, Basic tutorials",
+            "Data Analysis - Intervals | DaViz tutorial" : "intervals, chart, data analysis, Basic tutorials"
+        };
+
         this.context.addClass("daviz-tutorials");
 
         jQuery(window).bind('hashchange', function(evt){

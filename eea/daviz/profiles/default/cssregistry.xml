@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<object name="portal_css">
+    <stylesheet id="++resource++eea.daviz.tutorials.css"/>
+</object>

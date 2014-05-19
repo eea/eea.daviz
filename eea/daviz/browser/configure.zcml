@@ -51,4 +51,21 @@
     file="./css/spreadsheet.css"
     />
 
+  <browser:page
+    for="eea.app.visualization.interfaces.IVisualizationEnabled"
+    name="daviz-tutorials.html"
+    template="zpt/tutorials.pt"
+    permission="eea.app.visualization.configure"
+    />
+
+  <browser:resource
+    name="eea.daviz.tutorials.css"
+    file="./css/tutorials.css"
+  />
+
+  <browser:resource
+    name="eea.daviz.tutorials.js"
+    file="./js/tutorials.js"
+   />
+
 </configure>

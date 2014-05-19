@@ -1,0 +1,126 @@
+.daviz-tutorials iframe {
+    float:left;
+}
+
+.daviz-tutorials .daviz-tutorials-search{
+    float: left;
+    width:580px;
+    border:1px solid rgb(85,85,85);
+    margin-left:2px;
+    padding-right:2px;
+}
+.daviz-tutorials .daviz-tutorials-main-playlist{
+    margin-left:10px;
+    overflow:auto;
+    border-bottom:1px solid rgb(85,85,85);
+}
+
+.daviz-tutorials img {
+    height:40px;
+    float:left;
+    border:2px solid rgb(26,26,26);
+}
+
+.daviz-tutorials .daviz-tutorials-videos .daviz-tutorials-videoitem{
+    height:40px;
+    padding:10px;
+    color: rgb(85,85,85);
+    cursor: pointer;
+}
+
+.daviz-tutorials .daviz-tutorials-videos .daviz-tutorials-videoitem:hover{
+    background-color: #bbbbbb;
+}
+
+.daviz-tutorials .daviz-tutorials-videos .daviz-tutorials-videoitem div{
+    float:left;
+    width:400px;
+}
+
+.daviz-tutorials .daviz-tutorials-videos .daviz-tutorials-videoitem.hidden-item {
+    display:none;
+}
+
+.daviz-tutorials .daviz-tutorials-videos .daviz-tutorials-videoitem.nowplaying{
+    background-color: #aaaaaa;
+}
+
+.daviz-tutorials .daviz-tutorials-videos .daviz-tutorials-videoitem.nowplaying img{
+    border:2px solid red;
+}
+
+.by-difficulty {
+    float:left;
+}
+
+.by-topic {
+    float:right;
+    width:350px
+}
+
+.daviz-tutorials-tagcloud {
+    padding:10px;
+}
+
+.daviz-tutorials-tagcloud ul {
+    list-style-type: square;
+    color: #999;
+    padding-left: 20px;
+    font-family: Arial, FreeSans, sans-serif;
+    font-size: 13px;
+    margin:0 !important;
+}
+.daviz-tutorials-tagcloud label {
+    display: block;
+    font-family: Arial, FreeSans, sans-serif;
+    color: rgb(85, 85, 85);
+    font-weight: normal;
+    font-size:16px;
+}
+
+.daviz-tutorials-main-playlist-title{
+    padding-left:10px;
+    padding-top:10px;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.daviz-tutorials-tagcloud ul a{
+    border-bottom:0 !important;
+}
+
+.daviz-tutorials-tagcloud ul a.selected{
+    font-weight:bold;
+    color: #888 !important;
+}
+
+.eea-tutorial {
+    float:right;
+    line-height:24px;
+    margin-left:10px;
+    margin-right:10px;
+    margin-top:5px;
+    font-size:11px;
+}
+
+.eea-tutorial span.tutorial-title{
+    float:right;
+    color: #205c90;
+    text-decoration:underline;
+}
+
+.eea-tutorial a{
+    float:left;
+    border:0 !important;
+}
+.eea-tutorial .tutorial-icon{
+    float:right;
+    color: #205c90;
+    font-size:24px;
+}
+
+.eea-tutorial .message{
+    margin-right:5px;
+    color:#999;
+    float:left;
+}

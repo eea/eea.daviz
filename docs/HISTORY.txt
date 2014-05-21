@@ -3,6 +3,8 @@ Changelog
 
 8.6-dev - (unreleased)
 ----------------------
+* Fix: add labels to SPARQL columns if they are missing
+ [batradav refs #19051]
 
 8.5 - (2014-05-13)
 ------------------

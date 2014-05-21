@@ -13,7 +13,7 @@
 
     <genericsetup:upgradeDepends
       title="Import css, js, actions from eea.daviz profile"
-      import_steps="cssregistry jsregistry actions"
+      import_steps="cssregistry jsregistry actions skins"
       />
 
   </genericsetup:upgradeSteps>

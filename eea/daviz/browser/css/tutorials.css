@@ -1,12 +1,12 @@
 .daviz-tutorials iframe {
     float:left;
+    margin-right:2px;
 }
 
 .daviz-tutorials .daviz-tutorials-search{
     float: left;
-    width:580px;
+    width:576px;
     border:1px solid rgb(85,85,85);
-    margin-left:2px;
     padding-right:2px;
 }
 .daviz-tutorials .daviz-tutorials-main-playlist{
@@ -50,12 +50,13 @@
 }
 
 .by-difficulty {
+    margin-left:10px;
     float:left;
 }
 
 .by-topic {
     float:right;
-    width:350px
+    width:300px
 }
 
 .daviz-tutorials-tagcloud {

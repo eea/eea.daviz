@@ -57,7 +57,6 @@ def onRelationsChanged(obj, evt):
         if isinstance(val, dict):
             typo = val.get('valueType', 'text')
             order = val.get('order', def_order)
-            val.setdefault('label', val.get('label', key))
         else:
             typo = 'text'
             order = def_order

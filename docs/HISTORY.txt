@@ -3,6 +3,8 @@ Changelog
 
 8.6-dev - (unreleased)
 ----------------------
+* Feature: Added tutorials
+  [szabozo0 refs #18400]
 
 8.5 - (2014-05-13)
 ------------------

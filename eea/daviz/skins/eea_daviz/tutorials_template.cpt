@@ -2,12 +2,17 @@
       lang="en"
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="eea.notranslation">
-
+<metal:js fill-slot="javascript_head_slot">
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery("#daviz-tutorials").DavizTutorials({});
+        });
+    </script>
+</metal:js>
 <body>
     <div metal:fill-slot="content-core">
     <metal:main-macro define-macro="content-core">
-        <div id='daviz-tutorials'>
-        </div>
+        <div id='daviz-tutorials'></div>
     </metal:main-macro>
     </div>
 </body>

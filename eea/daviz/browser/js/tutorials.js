@@ -1,9 +1,3 @@
-
-
-jQuery(document).ready(function(){
-  jQuery("#daviz-tutorials").DavizTutorials();
-});
-
 if(window.DavizEdit === undefined){
   var DavizEdit = {'version': '4.0'};
 }
@@ -18,7 +12,7 @@ DavizEdit.DavizTutorials.prototype = {
 
     initialize: function(options){
         var self = this;
-
+        self.prefix = options.prefix || "";
         //TODO: move tags in youtube video descriptions
         var video_tags = {
             "My first DaViz | DaViz tutorial" : "create, Basic tutorials",
@@ -270,7 +264,7 @@ DavizEdit.DavizTutorials.prototype = {
             jQuery("<a>")
                 .css("text-decoration", "none")
                 .attr("tag", sorted_tags[i].tag)
-                .attr("href", "daviz-tutorials.html#" + sorted_tags[i].tag)
+                .attr("href", self.prefix + "#" + sorted_tags[i].tag)
                 .text(sorted_tags[i].tag + "(" + sorted_tags[i].count+ ") ")
                 .appendTo(li);
         }

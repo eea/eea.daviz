@@ -77,6 +77,12 @@ See also initial project `wiki page <http://taskman.eionet.europa.eu/projects/zo
 for the reasoning behind this project.
 
 
+Video Tutorials
+===============
+Most of DaViz features are presented throughout a series of video tutorials available under the `EEA Web Systems Training`_ YouTube channel.
+The screencasts are divided in two playlists: Basic_ and Advanced_.
+
+
 Live demos
 ==========
 
@@ -256,3 +262,6 @@ EEA_ - European Environment Agency (EU)
 .. _`Plone 4.x`: http://plone.org
 .. _`collective.js.jqueryui < 1.9`: https://pypi.python.org/pypi/collective.js.jqueryui
 .. _`collective.js.jqueryui > 1.9`: https://pypi.python.org/pypi/collective.js.jqueryui
+.. _Basic: http://www.youtube.com/playlist?list=PLVPSQz7ahsByeq8nVKC7TT9apArEXBrV0
+.. _Advanced: http://www.youtube.com/playlist?list=PLVPSQz7ahsBxbe8pwzFWLQuvDSP9JFn8I
+.. _`EEA Web Systems Training`: https://www.youtube.com/channel/UCAjXKVcpfF05urEk9uYFveA

@@ -252,20 +252,17 @@ SCHEMA = Schema((
         widget=TextAreaWidget(
             label=_('Copy and paste a data table from a file/webpage'),
             description=_(u"copy-paste-description", default=(
-                "Check these "
+                "<div style='float:left'>Check these "
                 '<a target="_blank" href="http://www.eea.europa.eu/'
                 'data-and-maps/daviz/learn-more/examples">data examples</a> '
                 'or read '
                 '<a target="_blank" href="http://www.eea.europa.eu/'
                 'data-and-maps/daviz/learn-more/prepare-data">'
                 'how to prepare data</a> '
-                #temporarily hide the link to tutorials
-                '<div style="display:none">'
-                'or watch the '
-                '<a target="_blank" href="daviz-tutorials.html#create">'
-                '<span class="eea-icon eea-icon-youtube-square"></span>'
-                'video tutorials</a>'
+                'or '
                 '</div>'
+                '<span class="eea-tutorial" tutorial="create"></span>'
+                "<div style='clear:both'></div>"
               )
             ),
         i18n_domain="eea",

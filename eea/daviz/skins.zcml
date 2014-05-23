@@ -1,0 +1,7 @@
+<configure
+  xmlns:cmf="http://namespaces.zope.org/cmf"
+  i18n_domain="eea">
+
+  <cmf:registerDirectory name="eea_daviz" />
+
+</configure>

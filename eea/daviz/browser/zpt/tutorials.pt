@@ -1,0 +1,27 @@
+<tal:left define="hidden python:request.set('disable_plone.leftcolumn', 1)" />
+<tal:right define="hidden python:request.set('disable_plone.rightcolumn', 1)" />
+<tal:html define="macro here/main_template/macros/master | here/@@daviz-fallback.html/macros/edit">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+  lang="en-US"
+  metal:use-macro="python:macro"
+  i18n:domain="eea">
+
+<metal:jsslot fill-slot="javascript_head_slot">
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery("#daviz-tutorials").DavizTutorials({prefix:"daviz-tutorials.html"});
+        });
+    </script>
+</metal:jsslot>
+
+<body>
+<div metal:fill-slot="main" class="daviz-settings">
+<h1 i18n:translate="" id="daviz-page-title" class="documentFirstHeading">
+  Visualization Tutorials
+</h1>
+<div id='daviz-tutorials'>
+</div>
+</div>
+</body>
+</html>
+</tal:html>

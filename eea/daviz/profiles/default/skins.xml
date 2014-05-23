@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object name="portal_skins">
+  <object name="eea_daviz"
+    meta_type="Filesystem Directory View"
+    directory="eea.daviz:skins/eea_daviz"/>
+
+  <skin-path name="*">
+    <layer insert-after="custom" name="eea_daviz"/>
+  </skin-path>
+</object>

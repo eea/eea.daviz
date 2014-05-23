@@ -8,6 +8,7 @@
   <include file="documentation.zcml" />
   <include file="profiles.zcml" />
   <include file="permissions.zcml" />
+  <include file="skins.zcml" />
 
   <include package=".browser" />
   <include package=".content" />

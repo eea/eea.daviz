@@ -5,6 +5,19 @@
   i18n_domain="eea">
 
 
+  <!-- 8.4 => 8.6 -->
+  <genericsetup:upgradeSteps
+    source="8.4"
+    destination="8.6"
+    profile="eea.daviz:default">
+
+    <genericsetup:upgradeDepends
+      title="Import css, js, actions from eea.daviz profile"
+      import_steps="cssregistry jsregistry actions skins"
+      />
+
+  </genericsetup:upgradeSteps>
+
   <!-- 8.3 => 8.4 -->
   <genericsetup:upgradeSteps
     source="8.3"

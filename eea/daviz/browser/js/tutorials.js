@@ -83,8 +83,18 @@ DavizEdit.DavizTutorials.prototype = {
             .appendTo(this.context);
 
         jQuery("<div>")
+            .addClass("daviz-tutorials-main-playlist-title-label")
+            .css("height", 20)
+            .text("Showing videos with tag:")
+            .appendTo(".daviz-tutorials-search");
+
+        jQuery("<div>")
             .addClass("daviz-tutorials-main-playlist-title")
             .css("height", 20)
+            .appendTo(".daviz-tutorials-search");
+
+        jQuery("<div>")
+            .css("clear", "both")
             .appendTo(".daviz-tutorials-search");
 
         jQuery("<div>")

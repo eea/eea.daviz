@@ -79,11 +79,16 @@
     font-size:16px;
 }
 
-.daviz-tutorials-main-playlist-title{
+.daviz-tutorials-main-playlist-title,
+.daviz-tutorials-main-playlist-title-label{
     padding-left:10px;
     padding-top:10px;
     font-size:16px;
     font-weight:bold;
+    float:left;
+}
+.daviz-tutorials-main-playlist-title{
+    font-style:italic;
 }
 
 .daviz-tutorials-tagcloud ul a{

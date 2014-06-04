@@ -13,6 +13,8 @@
     <div metal:fill-slot="content-core">
     <metal:main-macro define-macro="content-core">
         <div id='daviz-tutorials'></div>
+        <div style="clear:both"></div>
+        <metal:field use-macro="python:context.widget('text', mode='view')">      Body text     </metal:field>
     </metal:main-macro>
     </div>
 </body>

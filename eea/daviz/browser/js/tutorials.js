@@ -53,7 +53,7 @@ DavizEdit.DavizTutorials.prototype = {
             "Embed and use DaViz in EEA indicators | DaViz tutorial" : "view, embed, chart, dashboard, indicators, Advanced tutorials",
             "Data visualisation web tool (DaViz): Intro and main features overview" : "intro",
             "Data Analysis - Differences | DaViz tutorial" : "differences, chart, data analysis, Basic tutorials",
-            "Data Analysis - Trendlines | DaViz tutorial avi" : "trendlines, chart, data analysis, Basic tutorials",
+            "Data Analysis - Trendlines | DaViz tutorial" : "trendlines, chart, data analysis, Basic tutorials",
             "Data Analysis - Intervals | DaViz tutorial" : "intervals, chart, data analysis, Basic tutorials"
         };
 
@@ -69,10 +69,16 @@ DavizEdit.DavizTutorials.prototype = {
             hash = hash.substr(1);
             self.updateTutorials(hash);
         });
-
+        var playerWidth = 580;
+        var playerHeight = 315;
+        var minSearchWidth = 400;
+        var maxSearchWidth = playerWidth;
+        var fullWidth = self.context.parent().width();
+        var searchWidth = fullWidth - playerWidth > minSearchWidth ? fullWidth - playerWidth - 10 : playerWidth - 4;
+        searchWidth = Math.min(maxSearchWidth, searchWidth);
         jQuery("<iframe>")
-            .attr("width", 580)
-            .attr("height", 315)
+            .attr("width", playerWidth)
+            .attr("height", playerHeight)
             .attr("frameborder", 0)
             .attr("allowfullscreen", true)
             .attr("src", "")
@@ -80,6 +86,7 @@ DavizEdit.DavizTutorials.prototype = {
 
         jQuery("<div>")
             .addClass("daviz-tutorials-search")
+            .width(searchWidth)
             .appendTo(this.context);
 
         jQuery("<div>")
@@ -122,6 +129,9 @@ DavizEdit.DavizTutorials.prototype = {
                 jQuery.each(data.data.items, function(item_idx, item){
 //                    var description = [item.video.description, video_tags[item.video.title]].join(",");
                     var description = video_tags[item.video.title];
+                    if (description === undefined){
+                        description = "others";
+                    }
                     var tmp_tags = description.split(",");
                     tmp_tags.push("All tutorials");
                     var tags = [];
@@ -152,6 +162,7 @@ DavizEdit.DavizTutorials.prototype = {
                         .prepend(img);
                     jQuery("<div>")
                         .text(item.video.title)
+                        .width(searchWidth - 110)
                         .appendTo(item_obj);
                 });
                 self.updateTutorials();
@@ -259,6 +270,7 @@ DavizEdit.DavizTutorials.prototype = {
 
         jQuery("<div>")
             .addClass("by-topic")
+            .width(jQuery(".daviz-tutorials-search").width() - 200)
             .appendTo(".daviz-tutorials-tagcloud");
         jQuery("<label>")
             .text("Filter by topic:")

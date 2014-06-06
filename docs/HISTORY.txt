@@ -1,6 +1,9 @@
 Changelog
 =========
 
+8.7-dev - (unreleased)
+----------------------
+
 8.6 - (2014-06-06)
 ------------------
 * Feature: Added tutorials

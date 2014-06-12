@@ -127,12 +127,18 @@ DavizEdit.DavizTutorials.prototype = {
                     .addClass("daviz-tutorials-videos")
                     .appendTo(".daviz-tutorials-playlist[playlistid='" + data.data.id + "']");
                 jQuery.each(data.data.items, function(item_idx, item){
-//                    var description = [item.video.description, video_tags[item.video.title]].join(",");
-                    var description = video_tags[item.video.title];
-                    if (description === undefined){
-                        description = "others";
+                    var fulldescription = item.video.description;
+                    var tags_from_description;
+                    try{
+                        tags_from_description = fulldescription.split("EEA Tags:")[1].split(".")[0];
                     }
-                    var tmp_tags = description.split(",");
+                    catch (err){
+                        tags_from_description = video_tags[item.video.title];
+                    }
+                    if (tags_from_description === undefined){
+                        tags_from_description = "others";
+                    }
+                    var tmp_tags = tags_from_description.split(",");
                     tmp_tags.push("All tutorials");
                     var tags = [];
                     for (i = 0; i < tmp_tags.length; i++) {

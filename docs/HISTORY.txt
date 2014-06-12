@@ -3,6 +3,8 @@ Changelog
 
 8.7-dev - (unreleased)
 ----------------------
+* Change: Read the tags for tutorial screencasts from the description of the video
+  [szabozo0 refs #18400]
 
 8.6 - (2014-06-06)
 ------------------

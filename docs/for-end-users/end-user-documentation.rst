@@ -6,20 +6,29 @@ End users documentation for DaViz
 When you are starting to create a visualization, the first step is to add the data for it. You can do this on several ways:
 
     - copy/paste: you can copy the data from an excel file, a tsv or csv file or another website. 
+
         video: https://www.youtube.com/watch?v=ahxHks8-Fkc
+
     - csv/tsv upload: you can upload a csv or tsv file, and use it as datasource: 
+
         video: https://www.youtube.com/watch?v=myFn3zmvpQI
 
         demo: http://daviz.eionet.europa.eu/learn-more/visualisations-examples/basic-tutorials/daviz-from-csv
+
     - via url/json: you can use an external url what points to a json.
+
         video: https://www.youtube.com/watch?v=P2v_uzVl14U 
 
         demo: http://daviz.eionet.europa.eu/learn-more/visualisations-examples/basic-tutorials/daviz-from-url
+
     - from another DaViz: you can use an existing DaViz and reuse the same data.
+
         video: https://www.youtube.com/watch?v=iqyU04fzz_8 
 
         demo: http://daviz.eionet.europa.eu/learn-more/visualisations-examples/basic-tutorials/daviz-from-existing-daviz
+
     - sparql: you can create your own sparql query and use it as data source for your visualization.
+
         video: https://www.youtube.com/watch?v=2Qn48OTDtxY 
 
         demo: http://daviz.eionet.europa.eu/learn-more/visualisations-examples/basic-tutorials/daviz-from-sparql-query

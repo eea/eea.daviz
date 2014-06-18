@@ -4,6 +4,7 @@ End users documentation for DaViz
 ++++++++++++++++++++
 
 When you are starting to create a visualization, the first step is to add the data for it. You can do this on several ways:
+
     - copy/paste: you can copy the data from an excel file, a tsv or csv file or another website. 
         video: https://www.youtube.com/watch?v=ahxHks8-Fkc
     - csv/tsv upload: you can upload a csv or tsv file, and use it as datasource: 

@@ -1,15 +1,25 @@
 End users documentation for DaViz
 =================================
+
+Introduction
+++++++++++++
+EEA Daviz is a web tool developed by the European Environment Agency which helps creating interactive data visualizations easily through the web browser, no extra tools are necessary. It is free and open source.
+
+You can generate attractive and interactive charts and combine them in a dashboard with facets/filters which updates the charts simultaneously. Data can be uploaded as CSV/TSV or you can specify SPARQL to query online Linked open data servers (aka sparql endpoints).
+
+Daviz is the first Semantic web data visualisation tool for Plone CMS, entirely web-based!
+At the moment Simile Exhibit and Google Charts visualizations are supported.
+
 1. Add a data source
 ++++++++++++++++++++
+When you are starting to create a visualization, the first step is to set the data source for it.
+First, add a Data Visualization. On the edit page you have several options to set the data source:
 
-When you are starting to create a visualization, the first step is to add the data for it. You can do this on several ways:
-
-    - copy/paste: you can copy the data from an excel file, a tsv or csv file or another website. 
+    - copy/paste: you can copy the data from an excel file, a tsv or csv file or another website.
 
         video: https://www.youtube.com/watch?v=ahxHks8-Fkc
 
-    - csv/tsv upload: you can upload a csv or tsv file, and use it as datasource: 
+    - csv/tsv upload: you can upload a csv or tsv file, and use it as datasource:
 
         video: https://www.youtube.com/watch?v=myFn3zmvpQI
 
@@ -17,66 +27,74 @@ When you are starting to create a visualization, the first step is to add the da
 
     - via url/json: you can use an external url what points to a json.
 
-        video: https://www.youtube.com/watch?v=P2v_uzVl14U 
+        video: https://www.youtube.com/watch?v=P2v_uzVl14U
 
         demo: http://daviz.eionet.europa.eu/learn-more/visualisations-examples/basic-tutorials/daviz-from-url
 
     - from another DaViz: you can use an existing DaViz and reuse the same data.
 
-        video: https://www.youtube.com/watch?v=iqyU04fzz_8 
+        video: https://www.youtube.com/watch?v=iqyU04fzz_8
 
         demo: http://daviz.eionet.europa.eu/learn-more/visualisations-examples/basic-tutorials/daviz-from-existing-daviz
 
     - sparql: you can create your own sparql query and use it as data source for your visualization.
 
-        video: https://www.youtube.com/watch?v=2Qn48OTDtxY 
+        video: https://www.youtube.com/watch?v=2Qn48OTDtxY
 
         demo: http://daviz.eionet.europa.eu/learn-more/visualisations-examples/basic-tutorials/daviz-from-sparql-query
 
+If you are ready, hit the Save button, and you will be redirected to the Edit Visualization page where the default Table chart is created.
+
 2. Data settings
 ++++++++++++++++
-After you have your datasource selected and created your new DaViz, on the Edit Visualization page on the Data Settings tab you can make some customization for the data, like setting some friendly names to the columns and forcing the type for values on a column
+After you have your datasource selected and created your new DaViz, on the Edit Visualization page on the Data Settings tab you can make some customization for the data, like setting some friendly names to the columns and forcing the type for values on a column.
 These settings are applied on all google charts and exhibit views inside this DaViz.
 
 3. Exhibit visualizations
 +++++++++++++++++++++++++
-Using the exhibit visualizations you can enable map, tabular, timeline and tile views. For each exhibit view you can access the advanced settings, where you can finetune it.
+Using the exhibit visualizations you can enable map, tabular, timeline and tile views. You can have only one of each type of view enabled for a visualization.
 
-    video: https://www.youtube.com/watch?v=eN4dlo3zepc 
-
-    demo: http://daviz.eionet.europa.eu/learn-more/visualisations-examples/advanced-tutorials/exhibit-charts
+First you have to enable them. For this, on the Edit Visualization page select one of the exhibit views from the tab, and press the Enable View button.
 
 3.1 Available exhibit visualizations:
 -------------------------------------
-3.1.1 map view
+3.1.1 Map view
 ^^^^^^^^^^^^^^
-Requires **latitude** and **longitude** columns (this can be in a single column or separate ones). After enabling this view you have to select which column(s) stores the coordonates. 
+Requires **latitude** and **longitude** columns (this can be in a single column or separate ones). After enabling this view you have to select which column(s) stores the coordonates.
 
     video: https://www.youtube.com/watch?v=aIKXHokacsQ
 
-3.1.2 timeline view
+3.1.2 Timeline view
 ^^^^^^^^^^^^^^^^^^^
-Requires start date and end date columns. For this view you have to select which column stores the start date and which column the end date. 
+Requires start date and end date columns. For this view you have to select which column stores the start date and which column the end date.
 
     video: https://www.youtube.com/watch?v=17yDtMUJaOc#t=20
 
-3.1.3 tabular view
+3.1.3 Tabular view
 ^^^^^^^^^^^^^^^^^^
 Has no data constraints. On this view you have to select which columns to be displayed. 
 
     video: https://www.youtube.com/watch?v=WJF4tPG9r_o
 
-3.1.4 tile view
+3.1.4 Tile view
 ^^^^^^^^^^^^^^^
-has no data constraints. This view doesn't require any configuration. 
+has no data constraints. This view doesn't require any configuration.
 
     video: https://www.youtube.com/watch?v=YuZclux0-aI
+
+3.4 Advanced settings
+---------------------
+For each exhibit view you can access the advanced settings, where you can finetune the view.
+
+    video: https://www.youtube.com/watch?v=eN4dlo3zepc
+
+    demo: http://daviz.eionet.europa.eu/learn-more/visualisations-examples/advanced-tutorials/exhibit-charts
 
 3.2 Simile Lens
 ---------------
 On each view you have the possibility to customize how the data from a row to be displayed. This is done using the Lens template.
 
-    exhibit lens doc: http://www.simile-widgets.org/wiki/Exhibit/Lens_Templates 
+    exhibit lens doc: http://www.simile-widgets.org/wiki/Exhibit/Lens_Templates
 
     video: https://www.youtube.com/watch?v=0Z_lRNfQj4Y
 
@@ -88,15 +106,26 @@ Facets are used to filter your data. Exhibit facets are shared between all your 
 
 4. Google Charts
 ++++++++++++++++
-DaViz is using Googlecharts to render the charts, and uses a customized editor to help you configure your charts, allowing to create various charts based on the same data source.
+DaViz is using Googlecharts to display charts. The configurator is based a customized google chart editor, allowing to create various charts based on the same data source.
 
-One DaViz may contain several charts, you can add them simply by clicking on the **Add another visualization** button on **Edit Visualization** page, **Charts** tab https://www.youtube.com/watch?v=Qg6algUSjz8
+To be able to create google charts on the Edit Visualization page go to the Charts tab. As one DaViz may contain several charts, you can add them by clicking on the **Add another visualization** https://www.youtube.com/watch?v=Qg6algUSjz8
+
+You can have as many different charts, what you can customize independently, add filters and notes. You can also reorder them, or hide them.
+
+    video: https://www.youtube.com/watch?v=gz6fhA9lttE
+
 After you added a new chart, you can specify it's title, and start to customize it.
 
 For customizing, click on the **Edit** button of the chart, this will open a dialog with the **Chart Eeditor**.
 
 4.1 Chart Editor:
 -----------------
+The **Chart Editor** is based on google charts built in chart editor highly customized, with features like: data manipulation, color palette, setting roles for columns.
+
+The **Chart Editor** has two main features selecting the chart and customizing it (this can be done on the **Chart** tab) and preparing/modifying in order to need the required structure for the chart (on the **Data selection for chart**).
+
+In case your data fits the chart you want to create you don't have to make modifications on the data and the chart will display after selecting it from the list of the charts. Otherwise you will get an error message and you will have to hide/reorder/pivot/unpivot the columns until you will get the structure that fits the chart.
+
 4.1.1 Selecting the chart
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 In the **Chart Editor** dialog you can select one of the following type of charts, but all of them requires different format for the data
@@ -131,7 +160,7 @@ In the **Chart Editor** dialog you can select one of the following type of chart
 
         A histogram displays the distribution of a data set. The first column in the table represents the label of a group of data. Any number of columns can follow, all numeric, each representing items in a distribution. For each column, the values from all rows are grouped into numeric buckets. The histogram displays the number of values in each bucket, using the height of each bar to represent the count of values.
 
-    - Bar charts 
+    - Bar charts
 
         The first column in the table represents the label of a group of bars. Any number of columns can follow, all numeric, each representing the bars with the same color and relative position in each group. The value at a given row and column determines the height of the single bar represented by this row and column.
 
@@ -202,7 +231,7 @@ On this section you can:
 
         video: https://www.youtube.com/watch?v=7WYz-SJpbNk
 
-    - reorder column
+    - reorder the columns
     - hide columns from the table
 
         video: https://www.youtube.com/watch?v=tWJPJSjk4_U
@@ -251,11 +280,11 @@ You can improve the look of the chart by customizing it. Depending on the select
 
         https://www.youtube.com/watch?v=qYpNkzgLd6k
 
-When the chart is ready, press the **Save** button on the dialog. 
+When the chart is ready, press the **Save** button on the dialog.
 
 4.2 Preview and size adjustments
 --------------------------------
-By default all charts have a size of 800x600px. If you want to modify this, you have to click on "Preview and size adjusments" what will open a dialog with the final version of the chart. Here, with drag and drop you can simply resize the chart (or type in the prefered values in the text fields)
+By default all charts have a size of 800x600px. If you want to modify this, you have to click on "Preview and size adjusments" what will open a dialog with the final version of the chart. Here, with drag and drop you can simply resize the chart (or type in the prefered values in the text fields).
 
 4.3 Filters, Sorting, Notes
 ---------------------------
@@ -273,7 +302,7 @@ Dashboards are collections of charts. From the already created charts you can si
 --------------------
 You have several possibilities to embed your charts on other pages:
 
-    - simple embed in an iframe 
+    - simple embed in an iframe
 
         video: https://www.youtube.com/watch?v=UfKXd4-TcHE
 
@@ -291,7 +320,7 @@ You have several possibilities to embed your charts on other pages:
 
         video: https://www.youtube.com/watch?v=KI9_vQSQy5U
 
-    - embed them in indicators 
+    - embed them in indicators
 
         video: https://www.youtube.com/watch?v=hcEhSjqHjWE
 

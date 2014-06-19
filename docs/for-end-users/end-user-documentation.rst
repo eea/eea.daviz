@@ -58,6 +58,7 @@ First you have to enable them. For this, on the Edit Visualization page select o
 
 3.1 Available exhibit visualizations:
 -------------------------------------
+
 3.1.1 Map view
 ^^^^^^^^^^^^^^
 Requires **latitude** and **longitude** columns (this can be in a single column or separate ones). After enabling this view you have to select which column(s) stores the coordonates.

@@ -3,6 +3,8 @@ Changelog
 
 8.7-dev - (unreleased)
 ----------------------
+* Change: Added documentation for end users
+  [szabozo0 refs #18400]
 * Change: Read the tags for tutorial screencasts from the description of the video
   [szabozo0 refs #18400]
 

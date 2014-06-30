@@ -1,6 +1,9 @@
 Changelog
 =========
 
+8.8-dev - (unreleased)
+----------------------
+
 8.7 - (2014-06-30)
 ------------------
 * Change: Added documentation for end users

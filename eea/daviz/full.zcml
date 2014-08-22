@@ -3,6 +3,7 @@
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
   i18n_domain="eea">
 
+  <include package="eea.cache" />
   <include package="eea.depiction" />
   <include package="eea.relations" />
   <include package="eea.relations.default" />

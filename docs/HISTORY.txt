@@ -1,8 +1,8 @@
 Changelog
 =========
 
-8.8-dev - (unreleased)
-----------------------
+8.8 - (2014-08-27)
+------------------
 * Change: Also include eea.cache within full.zcml
   [voineali refs #20678]
 

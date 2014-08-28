@@ -2,7 +2,8 @@
 """
 import logging
 import json as simplejson
-from zope.component import queryMultiAdapter
+from zope.component import queryMultiAdapter, queryAdapter
+from eea.app.visualization.interfaces import IMultiDataProvenance
 from eea.app.visualization.data.browser import JSON
 from eea.app.visualization.cache import ramcache, cacheJsonKey
 logger = logging.getLogger('eea.daviz')
@@ -31,6 +32,16 @@ class DavizJSON(JSON):
 
         new_json = {'items': [], 'properties': {}}
         for item in relatedItems:
+            #fix for #20869 if related item has provenance info with a link 
+            #to this visualization, skip it
+            provenances = queryAdapter(item, IMultiDataProvenance).provenances
+            is_provenance_info = False
+            for provenance in provenances:
+                if provenance['link'] == self.context.absolute_url():
+                    is_provenance_info = True;
+            if is_provenance_info:
+                continue
+            #end of fix for #20869
             daviz_json = queryMultiAdapter(
                 (item, self.request), name=u'daviz.json')
 

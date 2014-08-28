@@ -3,6 +3,8 @@ Changelog
 
 8.9-dev - (unreleased)
 ----------------------
+* Bug fix: Exclude relations where related item has link to current daviz in it's provenance info
+  [szabozo0 refs #20869]
 
 8.8 - (2014-08-27)
 ------------------

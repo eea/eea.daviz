@@ -152,7 +152,7 @@ class DavizMultiDataProvenance(MultiDataProvenance):
             is_provenance_info = False
             for provenance in source.provenances:
                 if provenance['link'] == self.context.absolute_url():
-                    is_provenance_info = True;
+                    is_provenance_info = True
             if is_provenance_info:
                 continue
             #end of fix for #20869

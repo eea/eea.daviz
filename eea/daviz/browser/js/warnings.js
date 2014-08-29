@@ -43,8 +43,7 @@ jQuery(document).ready(function(){
     .appendTo("#fieldset-data-input");
   jQuery("<div>")
     .addClass("portalMessage warningMessage")
-    .css("margin-top", "40%")
-    .text(label.find("span").text())
+    .html(label.find("span").html())
     .appendTo(".eea-daviz-datasource-readonly");
   jQuery("<br/>")
     .appendTo(".eea-daviz-datasource-readonly .portalMessage");

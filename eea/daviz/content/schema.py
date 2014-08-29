@@ -290,11 +290,14 @@ SCHEMA = Schema((
         schemata='data input',
         widget=LabelWidget(
             label=_('Warning'),
-            description=_(u"Changing data sources may break existing "
-                    "visualizations for this context. You should consider "
-                    "creating a new Visualization rather than changing this "
-                    "one if the new data is different than the existing one. "
-                    "Are you sure you want to continue?"
+            description=_(u"<b>Changing data sources may break existing "
+                    "visualizations.</b><br/>"
+                    "If you want to upload new data you "
+                    "must make sure that the data columns are exactly the same "
+                    "and in the same order, otherwise the existing charts will "
+                    "break. Changing settings here requires data knowledge "
+                    "skills. <br/>"
+                    "If you want to know more contact your web admin."
             ),
             i18n_domain="eea",
             helper_js=('++resource++eea.daviz.warnings.js',),

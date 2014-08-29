@@ -146,6 +146,17 @@ class DavizMultiDataProvenance(MultiDataProvenance):
         orderindex = 0
         for item in relatedItems:
             source = queryAdapter(item, IMultiDataProvenance)
+
+            #fix for #20869 if related item has provenance info with a link
+            #to this visualization, skip it
+            is_provenance_info = False
+            for provenance in source.provenances:
+                if provenance['link'] == self.context.absolute_url():
+                    is_provenance_info = True;
+            if is_provenance_info:
+                continue
+            #end of fix for #20869
+
             item_provenances = getattr(source, 'provenances')
             for item_provenance in item_provenances:
                 dict_item_provenance = dict(item_provenance)

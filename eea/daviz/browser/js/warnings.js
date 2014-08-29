@@ -19,37 +19,8 @@ jQuery(document).ready(function(){
   relatedItems = jQuery(relatedSelector, form).length;
   var spreadsheet = jQuery('#spreadsheet', form);
   var external = jQuery('#external', form);
+
   var label = jQuery('div.label', warning).hide();
-  warning.attr('title', label.text());
-  warning.dialog({
-      bgiframe: true,
-      autoOpen: false,
-      modal: true,
-      width: 600,
-      dialogClass: 'daviz-confirm-overlay',
-      buttons: {
-        Continue: function(){
-          currentForm.submit();
-          jQuery(this).dialog('close');
-        },
-        Cancel: function(){
-          jQuery('input[type=submit]', form).removeClass('submitting');
-          jQuery(this).dialog('close');
-        }
-      }
-  });
-
-  jQuery('#spreadsheet', form).change(function(){
-    changed = true;
-  });
-
-  jQuery('#external', form).change(function(){
-    changed = true;
-  });
-
-  jQuery(document).bind('qq-file-uploaded', function(evt, data){
-    changed = true;
-  });
 
   // If there is no data previously set, we're in the add form, so exit
   if(relatedItems === 0){
@@ -59,24 +30,28 @@ jQuery(document).ready(function(){
       }
     }
   }
-
-  // Add confirmation dialog on form submit
-  form.submit(function(evt){
-    if(jQuery(relatedSelector, form).length !== relatedItems){
-      changed = true;
-    }
-
-    if(changed){
-      currentForm = this;
-      warning.dialog('open');
-      return false;
-    }else{
-      return true;
-    }
-  });
-
-  jQuery("[name='form.button.cancel']", form).click(function(){
-    changed = false;
-    relatedItems = jQuery(relatedSelector, form).length;
-  });
+  jQuery("#fieldset-data-input")
+    .css("position", "relative");
+  jQuery("<div>")
+    .addClass("eea-daviz-datasource-readonly")
+    .css("background-color", "rgba(1,1,1,0.5)")
+    .css("position", "absolute")
+    .css("height", "100%")
+    .css("width", "100%")
+    .css("top", "0")
+    .css("z-index", "1")
+    .appendTo("#fieldset-data-input");
+  jQuery("<div>")
+    .addClass("portalMessage warningMessage")
+    .css("margin-top", "40%")
+    .text(label.find("span").text())
+    .appendTo(".eea-daviz-datasource-readonly");
+  jQuery("<br/>")
+    .appendTo(".eea-daviz-datasource-readonly .portalMessage");
+  jQuery("<input type='button'/>")
+    .attr("value", "Unlock datasources")
+    .appendTo(".eea-daviz-datasource-readonly .portalMessage")
+    .click(function(){
+        jQuery(".eea-daviz-datasource-readonly").remove();
+    });
 });

@@ -3,6 +3,8 @@ Changelog
 
 8.9-dev - (unreleased)
 ----------------------
+* Feature: On the daviz edit page ask for confirmation before allowing users to modify data sources
+  [szabozo0 refs #20869]
 * Bug fix: Exclude relations where related item has link to current daviz in it's provenance info
   [szabozo0 refs #20869]
 

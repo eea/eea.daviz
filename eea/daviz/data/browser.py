@@ -32,7 +32,7 @@ class DavizJSON(JSON):
 
         new_json = {'items': [], 'properties': {}}
         for item in relatedItems:
-            #fix for #20869 if related item has provenance info with a link 
+            #fix for #20869 if related item has provenance info with a link
             #to this visualization, skip it
             provenances = queryAdapter(item, IMultiDataProvenance).provenances
             is_provenance_info = False

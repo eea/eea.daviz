@@ -297,6 +297,7 @@ SCHEMA = Schema((
                     "Are you sure you want to continue?"
             ),
             i18n_domain="eea",
+            helper_js=('++resource++eea.daviz.warnings.js',),
             visible={'edit': 'visible', 'view': 'invisible'}
         )
     ),

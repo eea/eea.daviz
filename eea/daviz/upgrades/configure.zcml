@@ -4,6 +4,18 @@
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
   i18n_domain="eea">
 
+  <!-- 8.6 => 9.0 -->
+  <genericsetup:upgradeSteps
+    source="8.6"
+    destination="9.0"
+    profile="eea.daviz:default">
+
+    <genericsetup:upgradeDepends
+      title="Importtypes from eea.daviz profile"
+      import_profile="eea.daviz:upgrade90"
+      />
+
+  </genericsetup:upgradeSteps>
 
   <!-- 8.4 => 8.6 -->
   <genericsetup:upgradeSteps

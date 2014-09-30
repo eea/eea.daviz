@@ -27,4 +27,11 @@
           />
     </configure>
 
+    <genericsetup:registerProfile
+            name="upgrade90"
+            title="EEA Daviz upgrade profile for v9.0"
+            directory="profiles/upgrades/to_90"
+            description='EEA Daviz upgrade profile for v9.0'
+            provides="Products.GenericSetup.interfaces.EXTENSION" />
+
 </configure>

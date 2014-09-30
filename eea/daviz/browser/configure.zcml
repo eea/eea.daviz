@@ -18,14 +18,6 @@
     permission="zope2.View"
     />
 
-  <browser:page
-    for="eea.daviz.content.interfaces.IDavizVisualization"
-    name="caching"
-    class=".app.cache.CacheView"
-    permission="cmf.ModifyPortalContent"
-    template="zpt/caching.pt"
-    />
-
   <browser:resource
     name="eea.daviz.datasource.js"
     file="./js/datasource.js"

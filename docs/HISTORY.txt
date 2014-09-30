@@ -3,6 +3,9 @@ Changelog
 
 9.0-dev - (unreleased)
 ----------------------
+* Feature: removed "Caching" action. We are now using the more complex "Cache"
+  action registered by eea.cache
+  [ghicaale refs #21143]
 
 8.9 - (2014-08-29)
 ------------------

@@ -6,6 +6,8 @@ Changelog
 * Feature: removed "Caching" action. We are now using the more complex "Cache"
   action registered by eea.cache
   [ghicaale refs #21143]
+* Feature: added upgrade step to remove absolete "Caching" action
+  [ghicaale refs #21143]
 
 8.9 - (2014-08-29)
 ------------------

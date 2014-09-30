@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<object name="DavizVisualization">
+  <action action_id="caching" category="object" remove="True"/>
+</object>

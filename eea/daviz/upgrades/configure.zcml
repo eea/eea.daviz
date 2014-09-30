@@ -11,7 +11,7 @@
     profile="eea.daviz:default">
 
     <genericsetup:upgradeDepends
-      title="Importtypes from eea.daviz profile"
+      title="Import types from eea.daviz profile"
       import_profile="eea.daviz:upgrade90"
       />
 

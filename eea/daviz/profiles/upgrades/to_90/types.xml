@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<object name="portal_types">
+  <object name="DavizPresentation" remove="True" />
+  <object name="DavizVisualization"
+    meta_type="Factory-based Type Information with dynamic views"/>
+</object>

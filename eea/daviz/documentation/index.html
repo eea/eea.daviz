@@ -1,4 +1,3 @@
-
 <tal:block define="context python: request.PARENTS[1]; here nocall:context">
 <html metal:use-macro="context/main_template/macros/master"
       i18n:domain="plone">
@@ -172,15 +171,17 @@ recipe to manage your project, you can do this:</p>
 <ul class="simple">
 <li>Add <tt class="docutils literal"><span class="pre">eea.daviz</span></tt> to the list of eggs to install</li>
 </ul>
-<div class="highlight-python"><pre>[instance]
+<div class="highlight-python"><div class="highlight"><pre>[instance]
 ...
 eggs =
   ...
-  eea.daviz</pre>
+  eea.daviz
+</pre></div>
 </div>
 </li>
 <li><p class="first">Re-run buildout, e.g. with:</p>
-<div class="highlight-python"><pre>$ ./bin/buildout</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ ./bin/buildout
+</pre></div>
 </div>
 </li>
 </ul>
@@ -226,7 +227,7 @@ this is done by verification via Google webmaster tools.</p>
 memcache configuration)</li>
 <li><a class="reference external" href="http://eea.github.com/docs/eea.depiction">eea.depiction</a></li>
 </ul>
-<div class="last highlight-python"><pre>[instance]
+<div class="last highlight-python"><div class="highlight"><pre>[instance]
 ...
 eggs =
   ...
@@ -235,7 +236,8 @@ eggs =
 zcml =
   ...
   eea.daviz-overrides
-  eea.daviz-full</pre>
+  eea.daviz-full
+</pre></div>
 </div>
 </dd>
 </dl>
@@ -310,7 +312,7 @@ data</a></li>
                     &copy;
                         Copyright 2012, European Environment Agency.
                 Created using <a
-                        href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3
+                        href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2
                     .
                 Theme <a href="https://github.com/scotch/sphinx-bootstrap">Sphinx-Bootstrap</a>
                 adapted from

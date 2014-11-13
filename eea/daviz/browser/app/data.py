@@ -2,6 +2,7 @@
 """
 from urllib2 import urlparse
 from Products.Five.browser import BrowserView
+import re
 
 try:
     from eea.daviz.content.schema import tmpOrganisationsVocabulary
@@ -27,7 +28,6 @@ class Info(BrowserView):
         return self._info
 
     def __call__(self, **kwargs):
-
         field = self.context.getField('provenances')
         provenances = field.getAccessor(self.context)()
         formatted_provenances = []
@@ -47,6 +47,13 @@ class Info(BrowserView):
                     else:
                         owner_title = owner
                     formatted_provenance['owner']['title'] = owner_title
+                    formatted_provenance['owner']['acronym'] = ""
+                    # 21467 extract acronym from owner_title if present
+                    # which is found within parenthesis ()
+                    acronym = re.search('\((.*?)\)', owner_title)
+                    if acronym:
+                        formatted_provenance['owner']['acronym'] = \
+                            acronym.group(1)
                     parser = urlparse.urlparse(owner)
                     if all((parser.scheme, parser.netloc)):
                         formatted_provenance['owner']['url'] = owner

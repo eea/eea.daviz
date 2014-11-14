@@ -50,7 +50,7 @@ class Info(BrowserView):
                     formatted_provenance['owner']['acronym'] = ""
                     # 21467 extract acronym from owner_title if present
                     # which is found within parenthesis ()
-                    acronym = re.search('\((.*?)\)', owner_title)
+                    acronym = re.search(r'\((.*?)\)', owner_title)
                     if acronym:
                         formatted_provenance['owner']['acronym'] = \
                             acronym.group(1)

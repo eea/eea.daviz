@@ -1,8 +1,8 @@
 Changelog
 =========
 
-9.1-dev - (unreleased)
-----------------------
+9.1 - (2014-11-20)
+------------------
 * Feature: formated_provenance now contain the acronym information extracted
   from the title of the data source if found within parenthesis
   [ichim-david refs #21467]

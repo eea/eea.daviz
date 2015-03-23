@@ -3,6 +3,12 @@ Changelog
 
 9.3.dev0 - (unreleased)
 -----------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for eea.daviz
+* Feature: Added IDavizLayer browser layer
+  [olimpiurob refs #24121]
+* Change: Made "MultiDataProvenanceSchemaExtender" browser layer aware
+  [olimpiurob refs #24121]
 
 9.2 - (2015-03-17)
 ------------------

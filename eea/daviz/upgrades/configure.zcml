@@ -4,6 +4,19 @@
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
   i18n_domain="eea">
 
+  <!-- 9.0 => 9.3 -->
+  <genericsetup:upgradeSteps
+    source="9.0"
+    destination="9.3"
+    profile="eea.daviz:default">
+
+    <genericsetup:upgradeDepends
+      title="Import browserlayer from eea.daviz profile"
+      import_profile="eea.daviz:upgrade93"
+      />
+
+  </genericsetup:upgradeSteps>
+
   <!-- 8.6 => 9.0 -->
   <genericsetup:upgradeSteps
     source="8.6"

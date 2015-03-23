@@ -28,12 +28,14 @@
   <!-- Multiple data source schema extender -->
   <adapter
     for=".interfaces.IDavizVisualization"
+    provides="archetypes.schemaextender.interfaces.ISchemaExtender"
     factory=".schema.MultiDataProvenanceSchemaExtender"
     />
 
   <adapter
     zcml:condition="installed plone.app.blob"
     for="plone.app.blob.interfaces.IATBlobFile"
+    provides="archetypes.schemaextender.interfaces.ISchemaExtender"
     factory=".schema.MultiDataProvenanceSchemaExtender"
     />
 

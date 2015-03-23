@@ -9,6 +9,7 @@ from Products.Archetypes.public import TextAreaWidget, StringWidget, LabelWidget
 from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 from eea.app.visualization.interfaces import IDataProvenance
 from eea.app.visualization.interfaces import IMultiDataProvenance
+from eea.daviz.interfaces import IDavizLayer
 from eea.daviz.config import EEAMessageFactory as _
 from eea.daviz.events import DavizExternalChanged
 from eea.daviz.events import DavizRelationsChanged
@@ -22,7 +23,7 @@ from Products.Archetypes.interfaces import IVocabulary
 from Products.DataGridField import DataGridField, DataGridWidget
 from Products.DataGridField.Column import Column
 from Products.DataGridField.SelectColumn import SelectColumn
-from archetypes.schemaextender.interfaces import ISchemaExtender
+from archetypes.schemaextender.interfaces import ISchemaExtender, IBrowserLayerAwareExtender
 from archetypes.schemaextender.field import ExtensionField
 from zope.interface import implements
 from Products.CMFCore.utils import getToolByName
@@ -371,7 +372,10 @@ finalizeSchema(DAVIZ_SCHEMA)
 class MultiDataProvenanceSchemaExtender(object):
     """ Schema extender for content types with data provenance
     """
-    implements(ISchemaExtender)
+    implements(ISchemaExtender, IBrowserLayerAwareExtender)
+
+    layer = IDavizLayer
+
     fields = (
         DavizDataGridField(
             name='provenances',

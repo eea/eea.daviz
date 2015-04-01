@@ -3,6 +3,8 @@ Changelog
 
 9.3.dev0 - (unreleased)
 -----------------------
+* Change: Made data provenance required for published
+  [szabozo0 refs #24412]
 * Upgrade step: Within "Plone > Site setup > Add-ons" click on
   upgrade button available for eea.daviz
 * Feature: Added IDavizLayer browser layer

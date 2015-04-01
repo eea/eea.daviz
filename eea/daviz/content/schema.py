@@ -395,6 +395,7 @@ class MultiDataProvenanceSchemaExtender(object):
                             'datagridwidget.css')
                 ),
             columns=("title", "link", "owner"),
+            required_for_published=True,
         ),
         DavizBooleanField(
             name='inheritedprovenance',

@@ -46,7 +46,7 @@ except ImportError:
 #
 OrganisationsWidget = StringWidget
 OrganisationsVocabulary = None
-OwnerColumn = Column("Owner")
+OwnerColumn = Column("Owner", required=True)
 widget_helper_js = ('++resource++eea.daviz.datasource.js',
                    'datagridwidget.js',)
 try:
@@ -68,6 +68,7 @@ try:
 
     tmpOrganisationsVocabulary = ArchetypesOrganisationsVocabulary()
     OwnerColumn = SelectColumn("Owner",
+                                required=True,
                                 vocabulary=tmpOrganisationsVocabulary,
                                 default='')
     widget_helper_js = ('++resource++eea.daviz.datasource.js',
@@ -384,8 +385,8 @@ class MultiDataProvenanceSchemaExtender(object):
             widget=DataGridWidget(
                 label="Data Provenance",
                 description="""List of Data Provenance""",
-                columns={'title':Column("Title"),
-                         'link':Column("Link"),
+                columns={'title':Column("Title", required=True),
+                         'link':Column("Link", required=True),
                          'owner':OwnerColumn,
                          },
                 auto_insert=False,

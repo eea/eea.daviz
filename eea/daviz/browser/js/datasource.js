@@ -90,11 +90,25 @@ jQuery(document).ready(function(){
     }
   }
 
+  function setColumnRequired(){
+    jQuery('[name="provenances.title:records"]').closest("td").find(".required-span").remove();
+    jQuery('[name="provenances.link:records"]').closest("td").find(".required-span").remove();
+    jQuery('[name="provenances.owner:records"]').closest("td").find(".required-span").remove();
+    var required_span = jQuery("<span>")
+                            .addClass("required")
+                            .addClass("required-span")
+    jQuery('[name="provenances.title:records"]').closest("td").prepend(required_span)
+    jQuery('[name="provenances.link:records"]').closest("td").prepend(required_span)
+    jQuery('[name="provenances.owner:records"]').closest("td").prepend(required_span)
+
+  }
+
   function setColumnClasses(){
     jQuery('[name="provenances.title:records"]').closest("td").addClass("datagridwidget-column-1");
     jQuery('[name="provenances.link:records"]').closest("td").addClass("datagridwidget-column-2");
     jQuery('[name="provenances.owner:records"]').closest("td").addClass("datagridwidget-column-3");
     setDataGridWidgetTRLabels();
+    setColumnRequired();
     jQuery(document).trigger('eea-wizard-changed');
   }
 
@@ -102,7 +116,7 @@ jQuery(document).ready(function(){
   jQuery(document).delegate(".datagridwidget-manipulator img", "click", setColumnClasses);
   jQuery(document).delegate(".datagridwidget-add-button", "click", setColumnClasses);
   setDataGridWidgetTRLabels();
-
+  setColumnRequired();
   if (jQuery('#inheritedprovenance').attr('checked')){
     jQuery('#archetypes-fieldname-provenances').addClass('eea-daviz-readonly');
     jQuery('.datagridwidget-manipulator').find('img').hide();

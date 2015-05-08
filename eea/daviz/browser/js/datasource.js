@@ -96,10 +96,10 @@ jQuery(document).ready(function(){
     jQuery('[name="provenances.owner:records"]').closest("td").find(".required-span").remove();
     var required_span = jQuery("<span>")
                             .addClass("required")
-                            .addClass("required-span")
-    jQuery('[name="provenances.title:records"]').closest("td").prepend(required_span)
-    jQuery('[name="provenances.link:records"]').closest("td").prepend(required_span)
-    jQuery('[name="provenances.owner:records"]').closest("td").prepend(required_span)
+                            .addClass("required-span");
+    jQuery('[name="provenances.title:records"]').closest("td").prepend(required_span);
+    jQuery('[name="provenances.link:records"]').closest("td").prepend(required_span);
+    jQuery('[name="provenances.owner:records"]').closest("td").prepend(required_span);
 
   }
 

@@ -46,17 +46,17 @@ td.datagridwidget-cell{
     display:inline;
 }
 
-.datagridwidget-column-1.datagridwidget-cell:before{
+#datagridwidget-tbody-provenances .datagridwidget-column-1.datagridwidget-cell:before{
     content: "Data source title";
     font-weight:bold;
 }
 
-.datagridwidget-column-2.datagridwidget-cell:before{
+#datagridwidget-tbody-provenances .datagridwidget-column-2.datagridwidget-cell:before{
     content: "Data source link";
     font-weight:bold;
 }
 
-.datagridwidget-column-3.datagridwidget-cell:before{
+#datagridwidget-tbody-provenances .datagridwidget-column-3.datagridwidget-cell:before{
     content: "Data source owner";
     font-weight:bold;
 }

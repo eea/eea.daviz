@@ -113,8 +113,8 @@ jQuery(document).ready(function(){
   }
 
   jQuery(".datagridwidget-add-button").text("Add new provenance info");
-  jQuery(document).delegate(".datagridwidget-manipulator img", "click", setColumnClasses);
-  jQuery(document).delegate(".datagridwidget-add-button", "click", setColumnClasses);
+  jQuery("#fieldset-data-provenance").delegate(".datagridwidget-manipulator img", "click", setColumnClasses);
+  jQuery("#fieldset-data-provenance").delegate(".datagridwidget-add-button", "click", setColumnClasses);
   setDataGridWidgetTRLabels();
   setColumnRequired();
   if (jQuery('#inheritedprovenance').attr('checked')){

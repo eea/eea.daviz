@@ -1,6 +1,9 @@
 Changelog
 =========
 
+9.6.dev0 - (unreleased)
+-----------------------
+
 9.5 - (2015-05-15)
 ------------------
 * Change: Mark data provenance fields as required

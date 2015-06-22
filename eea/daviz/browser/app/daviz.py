@@ -13,7 +13,7 @@ class Daviz(object):
         """
         davizsettings = queryUtility(IDavizSettings)
         strFolder = davizsettings.settings.get("daviz.defaultfolder", "")
-        if (strFolder != ""):
+        if strFolder != "":
             portal = getSite()
             folder = portal.restrictedTraverse(strFolder)
         else:

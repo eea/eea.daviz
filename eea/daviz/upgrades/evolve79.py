@@ -22,7 +22,7 @@ def migrate_daviz_annotations(context):
             for vis in annot.values():
                 for key in vis.keys():
                     embed_type = vis[key]
-                    if type(embed_type) == str:
+                    if isinstance(embed_type, str):
                         chart_settings = PersistentMapping()
                         chart_settings['type'] = embed_type
                         vis[key] = chart_settings

@@ -23,7 +23,8 @@ from Products.Archetypes.interfaces import IVocabulary
 from Products.DataGridField import DataGridField, DataGridWidget
 from Products.DataGridField.Column import Column
 from Products.DataGridField.SelectColumn import SelectColumn
-from archetypes.schemaextender.interfaces import ISchemaExtender, IBrowserLayerAwareExtender
+from archetypes.schemaextender.interfaces import ISchemaExtender, \
+                                                    IBrowserLayerAwareExtender
 from archetypes.schemaextender.field import ExtensionField
 from zope.interface import implements
 from Products.CMFCore.utils import getToolByName
@@ -52,7 +53,7 @@ widget_helper_js = ('++resource++eea.daviz.datasource.js',
 try:
     from eea.dataservice.widgets import OrganisationsWidget
     OrganisationsVocabulary = u'Organisations'
-    class ArchetypesOrganisationsVocabulary:
+    class ArchetypesOrganisationsVocabulary(object):
         """Wrapper for OrganisationsVocabulary to Archetypes Vocabulary
         """
         implements(IVocabulary)
@@ -62,7 +63,7 @@ try:
             """
             voc_fact = queryUtility(IVocabularyFactory, OrganisationsVocabulary)
             items = [(t.value, t.title or t.token) for t in voc_fact(instance)]
-            items.insert(0, ('',''))
+            items.insert(0, ('', ''))
             vocabulary = DisplayList(items)
             return vocabulary
 
@@ -221,7 +222,7 @@ SCHEMA = Schema((
                 " (e.g. visualization data, .tsv, .csv, SPARQL, etc)"
             ),
             i18n_domain="eea",
-            visible={'edit': 'visible', 'view': 'invisible' }
+            visible={'edit': 'visible', 'view': 'invisible'}
         )),
     StringField('quickUpload',
         schemata='data input',
@@ -245,7 +246,7 @@ SCHEMA = Schema((
               )
             ),
             i18n_domain="eea",
-            visible={'edit': 'visible', 'view': 'invisible' }
+            visible={'edit': 'visible', 'view': 'invisible'}
         )
     ),
     DavizStringField('spreadsheet',
@@ -404,7 +405,7 @@ class MultiDataProvenanceSchemaExtender(object):
             searchable=False,
             widget=BooleanWidget(
                 label='Inherited Provenance',
-                description= 'Inherited Provenance',
+                description='Inherited Provenance',
             )
         ),
 

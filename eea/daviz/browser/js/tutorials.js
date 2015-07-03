@@ -73,18 +73,19 @@ DavizEdit.DavizTutorials.prototype = {
             .appendTo(".daviz-tutorials-search");
 
         var playlists = {"Basic tutorials":"PLVPSQz7ahsByeq8nVKC7TT9apArEXBrV0", "Advanced tutorials": "PLVPSQz7ahsBxbe8pwzFWLQuvDSP9JFn8I"};
+        var api_key = "AIzaSyAJ8UVYKjhX9AmrTwBAfJIXnbnVlPaDxRQ";
         jQuery.each(playlists, function(playlist_key, playlist){
-            jQuery.getJSON("http://gdata.youtube.com/feeds/api/playlists/" + playlist + "?v=2&alt=jsonc&orderby=position", function(data){
+            jQuery.getJSON("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=" + playlist + "&key=" + api_key, function(data){
                 var main_playlist = self.context.find(".daviz-tutorials-main-playlist");
                 var div = jQuery("<div>")
                     .addClass("daviz-tutorials-playlist")
-                    .attr("playlistid", data.data.id)
+                    .attr("playlistid", playlist)
                     .appendTo(main_playlist);
                 jQuery("<div>")
                     .addClass("daviz-tutorials-videos")
-                    .appendTo(".daviz-tutorials-playlist[playlistid='" + data.data.id + "']");
-                jQuery.each(data.data.items, function(item_idx, item){
-                    var fulldescription = item.video.description;
+                    .appendTo(".daviz-tutorials-playlist[playlistid='" + playlist + "']");
+                jQuery.each(data.items, function(item_idx, item){
+                    var fulldescription = item.snippet.description;
                     var tags_from_description;
                     try{
                         tags_from_description = fulldescription.split("EEA Tags:")[1].split(".")[0];
@@ -107,14 +108,14 @@ DavizEdit.DavizTutorials.prototype = {
                     }
                     self.updateTagCloud(tags);
                     var img = jQuery("<img>")
-                        .attr("src", item.video.thumbnail.sqDefault);
+                        .attr("src", item.snippet.thumbnails.default.url);
                     var iframe = self.context.find("iframe");
                     var item_obj = jQuery("<div>")
                         .addClass("daviz-tutorials-videoitem")
                         .addClass("hidden-item")
                         .data("tags", tags)
-                        .attr("videoid", item.video.id)
-                        .appendTo(".daviz-tutorials-playlist[playlistid='" + data.data.id + "'] .daviz-tutorials-videos")
+                        .attr("videoid", item.snippet.resourceId.videoId)
+                        .appendTo(".daviz-tutorials-playlist[playlistid='" + item.snippet.playlistId + "'] .daviz-tutorials-videos")
                         .click(function(){
                             jQuery(iframe)
                                 .attr("src", "http://www.youtube.com/embed/"+jQuery(this).attr("videoid")+"?autoplay=1");
@@ -125,7 +126,7 @@ DavizEdit.DavizTutorials.prototype = {
                         })
                         .prepend(img);
                     jQuery("<div>")
-                        .text(item.video.title)
+                        .text(item.snippet.title)
                         .width(searchWidth - 110)
                         .appendTo(item_obj);
                 });

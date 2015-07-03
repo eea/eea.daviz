@@ -3,6 +3,8 @@ Changelog
 
 9.6.dev0 - (unreleased)
 -----------------------
+* Bug Fix: tutorials use now youtube api v.3
+  [lucas refs #26201]
 
 9.5 - (2015-05-15)
 ------------------

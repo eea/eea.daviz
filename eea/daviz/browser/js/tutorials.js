@@ -108,7 +108,7 @@ DavizEdit.DavizTutorials.prototype = {
                     }
                     self.updateTagCloud(tags);
                     var img = jQuery("<img>")
-                        .attr("src", item.snippet.thumbnails.default.url);
+                        .attr("src", item.snippet.thumbnails['default'].url);
                     var iframe = self.context.find("iframe");
                     var item_obj = jQuery("<div>")
                         .addClass("daviz-tutorials-videoitem")

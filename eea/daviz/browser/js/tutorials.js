@@ -1,5 +1,5 @@
 if(window.DavizEdit === undefined){
-  var DavizEdit = {'version': '4.0'};
+    var DavizEdit = {'version': '4.0'};
 }
 
 DavizEdit.DavizTutorials = function(context, options){
@@ -72,10 +72,10 @@ DavizEdit.DavizTutorials.prototype = {
             .css("height", 400)
             .appendTo(".daviz-tutorials-search");
 
-        var playlists = {"Basic tutorials":"PLVPSQz7ahsByeq8nVKC7TT9apArEXBrV0", "Advanced tutorials": "PLVPSQz7ahsBxbe8pwzFWLQuvDSP9JFn8I"};
+        var playlists = {"Basic tutorials": "PLVPSQz7ahsByeq8nVKC7TT9apArEXBrV0", "Advanced tutorials": "PLVPSQz7ahsBxbe8pwzFWLQuvDSP9JFn8I"};
         var api_key = "AIzaSyAJ8UVYKjhX9AmrTwBAfJIXnbnVlPaDxRQ";
         jQuery.each(playlists, function(playlist_key, playlist){
-            jQuery.getJSON("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=" + playlist + "&key=" + api_key, function(data){
+            jQuery.getJSON("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=" + playlist + "&key=" + api_key + "&maxResults=50", function(data){
                 var main_playlist = self.context.find(".daviz-tutorials-main-playlist");
                 var div = jQuery("<div>")
                     .addClass("daviz-tutorials-playlist")

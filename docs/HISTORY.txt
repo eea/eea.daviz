@@ -1,6 +1,9 @@
 Changelog
 =========
 
+9.7.dev0 - (unreleased)
+-----------------------
+
 9.6 - (2015-07-06)
 ------------------
 * Bug Fix: tutorials use now youtube api v.3

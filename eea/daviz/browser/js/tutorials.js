@@ -118,7 +118,7 @@ DavizEdit.DavizTutorials.prototype = {
                         .appendTo(".daviz-tutorials-playlist[playlistid='" + item.snippet.playlistId + "'] .daviz-tutorials-videos")
                         .click(function(){
                             jQuery(iframe)
-                                .attr("src", "http://www.youtube.com/embed/"+jQuery(this).attr("videoid")+"?autoplay=1");
+                                .attr("src", "https://www.youtube.com/embed/"+jQuery(this).attr("videoid")+"?autoplay=1");
                             jQuery(".nowplaying")
                                 .removeClass("nowplaying");
                             jQuery(this)
@@ -160,7 +160,7 @@ DavizEdit.DavizTutorials.prototype = {
                 if (self.context.find("iframe").attr("src") === ""){
                     item.addClass("nowplaying");
                     self.context.find("iframe")
-                        .attr("src", "http://www.youtube.com/embed/"+item.attr("videoid"));
+                        .attr("src", "https://www.youtube.com/embed/"+item.attr("videoid"));
                 }
                 item.removeClass("hidden-item");
             }

@@ -1,8 +1,8 @@
 Changelog
 =========
 
-9.7.dev0 - (unreleased)
------------------------
+9.7 - (2015-07-28)
+------------------
 * Bug Fix: unload video over HTTPS
   [lucas refs #26201]
 

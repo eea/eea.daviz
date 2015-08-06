@@ -13,19 +13,22 @@
     margin-left:10px;
     overflow:auto;
     border-bottom:1px solid rgb(85,85,85);
+    margin-top: 15px;
 }
 
 .daviz-tutorials img {
     height:40px;
     float:left;
     border:2px solid rgb(26,26,26);
+    margin-right: 10px;
 }
 
 .daviz-tutorials .daviz-tutorials-videos .daviz-tutorials-videoitem{
-    height:40px;
+    height:60px;
     padding:10px;
     color: rgb(85,85,85);
     cursor: pointer;
+    overflow: hidden;
 }
 
 .daviz-tutorials .daviz-tutorials-videos .daviz-tutorials-videoitem:hover{

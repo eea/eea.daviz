@@ -1,0 +1,4 @@
+plone:
+  image: eeacms/plone
+  ports:
+  - "80:80"

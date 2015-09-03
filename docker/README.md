@@ -40,10 +40,9 @@ The terminal does several things to set up Docker Toolbox for you. When it is do
 
 ### A.3 Running Plone from a Docker container ###
 
-Using the Docker Toolbox terminal, issue the following command (without the “$”)::
+Using the Docker Toolbox terminal, issue the following command (without the “$”):
 
-  $ `docker run -d -p 80:80 --name eeacms_plone_container eeacms/plone`
-  $ `run.sh`
+**$** `docker run -d -p 80:80 --name eeacms_plone_container eeacms/plone`
 
 The command creates a Docker container named “eeacms_plone_container” and starts it in background. You can verify this by issuing the following command, which displays details (such as container ID, name, status etc.) about all running containers:
 

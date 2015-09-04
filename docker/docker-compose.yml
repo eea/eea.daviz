@@ -2,3 +2,5 @@ plone:
   image: eeacms/plone
   ports:
   - "80:80"
+  environment:
+  - BUILDOUT_EGGS=eea.daviz

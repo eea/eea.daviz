@@ -1,9 +1,0 @@
-plone:
-  image: eeacms/plone
-  ports:
-  - "80:80"
-  environment:
-  - SOURCE_EEA_DAVIZ=git https://github.com/collective/eea.daviz.git pushurl=git@github.com:collective/eea.daviz.git
-  - BUILDOUT_EGGS=eea.daviz
-  volumes:
-  - src:/opt/zope/src

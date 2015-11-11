@@ -3,6 +3,8 @@ Changelog
 
 9.8.dev0 - (unreleased)
 -----------------------
+* Feature: relate to object if resolveuid is used in data provenance
+  [lucas refs #30065]
 
 9.7 - (2015-07-28)
 ------------------

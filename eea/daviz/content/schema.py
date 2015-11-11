@@ -146,32 +146,68 @@ class DavizDataGridField(ExtensionField, DataGridField):
         config = queryAdapter(instance, IMultiDataProvenance)
         return getattr(config, 'provenances', ({},))
 
+    def ds_resolveurl(self, instance, url):
+        """return the resolved url
+        """
+        link = None
+        # get ds_resolveuid utility
+        ds_resolveuid = getattr(instance, 'ds_resolveuid', None)
+
+        if ds_resolveuid and 'ds_resolveuid' in url:
+
+            uuid = url.split('/')[-1]
+            # resolve url
+            link = ds_resolveuid(uuid=uuid, redirect=False)
+
+        if not link:
+            logger.info(
+                'The link you followed appears to be broken: %s',
+                url
+            )
+            # return url if it is not resolved
+            return url
+
+        return link
+
+
     def set(self, instance, value, **kwargs):
         """ update provenances
         """
         config = queryAdapter(instance, IMultiDataProvenance)
         original_values = getattr(config, 'provenances', ({'link': ''},))
         setattr(config, 'provenances', value)
-
         # Add relation when adding internal link for data provenance
         new_links = []
+        # get ds_resolveuid utility
+        ds_resolveuid = getattr(instance, 'ds_resolveuid', None)
         portal_url = getToolByName(instance, 'portal_url')()
+
         if value == ({},):
             value = ({'link': ''},)
         for val in value:
             if val.get('link').startswith(portal_url):
-                source_obj = self.getRelation(instance, val['link'])
+                link = val.get('link')
+                #translate resolveuid url in real url
+                if ds_resolveuid and 'ds_resolveuid' in link:
+                    link = self.ds_resolveurl(instance, link)
+
+                source_obj = self.getRelation(instance, link)
                 if source_obj:
                     relatedItems = source_obj.getRelatedItems()
-                    relatedItems.append(instance)
+                    if instance not in relatedItems:
+                        relatedItems.append(instance)
                     source_obj.setRelatedItems(relatedItems)
-                new_links.append(val['link'])
+                new_links.append(link)
 
         # Delete the relation if the internal link was removed
         for val in original_values:
-            if (not val.get('link') in new_links) and \
-                                   val['link'].startswith(portal_url):
-                source_obj = self.getRelation(instance, val['link'])
+            link = val.get('link')
+            #translate resolveuid url in real url
+            if ds_resolveuid and 'ds_resolveuid' in link:
+                link = self.ds_resolveurl(instance, link)
+            if (not link in new_links) and \
+                                   link.startswith(portal_url):
+                source_obj = self.getRelation(instance, link)
                 if source_obj:
                     relatedItems = source_obj.getRelatedItems()
                     if instance in relatedItems:
@@ -188,7 +224,6 @@ class DavizDataGridField(ExtensionField, DataGridField):
             path = site + path
         if path.startswith('/'):
             path = path[1:]
-
         try:
             referer = instance.restrictedTraverse(path)
         except Exception:

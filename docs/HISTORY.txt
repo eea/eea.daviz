@@ -3,6 +3,9 @@ Changelog
 
 9.8.dev0 - (unreleased)
 -----------------------
+* Feature: Improve chart chooser for inline embed to show only googlecharts:
+  exhibits are currently not supported for embedding
+  [chiridra refs #30065]
 * Feature: relate to object if resolveuid is used in data provenance
   [lucas refs #30065]
 

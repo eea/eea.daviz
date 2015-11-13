@@ -114,23 +114,28 @@ var DavizChartSelection = function (btnel) {
                 var chart_id = info.id;
                 var embed_type = get_embed_type(chart_id);
                 var is_activated = (embed_type !== null);
+                // check for exhibits - if so, the current chart is not supported for embedding
+                var is_exhibit = ((chart_id == 'daviz.map') || (chart_id == 'daviz.tabular') || (chart_id == 'daviz.tile') || (chart_id == 'daviz.timeline'));
 
                 var p = jQuery("<li style='overflow:hidden; display:list-item; clear:both' class='list-item'>");
                 var chk_div = jQuery("<div/>");
-                if (!is_activated) {
+                if ((!is_activated) && (!is_exhibit)) {
                     chk_div.css({'display':'none'});
                     p.addClass('disabled');
                 }
 
-                var disabler = jQuery("<input>").attr({
-                    'type':'checkbox',
-                    'class':'disabler',
-                    'checked':is_activated
-                });
-                disabler.change(function(){
-                    chk_div.fadeToggle();
-                    jQuery(this).parent().toggleClass('disabled');
-                });
+                var disabler = "";
+                if (!is_exhibit) {
+                    disabler = jQuery("<input>").attr({
+                        'type':'checkbox',
+                        'class':'disabler',
+                        'checked':is_activated
+                    });
+                    disabler.change(function(){
+                        chk_div.fadeToggle();
+                        jQuery(this).parent().toggleClass('disabled');
+                    });
+                }
                 var title = jQuery("<span style='font-weight:bold'>");
                 title.text(" " + info.label + ':');
                 p.append(disabler, title, "<br/>", chk_div);
@@ -146,31 +151,35 @@ var DavizChartSelection = function (btnel) {
                     'style':'float:left'
                 }));
 
-                var inp_live = jQuery("<input>").attr({
-                    'type':'checkbox',
-                    'name':'live',
-                    'class':'selector',
-                    'value':chart_id
+                if (!is_exhibit) {
+                    var inp_live = jQuery("<input>").attr({
+                        'type':'checkbox',
+                        'name':'live',
+                        'class':'selector',
+                        'value':chart_id
+                        });
+                    var inp_preview = inp_live.clone();
+                    inp_preview.attr('name', "preview");
+                    // to fill in here
+
+                    if (embed_type === 'preview') {
+                        inp_preview.attr('checked', true);
+                    } else {    // live is default
+                        inp_live.attr('checked', true);
+                    }
+
+                    inp_live.change(function(){
+                        var checked = inp_preview.attr('checked');
+                        inp_preview.attr('checked', !checked);
                     });
-                var inp_preview = inp_live.clone();
-                inp_preview.attr('name', "preview");
-                // to fill in here
-
-                if (embed_type === 'preview') {
-                    inp_preview.attr('checked', true);
-                } else {    // live is default
-                    inp_live.attr('checked', true);
+                    inp_preview.change(function(){
+                        var checked = inp_live.attr('checked');
+                        inp_live.attr('checked', !checked);
+                    });
+                    chk_div.append(inp_live, 'live', inp_preview, 'preview');
+                } else {
+                    chk_div.html("Exhibits are currently not supported for embedding.");
                 }
-
-                inp_live.change(function(){
-                    var checked = inp_preview.attr('checked');
-                    inp_preview.attr('checked', !checked);
-                });
-                inp_preview.change(function(){
-                    var checked = inp_live.attr('checked');
-                    inp_live.attr('checked', !checked);
-                });
-                chk_div.append(inp_live, 'live', inp_preview, 'preview');
                 thisel.append(p);
             });
 
@@ -190,11 +199,14 @@ var DavizChartSelection = function (btnel) {
         });
 
         // we need to hardcode height otherwise the dialog gets too minified
-        var height = Math.min(popup.height(), 500) + 100;
+        var width = Math.min(popup.width(), 500) + 100;
+        var height = Math.min(popup.height(), 500) + 200;
 
         popup.dialog({
             'title':'Select charts',
             modal: true,
+            minWidth:width,
+            'width':width,
             minHeight:height,
             'height':height,
             buttons: {

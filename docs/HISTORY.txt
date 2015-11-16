@@ -1,6 +1,9 @@
 Changelog
 =========
 
+9.9.dev0 - (unreleased)
+-----------------------
+
 9.8 - (2015-11-16)
 ------------------
 * Feature: Improved chart chooser for inline embed to show only googlecharts:

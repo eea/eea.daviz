@@ -1,8 +1,8 @@
 Changelog
 =========
 
-9.8.dev0 - (unreleased)
------------------------
+9.8 - (2015-11-16)
+------------------
 * Feature: Improved chart chooser for inline embed to show only googlecharts:
   exhibits are currently not supported for embedding
   [chiridra refs #30417]

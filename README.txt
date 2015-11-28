@@ -96,7 +96,7 @@ Live demos
 Questions?
 ==========
 
-If you have any questions please use the dedicated `DaViz Google Group <https://groups.google.com/forum/#!forum/eea-daviz>`_ and we willm do our best to answer.
+If you have any questions please use the dedicated `DaViz Google Group <https://groups.google.com/forum/#!forum/eea-daviz>`_ and we will do our best to answer.
 
 Architecture overview
 =====================

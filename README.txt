@@ -61,7 +61,8 @@ Main features
 12. Pivot table (Transpose), transform row values into columns
 13. Modular framework for extending it with more visualizations
 14. Branding: add your own logo to each chart + QR code
-15. And much more...
+15. Small multiples wizard
+16. And much more...
 
 
 It is simple to use, needs no desktop application, everything is done
@@ -88,10 +89,14 @@ Live demos
 
 * `Basic tutorials <http://www.youtube.com/playlist?list=PLVPSQz7ahsByeq8nVKC7TT9apArEXBrV0>`_
 * `Advanced tutorials <http://www.youtube.com/playlist?list=PLVPSQz7ahsBxbe8pwzFWLQuvDSP9JFn8I>`_
-* `Daviz showroom <http://daviz.eionet.europa.eu>`_
+* `Daviz showroom <http://www.eea.europa.eu/data-and-maps/data/data-viewers>`_
 * `Google charts demos <http://code.google.com/apis/chart>`_
 * `MIT Simile Exhibit demos <http://www.simile-widgets.org/exhibit3>`_
 
+Questions?
+==========
+
+If you have any questions please use the dedicated `DaViz Google Group <https://groups.google.com/forum/#!forum/eea-daviz>`_ and we willm do our best to answer.
 
 Architecture overview
 =====================
@@ -223,20 +228,10 @@ More documentation
    data <http://www.eea.europa.eu/data-and-maps/daviz/learn-more/prepare-data>`_
 
 
-Links
-=====
-
-1. Simile Wiki - Exhibit 2.0: http://simile.mit.edu/wiki/Exhibit
-2. Simile widgets: http://www.simile-widgets.org/exhibit
-3. EEA Daviz how-to: http://taskman.eionet.europa.eu/projects/zope/wiki/HowToDaViz
-4. EEA Daviz backlog wiki: http://taskman.eionet.europa.eu/projects/zope/wiki/DaViz
-5. Google charts: http://code.google.com/apis/chart/
-
-
 Funding and project management
 ==============================
 
-EEA_ - European Environment Agency (EU)
+EEA_ - European Environment Agency (EU) - Contact at EEA `Antonio De Marinis <https://www.linkedin.com/in/antoniodemarinis>`_
 
 .. _EEA: http://www.eea.europa.eu/
 .. _`EEA Daviz`: http://eea.github.com/docs/eea.daviz

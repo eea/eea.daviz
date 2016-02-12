@@ -130,6 +130,8 @@ jQuery(document).ready(function(){
 
 });
 
-Browser.onUploadComplete = function(){
+if (window.Browser) {
+  window.Browser.onUploadComplete = function(){
     // don't reload the page after uploading file
-};
+  };
+}

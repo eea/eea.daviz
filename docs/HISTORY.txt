@@ -3,6 +3,9 @@ Changelog
 
 9.9.dev0 - (unreleased)
 -----------------------
+* Bug fix: check for Browser within dataservice.js otherwise Sparql edit
+  fails when plone.quickupload ins't present
+  [ichimdav]
 
 9.8 - (2015-11-16)
 ------------------

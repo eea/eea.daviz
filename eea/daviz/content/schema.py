@@ -421,9 +421,9 @@ class MultiDataProvenanceSchemaExtender(object):
             widget=DataGridWidget(
                 label="Data Provenance",
                 description="""List of Data Provenance""",
-                columns={'title':Column("Title", required=True),
-                         'link':Column("Link", required=True),
-                         'owner':OwnerColumn,
+                columns={'title': Column("Title", required=False),
+                         'link': Column("Link", required=False),
+                         'owner': Column('Owner', required=False)
                          },
                 auto_insert=False,
                 i18n_domain='eea',
@@ -432,7 +432,8 @@ class MultiDataProvenanceSchemaExtender(object):
                             'datagridwidget.css')
                 ),
             columns=("title", "link", "owner"),
-            required_for_published=True,
+            required=False,
+            required_for_published=True
         ),
         DavizBooleanField(
             name='inheritedprovenance',

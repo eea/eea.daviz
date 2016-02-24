@@ -423,7 +423,10 @@ class MultiDataProvenanceSchemaExtender(object):
                 description="""List of Data Provenance""",
                 columns={'title': Column("Title", required=False),
                          'link': Column("Link", required=False),
-                         'owner': Column('Owner', required=False)
+                         'owner': SelectColumn("Owner",
+                                required=False,
+                                vocabulary=tmpOrganisationsVocabulary,
+                                default='')
                          },
                 auto_insert=False,
                 i18n_domain='eea',

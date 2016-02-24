@@ -44,6 +44,8 @@ class Info(BrowserView):
                     if hasVocab:
                         owner_title = tmpOrganisationsVocabulary.\
                             getDisplayList(self.context).getValue(owner)
+                        if not owner_title:
+                            owner_title = owner
                     else:
                         owner_title = owner
                     formatted_provenance['owner']['title'] = owner_title

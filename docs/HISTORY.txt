@@ -1,8 +1,8 @@
 Changelog
 =========
 
-10.0.dev0 - (unreleased)
-------------------------
+10.0 - (2016-03-01)
+-------------------
 * Change: Data provenance is no longer required except for publishing
   [ichimdav refs #68228]
 

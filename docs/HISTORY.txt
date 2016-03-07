@@ -3,6 +3,8 @@ Changelog
 
 10.1.dev0 - (unreleased)
 ------------------------
+* Bugfix: Fixed order of column labels when labels are numbers
+  [szabozo0 refs #69360]
 
 10.0 - (2016-03-01)
 -------------------

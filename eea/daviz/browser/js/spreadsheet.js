@@ -88,6 +88,22 @@ EEA.Daviz.Spreadsheet.prototype = {
     self.textarea.after(self.gridview);
 
     var colNames = Object.keys(self.table.properties || {});
+    var cols = [];
+    var i;
+    for (i = 0; i < colNames.length; i++){
+        var newCol = {
+            name: colNames[i],
+            order: self.table.properties[colNames[i]].order
+        }
+        cols.push(newCol)
+    }
+    cols = cols.sort(function(a,b){return a.order-b.order;});
+
+    colNames = [];
+    for (i = 0; i < cols.length; i++){
+        colNames.push(cols[i].name);
+    }
+
     var columns = [
       {
         id: "selector",

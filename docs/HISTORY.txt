@@ -3,6 +3,9 @@ Changelog
 
 10.1.dev0 - (unreleased)
 ------------------------
+* Bug fix: fixed provenances field when using eea.daviz in non
+  eea environment
+  [ichimdav]
 * Bugfix: Fixed order of column labels when labels are numbers
   [szabozo0 refs #69360]
 

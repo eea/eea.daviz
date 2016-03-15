@@ -1,8 +1,11 @@
 Changelog
 =========
 
-10.1.dev0 - (unreleased)
+10.2.dev0 - (unreleased)
 ------------------------
+
+10.1 - (2016-03-14)
+-------------------
 * Bug fix: fixed provenances field when using eea.daviz in non
   eea environment
   [ichimdav]

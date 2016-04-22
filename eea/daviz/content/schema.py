@@ -379,7 +379,7 @@ SCHEMA = Schema((
             label="More information",
             description=("Description of methodology "
                          "and calculations behind this."),
-            label_msgid='EEAContentTypes_label_body',
+            label_msgid='daviz_label_body',
             i18n_domain='eea',
             ),
         default_content_type="text/html",

@@ -4,7 +4,8 @@
 from Products.ATContentTypes.content.folder import ATFolder
 from Products.Archetypes.atapi import Schema, DisplayList
 from Products.Archetypes.public import StringField, ReferenceField, \
-                                        BooleanWidget, BooleanField
+                                        BooleanWidget, BooleanField, \
+                                        RichWidget, TextField
 from Products.Archetypes.public import TextAreaWidget, StringWidget, LabelWidget
 from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 from eea.app.visualization.interfaces import IDataProvenance
@@ -370,6 +371,23 @@ SCHEMA = Schema((
             visible={'edit': 'invisible', 'view': 'invisible'}
         )
     ),
+    TextField(
+        name='body',
+        allowable_content_types=('text/plain', 'text/structured',
+                                 'text/html', 'application/msword',),
+        widget=RichWidget(
+            label="More information",
+            description=("Description of methodology "
+                         "and calculations behind this."),
+            label_msgid='EEAContentTypes_label_body',
+            i18n_domain='eea',
+            ),
+        default_content_type="text/html",
+        searchable=True,
+        default_output_type="text/x-html-safe",
+        required_for_published=False,
+        required=False,
+        ),
 
 ))
 

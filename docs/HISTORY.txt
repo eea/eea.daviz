@@ -1,6 +1,9 @@
 Changelog
 =========
 
+10.3.dev0 - (unreleased)
+------------------------
+
 10.2 - (2016-05-04)
 -------------------
 * Feature: html body field for daviz and gis application

@@ -7,8 +7,8 @@ Changelog
 10.2 - (2016-05-04)
 -------------------
 * Feature: html body field for daviz and gis application
-    - added new field "body"
-    - modified the view template
+  - added new field "body"
+  - modified the view template
   [chiridra refs #70146]
 
 10.1 - (2016-03-14)
@@ -73,7 +73,7 @@ Changelog
 ------------------
 * Change: Switched to curl in the jenkins build install script
   [olimpiurob refs #22402]
-* Change: Changed fetch url for jenkins build install script to the install 
+* Change: Changed fetch url for jenkins build install script to the install
   script from the main EEA CPB repository
   [olimpiurob refs #22402]
 

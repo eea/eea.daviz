@@ -1,8 +1,9 @@
 """ Various setup
 """
 import logging
-logger = logging.getLogger('eea.daviz')
 from Products.CMFCore.utils import getToolByName
+
+logger = logging.getLogger('eea.daviz')
 
 def importVarious(self):
     """ Various setup

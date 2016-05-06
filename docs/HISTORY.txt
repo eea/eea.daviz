@@ -3,6 +3,8 @@ Changelog
 
 10.3.dev0 - (unreleased)
 ------------------------
+* Bug fix: Fix pylint warnings
+  [chiridra refs #71940]
 
 10.2 - (2016-05-04)
 -------------------

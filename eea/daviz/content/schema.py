@@ -1,5 +1,6 @@
 """ Daviz content schema
 """
+import logging
 
 from Products.ATContentTypes.content.folder import ATFolder
 from Products.Archetypes.atapi import Schema, DisplayList
@@ -19,7 +20,6 @@ from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
 from zope.component import queryAdapter, queryUtility
 from zope.schema.interfaces import IVocabularyFactory
 from zope.event import notify
-import logging
 from Products.Archetypes.interfaces import IVocabulary
 from Products.DataGridField import DataGridField, DataGridWidget
 from Products.DataGridField.Column import Column

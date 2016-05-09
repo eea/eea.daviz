@@ -1,5 +1,6 @@
 """ Daviz content schema
 """
+import logging
 
 from Products.ATContentTypes.content.folder import ATFolder
 from Products.Archetypes.atapi import Schema, DisplayList
@@ -19,7 +20,6 @@ from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
 from zope.component import queryAdapter, queryUtility
 from zope.schema.interfaces import IVocabularyFactory
 from zope.event import notify
-import logging
 from Products.Archetypes.interfaces import IVocabulary
 from Products.DataGridField import DataGridField, DataGridWidget
 from Products.DataGridField.Column import Column
@@ -31,26 +31,21 @@ from zope.interface import implements
 from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.interfaces import IBaseObject
 
-
-logger = logging.getLogger('eea.daviz')
 #
 # eea.relations
 #
-EEAReferenceField = ReferenceField
-EEAReferenceBrowserWidget = ReferenceBrowserWidget
 try:
     from eea.relations.field.referencefield import EEAReferenceField
     from eea.relations.widget.referencewidget import EEAReferenceBrowserWidget
 except ImportError:
+    logger = logging.getLogger('eea.daviz')
     logger.warn('eea.relations is not installed')
+    EEAReferenceField = ReferenceField
+    EEAReferenceBrowserWidget = ReferenceBrowserWidget
+
 #
 # eea.dataservice
 #
-OrganisationsWidget = StringWidget
-OrganisationsVocabulary = None
-OwnerColumn = Column("Owner", required=True)
-widget_helper_js = ('++resource++eea.daviz.datasource.js',
-                   'datagridwidget.js',)
 try:
     from eea.dataservice.widgets import OrganisationsWidget
     OrganisationsVocabulary = u'Organisations'
@@ -77,7 +72,15 @@ try:
                         'datagridwidget.js',
                         'selectautocomplete_widget.js',)
 except ImportError:
+    logger = logging.getLogger('eea.daviz')
     logger.warn('eea.dataservice is not installed')
+    OrganisationsWidget = StringWidget
+    OrganisationsVocabulary = None
+    OwnerColumn = Column("Owner", required=True)
+    widget_helper_js = ('++resource++eea.daviz.datasource.js',
+                        'datagridwidget.js',)
+
+logger = logging.getLogger('eea.daviz')
 
 
 class DavizReferenceField(EEAReferenceField):

@@ -285,7 +285,7 @@ When the chart is ready, press the **Save** button on the dialog.
 
 4.2 Preview and size adjustments
 --------------------------------
-By default all charts have a size of 800x600px. If you want to modify this, you have to click on "Preview and size adjusments" what will open a dialog with the final version of the chart. Here, with drag and drop you can simply resize the chart (or type in the prefered values in the text fields).
+By default all charts have a size of 800x600px. If you want to modify this, you have to click on "Preview and size adjustments" what will open a dialog with the final version of the chart. Here, with drag and drop you can simply resize the chart (or type in the prefered values in the text fields).
 
 4.3 Filters, Sorting, Notes
 ---------------------------

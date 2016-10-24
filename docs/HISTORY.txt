@@ -3,6 +3,8 @@ Changelog
 
 10.4.dev0 - (unreleased)
 ------------------------
+* Change: manage_beforeDelete now safely checks for request
+  [ichim-david refs #75296]
 
 10.3 - (2016-05-19)
 -------------------

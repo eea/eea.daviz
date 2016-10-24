@@ -28,7 +28,8 @@ class DavizVisualization(ATFolder):
 
         #only trigger event once, at the end, when dealing
         #with plone.app.linkintegrity
-        if self.REQUEST.getURL().endswith('delete_confirmation'):
+        request = getattr(self, 'REQUEST', '')
+        if request and request.getURL().endswith('delete_confirmation'):
             #delete has been confirmed
             if self.REQUEST.form.get('_authenticator') and \
                 not self.REQUEST.form.get('form.submitted'):

@@ -1,4 +1,4 @@
-.. include:: ../../../../eea.daviz/README.txt
+.. include:: ../../../../eea.daviz/README.rst
 
 API Documentation
 =================

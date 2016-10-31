@@ -1,6 +1,9 @@
 Changelog
 =========
 
+10.5.dev0 - (unreleased)
+------------------------
+
 10.4 - (2016-10-31)
 -------------------
 * Change: manage_beforeDelete now safely checks for request

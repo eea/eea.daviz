@@ -3,6 +3,8 @@ Changelog
 
 10.5.dev0 - (unreleased)
 ------------------------
+* Change: Make UnicodeDecodeError more verbose
+  [voineali refs #79895]
 
 10.4 - (2016-10-31)
 -------------------

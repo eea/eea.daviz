@@ -14,7 +14,7 @@ setup(name=NAME,
                    "Charts API to easily create data visualizations based "
                    "on data from csv/tsv, JSON, SPARQL endpoints and more."
                    ),
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       classifiers=[
           "Framework :: Zope2",

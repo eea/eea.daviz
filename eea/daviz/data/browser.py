@@ -52,7 +52,7 @@ class DavizJSON(JSON):
                 daviz_json = simplejson.loads(daviz_json(
                     column_types=column_types, annotations=annotations))
             except Exception, err:
-                logger.exception(err)
+                logger.warn("%s: %s", err, self.context.absolute_url())
                 continue
 
             new_json['items'].extend(daviz_json.get('items', []))

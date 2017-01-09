@@ -1,8 +1,16 @@
 Changelog
 =========
 
-10.4.dev0 - (unreleased)
+10.6.dev0 - (unreleased)
 ------------------------
+
+10.5 - (2016-12-28)
+-------------------
+* Change: Make UnicodeDecodeError more verbose
+  [voineali refs #79895]
+
+10.4 - (2016-10-31)
+-------------------
 * Change: manage_beforeDelete now safely checks for request
   [ichim-david refs #75296]
 

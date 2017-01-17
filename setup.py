@@ -41,11 +41,11 @@ setup(name=NAME,
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'eea.app.visualization > 6.9',
+          'eea.app.visualization > 11.0',
           'eea.forms >= 5.2',
           'eea.sparql >= 2.4',
-          'eea.exhibit > 6.9',
-          'eea.googlecharts > 6.9',
+          'eea.exhibit > 8.4',
+          'eea.googlecharts > 16.8',
           'zc.dict',
           'Products.DataGridField',
       ],
@@ -57,6 +57,11 @@ setup(name=NAME,
               ],
           'test': [
               'plone.app.testing',
+              ],
+          'zope2': [
+              'eea.exhibit [zope2]',
+              'eea.googlecharts [zope2]',
+              'eea.app.visualization [zope2]',
           ]
       },
 

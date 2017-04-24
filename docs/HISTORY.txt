@@ -1,8 +1,13 @@
 Changelog
 =========
 
-10.7.dev0 - (unreleased)
+10.8.dev0 - (unreleased)
 ------------------------
+
+10.7 - (2017-04-24)
+-------------------
+* Change: updated package information
+  [eduard-fironda]
 
 10.6 - (2017-01-17)
 -------------------

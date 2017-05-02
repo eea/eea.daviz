@@ -1,8 +1,8 @@
 Changelog
 =========
 
-10.8.dev0 - (unreleased)
-------------------------
+10.8 - (2017-05-02)
+-------------------
 * Cleanup: Remove older broken upgrade steps (< 5.0)
   [avoinea]
 

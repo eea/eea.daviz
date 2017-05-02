@@ -3,6 +3,8 @@ Changelog
 
 10.8.dev0 - (unreleased)
 ------------------------
+* Cleanup: Remove older broken upgrade steps (< 5.0)
+  [avoinea]
 
 10.7 - (2017-04-24)
 -------------------

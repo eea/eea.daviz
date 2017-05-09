@@ -1,8 +1,8 @@
 """Migration for daviz/eea.relations integration
 """
 import logging
-import transaction
 from StringIO import StringIO
+import transaction
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from zope.annotation.interfaces import IAnnotations

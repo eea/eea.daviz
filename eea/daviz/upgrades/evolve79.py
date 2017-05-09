@@ -28,4 +28,3 @@ def migrate_daviz_annotations(context):
                         vis[key] = chart_settings
 
     logger.info('Migration finished')
-

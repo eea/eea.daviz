@@ -1,12 +1,12 @@
 """ Custom AT Validators
 """
 from eea.app.visualization.converter.interfaces import IExhibitJsonConverter
+from eea.app.visualization.interfaces import IExternalData
+from eea.daviz.config import EEAMessageFactory as _
 from zope.component import queryUtility
 from zope.component import getUtility
-from Products.validation.interfaces.IValidator import IValidator
 from zope.interface import implements
-from eea.daviz.config import EEAMessageFactory as _
-from eea.app.visualization.interfaces import IExternalData
+from Products.validation.interfaces.IValidator import IValidator
 
 class CSVFileValidator(object):
     """ Validator

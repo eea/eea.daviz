@@ -1,8 +1,8 @@
 """ Data controllers
 """
+import re
 from urllib2 import urlparse
 from Products.Five.browser import BrowserView
-import re
 
 try:
     from eea.daviz.content.schema import tmpOrganisationsVocabulary

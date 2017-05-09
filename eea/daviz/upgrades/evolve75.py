@@ -51,4 +51,3 @@ def migrate_data_provenance_to_multiple_data_provenances(context):
     logger.info('\t Migrated %s: ', migrated)
     logger.info('\t No provenance info: %s ', without_provenance_info)
     logger.info('\t Provenance info from related: %s ', with_related)
-

@@ -1,6 +1,8 @@
 """ Events
 """
 from StringIO import StringIO
+import json
+import logging
 from eea.app.visualization.cache import InvalidateCacheEvent
 from eea.app.visualization.events import VisualizationEnabledEvent
 from eea.app.visualization.interfaces import IExternalData
@@ -13,8 +15,6 @@ from zope.component.interfaces import ObjectEvent
 from zope.event import notify
 from zope.interface import Attribute
 from zope.interface import implements
-import json
-import logging
 
 logger = logging.getLogger('eea.daviz.events')
 

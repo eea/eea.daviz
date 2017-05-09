@@ -2,8 +2,8 @@
 """
 from zope.component.hooks import getSite
 from zope.component import queryUtility
-from eea.app.visualization.controlpanel.interfaces import IDavizSettings
 from zope.container.interfaces import INameChooser
+from eea.app.visualization.controlpanel.interfaces import IDavizSettings
 
 class Daviz(object):
     """ Daviz
@@ -42,4 +42,3 @@ class Daviz(object):
         newObj.title = self.context.title
         newObj.setRelatedItems([self.context])
         self.request.response.redirect(newObj.absolute_url()+"/daviz-edit.html")
-

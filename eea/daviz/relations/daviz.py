@@ -1,13 +1,13 @@
 """Integration with eea.daviz
 """
 
+import logging
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from persistent.mapping import PersistentMapping
 from zc.dict import OrderedDict
 from zope.annotation.interfaces import IAnnotations
 from zope.component import getMultiAdapter
-import logging
 
 logger = logging.getLogger("eea.indicators")
 

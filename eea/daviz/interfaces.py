@@ -19,4 +19,3 @@ __all__ = [
     IExhibitJson.__name__,
     IDavizRelationsChangedEvent.__name__,
 ]
-

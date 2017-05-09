@@ -8,7 +8,16 @@ from Products.Archetypes.public import StringField, ReferenceField, \
                                         BooleanWidget, BooleanField, \
                                         RichWidget, TextField
 from Products.Archetypes.public import TextAreaWidget, StringWidget, LabelWidget
+from Products.Archetypes.interfaces import IVocabulary
+from Products.Archetypes.interfaces import IBaseObject
+from Products.DataGridField import DataGridField, DataGridWidget
+from Products.DataGridField.Column import Column
+from Products.DataGridField.SelectColumn import SelectColumn
+from Products.CMFCore.utils import getToolByName
 from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
+from archetypes.schemaextender.interfaces import ISchemaExtender, \
+                                                    IBrowserLayerAwareExtender
+from archetypes.schemaextender.field import ExtensionField
 from eea.app.visualization.interfaces import IDataProvenance
 from eea.app.visualization.interfaces import IMultiDataProvenance
 from eea.daviz.interfaces import IDavizLayer
@@ -20,16 +29,7 @@ from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
 from zope.component import queryAdapter, queryUtility
 from zope.schema.interfaces import IVocabularyFactory
 from zope.event import notify
-from Products.Archetypes.interfaces import IVocabulary
-from Products.DataGridField import DataGridField, DataGridWidget
-from Products.DataGridField.Column import Column
-from Products.DataGridField.SelectColumn import SelectColumn
-from archetypes.schemaextender.interfaces import ISchemaExtender, \
-                                                    IBrowserLayerAwareExtender
-from archetypes.schemaextender.field import ExtensionField
 from zope.interface import implements
-from Products.CMFCore.utils import getToolByName
-from Products.Archetypes.interfaces import IBaseObject
 
 #
 # eea.relations
@@ -475,4 +475,3 @@ class MultiDataProvenanceSchemaExtender(object):
         """ Returns provenance list field
         """
         return self.fields
-

@@ -1,13 +1,13 @@
 """Migration for daviz/eea.relations integration
 """
+import logging
+from StringIO import StringIO
+import transaction
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from zope.annotation.interfaces import IAnnotations
-from StringIO import StringIO
 from persistent.mapping import PersistentMapping
 from zc.dict import OrderedDict
-import logging
-import transaction
 
 logger = logging.getLogger("eea.daviz.relations")
 

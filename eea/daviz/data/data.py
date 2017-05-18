@@ -8,6 +8,7 @@ from eea.app.visualization.interfaces import IExternalData
 
 logger = logging.getLogger('eea.daviz')
 
+
 class DavizVisualization(object):
     """ Data adapter for eea.daviz.content.interfaces.IDavizVisualization
     """
@@ -25,6 +26,5 @@ class DavizVisualization(object):
         if url:
             data = queryUtility(IExternalData)
             return data(url) if data else u''
-        else:
-            field = self.context.getField('spreadsheet')
-            return field.getAccessor(self.context)()
+        field = self.context.getField('spreadsheet')
+        return field.getAccessor(self.context)()

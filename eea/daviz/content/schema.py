@@ -18,6 +18,10 @@ from archetypes.referencebrowserwidget.widget import ReferenceBrowserWidget
 from archetypes.schemaextender.interfaces import ISchemaExtender, \
                                                     IBrowserLayerAwareExtender
 from archetypes.schemaextender.field import ExtensionField
+from zope.component import queryAdapter, queryUtility
+from zope.schema.interfaces import IVocabularyFactory
+from zope.event import notify
+from zope.interface import implements
 from eea.app.visualization.interfaces import IDataProvenance
 from eea.app.visualization.interfaces import IMultiDataProvenance
 from eea.daviz.interfaces import IDavizLayer
@@ -26,11 +30,6 @@ from eea.daviz.events import DavizExternalChanged
 from eea.daviz.events import DavizRelationsChanged
 from eea.daviz.events import DavizSpreadSheetChanged
 from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
-from zope.component import queryAdapter, queryUtility
-from zope.schema.interfaces import IVocabularyFactory
-from zope.event import notify
-from zope.interface import implements
-
 #
 # eea.relations
 #
@@ -42,7 +41,6 @@ except ImportError:
     logger.warn('eea.relations is not installed')
     EEAReferenceField = ReferenceField
     EEAReferenceBrowserWidget = ReferenceBrowserWidget
-
 #
 # eea.dataservice
 #

@@ -8,6 +8,7 @@ from zope.component import getUtility
 from zope.interface import implements
 from Products.validation.interfaces.IValidator import IValidator
 
+
 class CSVFileValidator(object):
     """ Validator
     """
@@ -23,10 +24,11 @@ class CSVFileValidator(object):
         """ Check if provided file or data is a valid csv """
         converter = getUtility(IExhibitJsonConverter)
         _cols, csv2json = converter(value)
-        if len(csv2json.get('items', [])) == 0:
+        if not csv2json.get('items', []):
             return _('You should provide data in a valid CSV format'
                      '(.csv, .tsv, etc)')
         return 1
+
 
 class ExternalDataValidator(object):
     """ Validator

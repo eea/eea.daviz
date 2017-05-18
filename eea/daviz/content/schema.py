@@ -26,11 +26,6 @@ from eea.daviz.events import DavizExternalChanged
 from eea.daviz.events import DavizRelationsChanged
 from eea.daviz.events import DavizSpreadSheetChanged
 from eea.forms.widgets.QuickUploadWidget import QuickUploadWidget
-from zope.component import queryAdapter, queryUtility
-from zope.schema.interfaces import IVocabularyFactory
-from zope.event import notify
-from zope.interface import implements
-
 #
 # eea.relations
 #
@@ -42,7 +37,6 @@ except ImportError:
     logger.warn('eea.relations is not installed')
     EEAReferenceField = ReferenceField
     EEAReferenceBrowserWidget = ReferenceBrowserWidget
-
 #
 # eea.dataservice
 #
@@ -79,6 +73,10 @@ except ImportError:
     OwnerColumn = Column("Owner", required=True)
     widget_helper_js = ('++resource++eea.daviz.datasource.js',
                         'datagridwidget.js',)
+from zope.component import queryAdapter, queryUtility
+from zope.schema.interfaces import IVocabularyFactory
+from zope.event import notify
+from zope.interface import implements
 
 logger = logging.getLogger('eea.daviz')
 

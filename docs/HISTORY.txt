@@ -3,6 +3,8 @@ Changelog
 
 11.0.dev0 - (unreleased)
 ------------------------
+* Change: fixed PyLint warnings and errors
+  [valipod refs #84949]
 
 10.9 - (2017-05-15)
 -------------------

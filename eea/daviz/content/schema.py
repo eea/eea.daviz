@@ -77,10 +77,6 @@ except ImportError:
     OwnerColumn = Column("Owner", required=True)
     widget_helper_js = ('++resource++eea.daviz.datasource.js',
                         'datagridwidget.js',)
-from zope.component import queryAdapter, queryUtility
-from zope.schema.interfaces import IVocabularyFactory
-from zope.event import notify
-from zope.interface import implements
 
 logger = logging.getLogger('eea.daviz')
 

@@ -4,6 +4,7 @@ import logging
 from Products.CMFCore.utils import getToolByName
 logger = logging.getLogger('eea.daviz.upgrades')
 
+
 def migrate_data_provenance_to_multiple_data_provenances(context):
     """ Migrate Data Provenance from Visualization to Source Data
     """
@@ -19,9 +20,9 @@ def migrate_data_provenance_to_multiple_data_provenances(context):
     for index, brain in enumerate(brains[:]):
         try:
             logger.info('\t Migration status: %s/%s %s',
-                        index+1, total, brain.getURL())
+                        index + 1, total, brain.getURL())
             doc = brain.getObject()
-            if len(doc.getRelatedItems()) == 0:
+            if not doc.getRelatedItems():
                 title = doc['dataTitle']
                 owner = doc['dataOwner']
                 link = doc['dataLink']
@@ -29,9 +30,9 @@ def migrate_data_provenance_to_multiple_data_provenances(context):
                     logger.info(
                         '\t\t Migrating provenance info for visualization')
                     provenance = (
-                        {'title' : title,
-                        'owner' : owner,
-                        'link' : link},
+                        {'title': title,
+                         'owner': owner,
+                         'link': link},
                     )
                     doc.getField('provenances').getMutator(doc)(provenance)
                     doc.reindexObject()

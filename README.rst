@@ -3,14 +3,8 @@ EEA Daviz
 =========
 |DaViz logo|
 
-.. image:: http://ci.eionet.europa.eu/job/eea.daviz-www/badge/icon
-  :target: http://ci.eionet.europa.eu/job/eea.daviz-www/lastBuild
-.. image:: http://ci.eionet.europa.eu/job/eea.daviz-plone4/badge/icon
-  :target: http://ci.eionet.europa.eu/job/eea.daviz-plone4/lastBuild
-.. image:: http://ci.eionet.europa.eu/job/eea.daviz-zope/badge/icon
-  :target: http://ci.eionet.europa.eu/job/eea.daviz-zope/lastBuild
-
-
+.. image:: http://ci.eionet.europa.eu/job/eea/job/eea.daviz/job/master/badge/icon
+  :target: http://ci.eionet.europa.eu/job/eea/job/eea.daviz/job/master/display/redirect
 
 Introduction
 ============
@@ -88,7 +82,7 @@ Live demos
 
 * `Basic tutorials <http://www.youtube.com/playlist?list=PLVPSQz7ahsByeq8nVKC7TT9apArEXBrV0>`_
 * `Advanced tutorials <http://www.youtube.com/playlist?list=PLVPSQz7ahsBxbe8pwzFWLQuvDSP9JFn8I>`_
-* `Daviz showroom <http://daviz.eionet.europa.eu>`_
+* `Daviz showroom <https://www.eea.europa.eu/data-and-maps/daviz>`_
 * `Google charts demos <http://code.google.com/apis/chart>`_
 * `MIT Simile Exhibit demos <http://www.simile-widgets.org/exhibit3>`_
 
@@ -257,8 +251,8 @@ EEA_ - European Environment Agency (EU)
 .. _`Google Charts`: http://code.google.com/apis/chart
 .. _`plone.recipe.zope2instance`: http://pypi.python.org/pypi/plone.recipe.zope2instance
 .. _`zc.buildout`: http://pypi.python.org/pypi/zc.buildout
-.. |Daviz features diagram| image:: http://daviz.eionet.europa.eu/learn-more/davizdiagram.png/image_large
-.. |DaViz logo| image:: http://daviz.eionet.europa.eu/logo.png
+.. |Daviz features diagram| image:: https://www.eea.europa.eu/data-and-maps/daviz/eionet/davizdiagram.png/image_large
+.. |DaViz logo| image:: https://www.eea.europa.eu/data-and-maps/daviz/logo.png
 .. _`Plone 4.x`: http://plone.org
 .. _`collective.js.jqueryui < 1.9`: https://pypi.python.org/pypi/collective.js.jqueryui
 .. _`collective.js.jqueryui > 1.9`: https://pypi.python.org/pypi/collective.js.jqueryui

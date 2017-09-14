@@ -48,23 +48,23 @@
         <style>
         .chart-title {
             padding:2px;
-            /*background-color:#005E7D; 
+            /*background-color:#005E7D;
             color:white;*/
             display:block;
             float:none;
             margin-right:2px;
         }
         </style>
-        <div class="daviz_chart_select_container" 
-            tal:define="objcontext python:view.kwargs['context']; 
-                        daviz_uid item/UID; 
+        <div class="daviz_chart_select_container"
+            tal:define="objcontext python:view.kwargs['context'];
+                        daviz_uid item/UID;
                         davizview nocall:item/@@daviz-view.html;
                         get_daviz_charts nocall:objcontext/@@get_daviz_chart;
                         charts python:get_daviz_charts.get_charts(daviz_uid);
                         ">
                 <div class="chart-titles" style="overflow:hidden">
-                    <div style="width:400px"><strong class="label">Selected charts:</strong>
-                     <input type="button" class="popup_btn" value="Please wait..." style="float:right"/>
+                    <div style="width:400px"><strong class="label" i18n:translate="">Selected charts:</strong>
+                     <input type="button" class="popup_btn" value="Please wait..." style="float:right" i18n:attributes="value"/>
                     </div>
                     <div class="selected_charts">
                         <span class="chart-title" tal:repeat="chart charts" >
@@ -73,13 +73,13 @@
                                 <tal:def define="thischart python:possible_chart and possible_chart[0]" >
                                     <!--[><img tal:attributes="src string:${thischart/fallback-image}/image_icon" /><]-->
                                     <span>
-                                        <span tal:replace="thischart/title" />: 
+                                        <span tal:replace="thischart/title" />:
                                         <span tal:content="python:chart[2]['type']" />
                                     </span>
                                 </tal:def>
                             </tal:def>
                         </span>
-                        <span tal:condition="python: not charts" style="color:red" >No chart selected!</span>
+                        <span tal:condition="python: not charts" style="color:red" i18n:translate="">No chart selected!</span>
                     </div>
                 </div>
             <span class="metadata" style="display:none" >

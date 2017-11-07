@@ -1,6 +1,9 @@
 Changelog
 =========
 
+11.2.dev0 - (unreleased)
+------------------------
+
 11.1 - (2017-11-07)
 -------------------
 * Change: Remove Sphinx generated documentation

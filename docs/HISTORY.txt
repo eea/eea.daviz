@@ -3,6 +3,8 @@ Changelog
 
 11.3.dev0 - (unreleased)
 ------------------------
+* Change: call js code within jQuery dom ready allowing for deferred js loading
+  [ichim-david refs #91577]
 
 11.2 - (2017-12-12)
 -------------------

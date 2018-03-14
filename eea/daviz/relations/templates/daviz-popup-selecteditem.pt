@@ -107,16 +107,18 @@
             </span>
 
         </div>
-        <script >
-            $('.daviz_chart_select_container .popup_btn').each(function(){
-                var btn = $(this);
-                if (btn.hasClass('initialized')) { return null; };
-                btn.addClass('initialized');
-                btn.val("Choose charts");
-                btn.click(function(evt){
-                    new DavizChartSelection(this);
-                    evt.stopPropagation();
-                    return false;
+        <script>
+            jQuery(function($) {
+                $('.daviz_chart_select_container .popup_btn').each(function(){
+                    var btn = $(this);
+                    if (btn.hasClass('initialized')) { return null; };
+                    btn.addClass('initialized');
+                    btn.val("Choose charts");
+                    btn.click(function(evt){
+                        new DavizChartSelection(this);
+                        evt.stopPropagation();
+                        return false;
+                    });
                 });
             });
         </script>

@@ -1,6 +1,11 @@
 Changelog
 =========
 
+11.4 - (unreleased)
+-------------------
+* Change: clear floats for daviz-settings
+  [ichim-david refs #91590]
+
 11.3 - (2018-03-14)
 -------------------
 * Change: call js code within jQuery dom ready allowing for deferred js loading

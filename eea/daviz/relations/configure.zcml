@@ -39,6 +39,12 @@
                 permission="cmf.ManagePortal"
                 />
 
+  <browser:page for="*"
+    name="fix_broken_daviz_relations"
+    class=".migrate.FixAssessmentPartsBrokenRelations"
+    permission="cmf.ModifyPortalContent"
+  />
+
   <subscriber for="eea.daviz.content.interfaces.IDavizVisualization
     eea.daviz.content.events.IDavizWillBeRemovedEvent"
     handler=".daviz.handle_daviz_delete" />

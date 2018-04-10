@@ -2,6 +2,8 @@
 """
 
 import logging
+from Acquisition import aq_parent
+
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from persistent.mapping import PersistentMapping
@@ -118,18 +120,31 @@ class GetDavizChart(BrowserView):
         annot = IAnnotations(self.context).get('DAVIZ_CHARTS', {})
 
         uids_cat = getToolByName(self.context, 'uid_catalog')
+        p_redirect = getToolByName(self.context, 'portal_redirection')
         info = {}
+        parent = aq_parent(self.context)
+        p_url = self.context.absolute_url()
+        if parent:
+            p_url = p_url.absolute_url()
         for uid in annot.keys():
             brains = uids_cat.searchResults(UID=uid)
             if not brains:
                 msg = "Couldn't find visualization with UID %s" % uid
                 logger.warning(msg)
                 continue
-            daviz = brains[0].getObject()
+            brain = brains[0]
+            daviz = brain.getObject()
             if daviz is None:   #brain does not lead to object?
+                # 94042 check for object from redirection tool as the daviz
+                # relation might end up being renamed
                 msg = "Couldn't find object for brain with UID %s" % uid
                 logger.warning(msg)
-                continue
+                msg = "Fix this by running %s/fix_broken_daviz_relations" % (
+                    p_url)
+                logger.warning(msg)
+                daviz = p_redirect.getRedirectObject(brain.getURL(1))
+                if daviz is None:
+                    continue
             tabs = getMultiAdapter((daviz, self.request),
                                        name="daviz-view.html").tabs
 

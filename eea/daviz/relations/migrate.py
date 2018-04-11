@@ -90,10 +90,12 @@ class FixAssessmentPartsBrokenRelations(BrowserView):
     """
 
     def __init__(self, request, context):
+        super(FixAssessmentPartsBrokenRelations, self).__init__(context,
+                                                                request)
         self.context = context
         self.request = request
 
-    def __call(self):
+    def __call__(self):
         """ Call
         """
         portal = getToolByName(self.context, 'portal_url').getPortalObject()

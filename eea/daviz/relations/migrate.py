@@ -89,12 +89,6 @@ class FixAssessmentPartsBrokenRelations(BrowserView):
     """ Fix AssessmentPart relations that contains wrong uids_catalog uids
     """
 
-    def __init__(self, request, context):
-        super(FixAssessmentPartsBrokenRelations, self).__init__(context,
-                                                                request)
-        self.context = context
-        self.request = request
-
     def __call__(self):
         """ Call
         """

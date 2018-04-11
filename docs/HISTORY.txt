@@ -1,7 +1,7 @@
 Changelog
 =========
 
-11.4 - (unreleased)
+11.4 - (2018-04-11)
 -------------------
 * Bug fix: retrive url of Assessment Daviz relation from portal_redirection
   in case the given relation was renamed and the uid no longer points to

@@ -125,7 +125,7 @@ class GetDavizChart(BrowserView):
         parent = aq_parent(self.context)
         p_url = self.context.absolute_url()
         if parent:
-            p_url = p_url.absolute_url()
+            p_url = parent.absolute_url()
         for uid in annot.keys():
             brains = uids_cat.searchResults(UID=uid)
             if not brains:

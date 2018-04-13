@@ -2,12 +2,22 @@
 """
 
 import logging
+from Acquisition import aq_parent
+
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
+from eea.daviz.relations.migrate import fix_broken_relationships
 from persistent.mapping import PersistentMapping
+
 from zc.dict import OrderedDict
 from zope.annotation.interfaces import IAnnotations
-from zope.component import getMultiAdapter
+from zope.component import getMultiAdapter, getUtility
+
+try:
+    from plone.app.async.interfaces import IAsyncService
+    HAS_ASYNC = True
+except ImportError:
+    HAS_ASYNC = False
 
 logger = logging.getLogger("eea.indicators")
 
@@ -118,18 +128,31 @@ class GetDavizChart(BrowserView):
         annot = IAnnotations(self.context).get('DAVIZ_CHARTS', {})
 
         uids_cat = getToolByName(self.context, 'uid_catalog')
+        p_redirect = getToolByName(self.context, 'portal_redirection')
         info = {}
+        parent = aq_parent(self.context)
         for uid in annot.keys():
             brains = uids_cat.searchResults(UID=uid)
             if not brains:
                 msg = "Couldn't find visualization with UID %s" % uid
                 logger.warning(msg)
                 continue
-            daviz = brains[0].getObject()
-            if daviz is None:   #brain does not lead to object?
-                msg = "Couldn't find object for brain with UID %s" % uid
-                logger.warning(msg)
-                continue
+            brain = brains[0]
+            daviz = brain.getObject()
+            if not daviz:  # brain does not lead to object?
+                # 94042 check for object from redirection tool as the daviz
+                # relation might end up being renamed
+                if HAS_ASYNC:
+                    async = getUtility(IAsyncService)
+                    try:
+                        async.queueJob(fix_broken_relationships, parent)
+                    except Exception, e:
+                        logger.exception("%s", e)
+                daviz = p_redirect.getRedirectObject(brain.getURL(1))
+                if daviz is None:
+                    msg = "Couldn't find object for brain with UID %s" % uid
+                    logger.warning(msg)
+                    continue
             tabs = getMultiAdapter((daviz, self.request),
                                        name="daviz-view.html").tabs
 

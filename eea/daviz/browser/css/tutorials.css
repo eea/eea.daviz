@@ -1,3 +1,7 @@
+.daviz-settings {
+    overflow: hidden;
+}
+
 .daviz-tutorials iframe {
     float:left;
     margin-right:2px;

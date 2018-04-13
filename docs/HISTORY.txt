@@ -1,6 +1,19 @@
 Changelog
 =========
 
+11.4 - (2018-04-11)
+-------------------
+* Bug fix: retrive url of Assessment Daviz relation from portal_redirection
+  in case the given relation was renamed and the uid no longer points to
+  the correct object
+  [ichim-david refs #94042]
+* Feature: added @@fix_broken_daviz_relations which when called on the
+  Assessment content type will attempt to fix relations that have been
+  renamed
+  [ichim-david refs #94042]
+* Change: clear floats for daviz-settings
+  [ichim-david refs #91590]
+
 11.3 - (2018-03-14)
 -------------------
 * Change: call js code within jQuery dom ready allowing for deferred js loading

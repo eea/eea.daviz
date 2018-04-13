@@ -34,12 +34,12 @@ class MigrateRelations(BrowserView):
 
         self.log("Started migration of daviz relations")
         self.log("Will migrate the following types: %s" %
-                        ", ".join(types))
+                 ", ".join(types))
 
         for _type in types:
             brains = catalog.searchResults(portal_type=_type)
             self.log("Starting to migrate %s objects of type: %s" % \
-                        (len(brains), _type))
+                     (len(brains), _type))
             for brain in brains:
                 obj = brain.getObject()
                 annot = IAnnotations(obj)
@@ -70,7 +70,8 @@ class MigrateRelations(BrowserView):
 
                 obj._p_changed = True
                 self.log("Content of %s: %s" % (obj,
-                             list(obj.__annotations__['DAVIZ_CHARTS'].items())))
+                                                list(obj.__annotations__[
+                                                     'DAVIZ_CHARTS'].items())))
 
                 self.log("Migrated daviz relations for %s" % obj.absolute_url())
 
@@ -82,3 +83,58 @@ class MigrateRelations(BrowserView):
 
         self.out.seek(0)
         return self.out.read()
+
+
+def fix_broken_relationships(obj):
+    """ fix assessmentParts broken relations
+    """
+    portal = getToolByName(obj, 'portal_url').getPortalObject()
+    catalog = getToolByName(obj, 'portal_catalog')
+    cpath = obj.absolute_url(1)
+    res = catalog.searchResults(path=cpath, portal_type='AssessmentPart')
+    uids_cat = getToolByName(portal, 'uid_catalog')
+    logger.info("Starting cleanup of assessmentpart-daviz bad relations")
+    i = 0
+    results = False
+    for b in res:
+        obj = b.getObject()
+        annot = obj.__annotations__.get('DAVIZ_CHARTS', {})
+        for uid in annot.keys():
+            brains = uids_cat.searchResults(UID=uid)
+            if not brains:
+                msg = "Couldn't find object for brain with UID %s, " \
+                      "deleting assessmentpart %s" % (uid,
+                                                      obj.absolute_url())
+                logger.info(msg)
+                del annot[uid]
+                annot._p_changed = True
+                obj._p_changed = True
+                i += 1
+                continue
+            brain = brains[0]
+            daviz = brain.getObject()
+            if daviz is None:  # brain does not lead to object?
+                path = brain.getPath()
+                msg = "Couldn't find object for brain with UID %s, " \
+                      "uncatalog object %s" % (uid, path)
+                logger.info(msg)
+                uids_cat.uncatalog_object(path)
+                brains = uids_cat.searchResults(UID=uid)
+                if brains and brains[0].getObject():
+                    path = brains[0].getPath()
+                    msg = "Brain with UID %s now found at %s" % (uid, path)
+                    logger.info(msg)
+                results = True
+                i += 1
+    logger.info("End fix of assessmentpart-daviz bad relations")
+    return "FIX DONE" if results else "NO FIX NEEDED"
+
+
+class FixAssessmentPartsBrokenRelations(BrowserView):
+    """ Fix AssessmentPart relations that contains wrong uids_catalog uids
+    """
+
+    def __call__(self):
+        """ Call
+        """
+        return fix_broken_relationships(self.context)

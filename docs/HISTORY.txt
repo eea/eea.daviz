@@ -1,6 +1,9 @@
 Changelog
 =========
 
+11.5-dev0 - (unreleased)
+---------------------
+
 11.4 - (2018-04-11)
 -------------------
 * Bug fix: retrive url of Assessment Daviz relation from portal_redirection
@@ -554,4 +557,3 @@ Changelog
 ------------------
 * Initial release
   [voineali #2773]
-

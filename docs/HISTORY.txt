@@ -3,6 +3,8 @@ Changelog
 
 11.5-dev0 - (unreleased)
 ---------------------
+* Bug fix: Restrict getBRefs only to related items
+  [avoinea refs #95796]
 
 11.4 - (2018-04-11)
 -------------------

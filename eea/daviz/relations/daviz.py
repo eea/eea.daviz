@@ -175,7 +175,7 @@ def handle_daviz_delete(context, event):
     """ Remove annotations from assessmentparts when a daviz has been deleted
     """
     context_uid = context.UID()
-    refs = context.getBRefs()
+    refs = context.getBRefs('relatesTo')
 
     for o in refs:
         annot = IAnnotations(o).get(KEY, {})

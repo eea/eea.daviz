@@ -3,8 +3,12 @@ EEA Daviz
 =========
 |DaViz logo|
 
-.. image:: http://ci.eionet.europa.eu/job/eea/job/eea.daviz/job/master/badge/icon
-  :target: http://ci.eionet.europa.eu/job/eea/job/eea.daviz/job/master/display/redirect
+.. image:: https://ci.eionet.europa.eu/buildStatus/icon?job=eea/eea.daviz/develop
+  :target: https://ci.eionet.europa.eu/job/eea/job/eea.daviz/job/develop/display/redirect
+  :alt: Develop
+.. image:: https://ci.eionet.europa.eu/buildStatus/icon?job=eea/eea.daviz/master
+  :target: https://ci.eionet.europa.eu/job/eea/job/eea.daviz/job/master/display/redirect
+  :alt: Master
 
 Introduction
 ============

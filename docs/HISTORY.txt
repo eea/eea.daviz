@@ -1,6 +1,11 @@
 Changelog
 =========
 
+11.5 - (2018-05-30)
+---------------------
+* Bug fix: Restrict getBRefs only to related items
+  [avoinea refs #95796]
+
 11.4 - (2018-04-11)
 -------------------
 * Bug fix: retrive url of Assessment Daviz relation from portal_redirection
@@ -554,4 +559,3 @@ Changelog
 ------------------
 * Initial release
   [voineali #2773]
-

@@ -267,10 +267,10 @@ SCHEMA = Schema((
             label=_('Upload CSV/TSV data files from your computer'),
             description=_(u"upload-csv-description", default=(
                 "Drag and drop '.tsv, .csv files' in the area below, see "
-                '<a target="_blank" href="http://www.eea.europa.eu/'
+                '<a target="_blank" href="https://www.eea.europa.eu/'
                 'data-and-maps/daviz/learn-more/examples">data examples</a> '
                 'or read '
-                '<a target="_blank" href="http://www.eea.europa.eu/'
+                '<a target="_blank" href="https://www.eea.europa.eu/'
                 'data-and-maps/daviz/learn-more/prepare-data">'
                 'how to prepare data</a> '
                 #temporarily hide the link to tutorials
@@ -293,10 +293,10 @@ SCHEMA = Schema((
             label=_('Copy and paste a data table from a file/webpage'),
             description=_(u"copy-paste-description", default=(
                 "<div style='float:left'>Check these "
-                '<a target="_blank" href="http://www.eea.europa.eu/'
+                '<a target="_blank" href="https://www.eea.europa.eu/'
                 'data-and-maps/daviz/learn-more/examples">data examples</a> '
                 'or read '
-                '<a target="_blank" href="http://www.eea.europa.eu/'
+                '<a target="_blank" href="https://www.eea.europa.eu/'
                 'data-and-maps/daviz/learn-more/prepare-data">'
                 'how to prepare data</a> '
                 'or '

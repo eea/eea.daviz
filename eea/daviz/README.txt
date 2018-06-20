@@ -27,5 +27,5 @@ Authors
 
   EEA_ - European Environment Agency (EU)
 
-.. _EEA: http://www.eea.europa.eu/
-.. _`EEA Daviz`: http://eea.github.com/docs/eea.daviz
+.. _EEA: https://www.eea.europa.eu/
+.. _`EEA Daviz`: https://eea.github.io/docs/eea.daviz

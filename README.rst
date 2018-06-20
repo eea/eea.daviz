@@ -29,7 +29,7 @@ At the moment `Simile Exhibit`_ and `Google Charts`_ visualizations are
 supported. The architecture allows to extend Daviz with more
 visualisation libraries (visualisations plugins).
 
-.. image:: http://eea.github.io/_images/eea.daviz.cover.png
+.. image:: https://eea.github.io/_images/eea.daviz.cover.png
    :target: http://www.youtube.com/watch?list=PLVPSQz7ahsByeq8nVKC7TT9apArEXBrV0&v=CYEAAAdyWII
 
 
@@ -71,7 +71,7 @@ You can easily make visualizations like:
 1. `Simile Exhibit <http://www.simile-widgets.org/exhibit3>`_
 2. `Google Charts <http://code.google.com/apis/chart>`_
 
-See also initial project `wiki page <http://taskman.eionet.europa.eu/projects/zope/wiki/DaViz>`_
+See also initial project `wiki page <https://taskman.eionet.europa.eu/projects/zope/wiki/DaViz>`_
 for the reasoning behind this project.
 
 
@@ -98,7 +98,7 @@ At the moment `Simile Exhibit`_ and `Google Charts`_ visualizations are
 supported. The architecture allows to extend Daviz with more
 visualisation libraries (visualisations plugins).
 
-.. image:: http://eea.github.com/_images/eea.daviz.layers.svg
+.. image:: https://eea.github.io/_images/eea.daviz.layers.svg
 
 
 Installation
@@ -180,7 +180,7 @@ The following package are optional. Still they can improve the user experience w
       eea.daviz-full
 
 
-.. image:: http://eea.github.com/_images/eea.daviz.dependencies.svg
+.. image:: https://eea.github.io/_images/eea.daviz.dependencies.svg
 
 
 Source code
@@ -213,12 +213,12 @@ More documentation
 ==================
 
 -  `Daviz technical documentation on
-   github <http://eea.github.com/docs/eea.daviz>`_
+   github <https://eea.github.io/docs/eea.daviz>`_
 -  `Daviz plone product summary <http://plone.org/products/eea.daviz>`_
 -  `Data input
-   examples <http://www.eea.europa.eu/data-and-maps/daviz/learn-more/examples>`_
+   examples <https://www.eea.europa.eu/data-and-maps/daviz/learn-more/examples>`_
 -  `How to prepare your
-   data <http://www.eea.europa.eu/data-and-maps/daviz/learn-more/prepare-data>`_
+   data <https://www.eea.europa.eu/data-and-maps/daviz/learn-more/prepare-data>`_
 
 
 Links
@@ -226,8 +226,8 @@ Links
 
 1. Simile Wiki - Exhibit 2.0: http://simile.mit.edu/wiki/Exhibit
 2. Simile widgets: http://www.simile-widgets.org/exhibit
-3. EEA Daviz how-to: http://taskman.eionet.europa.eu/projects/zope/wiki/HowToDaViz
-4. EEA Daviz backlog wiki: http://taskman.eionet.europa.eu/projects/zope/wiki/DaViz
+3. EEA Daviz how-to: https://taskman.eionet.europa.eu/projects/zope/wiki/HowToDaViz
+4. EEA Daviz backlog wiki: https://taskman.eionet.europa.eu/projects/zope/wiki/DaViz
 5. Google charts: http://code.google.com/apis/chart/
 
 
@@ -236,25 +236,25 @@ Funding and project management
 
 EEA_ - European Environment Agency (EU)
 
-.. _EEA: http://www.eea.europa.eu/
-.. _`EEA Daviz`: http://eea.github.com/docs/eea.daviz
-.. _`EEA Google Charts`: http://eea.github.com/docs/eea.googlecharts
-.. _`EEA Exhibit`: http://eea.github.com/docs/eea.exhibit
-.. _`eea.daviz`: http://eea.github.com/docs/eea.daviz
-.. _`eea.depiction`: http://eea.github.com/docs/eea.depiction
-.. _`eea.googlecharts`: http://eea.github.com/docs/eea.googlecharts
-.. _`eea.exhibit`: http://eea.github.com/docs/eea.exhibit
-.. _`eea.app.visualization`: http://eea.github.com/docs/eea.app.visualization
-.. _`eea.sparql`: http://eea.github.com/docs/eea.sparql
-.. _`eea.cache`: http://eea.github.com/docs/eea.cache
-.. _`eea.forms`: http://eea.github.com/docs/eea.forms
-.. _`eea.relations`: http://eea.github.com/docs/eea.relations
-.. _`plone.recipe.zope2instance`: http://pypi.python.org/pypi/plone.recipe.zope2instance
-.. _`EEA App Visualization`: http://eea.github.com/docs/eea.app.visualization
-.. _`Simile Exhibit`: http://www.simile-widgets.org/exhibit3
-.. _`Google Charts`: http://code.google.com/apis/chart
-.. _`plone.recipe.zope2instance`: http://pypi.python.org/pypi/plone.recipe.zope2instance
-.. _`zc.buildout`: http://pypi.python.org/pypi/zc.buildout
+.. _EEA: https://www.eea.europa.eu/
+.. _`EEA Daviz`: https://eea.github.com/docs/eea.daviz
+.. _`EEA Google Charts`: https://eea.github.com/docs/eea.googlecharts
+.. _`EEA Exhibit`: https://eea.github.com/docs/eea.exhibit
+.. _`eea.daviz`: https://eea.github.com/docs/eea.daviz
+.. _`eea.depiction`: https://eea.github.com/docs/eea.depiction
+.. _`eea.googlecharts`: https://eea.github.com/docs/eea.googlecharts
+.. _`eea.exhibit`: https://eea.github.com/docs/eea.exhibit
+.. _`eea.app.visualization`: https://eea.github.com/docs/eea.app.visualization
+.. _`eea.sparql`: https://eea.github.com/docs/eea.sparql
+.. _`eea.cache`: https://eea.github.com/docs/eea.cache
+.. _`eea.forms`: https://eea.github.com/docs/eea.forms
+.. _`eea.relations`: https://eea.github.com/docs/eea.relations
+.. _`plone.recipe.zope2instance`: https://pypi.python.org/pypi/plone.recipe.zope2instance
+.. _`EEA App Visualization`: https://eea.github.com/docs/eea.app.visualization
+.. _`Simile Exhibit`: https://www.simile-widgets.org/exhibit3
+.. _`Google Charts`: https://code.google.com/apis/chart
+.. _`plone.recipe.zope2instance`: https://pypi.python.org/pypi/plone.recipe.zope2instance
+.. _`zc.buildout`: https://pypi.python.org/pypi/zc.buildout
 .. |Daviz features diagram| image:: https://www.eea.europa.eu/data-and-maps/daviz/eionet/davizdiagram.png/image_large
 .. |DaViz logo| image:: https://www.eea.europa.eu/data-and-maps/daviz/logo.png
 .. _`Plone 4.x`: http://plone.org

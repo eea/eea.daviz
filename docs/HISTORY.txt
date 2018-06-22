@@ -1,6 +1,11 @@
 Changelog
 =========
 
+11.6 - (2018-06-20)
+---------------------
+* Change: updated URLs pointing to eea.europa.eu with https://
+  [alecghica refs #95849]
+
 11.5 - (2018-05-30)
 ---------------------
 * Bug fix: Restrict getBRefs only to related items

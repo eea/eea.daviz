@@ -1,2 +1,2 @@
 EEA DaViz TODOs:
- - Add excel to json converter (tablib - http://pypi.python.org/pypi/tablib/0.9.11)
+ - Add excel to json converter (tablib - https://pypi.python.org/pypi/tablib/0.9.11)

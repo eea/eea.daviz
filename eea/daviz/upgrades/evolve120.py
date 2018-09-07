@@ -48,8 +48,12 @@ def cleanup_exhibit(context):
             logger.warn("%s: removing exhibit view: %s", url, view)
             config.delete_view(view)
 
-        for facet in ex_facets:
-            logger.warn("%s: removing exhibit facet: %s", url, facet)
-            config.delete_facet(facet)
+        for facet in config.facets:
+            f_type = facet.get('type')
+            if f_type in exhibit_facets:
+                f_name = facet.get('name')
+                logger.warn("%s: removing exhibit facet: %s - %s",
+                            url, f_name, f_type)
+                config.delete_facet(f_name)
 
     logger.warn('Cleanup exhibit views/facets on %s objects', count)

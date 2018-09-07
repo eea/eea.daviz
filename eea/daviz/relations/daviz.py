@@ -143,9 +143,9 @@ class GetDavizChart(BrowserView):
                 # 94042 check for object from redirection tool as the daviz
                 # relation might end up being renamed
                 if HAS_ASYNC:
-                    async = getUtility(IAsyncService)
+                    a_sync = getUtility(IAsyncService)
                     try:
-                        async.queueJob(fix_broken_relationships, parent)
+                        a_sync.queueJob(fix_broken_relationships, parent)
                     except Exception, e:
                         logger.exception("%s", e)
                 daviz = p_redirect.getRedirectObject(brain.getURL(1))

@@ -156,7 +156,6 @@ Dependencies
   - `eea.sparql`_
   - `eea.forms`_
   - `eea.googlecharts`_
-  - `eea.exhibit`_
   - `collective.js.jqueryui < 1.9`_ (Plone 4.0, 4.1, 4.2)
   - `collective.js.jqueryui > 1.9`_ (Plone 4.3+)
 
@@ -239,11 +238,9 @@ EEA_ - European Environment Agency (EU)
 .. _EEA: https://www.eea.europa.eu/
 .. _`EEA Daviz`: https://eea.github.com/docs/eea.daviz
 .. _`EEA Google Charts`: https://eea.github.com/docs/eea.googlecharts
-.. _`EEA Exhibit`: https://eea.github.com/docs/eea.exhibit
 .. _`eea.daviz`: https://eea.github.com/docs/eea.daviz
 .. _`eea.depiction`: https://eea.github.com/docs/eea.depiction
 .. _`eea.googlecharts`: https://eea.github.com/docs/eea.googlecharts
-.. _`eea.exhibit`: https://eea.github.com/docs/eea.exhibit
 .. _`eea.app.visualization`: https://eea.github.com/docs/eea.app.visualization
 .. _`eea.sparql`: https://eea.github.com/docs/eea.sparql
 .. _`eea.cache`: https://eea.github.com/docs/eea.cache

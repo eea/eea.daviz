@@ -3,6 +3,8 @@ Changelog
 
 11.7-dev0 - (unreleased)
 ---------------------
+* Cleanup: Remove eea.exhibit dependency
+  [avoinea refs #98283]
 
 11.6 - (2018-06-20)
 ---------------------

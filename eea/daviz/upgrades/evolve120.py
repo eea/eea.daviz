@@ -1,7 +1,6 @@
 """ Upgrade scripts to version 7.5
 """
 import logging
-from zope.annotation.interfaces import IAnnotations
 from Products.CMFCore.utils import getToolByName
 from eea.app.visualization.interfaces import IVisualizationConfig
 

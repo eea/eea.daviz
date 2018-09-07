@@ -1,4 +1,4 @@
-""" Upgrade scripts to version 7.5
+""" Upgrade scripts to version 12.0
 """
 import logging
 from Products.CMFCore.utils import getToolByName
@@ -20,14 +20,15 @@ def cleanup_exhibit(context):
     for brain in brains:
         obj = brain.getObject()
         config = IVisualizationConfig(obj)
-        views = [view.get('name') for view in config.views()]
-        if not exhibit.intersection(views):
+        views = [view.get('name') for view in config.views]
+        ex_views = exhibit.intersection(views)
+        if not ex_views:
             continue
 
+        count += 1
         url = brain.getURL()
-        logger.warn("%s: removing exhibit views: %s", url, views)
-        for view in views:
+        logger.warn("%s: removing exhibit views: %s", url, ex_views)
+        for view in ex_views:
             config.delete_view(view)
-            count += 1
 
     logger.warn('Removed exhibit views on %s objects', count)

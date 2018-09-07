@@ -4,6 +4,20 @@
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
   i18n_domain="eea">
 
+  <!-- 9.3 => 12.0 -->
+  <genericsetup:upgradeSteps
+    source="9.3"
+    destination="12.0"
+    profile="eea.daviz:default">
+
+    <genericsetup:upgradeStep
+      zcml:condition="not-installed eea.exhibit"
+      title="Remove eea.exhibit Daviz views"
+      handler="eea.daviz.upgrades.evolve120.cleanup_exhibit"
+      />
+
+  </genericsetup:upgradeSteps>
+
   <!-- 9.0 => 9.3 -->
   <genericsetup:upgradeSteps
     source="9.0"

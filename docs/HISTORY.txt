@@ -1,6 +1,14 @@
 Changelog
 =========
 
+12.0 - (2018-09-07)
+-------------------
+* Upgrade step: Within "Plone > Site setup > Add-ons" click on
+  upgrade button available for eea.daviz
+  [avoinea refs #98283]
+* Cleanup: Remove eea.exhibit dependency
+  [avoinea refs #98283]
+
 11.6 - (2018-06-20)
 ---------------------
 * Change: updated URLs pointing to eea.europa.eu with https://

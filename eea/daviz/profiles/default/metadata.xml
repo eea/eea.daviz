@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
 <metadata>
   <description>EEA Daviz profile</description>
-  <version>9.3</version>
+  <version>12.0</version>
   <dependencies>
     <dependency>profile-eea.forms:default</dependency>
     <dependency>profile-eea.sparql:default</dependency>
-    <dependency>profile-eea.exhibit:default</dependency>
     <dependency>profile-eea.googlecharts:default</dependency>
     <dependency>profile-Products.DataGridField:default</dependency>
   </dependencies>

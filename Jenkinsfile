@@ -11,6 +11,22 @@ pipeline {
       steps {
         parallel(
 
+          "SonarQube analysis": {
+   	    node(label: 'swarm'){
+  	      script{
+	        if (env.BRANCH_NAME == "develop" || env.BRANCH_NAME == "master") {
+	  	   checkout scm
+		   // requires SonarQube Scanner 2.8+
+		   def scannerHome = tool 'SonarQubeScanner';
+		   def nodeJS = tool 'NodeJS11';
+		   withSonarQubeEnv('Sonarqube') {
+		      sh "${scannerHome}/bin/sonar-scanner -Dsonar.nodejs.executable=/bin/node -Dsonar.sources=./eea -Dsonar.projectKey=$GIT_NAME-$BRANCH_NAME -Dsonar.projectVersion=$BRANCH_NAME-$BUILD_NUMBER"
+	           }
+                }
+              }
+ 	    }
+	  },
+	
           "ZPT Lint": {
             node(label: 'docker') {
               sh '''docker run -i --rm --name="$BUILD_TAG-zptlint" -e GIT_BRANCH="$BRANCH_NAME" -e ADDONS="$GIT_NAME" -e DEVELOP="src/$GIT_NAME" -e GIT_CHANGE_ID="$CHANGE_ID" eeacms/plone-test:4 zptlint'''

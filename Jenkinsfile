@@ -16,7 +16,6 @@ pipeline {
   	      script{
 	        if (env.BRANCH_NAME == "develop" || env.BRANCH_NAME == "master") {
 	  	   checkout scm
-		   // requires SonarQube Scanner 2.8+
 		   def scannerHome = tool 'SonarQubeScanner';
 		   def nodeJS = tool 'NodeJS11';
 		   withSonarQubeEnv('Sonarqube') {

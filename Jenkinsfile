@@ -20,7 +20,7 @@ pipeline {
 		   def scannerHome = tool 'SonarQubeScanner';
 		   def nodeJS = tool 'NodeJS11';
 		   withSonarQubeEnv('Sonarqube') {
-		      sh "${scannerHome}/bin/sonar-scanner -Dsonar.nodejs.executable=/bin/node -Dsonar.sources=./eea -Dsonar.projectKey=$GIT_NAME-$BRANCH_NAME -Dsonar.projectVersion=$BRANCH_NAME-$BUILD_NUMBER"
+		      sh "${scannerHome}/bin/sonar-scanner -Dsonar.nodejs.executable=${nodeJS}/bin/node -Dsonar.sources=./eea -Dsonar.projectKey=$GIT_NAME-$BRANCH_NAME -Dsonar.projectVersion=$BRANCH_NAME-$BUILD_NUMBER"
 	           }
                 }
               }

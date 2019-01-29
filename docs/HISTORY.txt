@@ -1,6 +1,9 @@
 Changelog
 =========
 
+12.2-dev0 - (unreleased)
+---------------------
+
 12.1 - (2019-01-28)
 ---------------------
 * Jenkins: Add sonarqube step

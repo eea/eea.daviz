@@ -68,8 +68,8 @@ the "web of data" via public available sparql endpoints.
 
 You can easily make visualizations like:
 
-1. `Simile Exhibit <http://www.simile-widgets.org/exhibit3>`_
-2. `Google Charts <http://code.google.com/apis/chart>`_
+1. `Simile Exhibit`_
+2. `Google Charts`_
 
 See also initial project `wiki page <https://taskman.eionet.europa.eu/projects/zope/wiki/DaViz>`_
 for the reasoning behind this project.

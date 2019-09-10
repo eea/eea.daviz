@@ -1,6 +1,9 @@
 Changelog
 =========
 
+12.3-dev0 - (unreleased)
+---------------------------
+
 12.2 - (2019-09-10)
 --------------------------
 * Cleanup: Get rid of getDataOwner possible relation to solve install problem

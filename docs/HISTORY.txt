@@ -3,6 +3,9 @@ Changelog
 
 12.2-dev0 - (unreleased)
 ---------------------
+* Cleanup: Get rid of getDataOwner possible relation to solve install problem
+  for ENI SEIS.
+  [GhitaB #108504]
 
 12.1 - (2019-01-28)
 ---------------------

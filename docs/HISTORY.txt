@@ -2,13 +2,13 @@ Changelog
 =========
 
 12.2-dev0 - (unreleased)
----------------------
+--------------------------
 * Cleanup: Get rid of getDataOwner possible relation to solve install problem
   for ENI SEIS.
   [GhitaB #108504]
 
 12.1 - (2019-01-28)
----------------------
+--------------------------
 * Jenkins: Add sonarqube step
   [avoinea refs #101552]
 
@@ -21,12 +21,12 @@ Changelog
   [avoinea refs #98283]
 
 11.6 - (2018-06-20)
----------------------
+--------------------------
 * Change: updated URLs pointing to eea.europa.eu with https://
   [alecghica refs #95849]
 
 11.5 - (2018-05-30)
----------------------
+--------------------------
 * Bug fix: Restrict getBRefs only to related items
   [avoinea refs #95796]
 

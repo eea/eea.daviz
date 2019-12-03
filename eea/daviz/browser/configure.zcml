@@ -60,4 +60,8 @@
     file="./js/tutorials.js"
    />
 
+  <adapter
+    for="eea.daviz.content.interfaces.IDavizVisualization"
+    factory=".app.daviz.RecreateScales" />
+
 </configure>

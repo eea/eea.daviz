@@ -3,6 +3,9 @@ Changelog
 
 12.3-dev0 - (unreleased)
 ---------------------------
+* Task: Added a daviz custom adapter for image scales based on plone.scale
+  annotation storage
+  [iulianpetchesi #110463]
 
 12.2 - (2019-09-10)
 --------------------------

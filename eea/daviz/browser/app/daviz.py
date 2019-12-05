@@ -11,6 +11,8 @@ from zope.component.hooks import getSite
 from zope.component import queryUtility
 from zope.container.interfaces import INameChooser
 from zope.interface import implementer
+import logging
+logger = logging.getLogger('eea.daviz')
 
 
 class Daviz(object):
@@ -60,8 +62,9 @@ class RecreateScales(object):
         self.context = context
 
     def __call__(self, fieldname='image'):
-        image_view = self.context.restrictedTraverse('@@imgview')
+        image_view = self.context.unrestrictedTraverse('@@imgview')
         image = getattr(image_view, 'img', None)
+        url = self.context.absolute_url()
         if not image:
             raise AttributeError(fieldname)
 
@@ -70,15 +73,19 @@ class RecreateScales(object):
             field = image.getField(fieldname)
             if not field:
                 raise AttributeError(fieldname)
-            # import pdb; pdb.set_trace()
-            field.removeScales(image)
-            field.createScales(image)
+            try:
+                field.removeScales(image)
+                field.createScales(image)
+                logger.info("Succesfully scaled %s" % url)
+            except Exception, err:
+                logger.error("Error while recreating scale for %s" % url)
         else:
             # use plone.app.blob store scale
-            # storage = AnnotationStorage(self.context)
-            image_data = image()
-
             for name, size in image.sizes.items():
+                image_data = image_view(name)
+                if not image_data:
+                    continue
+
                 width, height = size
                 scale_result = scaleImage(image_data, width=width, height=height)
                 if scale_result is not None:
@@ -90,8 +97,6 @@ class RecreateScales(object):
                         content_type='image/{0}'.format(format_.lower()),
                         filename='',
                     )
-                    # self.getStorage(instance).unset(id, instance, **kwargs)
-                    # import pdb; pdb.set_trace()
                     fields = getattr(aq_base(self.context), blobScalesAttr, {})
                     scales = fields.setdefault(fieldname, {})
                     info['blob'] = Blob()
@@ -101,4 +106,5 @@ class RecreateScales(object):
                     del info['data']
                     scales[name] = info
                     setattr(self.context, blobScalesAttr, fields)
-        return info
+                    self.context._p_changed = True
+                    logger.info("Succesfully scaled %s for %s " % (name, url))

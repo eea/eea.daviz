@@ -89,7 +89,7 @@ class RecreateScaleView(BrowserView):
                 field.removeScales(image)
                 field.createScales(image)
                 logger.info("Succesfully scaled %s" % url)
-            except Exception, err:
+            except Exception:
                 logger.error("Error while recreating scale for %s" % url)
         else:
             # use plone.app.blob store scale

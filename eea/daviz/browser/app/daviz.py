@@ -1,7 +1,6 @@
 """ Create visualizations with datasources
 """
 from Acquisition import aq_base
-# from Products.Archetypes.Storage.annotation import AnnotationStorage
 from ZODB.blob import Blob
 from eea.app.visualization.controlpanel.interfaces import IDavizSettings
 from eea.depiction.interfaces import IRecreateScales
@@ -11,6 +10,8 @@ from zope.component.hooks import getSite
 from zope.component import queryUtility
 from zope.container.interfaces import INameChooser
 from zope.interface import implementer
+from zope.publisher.interfaces import IPublishTraverse
+from Products.Five.browser import BrowserView
 import logging
 logger = logging.getLogger('eea.daviz')
 
@@ -62,10 +63,21 @@ class RecreateScales(object):
         self.context = context
 
     def __call__(self, fieldname='image'):
+        import requests
+        url_base = 'https://www.eea.europa.eu/'
+        requests.get(url_base + self.context.absolute_url() + '/@@recreate.scale')
+
+
+@implementer(IPublishTraverse)
+class RecreateScaleView(BrowserView):
+    """ Recreate daviz scales view
+    """
+    def __call__(self, fieldname='image'):
         image_view = self.context.unrestrictedTraverse('@@imgview')
         image = getattr(image_view, 'img', None)
         url = self.context.absolute_url()
         if not image:
+            logger.error("Error while recreating scale for %s" % url)
             raise AttributeError(fieldname)
 
         info = None
@@ -107,4 +119,5 @@ class RecreateScales(object):
                     scales[name] = info
                     setattr(self.context, blobScalesAttr, fields)
                     self.context._p_changed = True
-                    logger.info("Succesfully scaled %s for %s " % (name, url))
+            logger.info("Succesfully scaled %s " % url)
+        return "Done"

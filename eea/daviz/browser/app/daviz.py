@@ -1,9 +1,29 @@
 """ Create visualizations with datasources
 """
+from Acquisition import aq_base
+from ZODB.blob import Blob
+from eea.app.visualization.controlpanel.interfaces import IDavizSettings
+from plone.app.blob.config import blobScalesAttr
+from plone.scale.scale import scaleImage
 from zope.component.hooks import getSite
 from zope.component import queryUtility
 from zope.container.interfaces import INameChooser
-from eea.app.visualization.controlpanel.interfaces import IDavizSettings
+from zope.interface import implementer, Interface
+from zope.publisher.interfaces import IPublishTraverse
+from Products.Five.browser import BrowserView
+import logging
+logger = logging.getLogger('eea.daviz')
+
+
+try:
+    from eea.depiction.interfaces import IRecreateScales
+except ImportError:
+    logger.warn('eea.depiction is not installed')
+
+    class IRecreateScales(Interface):
+        """ Recreate image scales
+        """
+
 
 class Daviz(object):
     """ Daviz
@@ -42,3 +62,79 @@ class Daviz(object):
         newObj.title = self.context.title
         newObj.setRelatedItems([self.context])
         self.request.response.redirect(newObj.absolute_url()+"/daviz-edit.html")
+
+
+@implementer(IRecreateScales)
+class RecreateScales(object):
+    """ Recreate image scales daviz custom adapter
+    """
+    def __init__(self, context):
+        self.context = context
+
+    def __call__(self, fieldname='image'):
+        import requests
+        import os
+        domain = os.environ.get("SERVER_NAME", "")
+        if domain:
+            if not domain.startswith("http"):
+                domain = 'http://' + domain + '/'
+            url = domain + self.context.absolute_url() + '/@@recreate.scale'
+        else:
+            url = 'https://www.eea.europa.eu/' + self.context.absolute_url() + \
+                '/@@recreate.scale'
+        requests.get(url)
+
+
+@implementer(IPublishTraverse)
+class RecreateScaleView(BrowserView):
+    """ Recreate daviz scales view
+    """
+    def __call__(self, fieldname='image'):
+        image_view = self.context.unrestrictedTraverse('@@imgview')
+        image = getattr(image_view, 'img', None)
+        url = self.context.absolute_url()
+        if not image:
+            logger.error("Error while recreating scale for %s" % url)
+            raise AttributeError(fieldname)
+
+        info = None
+        if getattr(image, 'portal_type', '') == 'Image':
+            field = image.getField(fieldname)
+            if not field:
+                raise AttributeError(fieldname)
+            try:
+                field.removeScales(image)
+                field.createScales(image)
+                logger.info("Succesfully scaled %s" % url)
+            except Exception:
+                logger.error("Error while recreating scale for %s" % url)
+        else:
+            # use plone.app.blob store scale
+            for name, size in image.sizes.items():
+                image_data = image_view(name)
+                if not image_data:
+                    continue
+
+                width, height = size
+                scale_result = scaleImage(image_data, width=width, height=height)
+                if scale_result is not None:
+                    id = fieldname + "_" + name
+                    data, format_, dimensions = scale_result
+                    info = dict(
+                        data=data,
+                        id = id,
+                        content_type='image/{0}'.format(format_.lower()),
+                        filename='',
+                    )
+                    fields = getattr(aq_base(self.context), blobScalesAttr, {})
+                    scales = fields.setdefault(fieldname, {})
+                    info['blob'] = Blob()
+                    blob = info['blob'].open('w')
+                    blob.write(info['data'])
+                    blob.close()
+                    del info['data']
+                    scales[name] = info
+                    setattr(self.context, blobScalesAttr, fields)
+                    self.context._p_changed = True
+            logger.info("Succesfully scaled %s " % url)
+        return "Done"

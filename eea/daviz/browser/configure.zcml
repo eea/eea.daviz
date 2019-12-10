@@ -18,6 +18,13 @@
     permission="zope2.View"
     />
 
+  <browser:page
+    for="eea.daviz.content.interfaces.IDavizVisualization"
+    name="recreate.scale"
+    class=".app.daviz.RecreateScaleView"
+    permission="zope2.Public"
+    />
+
   <browser:resource
     name="eea.daviz.datasource.js"
     file="./js/datasource.js"
@@ -59,5 +66,9 @@
     name="eea.daviz.tutorials.js"
     file="./js/tutorials.js"
    />
+
+  <adapter
+    for="eea.daviz.content.interfaces.IDavizVisualization"
+    factory=".app.daviz.RecreateScales" />
 
 </configure>

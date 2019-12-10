@@ -3,17 +3,26 @@
 from Acquisition import aq_base
 from ZODB.blob import Blob
 from eea.app.visualization.controlpanel.interfaces import IDavizSettings
-from eea.depiction.interfaces import IRecreateScales
 from plone.app.blob.config import blobScalesAttr
 from plone.scale.scale import scaleImage
 from zope.component.hooks import getSite
 from zope.component import queryUtility
 from zope.container.interfaces import INameChooser
-from zope.interface import implementer
+from zope.interface import implementer, interface
 from zope.publisher.interfaces import IPublishTraverse
 from Products.Five.browser import BrowserView
 import logging
 logger = logging.getLogger('eea.daviz')
+
+
+try:
+    from eea.depiction.interfaces import IRecreateScales
+except ImportError:
+    logger.warn('eea.depiction is not installed')
+
+    class IRecreateScales(Interface):
+        """ Recreate image scales
+        """
 
 
 class Daviz(object):

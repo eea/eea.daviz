@@ -8,7 +8,7 @@ from plone.scale.scale import scaleImage
 from zope.component.hooks import getSite
 from zope.component import queryUtility
 from zope.container.interfaces import INameChooser
-from zope.interface import implementer, interface
+from zope.interface import implementer, Interface
 from zope.publisher.interfaces import IPublishTraverse
 from Products.Five.browser import BrowserView
 import logging

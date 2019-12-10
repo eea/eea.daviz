@@ -1,7 +1,7 @@
 Changelog
 =========
 
-12.3-dev0 - (unreleased)
+12.3 - (2019-12-10)
 ---------------------------
 * Task: Added a daviz custom adapter for image scales based on plone.app.blob
   store scale

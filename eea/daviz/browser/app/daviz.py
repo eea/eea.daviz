@@ -73,8 +73,16 @@ class RecreateScales(object):
 
     def __call__(self, fieldname='image'):
         import requests
-        url_base = 'https://www.eea.europa.eu/'
-        requests.get(url_base + self.context.absolute_url() + '/@@recreate.scale')
+        import os
+        domain = os.environ.get("SERVER_NAME", "")
+        if domain:
+            if not domain.startswith("http"):
+                domain = 'http://' + domain + '/'
+            url = domain + self.context.absolute_url() + '/@@recreate.scale'
+        else:
+            url = 'https://www.eea.europa.eu/' + self.context.absolute_url() + \
+                '/@@recreate.scale'
+        requests.get(url)
 
 
 @implementer(IPublishTraverse)

@@ -3,6 +3,9 @@ Changelog
 
 12.4-dev0 - (unreleased)
 ---------------------------
+* Change: use prop instead of attr when setting value on input tags for jquery
+  1.9+ compatibility
+  [ichim-david refs #105112]
 
 12.3 - (2019-12-10)
 ---------------------------

@@ -48,7 +48,7 @@ jQuery(document).ready(function(){
   jQuery("<br/>")
     .appendTo(".eea-daviz-datasource-readonly .portalMessage");
   jQuery("<input type='button'/>")
-    .attr("value", "Unlock datasources")
+    .prop("value", "Unlock datasources")
     .appendTo(".eea-daviz-datasource-readonly .portalMessage")
     .click(function(){
         jQuery(".eea-daviz-datasource-readonly").remove();

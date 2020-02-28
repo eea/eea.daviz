@@ -48,7 +48,7 @@ jQuery(document).ready(function(){
     }
     var titleInput = jQuery('#archetypes-fieldname-title').find("input");
     if (titleInput.attr("originalvalue") === 'Data Visualization'){
-      titleInput.attr("value", newTitle);
+      titleInput.prop("value", newTitle);
     }
   }
   jQuery('#archetypes-fieldname-dataTitle').find("input").change(function(){
@@ -102,7 +102,7 @@ jQuery(document).ready(function(){
   jQuery("#fieldset-data-provenance").delegate(".datagridwidget-manipulator img", "click", setColumnClasses);
   jQuery("#fieldset-data-provenance").delegate(".datagridwidget-add-button", "click", setColumnClasses);
   setDataGridWidgetTRLabels();
-  if (jQuery('#inheritedprovenance').attr('checked')){
+  if (jQuery('#inheritedprovenance').prop('checked')){
     jQuery('#archetypes-fieldname-provenances').addClass('eea-daviz-readonly');
     jQuery('.datagridwidget-manipulator').find('img').hide();
     jQuery('#datagridwidget-add-button').hide();

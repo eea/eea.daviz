@@ -1,7 +1,7 @@
 Changelog
 =========
 
-12.4-dev0 - (unreleased)
+12.4 - (2020-02-28)
 ---------------------------
 * Change: use prop instead of attr when setting value on input tags for jquery
   1.9+ compatibility
